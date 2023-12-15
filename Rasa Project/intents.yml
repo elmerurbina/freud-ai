@@ -1,0 +1,108 @@
+version: "2.0"
+
+nlu:
+  - intent: saludar
+    examples: |
+      - ¡Hola!
+      - ¡Hola, buenos días!
+      - Buenas tardes
+      - Buenas noches
+
+  - intent: estado_animo_triste
+    examples: |
+      - Me siento triste
+      - Estoy deprimido
+      - Mi ánimo está bajo hoy
+      - No tengo ganas de hacer nada
+      - Todo me esta saliendo mal
+      - No siento ganas de hacer nada
+
+  - intent: estado_animo_ansioso
+    examples: |
+      - Me siento ansioso
+      - Estoy muy ansioso hoy
+      - Mi ansiedad está alta
+      - Tengo problemas de ansiedad
+
+  - intent: estado_animo_feliz
+    examples: |
+      - Me siento feliz
+      - Estoy de buen humor
+      - Mi ánimo está genial hoy
+      - Me siento bien
+
+  - intent: estrés
+    examples: |
+      - Estoy estresado
+      - Tengo mucho estrés
+      - El estrés me agobia
+      - Me duele la cabeza
+      - Estoy pensativo
+      - Estoy preocupado
+
+  - intent: depresión
+    examples: |
+      - Creo que tengo depresión
+      - Estoy lidiando con la depresión
+      - Me siento deprimido
+      - Mi estado de animo es muy bajo
+      - No tengo ganas de comer
+      - No quiero hablar con nadie
+
+  - intent: ansiedad
+    examples: |
+      - Tengo ansiedad
+      - Mi ansiedad está actuando
+      - ¿Cómo lidiar con la ansiedad?
+
+  - intent: estrés_post_traumático
+    examples: |
+      - Tengo estrés postraumático
+      - Lidiando con el TEPT
+      - Enfrentando experiencias traumáticas
+      - Perdi a un ser querido
+      - Mi pais a sido afectado por deslaves, huracanes, inundaciones
+      - Hace poco tuve perdidas economicas muy grandes
+      - Un incendio termino con mi casa
+      - Tuve un accidente de transito
+      - Un familiar, amigo murio en un accidente
+
+  - intent: adicción
+    examples: |
+      - Estoy luchando contra la adicción
+      - Superando la adicción
+      - Adicto a [sustancia/actividad]
+      - Quiero dejar el alcohol
+      - Soy adicto a las drogas
+      - Si no cunsumo [sustancia] no puedo levantar el animo
+      - Quiero dejar de fumar
+
+  - intent: insomnio
+    examples: |
+      - No puedo dormir
+      - El insomnio me está molestando
+      - Problemas para conciliar el sueño
+      - Estoy durmiendo poco
+
+  - intent: narcolepsia
+    examples: |
+      - Tengo narcolepsia
+      - Lidiando con la narcolepsia
+      - Ataques de sueño repentinos
+      - No puedo controlar el sueño
+
+  - intent: Fobias
+    examples: |
+      - Tengo fobia [animal/persona/objeto]
+     - Estoy lidiando con mis fobias
+     - Tengo miedo excesivo
+     - Me dan miedo las culebras
+     - No me gusta la noche, siento miedo
+
+  - intent: Bulimia
+    examples: |
+     - Estoy padeciendo de bulimia
+     - Estoy comiendo mucho
+     - Vomito despues de comer
+
+  

@@ -1,0 +1,79 @@
+version: "2.0"
+
+
+entities:
+  - sustancia:
+      examples: |
+        - alcohol
+        - tabaco
+        - marihuana
+        - cocaína
+        - cafeína
+        - heroína
+
+  - actividad:
+      examples: |
+        - deporte
+        - lectura
+        - trabajo
+        - estudio
+        - ver televisión
+        - escuchar música
+
+  - síntoma:
+      examples: |
+        - tristeza
+        - ansiedad
+        - fatiga
+        - insomnio
+        - dolores de cabeza
+        - falta de apetito
+
+  - tipo_de_trauma:
+      examples: |
+        - accidente automovilístico
+        - abuso sexual
+        - desastre natural
+        - violencia doméstica
+        - pérdida de un ser querido
+        - guerra
+
+  - lugar:
+      examples: |
+        - casa
+        - trabajo
+        - escuela
+        - hospital
+        - parque
+        - centro comercial
+
+  - duración:
+      examples: |
+        - horas
+        - días
+        - semanas
+        - meses
+        - años
+
+  - edad:
+      examples: |
+        - niño
+        - adolescente
+        - adulto joven
+        - adulto
+        - adulto mayor
+
+  - genero:
+      examples: |
+       - masculino
+       - femenino
+
+  - causas: 
+      examples: |
+       - problemas familiares
+       - fracaso escolar
+       - problemas de salud
+       - problemas en el trabajo
+       - traslado de lugar
+       - fracaso
+

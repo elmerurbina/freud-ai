@@ -1,0 +1,80 @@
+version: "2.0"
+
+# Posibles escenarios en las que el bot tendra que combinar uno o mas intent, para mantener el flujo de la conversacion
+
+stories:
+  - story: Saludo y ánimo triste
+    steps:
+      - intent: saludar
+      - action: utter_saludar
+      - intent: estado_animo_triste
+      - action: utter_estado_animo_triste
+
+  - story: Saludo y ansiedad
+    steps:
+      - intent: saludar
+      - action: utter_saludar
+      - intent: estado_animo_ansioso
+      - action: utter_estado_animo_ansioso
+
+  - story: Saludo y felicidad
+    steps:
+      - intent: saludar
+      - action: utter_saludar
+      - intent: estado_animo_feliz
+      - action: utter_estado_animo_feliz
+
+  - story: Estrés
+    steps:
+      - intent: estrés
+      - action: utter_estrés
+
+  - story: Depresión y causa
+    steps:
+      - intent: depresión
+      - action: utter_depresión
+      - intent: causas
+      - action: utter_default
+
+  - story: Ansiedad y causa
+    steps:
+      - intent: ansiedad
+      - action: utter_ansiedad
+      - intent: causas
+      - action: utter_default
+
+  - story: Estrés post-traumático
+    steps:
+      - intent: estrés_post_traumático
+      - action: utter_estrés_post_traumático
+
+  - story: Adicción y sustancia
+    steps:
+      - intent: adicción
+      - action: utter_adicción
+      - intent: sustancia
+      - action: utter_default
+
+  - story: Insomnio y síntoma
+    steps:
+      - intent: insomnio
+      - action: utter_insomnio
+      - intent: síntoma
+      - action: utter_default
+
+  - story: Narcolepsia
+    steps:
+      - intent: narcolepsia
+      - action: utter_narcolepsia
+
+  - story: Fobias y objeto
+    steps:
+      - intent: Fobias
+      - action: utter_Fobias
+      - intent: tipo_de_trauma
+      - action: utter_default
+
+  - story: Bulimia
+    steps:
+      - intent: Bulimia
+      - action: utter_Bulimia

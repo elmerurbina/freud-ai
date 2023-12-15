@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='agregar.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+
+    <title>Registro</title>
+</head>
+<body>
+
+    <img class="logo" src="{{ url_for('static', filename='imagenes/logo.jpg') }}" alt="Logo" >
+  <!--  <figcaption>Freud.AI</figcaption> -->
+
+    <section>
+    <h1>Agregar nuevo perfil</h1>
+    <form action="/agregar" method="post">
+
+        <label for="profile_picture">Subir imagen de perfil:</label>
+        <input type="file" id="profile_picture" name="profile_picture" accept="image/*">
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <label for="licencia">No. De Licencia:</label>
+        <input type="text" id="licencia" name="licencia" required>
+
+        <label for="ubicacion">Ubicacion:</label>
+        <input type="text" id="ubicacion" name="ubicacion" required>
+
+        <label for="contacto">Informacion de contacto: </label>
+        <input type="text" id="contacto" name="contacto" required>
+
+        <label for="descripcion">Descripcion:</label>
+<textarea id="descripcion" name="descripcion" required></textarea>
+
+
+        <button type="submit">Agregar</button>
+    </form>
+    </section>
+</body>
+</html>

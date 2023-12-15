@@ -1,0 +1,51 @@
+version: "2.0"
+
+responses:
+  utter_saludar:
+    - text: "¡Bienvenido a Freud tu psicologo virtual! ¿Cómo puedo ayudarte hoy?"
+
+  utter_estado_animo_triste:
+    - text: "Siento escuchar que te sientes triste. Estoy aquí para escucharte y brindarte apoyo."
+    - text: "¿Cual crees que se la causa por la que te sientes triste?"
+
+  utter_estado_animo_ansioso:
+    - text: "La ansiedad puede ser abrumadora. Estoy aquí para ayudarte a entender y manejar tus sentimientos de ansiedad."
+    - text: "Cuentame! ¿Cual crees que sea la razon por la que te sientes ansioso?"
+
+  utter_estado_animo_feliz:
+    - text: "¡Me alegra escuchar que te sientes feliz! ¿En qué puedo ayudarte hoy?"
+
+  utter_estrés:
+    - text: "El estrés puede ser difícil de manejar. ¿Desde cuando te sientes estresado?"
+
+  utter_depresión:
+    - text: "La depresión es una experiencia difícil. Estoy aquí para apoyarte y hablar sobre cómo te sientes."
+    - text: "¿Estas enfrentando alguna situacion dificil?"
+
+  utter_ansiedad:
+    - text: "La ansiedad es común, pero podemos trabajar juntos para manejarla. ¿Puedes identificar alguna causa que te este produciendo ansiedad?"
+
+  utter_estrés_post_traumático:
+    - text: "El estrés postraumático puede ser desafiante. Estoy aquí para ayudarte a lidiar con las experiencias traumáticas."
+    - text: "¿Has tenido alguna experiencia traumatica los ultimos dias?"
+
+  utter_adicción:
+    - text: "Superar una adicción es un proceso. cuentame! ¿Cual adiccion estas manejando actualmente?"
+
+
+  utter_insomnio:
+    - text: "El insomnio puede afectar tu bienestar. ¿Puedes identificar factores que te esten produciendo insomnio?"
+
+  utter_narcolepsia:
+    - text: "Lidiar con la narcolepsia puede ser complicado. ¿Cómo puedo apoyarte en el manejo de tus síntomas?"
+
+  utter_Fobias:
+    - text: "Las fobias son comunes, pero podemos trabajar juntos para superarlas. ¿En qué tienes miedo?"
+
+  utter_Bulimia:
+    - text: "La bulimia es una preocupación seria. Estoy aquí para ofrecer apoyo y recursos."
+    - text: ¿Estas de acuerdo si te explico brevemente, que es la Bulimia?
+
+  utter_default:
+    - text: "No estoy seguro de entender completamente. ¿Puedes proporcionar más detalles o hacer otra pregunta?"
+

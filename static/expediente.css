@@ -1,0 +1,132 @@
+
+
+body{ background-image: url("/static/imagenes/expediente.jpg");
+
+}
+
+
+.logo {
+   color: #ffffff;
+   text-transform: uppercase;
+   font-size: 30px;
+   margin-left: 5%;
+}
+
+span {
+   color: #EE13C4;
+}
+
+h1{text-align: center;
+font-size: 20;
+color:rgb(252, 255, 255);
+}
+
+p.principal{text-align: center;
+color: white;
+margin-top: 2%;
+font-size: 19px;
+margin-bottom: 5%;
+margin-top: 5%;}
+
+p.segundo{text-align: center;
+color: whitesmoke;
+margin-top: 0%;
+margin-left: 20%;
+margin-right: 20%;
+font-size: 14px;
+display: inline-block;
+line-height: 1.5;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+label{color: white;
+font-size: 16px;}
+
+input{padding: 4px;}
+
+footer{font-size: 20px;
+color: lightgray;
+text-align: center;
+margin-top: 100px;}
+
+figcaption{margin-left: 70px;
+   margin-top: -50px;
+color: white;
+font-size: 20px;}
+
+
+
+.solicitarAcceso {
+   display: flex;
+   text-align: right;
+   align-items: center;
+   height: 100vh; 
+   margin-top: -18%; 
+   margin-right: 5%;
+   margin-left: 35%;
+}
+
+a.solicitar {
+   background-color: blue;
+   border: none;
+   border-radius: 20px; 
+   padding: 8px 12px;
+   color: white;
+   font-size: 16px;
+   font-style: normal;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   text-align: center;
+   cursor: pointer;
+   margin-top: 0;
+   margin-left: 10px;
+}
+
+a.solicitar:hover {
+   background-color: rgb(151, 9, 9);
+   
+}
+
+
+.acceder{ 
+margin-left: 40%;
+margin-top: 0%;}
+
+
+
+.logo{width: 80px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    }
+
+b{color: rgb(231, 181, 87);}
+
+h3{font-size: 20px;
+   margin-right: 35%;
+   margin-bottom: 10%;}
+   
+   .contacto{margin-top: 100px;
+       color: white;
+       padding: 20px;
+       margin-left: 35%;
+       }
+       
+       a.gmail{color: white;
+       margin-right: 50px;}
+       a.whatsapp{color: white;
+       margin-right: 50px;}
+       a.facebook{color: white;
+       margin-right: 50px;}
+       a.instagram{color: white;
+           margin-right: 50px;}
+       a.whatsapp:hover{color: red;}
+       a.gmail:hover{color: red;}
+       a.facebook:hover{color: red;}
+       a.instagram:hover{color: red;}
+
+       a{color: rgb(231, 181, 87);}
+       a:hover{color: red;}
+
+       p.Creditos{color: white;}

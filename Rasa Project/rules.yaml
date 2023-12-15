@@ -1,0 +1,74 @@
+version: "2.0"
+
+# Rules son un poco similar a stories, pero su funcion es diferente
+# Rules define acciones especificas que deben tomarse de acuerdo a un modelo de respuesta predefinido
+
+rules:
+- rule: Saludo del usuario
+  steps:
+  - intent: saludar
+  - action: utter_saludar
+
+- rule: Conversación sobre tristeza
+  steps:
+  - intent: estado_animo_triste
+  - action: utter_estado_animo_triste
+
+- rule: Conversación sobre ansiedad
+  steps:
+  - intent: estado_animo_ansioso
+  - action: utter_estado_animo_ansioso
+
+- rule: Conversación sobre felicidad
+  steps:
+  - intent: estado_animo_feliz
+  - action: utter_estado_animo_feliz
+
+- rule: Conversación sobre estrés
+  steps:
+  - intent: estrés
+  - action: utter_estrés
+
+- rule: Conversación sobre depresión
+  steps:
+  - intent: depresión
+  - action: utter_depresión
+
+- rule: Conversación sobre ansiedad
+  steps:
+  - intent: ansiedad
+  - action: utter_ansiedad
+
+- rule: Conversación sobre estrés postraumático
+  steps:
+  - intent: estrés_post_traumático
+  - action: utter_estrés_post_traumático
+
+- rule: Conversación sobre adicciones
+  steps:
+  - intent: adicción
+  - action: utter_adicción
+
+- rule: Conversación sobre insomnio
+  steps:
+  - intent: insomnio
+  - action: utter_insomnio
+
+- rule: Conversación sobre narcolepsia
+  steps:
+  - intent: narcolepsia
+  - action: utter_narcolepsia
+
+- rule: Conversación sobre fobias
+  steps:
+  - intent: Fobias
+  - action: utter_Fobias
+
+- rule: Conversación sobre bulimia
+  steps:
+  - intent: Bulimia
+  - action: utter_Bulimia
+
+- rule: Default
+  steps:
+  - action: utter_default
