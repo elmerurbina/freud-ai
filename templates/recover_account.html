@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>recuperación de contraseña</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='recover.css') }}">
+
+</head>
+<body>
+
+    <h1  class="logo">Freud&nbsp;<span>IA</span></h1>
+
+    <div class="container">
+        <h1>recuperación de contraseña</h1>
+        <p>Ingrese su correo electronico para recuperar sus credenciales de acceso</p>
+        <form method="POST">
+            <div class="form-group">
+                <label for="email">Correo electronico</label>
+                <input type="email" id="email" name="email" placeholder="correo con el que se registro ..." required>
+            </div>
+           
+                <button type="submit">Submit</button>
+            </form>
+           
+        </div>
+
+        <footer>
+            <p>&copy; 2023 Freud.AI.  Todos los derechos reservados</p>
+        </footer>
+
+        Creditos imagen de fondo:  <a href="https://www.freepik.com/free-vector/dark-blue-security-background_1140343.htm#query=logout%20background&position=18&from_view=search&track=ais&uuid=b0e26011-e11e-4e90-8600-74e39007f3ed">Freepik</a>
+    </body>
+
+
+    </html>

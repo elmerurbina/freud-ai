@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freud IA</title>
+    
+    <meta name="viewport" content="width=device-width, user-scalabl=no, initial-scale=1.0">
+    <!--Icono de pagina-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <!--Iconos-->
+    <script src="https://kit.fontawesome.com/94b64c1e7a.js" crossorigin="anonymous"></script>
+    <!--Titulo de pagina-->
+</head>
+<body>
+    <header>
+
+        <div class="container">
+            <div class="menu">
+                <h1  class="logo">Freud&nbsp;<span>IA</span></h1>
+                <input type="Checkbox" id="menu" />
+                <label for="menu">
+                    <img src="{{ url_for('static', filename='imagenes/menu.png') }}" class="menu-icono" alt="">
+                </label>
+                <nav class="navbar">
+                    <ul>
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="{{ url_for('profesionals') }}">Profesionales</a></li>
+                        <li><a href="{{ url_for('login_account') }}">Ir al Chat</a></li>
+                        <li><a href="{{ url_for('verExpediente') }}">Expediente</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a class="menu" href="#privacidad" id="privacyLink">Privacidad</a></li>
+                        
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="header-content">
+                <div class="header-txt">
+                    <h1>TU AYUDANTE  <br>PERSONAL </h1>
+                    <p>
+                        La piscologia, a diferecia de la quimica, algebra o literatura, es un manual para tu propia mente. Es una guia para tu vida.
+                    </p>
+                    <a href="#" class="btn">Leer mas</a>
+                </div>
+
+                <div class="header-img">
+                    <img src="{{ url_for('static', filename='imagenes/right.svg') }} " alt="No esta">
+                </div>
+
+            </div>
+        </div>
+
+        <footer class="pie-pagina">
+            <div class="grupo-1">
+                <div class="box">
+                    <figure>
+                        <a href="#">
+                           <img src="{{ url_for('static', filename='imagenes/01.jpg') }}" alt="Logo Freud AI"> 
+                        </a>
+                    </figure>
+                </div>
+
+
+
+
+
+                <div class="privacy-overlay" id="privacyOverlay">
+                    <!-- Privacy content goes here -->
+                    <div class="privacy-content">
+                        <h3>Términos de Privacidad</h3>
+                           
+                        <p class="privacidad"><b>Confidencialidad de la Información: </b> Garantizamos la confidencialidad de toda la información proporcionada en Freud.AI. 
+                            Los datos del usuario, las interacciones y la información del expediente están protegidos con medidas de seguridad avanzadas.</p>
+                            <p class="privacidad"> <b>Uso de la Información: </b> La información recopilada se utiliza exclusivamente con el propósito de proporcionar servicios psicológicos personalizados. 
+                                No compartiremos ni venderemos datos a terceros sin el consentimiento explícito del usuario.
+                                </p>
+                
+                                <p class="privacidad"><b>Seguridad de Datos: </b>Implementamos medidas de seguridad tecnológicas y organizativas para proteger la integridad y confidencialidad de los datos. 
+                                    Nuestra plataforma cumple con los estándares de seguridad de la industria.</p>
+                
+                                    <p class="privacidad"><b>Acceso Limitado: </b>El acceso a la información del expediente está estrictamente limitado a los profesionales autorizados. 
+                                        Se utiliza un sistema de autenticación seguro para garantizar que solo los usuarios autorizados puedan acceder a la información confidencial.</p>
+                
+                                        <p class="privacidad"><b>Consentimiento Informado: </b> Antes de utilizar nuestros servicios, solicitamos el consentimiento informado del usuario.
+                                             Esto incluye la comprensión de cómo se utilizará la información y el compromiso de seguir las políticas de privacidad establecidas.</p>
+                
+                                             <p class="privacidad"><b>Registro y Autenticación: </b> El proceso de registro e inicio de sesión está diseñado 
+                                                con altos estándares de seguridad para proteger la identidad del usuario.
+                                                 Se recomienda mantener la información de inicio de sesión de manera segura y confidencial.</p>
+                
+                                                 <p class="privacidad"><b>Retención de Datos: </b> Mantenemos los datos del usuario durante 
+                                                    el tiempo necesario para cumplir con los objetivos establecidos.
+                                                     Se brinda la opción de eliminar la cuenta y los datos personales en cualquier momento.</p>
+                
+                                                     <p class="privacidad"><b>Actualizaciones de Privacidad: </b>Nos comprometemos a informar a los usuarios sobre cualquier
+                                                         cambio en nuestras políticas de privacidad.
+                                                         Las actualizaciones se comunicarán de manera clara y transparente.</p>
+                    </div>
+                    <span class="close-btn" id="closePrivacy">&times;</span>
+                </div>
+
+           
+                <script src="{{ url_for('static', filename='privacidad.js') }}"></script>
+            
+            
+            
+
+
+
+
+
+
+
+
+                <div id="nosotros" class="box">
+                    <h2>SOBRE NOSOTROS</h2>
+    
+                    <P>Freud IA es un ChatBot que utiliza el modelo de Terapia cognitivo conductual igual que un psicólogo humano, el Bot puede realizar 
+                        evaluaciones psicológicas precisas, ayudar pacientes con 
+                        diferentes patologías psicológicas como estrés, depresión, ansiedad, trastornos alimenticios o del sueño, addicciones a drogras, alcohol o tabaco, 
+                        manías específicas, trastorno bipolar, 
+                        estrés postramáutico, y muchos otros problemas.
+                    </P>
+    
+                    <P>A través de un proceso estructurado e integral con atención las 24/7, el Bot puede guiar a los pacientes 
+                        en su proceso de recuperación, manejo y control de sus problemas.
+                    </P>
+    
+                </div>
+
+
+
+
+
+
+                <div class="box">
+                    <h2>Siguenos</h2>
+                    <div class="red-social">
+                        <a href="#" class="fa fa-facebook"></a>
+                        <a href="#" class="fa fa-instagram"></a>
+                        <a href="#" class="fa fa-twitter"></a>
+                        <a href="#" class="fa fa-youtube"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="grupo-2">
+                <small>&copy; 2023 <b>Innovators</b> - Todos los Derechos Reservados.</small>
+            </div>
+        </footer>
+
+    </header>
+</body>
+</html>

@@ -1,0 +1,196 @@
+
+body {
+   
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: url("/static/imagenes/registro.jpg");
+    
+}
+
+
+.logo {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 30px;
+    margin-left: 5%;
+}
+
+span {
+    color: #EE13C4;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.container {
+    text-align: center;  
+    color: white;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+width: 100%;
+margin-top: 10%;
+}
+
+
+.form-group {
+    margin-bottom: 15px; 
+    width: 100%; }
+
+.form-group-left,
+.form-group-right {
+    flex: 1; 
+    width: 48%;
+}
+
+.form-group-right {margin-left: 18%;
+    padding: 8px;
+}
+
+label {
+    display: block; 
+    margin-bottom: 5px;
+}
+
+input {
+    width: 100%; 
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+button.register {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button.register:hover {background-color: red;}
+
+a{color: rgb(231, 181, 87);
+    font-size: 18px;
+}
+
+footer{font-size: 20px;
+    color: lightgray;
+    text-align: center;
+padding-top: 100px;}
+
+    figcaption{margin-left: 70px;
+        margin-top: -50px;
+     color: white;
+     font-size: 20px;}
+
+     .logo{width: 80px;
+        height: auto;
+        border-radius: 50%;
+        margin-bottom: 20px;
+        }
+
+        span.warning{color: rgb(231, 181, 87);}
+        span.anotar{color: rgb(231, 181, 87);}
+
+
+        p.uno{margin-left: 18%;
+        margin-right: 10%;
+    margin-top: 1%;
+font-size: 18px;
+color: rgba(224, 255, 255, 0.884);}
+
+p.dos{margin-left: 18%;
+    margin-right: 10%;
+font-size: 18px;
+color: rgba(224, 255, 255, 0.884);}
+
+p.tres{margin-left: 18%;
+    margin-right: 10%;
+font-size: 18px;
+color: rgba(224, 255, 255, 0.884);
+margin-bottom: 10%;}
+
+a:hover{color: rgb(247, 10, 10);}
+
+
+p.privacy{color:rgb(230, 221, 224);
+font-size: 18px;
+text-align: center;
+font-family:Arial, Helvetica, sans-serif;
+margin-top: 3%;}
+
+p.privacidad{color: white;
+font-size: 14px;
+margin-top: 10%;
+line-height: 1.5;}
+
+b{color:rgb(231, 181, 87)}
+
+h3{font-size: 25px;
+margin-right: 40%;
+margin-bottom: 10%;}
+
+.contacto{margin-top: 100px;
+    color: white;
+    padding: 20px;
+    margin-left: 35%;
+    }
+    
+    a.gmail{color: white;
+    margin-right: 50px;}
+    a.whatsapp{color: white;
+    margin-right: 50px;}
+    a.facebook{color: white;
+    margin-right: 50px;}
+    a.instagram{color: white;
+        margin-right: 50px;}
+    a.whatsapp:hover{color: red;}
+    a.gmail:hover{color: red;}
+    a.facebook:hover{color: red;}
+    a.instagram:hover{color: red;}
+
+    .close{font-size: 50px;}
+
+    .close:hover{color: red;}
+
+    p.cerrar{font-size: 14px;
+    margin-top: 3%;
+text-align: center;}
+
+
+
+input:invalid + span::before {
+    content: attr(data-custom-error);
+    color: red;
+    display: block;
+    margin-top: 5px;
+}
+
+input:valid {
+    border: 1px solid green;
+}
+
+.error-message {
+    display: none;
+}
+
+

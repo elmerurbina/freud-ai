@@ -1,0 +1,125 @@
+
+
+body {
+    background-image: url("/static/imagenes/registro.jpg");
+    font-family: Arial, sans-serif;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.logo {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 30px;
+    margin-left: 5%;
+}
+
+span {
+    color: #EE13C4;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    margin-top: 8%;
+}
+
+.container {
+    text-align: center; 
+    color: lightgray;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: blue;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-size: 25px;
+    border-radius: 20px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+button:hover{background-color: red;}
+
+
+a{color:rgb(231, 181, 87)}
+a:hover{color:red;}
+
+section{align-items: center;
+margin-top: 8%;}
+
+
+.logo{width: 80px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 20px;}
+    
+    figcaption{margin-left: 70px;
+        margin-top: -50px;
+     color: white;
+     font-size: 20px;}
+
+     p.encabezado{font-size: 20px;
+    color: lightgray;
+margin-left: 30%;
+margin-right: 30%;
+margin-top: 3%;
+padding: 5px;
+line-height: 1.5;}
+
+footer{font-size: 20px;
+    color: lightgray;
+    text-align: center;
+padding-top: 100px;}
+
+
+.contacto{margin-top: 100px;
+    color: white;
+    padding: 20px;
+    margin-left: 35%;
+    }
+
+a.gmail{color: white;
+    margin-right: 50px;}
+    a.whatsapp{color: white;
+    margin-right: 50px;}
+    a.facebook{color: white;
+    margin-right: 50px;}
+    a.instagram{color: white;
+        margin-right: 50px;}
+    a.whatsapp:hover{color: red;}
+    a.gmail:hover{color: red;}
+    a.facebook:hover{color: red;}
+    a.instagram:hover{color: red;}
+
+    h3{font-size: 18px;
+    margin-left: -10%;
+    margin-top: -1%;
+    margin-bottom: 8%;}
+
+    h1{font-size: 25px;
+    margin-bottom: 10%;}
+
+    a.creditos{margin-bottom: 5%;
+    margin-top: 5%;
+text-align: center;}
+
+

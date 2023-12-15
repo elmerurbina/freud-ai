@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='logout.css') }}">
+    <title>Salir</title>
+    
+</head>
+<body>
+
+    <img class="logo" src="{{ url_for('static', filename='imagenes/logo2.jpg') }}" alt="Logo" >
+
+    <div class="container">
+
+    <h1>¿Estás seguro de que quieres salir de la plataforma?</h1>
+    <form method="post">
+        <button type="submit" name="choice" value="aceptar">Salir</button>
+        <button class="cancelar" type="submit" name="choice" value="cancelar">Cancelar</button>
+    </form>
+
+    
+</div>
+
+
+</body>
+
+</html>
