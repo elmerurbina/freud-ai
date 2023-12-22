@@ -25,7 +25,7 @@
 
     <div class="container">
         <h1>Registrarse</h1>
-        <form method="POST">
+        <form method="POST" id="register">
             <div class="registration-form">
                 
 
@@ -156,6 +156,8 @@
             
             <button name="Register" class="register" type="submit">Registrarse</button>
         </form>
+        
+
         <script type="text/javascript" src="{{ url_for('static', filename='validation_register.js') }}"></script>
 
         <p>¿Ya tienes cuenta? <a href="{{ url_for('login_account') }} ">Iniciar Sesion</a></p>
@@ -184,5 +186,7 @@
     </footer>
 
     Creditos imagen de fondo:  <a href="https://www.freepik.com/free-vector/dark-blue-security-background_1140343.htm#query=logout%20background&position=18&from_view=search&track=ais&uuid=b0e26011-e11e-4e90-8600-74e39007f3ed">Freepik</a>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='input_validation.js') }}"></script>
 </body>
 </html>

@@ -25,19 +25,22 @@
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="email" required>
+                
 
             </div>
             <div class="form-group">
                 <section>
                 <label for="password">contraseña</label>
-                <input type="password" id="password" name="password" placeholder="contraseña" required>  
+                <input type="password" id="password" name="password" placeholder="contraseña" required>
+                
             </div>
-            <button type="submit">Log in</button>
+            <button name="Register" type="submit">Log in</button>
         </form>
         <p>¿No tienes cuenta? <a href="{{ url_for('register_user') }}  ">Registrar</a></p>
         <p>¿Olvido la contraseña? <a href=" {{ url_for('password_recovery') }}">Recuperar Cuenta</a></p>
     </section>
     </div>
+    
 
     <div class="contacto " id="ayuda">
         <h3 >Si tiene alguna dificultad para ingresar a la plataforma, no dude en contactarnos!</h3>
