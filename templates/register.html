@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="eng">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,9 +23,28 @@
 
     <p class="tres">El objetivo principal de este sistema es garantizar su privacidad y la de sus datos.</p>
 
+
+
     <div class="container">
         <h1>Registrarse</h1>
-        <form method="POST" id="register">
+
+<!-- Display flashed messages -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+    {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+        <form method="POST" action="{{ url_for('register_user') }}" id="register">
+            <!-- Include your CSRF token for security -->
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+
+
+
             <div class="registration-form">
                 
 
@@ -53,7 +72,7 @@
                
                
                 <label for="affiliation">Afiliacion</label> 
-                <select id="afilliation" name="affiliation">
+                <select id="affilliation" name="affiliation">
                     <option value="individuo">Individuo</option>
                     <option value="clinica">Clinica privada</option>
                     <option value="hospital">Hospital</option>
@@ -187,6 +206,6 @@
 
     Creditos imagen de fondo:  <a href="https://www.freepik.com/free-vector/dark-blue-security-background_1140343.htm#query=logout%20background&position=18&from_view=search&track=ais&uuid=b0e26011-e11e-4e90-8600-74e39007f3ed">Freepik</a>
 
-    <script type="text/javascript" src="{{ url_for('static', filename='input_validation.js') }}"></script>
+   
 </body>
 </html>

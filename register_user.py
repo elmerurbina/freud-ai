@@ -9,6 +9,13 @@ app.config['SECRET_KEY'] = 'your_secret_key'
 
 csrf = CSRFProtect(app)
 
+def is_email_registered(email):
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute("SELECT COUNT(*) FROM usuarios WHERE correo = %s", (email,))
+    count = cursor.fetchone()[0]
+    return count > 0
+
 def register_logic(name, email, password, repeat_password, affiliation, role, pais, departamento, municipio):
     # Validate password
     if len(password) < 8 or not any(char.isdigit() for char in password) \
@@ -19,6 +26,9 @@ def register_logic(name, email, password, repeat_password, affiliation, role, pa
     # Validate email (you can use regex for more accurate email validation)
     if '@' not in email or '.' not in email:
         return {'success': False, 'error': 'Invalid email address.'}
+
+    if is_email_registered(email):
+        return {'success': False, 'error': 'La cuenta ya existe. Vaya a iniciar sesión.'}
 
     # Make left group required
     if not name or not email or not password or not repeat_password:

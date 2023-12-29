@@ -5,7 +5,7 @@ app = Flask(__name__, static_url_path='/static')
 
 
 
-@app.route('/chatBot')
+@app.route('/chat')
 def chat():
     return render_template('ChatBot.html')
 

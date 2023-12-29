@@ -19,7 +19,6 @@ def verExpediente():
 
 
 
-
 @app.route('/login_account')
 def login_account():
     return render_template('login.html')

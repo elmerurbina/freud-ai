@@ -1,5 +1,5 @@
-document.querySelector('button[name="Register"]').addEventListener('click', function(event) {
-    event.preventDefault(); 
+document.querySelector('button[name="Register"]').addEventListener('click', function (event) {
+    event.preventDefault(); // Prevent default form submission behavior
 
     const form = document.querySelector('.form-group-left');
     const inputs = form.querySelectorAll('input[required]');
@@ -25,23 +25,23 @@ document.querySelector('button[name="Register"]').addEventListener('click', func
         }
     });
 
-   
     if (!isValidEmail(emailInput.value)) {
         showError(emailInput, 'Email no válido');
     }
 
-   
     if (!isValidPassword(passwordInput.value)) {
         showError(passwordInput, 'Contraseña debe tener al menos 8 caracteres, letras y números');
     }
 
-    
     if (passwordInput.value !== repeatPasswordInput.value) {
         showError(repeatPasswordInput, 'Las contraseñas no coinciden');
     }
 
     if (form.checkValidity()) {
-        form.submit();
+        // Delay the form submission for 500 milliseconds
+        setTimeout(() => {
+            form.submit();
+        }, 500);
     }
 });
 
@@ -56,14 +56,11 @@ function showError(input, message) {
 }
 
 function isValidEmail(email) {
-    
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
 }
 
 function isValidPassword(password) {
-  
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
     return passwordRegex.test(password);
 }
-
