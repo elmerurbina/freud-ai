@@ -9,13 +9,13 @@ db_config = {
     "host": "localhost",
     "user": "root",
     "password": "7>>HhNN6/fZ",
-    "database": "autenticacion",
+    "database": "registro",
 }
 
-def get_db_connection():
+def get_db():
     return mysql.connector.connect(**db_config)
 
-def close_db_connection(conn):
+def close_db(conn):
     conn.close()
 
 
