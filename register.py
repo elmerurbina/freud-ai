@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 from werkzeug.security import generate_password_hash
 from db import get_db
 from flask_wtf import CSRFProtect
+from encrypt import encrypt
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
@@ -47,13 +48,18 @@ def register():
         # Hash the password before storing it in the database
         hashed_password = generate_password_hash(password, method='sha256')
 
+        encrypted_name = encrypt(name, password)
+        encrypted_email = encrypt(email, password)
+        encrypted_municipio = encrypt(municipio, password)
+
+
         # Insert user data into the database
         db = get_db()
         cursor = db.cursor()
         cursor.execute(
             "INSERT INTO usuarios (nombre, correo, contrasena, afiliacion_id, rol_id, pais_id, departamento_id, municipio) "
             "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
-            (name, email, hashed_password, affiliation, role, pais, departamento, municipio)
+            (encrypted_name, encrypted_email, hashed_password, affiliation, role, pais, departamento, encrypted_municipio)
         )
         db.commit()
         flash('Registration successful!', 'success')
