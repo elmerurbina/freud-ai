@@ -1,6 +1,7 @@
 import random
 import numpy as np
-from plyer import notification
+import pyttsx3
+from win10toast import ToastNotifier
 
 
 general = {
@@ -298,51 +299,211 @@ alimentacion = {
 
 }
 
-def ramdom_phrase():
+ansiedad = {
+        "1": "Respira profundo; este momento de ansiedad pasará.",
+        "2": "La ansiedad no define quién eres.",
+        "3": "Cada respiración es un paso hacia la calma.",
+        "4": "Permítete sentir, pero no te dejes atrapar por la ansiedad.",
+        "5": "La autoaceptación es el antídoto contra la ansiedad.",
+        "6": "No estás solo/a; hay apoyo y comprensión a tu alrededor.",
+        "7": "Con cada respiración, liberas la ansiedad y abrazas la serenidad.",
+        "8": "La paciencia contigo mismo/a es clave en la gestión de la ansiedad.",
+        "9": "Las tormentas de ansiedad pasan; la calma siempre vuelve.",
+        "10": "Tú eres más fuerte que tus pensamientos ansiosos.",
+        "11": "El autocuidado es tu mejor herramienta contra la ansiedad.",
+        "12": "Hoy no es eterno; la ansiedad es temporal.",
+        "13": "No te juzgues por sentir ansiedad; es una respuesta humana normal.",
+        "14": "La ansiedad es como una nube; eventualmente se disipa.",
+        "15": "Recuerda que mereces momentos de paz y tranquilidad.",
+        "16": "La mente ansiosa imagina problemas que raramente suceden.",
+        "17": "La ansiedad es una llamada a la compasión contigo mismo/a.",
+        "18": "La aceptación del presente disminuye la ansiedad sobre el futuro.",
+        "19": "El poder del ahora es tu aliado contra la ansiedad.",
+        "20": "La ansiedad no define tu valía ni tu capacidad.",
+        "21": "La ansiedad es como el viento; puedes sentir su presencia, pero no te define.",
+        "22": "La gratitud es una herramienta poderosa contra la ansiedad.",
+        "23": "La ansiedad es una reacción; tú eres la respuesta.",
+        "24": "Las pequeñas pausas durante el día reducen la ansiedad acumulada.",
+        "25": "La ansiedad no tiene el poder de predecir tu futuro.",
+        "26": "La autorreflexión pacífica disminuye la ansiedad.",
+        "27": "Tómate un momento para desconectar y encontrar calma.",
+        "28": "La ansiedad es temporal; tu fortaleza es duradera.",
+        "29": "No estás solo/a; muchos comparten luchas similares.",
+        "30": "La ansiedad es un recordatorio de que eres un ser humano en evolución.",
+        "31": "La ansiedad es un desafío, no un destino.",
+        "32": "La autoexploración pacífica disipa la ansiedad.",
+        "33": "La ansiedad no puede ocupar un corazón lleno de gratitud.",
+        "34": "Cada día es una oportunidad para liberarte de la ansiedad.",
+        "35": "La ansiedad es solo una pequeña parte de tu historia.",
+        "36": "La ansiedad no tiene el poder de definir tu día.",
+        "37": "Tú decides cuánto espacio le das a la ansiedad en tu vida.",
+        "38": "La ansiedad es como una ola; llega y se va.",
+        "39": "El autocuidado diario es una inversión en la tranquilidad futura.",
+        "40": "La ansiedad no tiene la última palabra en tu historia.",
+        "41": "Las estrategias de afrontamiento saludables debilitan la ansiedad.",
+        "42": "La ansiedad es una llamada de atención para conectarte contigo mismo/a.",
+        "43": "La ansiedad no puede vivir en un corazón lleno de amor propio.",
+        "44": "Cada día es una nueva oportunidad para enfrentar la ansiedad con valentía.",
+        "45": "La ansiedad es un desafío que puedes superar con el tiempo y el esfuerzo.",
+        "46": "La paciencia es tu aliada en la lucha contra la ansiedad.",
+        "47": "La ansiedad no define tu identidad; eres mucho más que eso.",
+        "48": "La ansiedad es una emoción, no una sentencia.",
+        "49": "Tú eres el líder, no la ansiedad.",
+        "50": "La ansiedad no puede vivir en un cuerpo relajado.",
+        "51": "Cada día que eliges enfrentar la ansiedad, eres más fuerte.",
+        "52": "La ansiedad es una oportunidad para practicar la paciencia contigo mismo/a."
+}
+
+procrastinacion = {
+        "1": "Hoy es el mejor día para comenzar.",
+        "2": "La acción es la clave del éxito.",
+        "3": "Cada pequeño paso cuenta.",
+        "4": "Empieza ahora, no mañana.",
+        "5": "El éxito no espera, ¡comienza hoy!",
+        "6": "La procrastinación roba tiempo valioso.",
+        "7": "La motivación sigue a la acción.",
+        "8": "La mejor manera de predecir el futuro es crearlo.",
+        "9": "El primer paso es siempre el más difícil.",
+        "10": "Hazlo ahora y sentirás alivio después.",
+        "11": "La vida está hecha de momentos, no los postergues.",
+        "12": "No esperes el momento perfecto, hazlo ahora.",
+        "13": "El tiempo perdido nunca se recupera.",
+        "14": "El progreso no ocurre sin acción.",
+        "15": "Actúa como si fuera imposible fracasar.",
+        "16": "La disciplina es el puente entre metas y logros.",
+        "17": "La clave está en dar el primer paso.",
+        "18": "El éxito es la suma de pequeños esfuerzos repetidos día tras día.",
+        "19": "Enfócate en el ahora, no en el después.",
+        "20": "La acción elimina el miedo.",
+        "21": "Hazlo ahora y agradécete después.",
+        "22": "La perfección no es necesaria, la acción sí.",
+        "23": "La procrastinación es el ladrón del tiempo.",
+        "24": "No pospongas lo que te acerca a tus metas.",
+        "25": "El camino hacia el éxito comienza con un solo paso.",
+        "26": "Aprovecha cada día como una nueva oportunidad.",
+        "27": "Lo que hagas hoy puede mejorar todos tus mañanas.",
+        "28": "La acción trae resultados, la procrastinación solo excusas.",
+        "29": "Haz lo que puedas, con lo que tengas, donde estés.",
+        "30": "La clave no está en no caer, sino en levantarte cada vez.",
+        "31": "No te preocupes por el futuro, ocúpate del presente.",
+        "32": "La única forma de hacerlo es haciéndolo.",
+        "33": "La acción crea motivación.",
+        "34": "El tiempo empleado en planificar es tiempo bien invertido.",
+        "35": "El éxito es la suma de pequeños esfuerzos diarios.",
+        "36": "Rompe tus metas en pasos pequeños y haz uno cada día.",
+        "37": "La procrastinación es el enemigo del progreso.",
+        "38": "La acción genera inspiración.",
+        "39": "La clave es comenzar, no importa cuán pequeño sea el paso.",
+        "40": "La mejor manera de predecir el futuro es crearlo.",
+        "41": "Deja de hablar, comienza a hacer.",
+        "42": "La verdadera motivación viene después de la acción.",
+        "43": "No existe un momento perfecto, solo el momento presente.",
+        "44": "El tiempo bien utilizado es vida bien vivida.",
+        "45": "Hazlo ahora y agradece más tarde.",
+        "46": "Cada acción te acerca a tus metas.",
+        "47": "No te conformes con lo fácil, busca lo significativo.",
+        "48": "El cambio comienza con una decisión.",
+        "49": "Procrastinar es como robarse a uno mismo el tiempo.",
+        "50": "Actuar es la llave que desbloquea el éxito.",
+        "51": "Pequeñas acciones diarias llevan a grandes resultados.",
+        "52": "La accion elimina la ansiedad",
+        "53": "Las excusas no construyen el futuro.",
+        "54": "No hay progreso sin acción.",
+        "55": "Hazlo ahora y sentirás alivio.",
+        "56": "Cada segundo cuenta, no lo desperdicies.",
+        "57": "El éxito es para aquellos que toman decisiones y las llevan a cabo.",
+        "58": "No pospongas, hazlo ahora.",
+        "59": "La clave está en empezar, no en ser perfecto.",
+        "60": "La vida recompensa a los que toman acción.",
+        "61": "Rompe tus metas en tareas pequeñas y comienza por una.",
+        "62": "La acción crea hábitos, los hábitos construyen el éxito.",
+        "63": "La procrastinación es el enemigo del logro.",
+        "64": "El futuro se construye con acciones presentes.",
+        "65": "Hazlo ahora y celebra después.",
+        "66": "No esperes a que llegue la motivación, actúa y la encontrarás.",
+        "67": "La única forma de fracasar es no intentarlo.",
+        "68": "La mejor manera de predecir tu futuro es crearlo.",
+        "69": "No busques excusas, busca resultados.",
+        "70": "La acción transforma los sueños en realidad.",
+        "71": "Cada día es una nueva oportunidad para empezar de nuevo.",
+        "72": "No subestimes el poder de un pequeño paso.",
+        "73": "La paciencia es una virtud, pero la acción es la llave.",
+        "74": "El tiempo que dedicas a procrastinar podría cambiar tu vida.",
+        "75": "Las pequeñas decisiones diarias construyen grandes resultados.",
+        "76": "La acción es la medicina contra la indecisión.",
+        "77": "Deja de pensar y comienza a hacer.",
+        "78": "La acción es el antídoto contra la preocupación.",
+        "79": "El éxito es para aquellos que toman decisiones y las llevan a cabo.",
+        "80": "Hazlo ahora y estarás más cerca de tu meta.",
+        "81": "La verdadera magia está en la acción, no en la espera.",
+        "82": "El mañana no está garantizado, actúa hoy.",
+        "83": "Cada pequeño paso te acerca a la cima.",
+        "84": "Actuar es el primer paso hacia el logro.",
+        "85": "Actuar es el puente entre los sueños y la realidad.",
+
+}
+
+
+
+humor = {
+        "1": "¿Cuál es el animal más antiguo? La cebra, ¡porque está en blanco y negro!",
+
+}
+
+
+
+def random_phrase():
     categories = [
         'general', 'soledad', 'estres', 'motivacion', 'ansiedad', 'celebres', 'depresion', 'alimentacion',
-        'dormir', 'adicciones', 'suicidio'
+        'dormir', 'adicciones', 'suicidio', 'humor', 'procrastinacion'
     ]
 
-    ramdom_category = np.random.choice(categories)
+    random_category = np.random.choice(categories)
 
-    if ramdom_category == 'general':
+    if random_category == 'general':
         phrases = general
-
-    elif ramdom_category == 'soledad':
+    elif random_category == 'soledad':
         phrases = soledad
-
-    elif ramdom_category == 'estres':
+    elif random_category == 'estres':
         phrases = estres
-
-    elif ramdom_category == 'motivacion':
+    elif random_category == 'motivacion':
         phrases = motivacion
-
+    elif random_category == 'alimentacion':
+        phrases = alimentacion
+    elif random_category == 'ansiedad':
+        phrases = ansiedad
+    elif random_category == 'humor':
+        phrases = humor
+    elif random_category == 'procrastinacion':
+        phrases = procrastinacion
     else:
-        print(f"No se encontraron frases en esta categoría {ramdom_category}")
-        return
+        print(f"No se encontraron frases en esta categoría {random_category}")
+        return ""
 
     if phrases:
         phrase_ids = list(phrases.keys())
         random_id = random.choice(phrase_ids)
-        ramdom_phrase = phrases[random_id]
-
-        print(f"{ramdom_phrase}")
-
-
+        return phrases[random_id]
     else:
-        print(f"No se encontraron frases en esta categoría: {ramdom_category}")
-
+        print(f"No se encontraron frases en esta categoría: {random_category}")
+        return ""
 
 def show_notification(title, message):
-    notification.notify(
-        title="Freud AI",
-        message=ramdom_phrase(),
-        app_icon=None,
-        timeout=10
-    )
+    toaster = ToastNotifier()
 
-ramdom_phrase()
+    if not message:
+        message = "No se encontraron frases en esta categoría."
 
+    toaster.show_toast(title, message, duration=10)
 
+    if message:
+        engine = pyttsx3.init()
+        engine.setProperty('rate', 150)  # Speed of speech
+        engine.say(message)
+        engine.runAndWait()
 
+# Call random_phrase once and use the result throughout
+phrase = random_phrase()
+print(f"Random Phrase: {phrase}")
+
+show_notification("Freud AI", phrase)
