@@ -75,10 +75,10 @@ def register_user():
 
         if result.get('success'):
             flash('Registration successful!', 'success')
-            return redirect('chat')
+            return redirect(url_for('profile', username=email))
         else:
             flash(result.get('error'), 'error')
-            return redirect(url_for('chat'))
+            return redirect(url_for('register_user'))
 
     return render_template('register.html')
 

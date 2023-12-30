@@ -28,16 +28,9 @@
     <div class="container">
         <h1>Registrarse</h1>
 
-<!-- Display flashed messages -->
-{% with messages = get_flashed_messages(with_categories=true) %}
-{% if messages %}
-    {% for category, message in messages %}
-        <div class="alert alert-{{ category }}">
-            {{ message }}
-        </div>
-    {% endfor %}
-{% endif %}
-{% endwith %}
+
+       
+        {% block content %}
 
         <form method="POST" action="{{ url_for('register_user') }}" id="register">
             <!-- Include your CSRF token for security -->
@@ -199,6 +192,9 @@
 
 
     </div>
+
+    </div>
+    {% endblock %}
 
     <footer>
         <p>&copy; 2023 Freud.AI.  Todos los derechos reservados</p>

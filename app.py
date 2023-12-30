@@ -1,6 +1,7 @@
 from flask import Flask, render_template #redirect, url_for, request, flash
 #from register_user import register_logic
 from flask_wtf import CSRFProtect
+from db import get_db
 
 
 
@@ -17,6 +18,20 @@ def home():
 def verExpediente():
     return render_template('verExpediente.html')
 
+
+@app.route('/profile/<username>')
+def profile(username):
+    # Fetch user details from the database based on the username
+    db = get_db()
+    cursor = db.cursor()
+    cursor.execute("SELECT nombre FROM usuarios WHERE correo = %s", (username,))
+    user_data = cursor.fetchone()
+
+    # Check if the user exists
+    if user_data:
+        return render_template('profile.html', username=user_data['nombre'])
+    else:
+        return render_template('error.html', message='User not found')
 
 
 @app.route('/login_account', methods=['GET', 'POST'])
