@@ -78,7 +78,7 @@ def register_user():
             return redirect('chat')
         else:
             flash(result.get('error'), 'error')
-            return redirect(url_for('register_user'))
+            return redirect(url_for('chat'))
 
     return render_template('register.html')
 

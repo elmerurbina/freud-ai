@@ -1,5 +1,5 @@
-from flask import Flask, render_template, redirect, url_for, request, flash
-from register_user import register_logic
+from flask import Flask, render_template #redirect, url_for, request, flash
+#from register_user import register_logic
 from flask_wtf import CSRFProtect
 
 
@@ -19,7 +19,7 @@ def verExpediente():
 
 
 
-@app.route('/login_account')
+@app.route('/login_account', methods=['GET', 'POST'])
 def login_account():
     return render_template('login.html')
 
@@ -27,25 +27,6 @@ def login_account():
 
 @app.route('/register_user', methods=['GET', 'POST'])
 def register_user():
-    if request.method == 'POST':
-        name = request.form['name']
-        email = request.form['email']
-        password = request.form['password']
-        repeat_password = request.form['repeat_password']
-        affiliation = request.form['affiliation']
-        role = request.form['role']
-        pais = request.form['pais']
-        departamento = request.form['departamento']
-        municipio = request.form['municipio']
-
-        result = register_logic(name, email, password, repeat_password, affiliation, role, pais, departamento, municipio)
-
-        if result.get('success'):
-            flash('Registration successful!', 'success')
-            return redirect(url_for('chat'))  # Redirect to the chat route upon successful registration
-        else:
-            flash(result.get('error'), 'error')
-
     return render_template('register.html')
 
 @app.route('/agregar_perfil')
