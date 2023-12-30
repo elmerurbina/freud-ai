@@ -57,30 +57,36 @@ def register_logic(name, email, password, repeat_password, affiliation, role, pa
 
     return {'success': True}
 
-# Define route for user registration
 @app.route('/register_user', methods=['GET', 'POST'])
 def register_user():
     if request.method == 'POST':
-        name = request.form['name']
-        email = request.form['email']
-        password = request.form['password']
-        repeat_password = request.form['repeat_password']
-        affiliation = request.form['affiliation']
-        role = request.form['role']
-        pais = request.form['pais']
-        departamento = request.form['departamento']
-        municipio = request.form['municipio']
+        try:
+            name = request.form['name']
+            email = request.form['email']
+            password = request.form['password']
+            repeat_password = request.form['repeat_password']
+            affiliation = request.form['affiliation']
+            role = request.form['role']
+            pais = request.form['pais']
+            departamento = request.form['departamento']
+            municipio = request.form['municipio']
 
-        result = register_logic(name, email, password, repeat_password, affiliation, role, pais, departamento, municipio)
+            result = register_logic(name, email, password, repeat_password, affiliation, role, pais, departamento, municipio)
 
-        if result.get('success'):
-            flash('Registration successful!', 'success')
-            return redirect(url_for('profile', username=email))
-        else:
-            flash(result.get('error'), 'error')
-            return redirect(url_for('register_user'))
+            if result.get('success'):
+                flash('Registration successful!', 'success')
+                return redirect(url_for('profile', username=name))
+            else:
+                flash(result.get('error'), 'error')
+                return render_template('register.html', name=name, email=email, affiliation=affiliation, role=role, pais=pais, departamento=departamento, municipio=municipio)
+        except Exception as e:
+            # Log the exception for debugging
+            print(f"An error occurred: {str(e)}")
+            flash('An error occurred during registration. Please try again.', 'error')
+            return render_template('register.html')
 
     return render_template('register.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

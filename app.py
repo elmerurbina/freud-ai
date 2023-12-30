@@ -1,5 +1,5 @@
-from flask import Flask, render_template #redirect, url_for, request, flash
-#from register_user import register_logic
+from flask import Flask, render_template, request
+import os
 from flask_wtf import CSRFProtect
 from db import get_db
 
@@ -19,19 +19,39 @@ def verExpediente():
     return render_template('verExpediente.html')
 
 
-@app.route('/profile/<username>')
+@app.route('/profile/<username>', methods=['GET', 'POST'])
 def profile(username):
     # Fetch user details from the database based on the username
     db = get_db()
     cursor = db.cursor()
-    cursor.execute("SELECT nombre FROM usuarios WHERE correo = %s", (username,))
+    cursor.execute("SELECT nombre, correo FROM usuarios WHERE correo = %s", (username,))
     user_data = cursor.fetchone()
 
     # Check if the user exists
     if user_data:
+        if request.method == 'POST':
+            # Handle profile update
+            new_email = request.form.get('email')
+            cursor.execute("UPDATE usuarios SET correo = %s WHERE nombre = %s", (new_email, user_data['nombre']))
+            db.commit()
+
+            # Handle profile picture upload
+            if 'profile_picture' in request.files:
+                profile_picture = request.files['profile_picture']
+                if profile_picture.filename != '':
+                    upload_folder = 'static/uploads'
+                    if not os.path.exists(upload_folder):
+                        os.makedirs(upload_folder)
+                    profile_picture.save(os.path.join(upload_folder, profile_picture.filename))
+
+                    # Update the database with the path to the uploaded profile picture
+                    cursor.execute("UPDATE usuarios SET foto_perfil = %s WHERE nombre = %s", (os.path.join(upload_folder, profile_picture.filename), user_data['nombre']))
+                    db.commit()
+
         return render_template('profile.html', username=user_data['nombre'])
     else:
         return render_template('error.html', message='User not found')
+
 
 
 @app.route('/login_account', methods=['GET', 'POST'])

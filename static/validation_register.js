@@ -1,6 +1,6 @@
 document.querySelector('button[name="Register"]').addEventListener('click', function (event) {
     event.preventDefault(); // Prevent default form submission behavior
-    console.log('Button clicked!');
+    
     const form = document.querySelector('.form-group-left');
     const inputs = form.querySelectorAll('input[required]');
     const emailInput = form.querySelector('input[type="email"]');
@@ -38,9 +38,8 @@ document.querySelector('button[name="Register"]').addEventListener('click', func
     }
 
     if (form.checkValidity()) {
-       
-            form.submit();
-      
+    
+        form.dispatchEvent(new Event('submit'));
     }
 });
 
