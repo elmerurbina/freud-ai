@@ -1,0 +1,348 @@
+import random
+import numpy as np
+from plyer import notification
+
+
+general = {
+        "1": "¡Nunca te rindas, porque las grandes cosas llevan tiempo!",
+        "2": "¡Cada dia es una oportunidad para aprender y mejorar!",
+        "3": "Hay caídas que nos sirven para levantarnos más felices.",
+        "4": "No todo resbalón significa una caída.",
+        "5": "Tened calma al discutir pues la violencia convierte el error en falta y la verdad en descortesía.",
+        "6": "Si has iniciado un camino, sigue adelante a despecho de toda circunstancia.",
+        "7": "Confía en ti mismo y serás invencible.",
+        "8": "La unica forma de hacer un gran trabajo es amar lo que haces",
+        "9": "Confia en ti mismo y seras invencible",
+        "10": "Estar solo, sin influencia de nadie es estar contigo mismo",
+        "11": "En el viaje a través de la vida no existen caminos llanos: todos son subidas o bajadas.",
+        "12": "No vayas por caminos desusados; sigue las huellas de los que acertaron.",
+        "13": "Solo el que no ha caído no sabe cómo levantarse.",
+        "14": "Sólo los hombres de poca experiencia o de poca potencia prefieren a la mujer coqueta.",
+        "15": "El carácter es aquello que revela la finalidad moral, poniendo de manifiesta la clase de cosas que un hombre prefiere o evita.",
+        "16": "Es por la presencia de ánimo en las emergencias que el carácter se prueba.",
+        "17": "El carácter de cada hombre es el árbitro de su fortuna.",
+        "18": "No ha aprendido la lección de la vida aquel que no vence un temor cada día.",
+        "19": "La paciencia es la clave del progreso.",
+        "20": "uando te sientas abatido/a, recuerda que Freud AI está aquí para apoyarte.",
+        "21": "Las tormentas pasan, la calma llega.",
+        "22": "La paciencia es la mejor medicina para el alma.",
+        "23": "El autocuidado es un acto de amor propio.",
+        "24": "No te apresures; cada paso cuenta.",
+        "25": "El tiempo cura, la paciencia ayuda.",
+        "26": "Cada pequeño avance es una victoria.",
+        "27": "Aprende a aceptar lo que no puedes cambiar.",
+        "28": "Cultiva la gratitud en tu vida diaria.",
+        "29": "Rodéate de personas que te apoyan.",
+        "30": "Convierte tus desafíos en oportunidades de crecimiento.",
+        "31": "suelta lo que no puedes controlar.",
+        "32": "El autocuidado no es egoísmo; es supervivencia.",
+        "33": "La paciencia es una virtud que vale la pena practicar",
+        "34": "La compasión hacia ti mismo/a es esencial.",
+        "35": "Aprende a vivir el momento presente",
+        "36": "No tengas miedo de pedir ayuda.",
+        "37": "Celebra tus victorias, por pequeñas que sean.",
+        "38": "La paciencia es la resistencia al sufrimiento",
+        "39": "Haz del autocuidado una prioridad.",
+        "40": "Sigue adelante; cada día es una nueva oportunidad.",
+        "41": "La paciencia es el puente entre la adversidad y la paz.",
+        "42": "Las crisis son temporales; tu fortaleza duradera.",
+        "43": "La paciencia es el antídoto contra la ansiedad.",
+        "44": "Eres valiente por enfrentar tus desafios",
+        "45": "Enfócate en lo que puedes controlar.",
+        "46": "La resiliencia crece con el tiempo",
+        "47": "Eres capaz de superar cualquier cosa.",
+        "48": "Tu historia es valiosa y única.",
+        "49": "¿Necesitas un compañero en tu viaje emocional? Freud AI está a tu disposición.",
+        "50": "Rodéate de pensamientos positivos y personas inspiradoras.",
+        "51": "Encuentra significado en la adversidad",
+        "52": "Tu histori no define tu futuro",
+        "53": "La resiliencia es la habilidad de volver a levantarte.",
+        "54": "Aprende a bailar bajo la lluvia",
+        "55": "Eres una obra en progreso; celebra tu evolución.",
+        "56": "Tu luz brilla incluso en la oscuridad.",
+        "57": "Sigue adelante con confianza y determinación.",
+        "58": "La verdadera libertad es la capacidad de controlar tus propias reacciones.",
+        "59": "No te aflijas por lo que no está en tu control.",
+        "60": "La calma en medio de la tormenta es un signo de verdadera sabiduría.",
+        "61": "El sufrimiento es parte de la condición humana; la resiliencia es la respuesta.",
+        "62": "Encuentra alegría en la simplicidad y en las cosas cotidianas.",
+        "63": "La verdadera grandeza radica en la capacidad de mantener la calma en momentos de caos.",
+        "64": "No juzgues a los demás; concéntrate en mejorar tú mismo.",
+        "65": "Agradece lo que tienes en lugar de lamentar lo que falta.",
+        "66": "La felicidad no depende de lo que tienes, sino de cómo aprecias lo que tienes.",
+        "67": "La humildad es la puerta de entrada a la grandeza.",
+        "68": "¿El estrés te agobia? Deja que Freud AI te brinde orientación y tranquilidad.",
+        "69": "Enfrentando desafíos emocionales, Freud AI ofrece un espacio de entendimiento.",
+        "70": "La vida es efímera; aprecia cada momento.",
+        "71": "La felicidad no es algo que se pospone; es algo que se diseña.",
+        "72": "No te preocupes por la opinión de los demás; preocúpate por vivir de acuerdo con tus principios.",
+        "73": "La verdadera riqueza es vivir en armonía con uno mismo.",
+        "74": "El camino hacia la grandeza es el camino de la autodisciplina.",
+        "75": "La serenidad viene de aceptar las cosas que no puedes cambiar.",
+        "76": "Enfócate en lo que puedes hacer hoy, no en lo que no puedes cambiar.",
+        "77": "La resiliencia es la habilidad de volver a levantarse después de cada caída.",
+        "78": "La verdadera libertad es vivir sin miedo al juicio de los demás.",
+        "79": "No busques la perfección; busca el progreso.",
+        "80": "La autodisciplina es la llave para romper cadenas invisibles.",
+        "81": "La verdadera libertad está en liberarte de las cadenas mentales.",
+        "82": "La humildad es el camino hacia el crecimiento personal.",
+        "83": "No temas al cambio; abraza la oportunidad de aprender.",
+        "84": "¿Sientes que la presión te abruma? Permítenos ayudarte, Freud AI está contigo.",
+        "85": "La virtud no se mide por lo que se dice, sino por lo que se hace.",
+        "86": "No busques la aprobación externa; busca la aprobación interna.",
+        "87": "No importa lo despacio que vayas, siempre y cuando no te detengas.",
+        "88": "En momentos difíciles, encuentra apoyo con Freud AI. Estamos aquí para ti.",
+        "89": "Nuestra mayor gloria no está en no caer nunca, sino en levantarnos cada vez que caemos.",
+        "90": "Cuando vemos a personas de carácter contrario, deberíamos mirar hacia adentro y examinarnos a nosotros mismos.",
+        "91": "quel que aprende pero no reflexiona, está perdido. Aquel que reflexiona pero no aprende está en gran peligro.",
+        "92": "Ver lo que está bien y no hacerlo es falta de coraje.",
+        "93": "¿La ansiedad te supera? No estás solo/a. Freud AI puede ser tu guía.",
+        "94": "La ignorancia es la noche de la mente, pero una noche sin luna y estrellas.",
+        "95": "Quien desea el bien de los demás ya ha asegurado el suyo.",
+        "96": "El hombre superior es modesto en sus palabras pero destaca en sus acciones.",
+        "97": "Cuando sabemos ser corteses pero no lo somos, nos convertimos en hipócritas.",
+        "98": "Cuanto más medita el hombre en buenos pensamientos, mejor será su mundo y el mundo en general.",
+        "99": "La voluntad de ganar, el deseo de tener éxito, el impulso de alcanzar tu máximo potencial... estas son las llaves que abrirán la puerta a la excelencia personal.",
+        "100": "El hombre superior entiende lo que está bien; el hombre inferior entiende lo que se vende.",
+        "101": "Todo tiene su belleza, pero no todos la ven.",
+        "102": "Si cometes un error y no lo corriges, eso se llama error.",
+        "103": "Es fácil odiar y difícil amar. Así es como funciona el conjunto de cosas. Todas las cosas buenas son difíciles de lograr y las malas son muy fáciles de obtener.",
+        "104": "El silencio es un verdadero amigo que nunca traiciona.",
+        "105": "Respétate a ti mismo y los demás te respetarán.",
+        "106": "Cuida tus pensamientos, porque se convertirán en tus palabras. Cuida tus palabras, porque se convertirán en tus actos. Cuida tus actos, porque se convertirán en tus hábitos. Cuida tus hábitos, porque se convertirán en tu destino.",
+        "107": "Educa al niño y no será necesario castigar al hombre.",
+        "108": "No todo lo que puede ser contado cuenta, y no todo lo que cuenta puede ser contado.",
+        "109": "La realidad es simplemente una ilusión, aunque una muy persistente. - Albert Einstein",
+        "110": "El verdadero valor del hombre es decidir si enfrentará el riesgo de actuar.",
+        "111": "Cuando la vida te ponga en una situacion dificil, no digas: Por que yo? Di Acepto el reto!",
+        "112": "La que llamamos casualidad no es más que la ignorancia de las causas físicas.",
+        "113": "Eres un guerrero/a, enfrentando cada día con valentía.",
+        "114": "Tus emociones son válidas; estás permitido/a sentir sin juzgarte.",
+        "115": "Eres más grande que tus preocupaciones; ellas no te definen.",
+        "116": "Hoy, elijo liberarme del peso de la ansiedad.",
+        "117": "Tu bienestar emocional es tan importante como tu bienestar físico.",
+        "118": "Recuerda, los desafíos te fortalecen.",
+        "119": "La calma está dentro de ti; solo necesitas descubrirla.",
+        "120": "Tu mente puede ser tu mayor aliada; trabaja en cultivar pensamientos positivos.",
+        "121": "Cada día estás progresando, incluso si no puedes verlo.",
+        "122": "La respiración profunda es tu ancla en medio de la tormenta.",
+        "123": "Eres lo suficientemente fuerte como para enfrentar tus miedos y superarlos.",
+        "124": "Hoy, elijo la serenidad sobre el estrés.",
+        "125": "Eres más fuerte de lo que crees, más capaz de lo que sabes.",
+        "126": "Tómate un momento para cuidar de ti mismo.",
+        "127": "Un día, en retrospectiva, los años de lucha te parecerán los más hermosos.",
+        "128": "De tus vulnerabilidades surgirá tu fuerza.",
+        "129": "La única persona con la que debes compararte es contigo mismo en el pasado.",
+        "130": "La mayoría de las personas realmente no quieren libertad porque la libertad implica responsabilidad, y la mayoría de las personas le tienen miedo a la responsabilidad.",
+        "131": "Ser completamente honesto consigo mismo es un buen ejercicio.",
+        "132": "Somos lo que somos porque hemos sido lo que hemos sido.",
+        "133": "La gran pregunta que nunca ha sido respondida, y que aún no he podido responder, a pesar de mis treinta años de investigación en el alma femenina, es '¿Qué quiere una mujer?' - Sigmund Freud",
+        "144": "Qué audaz uno se vuelve cuando está seguro",
+
+
+    }
+
+soledad = {
+        "1": "La soledad no es ausencia, sino la profunda presencia de uno mismo.",
+        "2": "A veces, la compañía de uno mismo es la mejor compañía que se puede tener.",
+        "3": "En la soledad, encontramos la oportunidad de conocernos a nosotros mismos.",
+        "4": "No todos los que están solos se sienten solos, y no todos los que se sienten solos están solos.",
+        "5": "A veces, la soledad es la mejor compañera para reflexionar y crecer.",
+        "6": "La soledad es como un maestro silencioso que nos enseña lecciones valiosas sobre nosotros mismos.",
+        "7": "No siempre es malo estar solo; a veces, es necesario para recargar el alma.",
+        "8": "En la soledad, descubrimos el poder de nuestra propia compañía.",
+        "9": "A veces, la soledad es el precio que pagamos por la libertad de ser nosotros mismos.",
+        "10": "La soledad no es un vacío, sino la plenitud de la ausencia de distracciones.",
+        "11": "A veces, el silencio de la soledad nos habla más que las palabras de la multitud.",
+        "12": "La soledad puede ser una aliada silenciosa en el camino hacia el autoconocimiento.",
+        "13": "La soledad es el desierto donde florece el alma.",
+        "14": "En la soledad, a menudo encontramos la compañía más sincera: la nuestra.",
+        "15": "La soledad no es el enemigo; es el maestro que nos enseña a amarnos a nosotros mismos.",
+        "16": "La soledad no es debilidad; es una expresión de fuerza interior.",
+        "17": "La soledad no es una condena, sino una oportunidad para explorar nuestra propia compañía.",
+        "18": "La soledad no es el enemigo, sino un maestro que nos enseña a disfrutar de la paz interior.",
+        "19": "La soledad puede ser el lugar de nacimiento de la creatividad y la autoexploración.",
+        "20": "En la soledad, descubrimos que somos suficientes por nosotros mismos.",
+        "21": "En la soledad, encontramos el espacio para sanar y renovarnos.",
+        "22": "¿Lidiando con emociones difíciles? Freud AI ofrece un espacio para comprenderlas.",
+        "23": "A veces, la soledad es el silencio necesario para escuchar la verdad interior.",
+        "24": "La soledad no es la ausencia de otros, sino la presencia completa de uno mismo.",
+        "25": "La soledad no es un destino, sino un capítulo en el viaje hacia el autodescubrimiento.",
+
+    }
+
+estres = {
+        "1": "Aprender a manejar el estrés es un regalo que nos damos a nosotros mismos.",
+        "2": "La respiración profunda es una herramienta poderosa para aliviar el estrés inmediato.",
+        "3": "El ejercicio regular es una excelente manera de liberar tensiones y reducir el estrés.",
+        "4": "La planificación y organización ayudan a evitar situaciones estresantes innecesarias.",
+        "5": "La conexión con la naturaleza es una terapia natural contra el estrés.",
+        "6": "El sueño reparador es esencial para una buena gestión del estrés.",
+        "7": "Aprender a decir 'no' es una habilidad valiosa en la gestión del estrés.",
+        "8": "La visualización positiva puede ayudar a aliviar el estrés al crear imágenes de calma y éxito.",
+        "9": "Establecer límites saludables es esencial para mantener el equilibrio y reducir el estrés.",
+        "10": "El arte de delegar tareas es una estrategia inteligente para evitar la sobrecarga de estrés.",
+        "11": "La gestión del tiempo eficiente es clave para reducir el estrés.",
+        "12": "¿Necesitas apoyo emocional? Freud AI está aquí para escucharte.",
+        "13": "Practicar la atención plena permite vivir el momento presente y reducir la ansiedad.",
+        "14": "Los descansos cortos durante el día son esenciales para mantener la productividad y reducir el estrés.",
+        "15": "La escritura expresiva puede ser una salida terapéutica para liberar el estrés acumulado.",
+        "16": "Establecer metas realistas ayuda a evitar la presión innecesaria y el estrés.",
+        "17": "La alimentación saludable contribuye a un cuerpo fuerte y a una mente más resistente al estrés.",
+        "18": "Tomarse tiempo para uno mismo es un acto de autocuidado crucial en la gestión del estrés.",
+        "19": "La comunicación abierta y honesta reduce las tensiones y contribuye a una gestión del estrés más efectiva. Freud AI esta a tu dispocion para escucharte!",
+        "20": "La adaptabilidad ante los cambios ayuda a reducir el estrés relacionado con lo inesperado.",
+        "21": "Las pausas para la relajación durante el día son como pequeñas recargas de energía para combatir el estrés.",
+        "22": "El ejercicio regular no solo fortalece el cuerpo, sino también la resistencia al estrés.",
+        "23": "La práctica regular de la gratitud cambia la mentalidad hacia una más positiva, reduciendo el estrés.",
+        "24": "Necesitas hablar con alguien, pero no tienes quien te escuche?, Freud AI esta listo para escucharte y conversar contigo",
+        "25": "Enfocarse en soluciones en lugar de problemas es una estrategia efectiva para manejar el estrés.",
+        "26": "Te sientes mal, tienes ansiedad o estas estresado? Freud AI esta aqui para ayudarte",
+        "27": "La práctica de técnicas de relajación, como el yoga, alivia el estrés acumulado en el cuerpo.",
+        "28": "Establecer rutinas diarias proporciona estructura y reduce la incertidumbre, disminuyendo el estrés.",
+        "29": "La reflexión personal regular ayuda a identificar y abordar fuentes de estrés.",
+        "30": "La toma de decisiones consciente reduce la sensación de estar abrumado/a ante situaciones estresantes.",
+
+    }
+
+motivacion = {
+        "1": "Tu tiempo es limitado, no lo desperdicies viviendo la vida de alguien más. - Steve Jobs",
+        "2": "El éxito no es final, el fracaso no es fatal: es el coraje de seguir lo que cuenta. - Winston Churchill",
+        "3": "No mires el reloj; haz lo que hace. Sigue adelante. - Sam Levenson",
+        "4": "El futuro pertenece a aquellos que creen en la belleza de sus sueños. - Eleanor Roosevelt",
+        "5": "Nunca eres demasiado viejo para establecer otra meta o soñar un nuevo sueño. - C.S.Lewis",
+        "6": "No es si te derriban, es si te levantas. - Vince Lombardi",
+        "7": "¿Experimentas tristeza, ansiedad o estrés? Freud AI está a tu disposición.",
+        "8": "El único límite para nuestra realización de mañana serán nuestras dudas de hoy. - Franklin D.Roosevelt",
+        "9": "La única persona que estás destinado a ser es la persona que decides ser. - Ralph Waldo Emerson",
+        "10": "No esperes a golpear cuando el hierro esté caliente, hazlo caliente golpeando. - William Butler Yeats",
+        "11": "El éxito es tropezar desde el fracaso hasta el fracaso sin pérdida de entusiasmo. - Winston Churchill",
+        "12": "La mejor manera de predecir el futuro es crearlo. - Peter Drucker",
+        "13": "No puedes cambiar tu destino de la noche a la mañana, pero puedes cambiar tu dirección de inmediato. - JimRohn",
+        "14": "Haz hoy lo que otros no quieren, haz mañana lo que otros no pueden. - Jerry Rice",
+        "15": "El éxito es la suma de pequeños esfuerzos, repetidos día tras día. - Robert Collier",
+        "16": "No busques la aprobación de los demás. Busca tu propia aprobación. - Oprah Winfrey",
+        "17": "La vida es 10% lo que nos sucede y 90% cómo reaccionamos ante ello. - Charles R.Swindoll",
+        "18": "La actitud es una pequeña cosa que marca una gran diferencia. - Winston Churchill",
+        "19": "Cree en ti mismo y todo será posible.",
+        "20": "El éxito no es la clave de la felicidad. La felicidad es la clave del éxito. Si amas lo que haces, tendrás éxito. - Albert Schweitzer",
+        "21": "La única manera de lograr lo imposible es creer que es posible. - Charles Kingsleigh(Alice in Wonderland)",
+        "22": "No hay un ascensor al éxito. Debes tomar las escaleras. - Zig Ziglar",
+        "23": "La excelencia no es un acto, sino un hábito. - Aristóteles",
+        "24": "Tu vida no mejora por casualidad, mejora por el cambio. - Jim Rohn",
+        "25": "Sé tú mismo; todos los demás ya están tomados. - Oscar Wilde",
+        "26": "Nunca eres demasiado viejo para fijarte otro objetivo o para soñar un nuevo sueño. - C.S.Lewis",
+        "27": "Las oportunidades no suelen venir etiquetadas. - Oprah Winfrey",
+        "28": "El único lugar donde el éxito viene antes que el trabajo es en el diccionario. - Vidal Sassoon",
+        "29": "La motivación nos impulsa a comenzar, el hábito nos mantiene en marcha. - Jim Ryun",
+        "30": "Lo que defines te limita. - Tony Robbins",
+        "31": "El camino hacia el éxito y el camino hacia el fracaso son prácticamente iguales. - Colin R.Davis",
+        "32": "El éxito es 20% habilidad y 80% actitud.",
+        "33": "El optimismo es la fe que lleva al logro. Nada puede hacerse sin esperanza y confianza. - Helen Keller",
+        "34": "La disciplina es el puente entre metas y logros. - Jim Rohn",
+        "35": "No cuentes los días, haz que los días cuenten. - Muhammad Ali",
+        "36": "Tu actitud determina tu dirección.",
+        "37": "El éxito no se trata de cuánto dinero haces, sino de cuántas vidas impactas.",
+        "38": "Haz cada día tu obra maestra. - John Wooden",
+        "39": "La clave para el éxito es empezar antes de que estés listo. - Marie Forleo",
+        "40": "Los hombres sabios hablan porque tienen algo que decir; los tontos porque tienen que decir algo. - Platón",
+        "41": "El secreto del cambio es enfocar toda tu energía, no en luchar contra lo viejo, sino en construir lo nuevo. - Sócrates",
+        "42": "La vida es como andar en bicicleta. Para mantener el equilibrio, debes seguir adelante. - Albert Einstein",
+        "43": "La lógica te llevará de A a B. La imaginación te llevará a cualquier parte. - Albert Einstein",
+        "44": "La paz no puede mantenerse mediante la fuerza; solo puede lograrse mediante la comprensión.- Albert Einstein",
+        "45": "La vida es muy peligrosa. No por las personas que hacen el mal, sino por las que se sientan a ver lo que pasa.- Albert Einstein",
+        "46": "Si buscas resultados distintos, no hagas siempre lo mismo. - Albert Einstein",
+    }
+
+alimentacion = {
+        "1": "Tu valor no se mide por tu apariencia física.",
+        "2": "La belleza no se define por el tamaño ni la forma.",
+        "3": "Tienes el poder de cambiar tus pensamientos sobre ti mismo/a.",
+        "4": "La autoaceptación es el primer paso hacia la curación.",
+        "5": "Tu cuerpo merece ser tratado con respeto y amor.",
+        "6": "Eres único/a, y eso es algo hermoso.",
+        "7": "Cada comida es una oportunidad para nutrir tu cuerpo y mente.",
+        "8": "La perfección no existe; la autenticidad sí.",
+        "9": "Eres más que tus luchas; eres una persona valiosa.",
+        "10": "La salud mental es igual de importante que la salud física.",
+        "11": "La compasión hacia ti mismo/a es la clave del crecimiento.",
+        "12": "Tu valor no depende de lo que hayas comido hoy.",
+        "13": "Recuerda que mereces ser amado/a, incluso en tus momentos más difíciles.",
+        "14": "El autocuidado es un acto de amor hacia ti mismo/a.",
+        "15": "El respeto por tu propio cuerpo es un acto revolucionario.",
+        "16": "Tus desafíos no definen tu valía.",
+        "17": "Tu historia no ha llegado a su fin; hay esperanza en cada nuevo día.",
+        "18": "La recuperación es un proceso, y cada pequeño paso cuenta.",
+        "19": "La aceptación de uno mismo/a es el camino hacia la paz interior.",
+        "20": "Eres suficiente tal como eres en este momento.",
+        "21": "La belleza radica en la diversidad, no en la uniformidad.",
+        "22": "El autocuidado es un compromiso contigo mismo/a, no una obligación.",
+        "23": "Eres capaz de superar cualquier desafío que se te presente.",
+        "24": "Tu cuerpo es un templo; trátalo con el respeto que se merece.",
+        "25": "Tus cicatrices cuentan una historia de resiliencia y coraje.",
+        "26": "La paciencia contigo mismo/a es una forma de amor propio.",
+        "27": "La belleza viene de adentro hacia afuera.",
+        "28": "La recuperación es un viaje personal; hazlo a tu propio ritmo.",
+        "29": "Tu historia es única y valiosa; no hay otra como la tuya.",
+        "30": "La perfección es una ilusión; la imperfección es hermosa.",
+        "31": "Tu cuerpo es tu aliado, no tu enemigo.",
+        "32": "La gratitud por tu cuerpo es un paso hacia la aceptación.",
+        "33": "La fuerza interior que posees es inquebrantable.",
+        "34": "La comparación es el ladrón de la alegría; concéntrate en tu propio viaje.",
+        "35": "Eres una obra maestra en constante evolución.",
+        "36": "La autorreflexión es un acto de amor propio y crecimiento.",
+        "37": "La paz mental es más valiosa que cualquier estándar de belleza.",
+        "38": "La belleza está en la diversidad, no en la conformidad.",
+        "39": "Cada día que eliges cuidar de ti mismo/a es un acto de valentía.",
+        "40": "Eres suficiente tal como eres en este momento; no hay necesidad de compararte con los demás.",
+
+}
+
+def ramdom_phrase():
+    categories = [
+        'general', 'soledad', 'estres', 'motivacion', 'ansiedad', 'celebres', 'depresion', 'alimentacion',
+        'dormir', 'adicciones', 'suicidio'
+    ]
+
+    ramdom_category = np.random.choice(categories)
+
+    if ramdom_category == 'general':
+        phrases = general
+
+    elif ramdom_category == 'soledad':
+        phrases = soledad
+
+    elif ramdom_category == 'estres':
+        phrases = estres
+
+    elif ramdom_category == 'motivacion':
+        phrases = motivacion
+
+    else:
+        print(f"No se encontraron frases en esta categoría {ramdom_category}")
+        return
+
+    if phrases:
+        phrase_ids = list(phrases.keys())
+        random_id = random.choice(phrase_ids)
+        ramdom_phrase = phrases[random_id]
+
+        print(f"{ramdom_phrase}")
+
+
+    else:
+        print(f"No se encontraron frases en esta categoría: {ramdom_category}")
+
+
+def show_notification(title, message):
+    notification.notify(
+        title="Freud AI",
+        message=ramdom_phrase(),
+        app_icon=None,
+        timeout=10
+    )
+
+ramdom_phrase()
+
+
+
