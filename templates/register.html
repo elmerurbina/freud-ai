@@ -30,10 +30,9 @@
 
 
        
-        {% block content %}
-
+      
         <form method="POST" action="{{ url_for('register_user') }}" id="register">
-            <!-- Include your CSRF token for security -->
+            
             <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
 
 
@@ -194,7 +193,7 @@
     </div>
 
     </div>
-    {% endblock %}
+    
 
     <footer>
         <p>&copy; 2023 Freud.AI.  Todos los derechos reservados</p>
