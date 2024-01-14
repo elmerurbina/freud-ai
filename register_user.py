@@ -55,6 +55,7 @@ def register_logic(name, email, password, repeat_password, affiliation, role, pa
     )
     db.commit()
 
+
     return {'success': True}
 
 @app.route('/register_user', methods=['GET', 'POST'])

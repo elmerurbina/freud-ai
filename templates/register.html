@@ -31,7 +31,7 @@
 
        
       
-        <form method="POST" action="{{ url_for('register_user') }}" id="register">
+        <form method="GET" action="{{ url_for('register_user') }}" id="register">
             
             <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
 
@@ -116,7 +116,6 @@
                 <br>
                 <br>
                 <label for="municipio">Municipio: </label>
-                
                 <input type="text" id="municipio" name="municipio" placeholder="Municipio donde habita...">
                 <br>
                  <br>
