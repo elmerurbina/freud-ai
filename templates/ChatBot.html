@@ -16,8 +16,8 @@
 
         <header>
             <div class="text logo" >
-                <span class="name">Chat bot</span>
-                <span class="profe">FREUD IA</span>
+                <span class="name">Freud AI</span>
+                <span class="profe">Te da la vienvenida</span>
             </div>
             <i class="bx bx-menu toggle"></i>
         </header>
@@ -58,7 +58,7 @@
                     <li class="nav-link">
                         <a href="#">
                             <i class="bx bx-user icon"></i>
-                            <span class="text nav-text">Profecionales</span>
+                            <span class="text nav-text">Profesionales</span>
                         </a>
                     </li>
 
@@ -99,16 +99,21 @@
 
     <section class="home">
         <div class="text">
-            Chat Bot
-        </div>
+            <i class="fa-solid fa-brain"></i> Bienvenido a Freud AI
 
+            <!-- Add these div elements inside your main container, adjust styles if needed -->
+<div class="chat-message" id="message1"><i class="fa-brands fa-fly"></i>¡Estoy aquí para ayudarte en tus dificultades!</div>
+<div class="chat-message" id="message2"><i class="fa-solid fa-handshake-angle"></i>¿Dime cómo puedo ayudarte hoy?</div>
+
+        </div>
 
 
         <div class="message-input">
             <input type="text" id="messageInput" placeholder="Escribe tu mensaje...">
-            <button onclick="sendMessage">Enviar <i class="fa-solid fa-reply"></i></button>
-            
+            <button onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
         </div>
+        
+          
 
        
         <div class="message-container" id="messageContainer">
@@ -118,10 +123,11 @@
 
 
     <script type="text/javascript" src="{{ url_for('static', filename='menu.js') }}"></script>
-    </section>
-
-   
+    <script src="{{ url_for('static', filename='input.js') }}"></script>
     
+    
+    </section>
+   
 
 </body>
 
