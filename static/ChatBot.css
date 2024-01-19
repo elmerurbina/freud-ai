@@ -6,39 +6,39 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
-
 :root {
-  --body-color:#9B27B00D;
-  --sidebar-color:#ffffff;
-  --prymary-color:#9C27B0;
-  --prymary-color-ligth:#9B27B00D;
-  --toggle-color:#DDDDDD;
-  --text-color:#707070;
+  --body-color: #f5f5f5; /* Light background color */
+  --sidebar-color: #ffffff;
+  --primary-color: #3498db; /* Blue primary color */
+  --primary-color-light: #9B27B00D;
+  --toggle-color: #DDDDDD;
+  --text-color: #333333; /* Dark text color */
 
-  --tran-03: all 0.2s ease;
-  --tran-04: all 0.3s ease;
-  --tran-05: all 0.4s ease;
+  --transition-duration: 0.3s;
 }
 
 body {
- background-image: url("/static/imagenes/expediente.jpg");
+  background: linear-gradient(to right, #3498db, #9B27B00D); /* Linear gradient background */
   min-height: 80vh;
   background-color: var(--body-color);
-  transition: var(--tran-05);
+  color: var(--text-color);
+  transition: background-color var(--transition-duration);
 }
 
 ::selection {
-  background-color: var(--prymary-color);
+  background-color: var(--primary-color);
   color: #ffffff;
 }
 
 body.dark {
-  --body-color:#1819A1;
-  --sidebar-color:#242526;
+  --body-color: #2c3e50; /* Dark background color */
+  --sidebar-color: #34495e; /* Dark sidebar color */
   --primary-color-light: #050505;
-  --toggle-color:black;
-  --text-color: #cccccc;
+  --toggle-color: black;
+  --text-color: #ecf0f1; /* Light text color */
 }
+
+
 
 .sidebar {
   position: fixed;
