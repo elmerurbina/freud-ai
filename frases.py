@@ -1,65 +1,41 @@
 import random
-import numpy as np
+from flask import Flask, render_template, request, jsonify
+from plyer import notification
 import pyttsx3
-from win10toast import ToastNotifier
+from apscheduler.schedulers.background import BackgroundScheduler
+
+app = Flask(__name__)
+
+# Mock data for categories and phrases
+categories = [
+    'general', 'soledad', 'estres', 'motivacion', 'ansiedad',
+    'celebres', 'depresion', 'alimentacion', 'dormir', 'adicciones',
+    'suicidio', 'humor', 'procrastinacion'
+]
 
 
+def random_phrase(category):
+    with open('frases.txt', 'r', encoding='utf-8') as file:
+        content = file.read()
+        categories_and_phrases = {}
 
+        # Split content by category
+        category_blocks = content.split('[')[1:]
+        for block in category_blocks:
+            parts = block.split(']')
+            cat_name = parts[0].strip().lower()
+            cat_phrases = [phrase.strip() for phrase in parts[1].strip().split('\n') if phrase.strip()]
+            categories_and_phrases[cat_name] = cat_phrases
 
+    return random.choice(categories_and_phrases.get(category, ['No se encontraron frases en esta categoria.']))
 
-
-
-
-humor = {
-        "1": "¿Cuál es el animal más antiguo? La cebra, ¡porque está en blanco y negro!",
-
-}
-
-
-
-def random_phrase():
-    categories = [
-        'general', 'soledad', 'estres', 'motivacion', 'ansiedad', 'celebres', 'depresion', 'alimentacion',
-        'dormir', 'adicciones', 'suicidio', 'humor', 'procrastinacion'
-    ]
-
-    random_category = np.random.choice(categories)
-
-    if random_category == 'general':
-        phrases = general
-    elif random_category == 'soledad':
-        phrases = soledad
-    elif random_category == 'estres':
-        phrases = estres
-    elif random_category == 'motivacion':
-        phrases = motivacion
-    elif random_category == 'alimentacion':
-        phrases = alimentacion
-    elif random_category == 'ansiedad':
-        phrases = ansiedad
-    elif random_category == 'humor':
-        phrases = humor
-    elif random_category == 'procrastinacion':
-        phrases = procrastinacion
-    else:
-        print(f"No se encontraron frases en esta categoría {random_category}")
-        return ""
-
-    if phrases:
-        phrase_ids = list(phrases.keys())
-        random_id = random.choice(phrase_ids)
-        return phrases[random_id]
-    else:
-        print(f"No se encontraron frases en esta categoría: {random_category}")
-        return ""
 
 def show_notification(title, message):
-    toaster = ToastNotifier()
-
-    if not message:
-        message = "No se encontraron frases en esta categoría."
-
-    toaster.show_toast(title, message, duration=10)
+    notification.notify(
+        title=title,
+        message=message,
+        timeout=10  # Duration in seconds
+    )
 
     if message:
         engine = pyttsx3.init()
@@ -67,8 +43,31 @@ def show_notification(title, message):
         engine.say(message)
         engine.runAndWait()
 
-# Call random_phrase once and use the result throughout
-phrase = random_phrase()
-print(f"Random Phrase: {phrase}")
+def send_notification(category):
+    phrase = random_phrase(category)
+    show_notification("Freud AI", phrase)
 
-show_notification("Freud AI", phrase)
+scheduler = BackgroundScheduler()
+scheduler.start()
+
+@app.route('/notificaciones')
+def notificaciones():
+    return render_template('notificaciones.html', categories=categories)
+
+@app.route('/send_notification', methods=['POST'])
+def send_notification_route():
+    category = request.form.get('category', 'general')
+    time_interval = int(request.form.get('time', 8))  # Default to 8 hours if not specified
+
+    job_id = f'{category}_job_{time_interval}h'
+    scheduler.add_job(send_notification, 'interval', hours=time_interval, args=[category], id=job_id)
+
+    return jsonify({'status': 'Configuracion exitosa!', 'category': category, 'time_interval': time_interval, 'job_id': job_id})
+
+
+if __name__ == '__main__':
+    scheduler.add_job(send_notification, 'interval', hours=8, args=['general'], id='general_job')
+    scheduler.add_job(send_notification, 'interval', hours=12, args=['general'], id='general_job_12h')
+    scheduler.add_job(send_notification, 'interval', hours=24, args=['general'], id='general_job_24h')
+
+    app.run(debug=True)

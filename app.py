@@ -14,6 +14,12 @@ csrf = CSRFProtect(app)
 def home():
     return render_template('index.html')
 
+
+
+@app.route('/notificaciones')
+def  notificaciones():
+    return render_template('notificaciones.html')
+
 @app.route('/verExpediente')  # Corrected the route path
 def verExpediente():
     return render_template('verExpediente.html')
