@@ -1,11 +1,13 @@
 
 
 body {
-    background-image: url("https://i.pinimg.com/750x/4d/7d/56/4d7d56db7d65bf6d0d891f149809f252.jpg");
+    background: linear-gradient(45deg, #ffcccc, #cc99ff, #66b3ff);
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
 header {

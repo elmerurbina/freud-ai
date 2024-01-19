@@ -1,75 +1,26 @@
 <!DOCTYPE html>
-<html lang es>
-    <head>
-        <meta charset="UTF-8">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='profesionales.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-        <title>Profesionales</title>
-    </head>
-    <body>
-
-
-        <img class="logo" src="{{ url_for('static', filename='imagenes/logo.jpg') }}" alt="Logo" >
-        
-
-        <div class="nuevo">
-            <a href="{{ url_for('agregar_perfil') }} ">
-            <i class="fa-thin fa-plus"></i>
-        </a>
-            <p class="nuevo">Agregar Nuevo</p>
+    <title>Profesionales</title>
+</head>
+<body>
+    <section>
+        <h1>Profesionales</h1>
+        <div>
+            {% for professional in professionals %}
+                <div>
+                    <img src="{{ url_for('static', filename='uploads/' + professional['file_path']) }}" alt="Profile Picture" style="max-width: 100px; max-height: 100px;">
+                    <p>Nombre: {{ professional['nombre'] }}</p>
+                    <p>Licencia: {{ professional['licencia'] }}</p>
+                    <p>Ubicacion: {{ professional['ubicacion'] }}</p>
+                    <p>Contacto: {{ professional['contacto'] }}</p>
+                    <p>Descripción: {{ professional['descripcion'] }}</p>
+                </div>
+            {% endfor %}
         </div>
-
-        <h1>Profesionales disponibles</h1>
-
-       <section>
-
-            <section class="iconos">
-                <div class="mensaje">
-                    <p>Enviar mensaje</p>
-                    <a class="mensaje" href=" ">
-                        <i class="fa-solid fa-message"></i>
-                    </a>
-                    <p>Video llamada</p>
-                    <a class="llamada" href=" ">
-                         <i class="fa-solid fa-video"></i>
-                    </a>
-
-                    <p>Llamar audio solamente</p>
-                    <a class="audio" href=" ">
-                        <i class="fa-solid fa-headphones"></i>
-                    </a>
-        
-                </div>
-        
-            </section>
-
-         
-          {% for perfil in perfiles %} 
-
-            <div class="profile-header">
-                <img src="{{ url_for('uploads', filename=perfil['profile_picture']) }}" alt="Foto de perfil">
-
-            
-            <div class="profile-info">
-            <h2>{{perfil ['nombre']}}</h2>
-
-            <p><strong>No. De Licencia: </strong>{{perfil['licencia']}}</p> 
-            <p><strong>Ubicacion: </strong>{{perfil['ubicacion']}}</p>
-            <p><strong>Informacion de contacto: </strong> {{perfil['contacto']}} </p>
-            <p><strong>Descripcion: </strong> {{perfil['descripcion']}}</p>
-
-
-            
-                </div>
-               
-            
-            </div>
-           {% endfor %}  
-        </section>
-          
-           
-        
-    </body>
+    </section>
+</body>
 </html>

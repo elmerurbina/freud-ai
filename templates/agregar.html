@@ -2,42 +2,40 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='agregar.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
-
-    <title>Registro</title>
+    <title>Agregar nuevo perfil</title>
 </head>
 <body>
-
-    <img class="logo" src="{{ url_for('static', filename='imagenes/logo.jpg') }}" alt="Logo" >
-  <!--  <figcaption>Freud.AI</figcaption> -->
-
     <section>
-    <h1>Agregar nuevo perfil</h1>
-    <form action="/agregar" method="post">
+        <h1>Agregar nuevo perfil</h1>
+        {% if message %}
+            <p style="color: {% if 'correctamente' in message %}green{% else %}red{% endif %}">{{ message }}</p>
+        {% endif %}
+        <form action="/agregar" method="post" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
 
-        <label for="profile_picture">Subir imagen de perfil:</label>
-        <input type="file" id="profile_picture" name="profile_picture" accept="image/*">
+            <label for="profile_picture">Subir imagen de perfil:</label>
+            {{ form.profile_picture.label }} {{ form.profile_picture }}
 
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
+            <label for="nombre">Nombre:</label>
+            {{ form.nombre.label }} {{ form.nombre }}
 
-        <label for="licencia">No. De Licencia:</label>
-        <input type="text" id="licencia" name="licencia" required>
+            <label for="licencia">No. De Licencia:</label>
+            {{ form.licencia.label }} {{ form.licencia }}
 
-        <label for="ubicacion">Ubicacion:</label>
-        <input type="text" id="ubicacion" name="ubicacion" required>
+            <label for="ubicacion">Ubicacion:</label>
+            {{ form.ubicacion.label }} {{ form.ubicacion }}
 
-        <label for="contacto">Informacion de contacto: </label>
-        <input type="text" id="contacto" name="contacto" required>
+            <label for="contacto">Informacion de contacto:</label>
+            {{ form.contacto.label }} {{ form.contacto }}
 
-        <label for="descripcion">Descripcion:</label>
-<textarea id="descripcion" name="descripcion" required></textarea>
+            <label for="descripcion">Descripcion:</label>
+            {{ form.descripcion.label }} {{ form.descripcion }}
 
-
-        <button type="submit">Agregar</button>
-    </form>
+            <button type="submit">Agregar</button>
+        </form>
     </section>
 </body>
 </html>

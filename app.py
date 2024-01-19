@@ -81,8 +81,8 @@ def  reset_password():
     return render_template('reset_password.html')
 
 
-@app.route('/profesionals')
-def  profesionals():
+@app.route('/profesionales')
+def  profesionales():
     return render_template('profesionales.html')
 
 
