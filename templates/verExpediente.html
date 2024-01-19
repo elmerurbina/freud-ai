@@ -1,72 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='expediente.css') }}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        
-        <title>Ver Expediente</title>
-    </head>
-
-   <body>
-    
-    <h1  class="logo">Freud&nbsp;<span>IA</span></h1>
-
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='expediente.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Ver Expediente</title>
+</head>
+<body>
+    <h1 class="logo">Freud&nbsp;<span>IA</span></h1>
     <h1>Ver Expediente</h1>
-
-    <p class="principal">El objetivo es garantizar el acceso al expediente de un paciente determinado
-    </p>
-
-   
-
-    <p class="segundo">Para ello le solicitamos ingrese los datos que se le piden en el apartado y hacer click en solicitar acceso,
-        nosotros notificaremos al paciente de su solicitud de acceso, para que este pueda permiterle dicho acceso. <b>El nombre 
-            debe ser identico al que se muestra en el perfil del paciente.
-        </b>
-       <p class="segundo"> Dada la posibilidad de que el paciente se encuentre en un estado crítico, es fundamental tener
-         en cuenta que nuestras condiciones de acceso a través del modelo de Machine Learning están diseñadas para facilitar el ingreso directo. 
-         Esto aplica siempre que el paciente tenga un historial de mensajes criticos o este enviando este tipo de mensajes.
-         Cuando el modelo de ML reconozca esta situacion, una ves usted haga click en el boton, accedera directamente al expediente.
-         </p>
-    </p>
+    <p class="principal">El objetivo es garantizar el acceso al expediente de un paciente determinado</p>
+    <p class="segundo">Para ello le solicitamos ingrese los datos que se le piden en el apartado y hacer click en solicitar acceso, nosotros notificaremos al paciente de su solicitud de acceso, para que este pueda permiterle dicho acceso. <b>El nombre debe ser identico al que se muestra en el perfil del paciente.</b></p>
+    <p class="segundo">Dada la posibilidad de que el paciente se encuentre en un estado crítico, es fundamental tener en cuenta que nuestras condiciones de acceso a través del modelo de Machine Learning están diseñadas para facilitar el ingreso directo. Esto aplica siempre que el paciente tenga un historial de mensajes críticos o este enviando este tipo de mensajes. Cuando el modelo de ML reconozca esta situacion, una vez usted haga click en el boton, accedera directamente al expediente.</p>
 
     <div class="solicitarAcceso">
-        <form><label for="nombre">Nombre del paciente: </label>
-        <input type="text" name="nombre" id="nombre" placeholder="ej. Freud AI" required>
-        
-
-        <a href="templates/expediente.html" class="solicitar">Solicitar Acceso</a>
-
-
-    </form>
-
+        <form>
+            <label for="nombre">Nombre del paciente: </label>
+            <input type="text" name="nombre" id="nombre" placeholder="ej. Freud AI" required>
+            <a href="#" class="solicitar">Solicitar Acceso</a>
+        </form>
     </div>
-
-   
 
     <div class="contacto " id="ayuda">
-        <h3 >Para cualquier duda o información, contactenos!</h3>
+        <h3>Para cualquier duda o información, contáctenos!</h3>
         <i class="fa-solid fa-envelope"></i>
         <a class="gmail" href="mailto:freud.ai@gmail.com">Gmail</a>
-
         <i class="fa-brands fa-whatsapp"></i>
         <a class="whatsapp" href="https://wa.me/50577966272">WhatsApp</a>
-
         <i class="fa-brands fa-facebook"></i>
         <a class="facebook" href="freud.ai">Facebook</a>
-
         <i class="fa-brands fa-instagram"></i>
         <a class="instagram" href="freud.ai">instagram</a>
-
     </div>
 
-    
-
     <footer>
-        <p>&copy; 2023 Freud.AI.  Todos los derechos reservados</p>
+        <p>&copy;Freud.AI.  Todos los derechos reservados</p>
     </footer>
 
-   <p class="Creditos"> Creditos imagen de fondo:  <a href="https://www.lovepik.com">lovepik</a>  </p>
-
-   </body>
+    <p class="Creditos"> Creditos imagen de fondo:  <a href="https://www.lovepik.com">lovepik</a>  </p>
+</body>
 </html>

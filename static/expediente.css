@@ -1,132 +1,106 @@
-
-
-body{ background-image: url("/static/imagenes/expediente.jpg");
-
+body {
+   background: linear-gradient(45deg, #3498db, #9b59b6, #e74c3c);
+   font-family: Arial, sans-serif;
+   margin: 0;
+   padding: 0;
+   background-size: cover; 
+   background-repeat: no-repeat;
+   background-attachment: fixed;
 }
-
-
+  
 .logo {
    color: #ffffff;
    text-transform: uppercase;
    font-size: 30px;
-   margin-left: 5%;
+   margin-left: -80%;
 }
 
 span {
    color: #EE13C4;
 }
 
-h1{text-align: center;
-font-size: 20;
-color:rgb(252, 255, 255);
+h1 {
+   text-align: center;
+   font-size: 24px;  
+   color: #fff;
 }
 
-p.principal{text-align: center;
-color: white;
-margin-top: 2%;
-font-size: 19px;
-margin-bottom: 5%;
-margin-top: 5%;}
-
-p.segundo{text-align: center;
-color: whitesmoke;
-margin-top: 0%;
-margin-left: 20%;
-margin-right: 20%;
-font-size: 14px;
-display: inline-block;
-line-height: 1.5;
-font-family: Arial, Helvetica, sans-serif;
+p.principal {
+   text-align: center;
+   color: white;
+   font-size: 20px;  
+   margin-bottom: 5%;
+   margin-top: 5%;
 }
 
+p.segundo {
+   text-align: center;
+   color: whitesmoke;
+   margin-top: 0%;
+   margin-left: 20%;
+   margin-right: 20%;
+   font-size: 16px;  
+   display: inline-block;
+   line-height: 1.5;
+}
 
+label {
+   color: white;
+   font-size: 18px; 
+}
 
-label{color: white;
-font-size: 16px;}
+input {
+   padding: 8px;  
+   border-radius: 20px;
+}
 
-input{padding: 4px;}
+.contacto {
+   margin-top: 30px;
+   color: white;
+   padding: 20px;
+   margin-left: 35%;
+   transition: margin 0.3s ease;
+}
 
-footer{font-size: 20px;
-color: lightgray;
-text-align: center;
-margin-top: 100px;}
+.contacto:hover {
+   margin-left: 33%; 
+   
+}
 
-figcaption{margin-left: 70px;
-   margin-top: -50px;
-color: white;
-font-size: 20px;}
-
-
+footer {
+   font-size: 18px; 
+   color: lightgray;
+   text-align: center;
+   margin-top: 100px;
+}
 
 .solicitarAcceso {
    display: flex;
    text-align: right;
    align-items: center;
-   height: 100vh; 
-   margin-top: -18%; 
+   height: 100vh;
+   margin-top: -18%;
    margin-right: 5%;
    margin-left: 35%;
+   
 }
 
 a.solicitar {
-   background-color: blue;
+   background-color: #3498db;  
    border: none;
-   border-radius: 20px; 
-   padding: 8px 12px;
+   border-radius: 20px;
+   padding: 12px 20px; 
    color: white;
-   font-size: 16px;
-   font-style: normal;
+   font-size: 18px;  
    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
    text-align: center;
    cursor: pointer;
    margin-top: 0;
    margin-left: 10px;
+   text-decoration: none; 
 }
 
 a.solicitar:hover {
-   background-color: rgb(151, 9, 9);
-   
+   background-color:#e74c3c; 
 }
 
-
-.acceder{ 
-margin-left: 40%;
-margin-top: 0%;}
-
-
-
-.logo{width: 80px;
-    height: auto;
-    border-radius: 50%;
-    margin-bottom: 20px;
-    }
-
-b{color: rgb(231, 181, 87);}
-
-h3{font-size: 20px;
-   margin-right: 35%;
-   margin-bottom: 10%;}
-   
-   .contacto{margin-top: 100px;
-       color: white;
-       padding: 20px;
-       margin-left: 35%;
-       }
-       
-       a.gmail{color: white;
-       margin-right: 50px;}
-       a.whatsapp{color: white;
-       margin-right: 50px;}
-       a.facebook{color: white;
-       margin-right: 50px;}
-       a.instagram{color: white;
-           margin-right: 50px;}
-       a.whatsapp:hover{color: red;}
-       a.gmail:hover{color: red;}
-       a.facebook:hover{color: red;}
-       a.instagram:hover{color: red;}
-
-       a{color: rgb(231, 181, 87);}
-       a:hover{color: red;}
-
-       p.Creditos{color: white;}
