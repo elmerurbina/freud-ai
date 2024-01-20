@@ -1,0 +1,50 @@
+
+body {
+   background: linear-gradient(to right, #21c758, #1d6fc0);
+    font-family: 'Helvetica Neue', sans-serif; 
+    margin: 0;
+   padding: 0;
+   background-size: cover; 
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+}
+p{margin-top: 10px;
+text-align: center;
+font-size: 16px;}
+
+form {background: #e2e05b;
+    padding: 20px;
+    height: auto;
+    align-items: center;
+    margin-left: 35%;
+    margin-bottom: 20px;
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle effect */
+    text-align: center;
+    margin-top: 10%;
+   
+}
+
+label{font-size: 16px;
+}
+
+h1 {
+    color: #570e9b; /* Text color for the heading */
+    margin-top: 5%;
+    text-align: center;
+}
+
+select{
+    margin-top: 20px;
+}
+
+
+input{
+    font-size: 20px;
+    border-radius: 20px;
+    margin: 50px;
+    animation: blink 3s infinite; 
+    background: linear-gradient(to right, violet, darkblue, red);
+}
+
