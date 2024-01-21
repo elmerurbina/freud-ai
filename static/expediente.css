@@ -1,19 +1,43 @@
+/* styles.css */
+
 body {
-   background: linear-gradient(45deg, #3498db, #9b59b6, #e74c3c);
-   font-family: Arial, sans-serif;
+   background: linear-gradient(45deg, #34495e, #2c3e50);
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    margin: 0;
    padding: 0;
-   background-size: cover; 
+   background-size: cover;
    background-repeat: no-repeat;
    background-attachment: fixed;
 }
-  
+
 .logo {
-   color: #ffffff;
+   color: #3498db;
    text-transform: uppercase;
    font-size: 30px;
    margin-left: -80%;
 }
+
+a.credentials {
+   color: #50aaad;
+   margin-top: 2%;
+   margin-left: 35%;
+   margin-right: 40%;
+   text-decoration: none; /* Removes the default underline */
+}
+
+a.credentials:visited {
+   color: #58cdeb;
+}
+
+a.credentials:hover {
+   color: #3498db;
+}
+
+a.credentials:active {
+   color: #2980b9;
+}
+
+a {color: #c43aa8;}
 
 span {
    color: #EE13C4;
@@ -21,14 +45,14 @@ span {
 
 h1 {
    text-align: center;
-   font-size: 24px;  
+   font-size: 24px;
    color: #fff;
 }
 
 p.principal {
    text-align: center;
    color: white;
-   font-size: 20px;  
+   font-size: 20px;
    margin-bottom: 5%;
    margin-top: 5%;
 }
@@ -39,68 +63,66 @@ p.segundo {
    margin-top: 0%;
    margin-left: 20%;
    margin-right: 20%;
-   font-size: 16px;  
+   font-size: 16px;
    display: inline-block;
    line-height: 1.5;
 }
 
 label {
-   color: white;
-   font-size: 18px; 
+   color: #fff;
+   font-size: 16px;
 }
 
 input {
-   padding: 8px;  
+   padding: 5px;
    border-radius: 20px;
 }
 
 .contacto {
-   margin-top: 30px;
-   color: white;
+   margin-top: -8%;
+   color: #fff;
    padding: 20px;
    margin-left: 35%;
    transition: margin 0.3s ease;
 }
 
 .contacto:hover {
-   margin-left: 33%; 
-   
+   margin-left: 33%;
 }
 
 footer {
-   font-size: 18px; 
+   font-size: 18px;
    color: lightgray;
    text-align: center;
-   margin-top: 100px;
+   margin-top: 10px;
 }
 
 .solicitarAcceso {
    display: flex;
-   text-align: right;
    align-items: center;
    height: 100vh;
-   margin-top: -18%;
-   margin-right: 5%;
+   margin-top: -10%;
+   margin-right: 35%;
    margin-left: 35%;
-   
 }
 
+p{color:aliceblue}
+
 a.solicitar {
-   background-color: #3498db;  
+   background-color: #2774a7;
    border: none;
    border-radius: 20px;
-   padding: 12px 20px; 
+   padding: 6px 12px;
    color: white;
-   font-size: 18px;  
-   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   font-size: 18px;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    text-align: center;
    cursor: pointer;
    margin-top: 0;
    margin-left: 10px;
-   text-decoration: none; 
+   text-decoration: none;
 }
 
 a.solicitar:hover {
-   background-color:#e74c3c; 
+   background-color: #2980b9;
 }
-

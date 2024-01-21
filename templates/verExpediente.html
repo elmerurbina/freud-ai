@@ -16,10 +16,17 @@
     <div class="solicitarAcceso">
         <form>
             <label for="nombre">Nombre del paciente: </label>
-            <input type="text" name="nombre" id="nombre" placeholder="ej. Freud AI" required>
-            <a href="#" class="solicitar">Solicitar Acceso</a>
+            <input type="text" name="nombre" id="nombre" placeholder="ej. Freud AI" required> <br>
+            <br>
+            <a href="#" class="solicitar">Solicitar Acceso</a> 
+            <br>
+            <br>
+            <a class="credentials" href="{{ url_for('login_account') }} ">[ Acceder con credenciales (email y contraseña) ]</a>
+         
         </form>
     </div>
+
+ 
 
     <div class="contacto " id="ayuda">
         <h3>Para cualquier duda o información, contáctenos!</h3>

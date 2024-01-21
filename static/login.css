@@ -6,9 +6,14 @@ body {
     color: #fff;
     margin: 0;
     padding: 0;
+    background-size: cover;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
 }
 
-
+input{
+    border-radius: 20px;
+}
 
 
 .logo {
