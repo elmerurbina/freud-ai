@@ -15,7 +15,7 @@
     <p>Con el objetivo de enviarle notificaciones 100% personalizadas </p> <br>
     <p>Le invitamos a seleccionar la categoría de la cual desea recibir notificaciones y el intervalo de tiempo en el cual desee recibir este tipo de mensajes.</p>
     
-    <form action="{{ url_for('notificaciones') }}" method="get">
+    <form action="{{ url_for('notificaciones') }}" method="post" onsubmit="displayConfirmationMessage(event)">
         <p class="head">Categorías:</p> <br>
         <label>
             <input type="checkbox" name="category" value="general"> General
@@ -85,12 +85,15 @@
         <input type="submit" value="Aceptar">
     </form>
 
-    <script>
-        // JavaScript function to display confirmation message
-        function displayConfirmationMessage() {
-            alert("Notificaciones configuradas exitosamente");
-        }
-    </script>
+    <div id="notificationModal" class="modal">
+        <span class="close" onclick="closeNotificationModal()">&times;</span>
+        <p>Notificaciones configuradas exitosamente</p>
+    </div>
+
+    <div id="errorMessage"></div>
+
+    <script src="{{ url_for('static', filename='notificaciones.js') }}"></script>
+    
 </body>
 </html>
-#cfe0f2;
+
