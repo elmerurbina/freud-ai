@@ -5,35 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='notificaciones.css') }}">
     <title>Configuracion de Notificaciones</title>
+
+    
 </head>
 <body>
     <h1>Configuracion de Notificaciones</h1>
 
-    <p>Contamos con mas de 10,000 frases en nuestra base de datos, las cuales estan organizadas segun categorias.</p> <br>
+    <p>Contamos con más de 10,000 frases en nuestra base de datos, las cuales están organizadas según categorías.</p> <br>
     <p>Con el objetivo de enviarle notificaciones 100% personalizadas </p> <br>
-    <p>Le invitamos a seleccionar la categoria de la cual desea recibir notificaciones y el intervalo de tiempo en el cual desee recibir este tipo de mensajes.</p>
+    <p>Le invitamos a seleccionar la categoría de la cual desea recibir notificaciones y el intervalo de tiempo en el cual desee recibir este tipo de mensajes.</p>
     
     <form action="{{ url_for('notificaciones') }}" method="get">
-        <label for="category">Selecciona la categoria:</label> <br>
-        <select name="category" id="category">
-            {% for category in categories %}
-                <option value="{{ category }}">{{ category }}</option>
-            {% endfor %}
-        </select>
+        <p class="head">Categorías:</p> <br>
+        <label>
+            <input type="checkbox" name="category" value="general"> General
+        </label> <br>
+        <label>
+            <input type="checkbox" name="category" value="soledad"> Soledad
+        </label><br>
+        <label>
+            <input type="checkbox" name="category" value="estres"> Estrés
+        </label><br>
+        <label>
+            <input type="checkbox" name="category" value="motivacion"> Motivación
+        </label><br>
+        <label>
+            <input type="checkbox" name="category" value="ansiedad"> Ansiedad
+        </label><br>
+        <label>
+            <input type="checkbox" name="category" value="celebres"> Célebres
+        </label><br>
+        <label>
+            <input type="checkbox" name="category" value="depresion"> Depresión
+        </label><br>
+        <label>
+            <input type="checkbox" name="category" value="alimentacion"> Alimentación
+        </label><br>
+        <label>
+            <input type="checkbox" name="category" value="dormir"> Dormir
+        </label><br>
+        <label>
+            <input type="checkbox" name="category" value="adicciones"> Adicciones
+        </label><br>
+        <label>
+            <input type="checkbox" name="category" value="suicidio"> Suicidio
+        </label><br>
+        <label>
+            <input type="checkbox" name="category" value="humor"> Humor
+        </label><br>
+        <label>
+            <input type="checkbox" name="category" value="procrastinacion"> Procrastinación
+        </label>
 
         <br>
 
-        <label for="time">Selecciona el intervalo de tiempo:</label>
-        <select name="time" id="time">
-            <option value="8">Cada 8 horas</option>
-            <option value="30">Cada 30 minutos</option>
-            <option value="12">Cada 12 horas</option>
-            <option value="24">Cada 24 horas</option>
-        </select>
+        <p class="head">Intervalo de tiempo:</p>
+        <br>
+
+        <label>
+            <input type="radio" name="time" value="30"> Cada 30 minutos
+        </label>
+        <br>
+
+        <label>
+            <input type="radio" name="time" value="8"> Cada 8 horas
+        </label>
+        <br>
+       
+        <label>
+            <input type="radio" name="time" value="12"> Cada 12 horas
+        </label>
+        <br>
+        <label>
+            <input type="radio" name="time" value="24"> Cada 24 horas
+        </label>
 
         <br>
 
         <input type="submit" value="Aceptar">
     </form>
+
+    <script>
+        // JavaScript function to display confirmation message
+        function displayConfirmationMessage() {
+            alert("Notificaciones configuradas exitosamente");
+        }
+    </script>
 </body>
 </html>
+#cfe0f2;

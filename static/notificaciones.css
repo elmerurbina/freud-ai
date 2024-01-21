@@ -12,7 +12,8 @@ p{margin-top: 10px;
 text-align: center;
 font-size: 16px;}
 
-form {background: #e2e05b;
+form {
+    background:  #fff8dc;
     padding: 20px;
     height: auto;
     align-items: center;
@@ -20,31 +21,38 @@ form {background: #e2e05b;
     margin-bottom: 20px;
     width: 400px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a subtle effect */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
     text-align: center;
-    margin-top: 10%;
+    margin-top: 6%;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 10px; 
+    font-size: 16px;
+    display: flex;
+    align-items: center; 
    
 }
 
-label{font-size: 16px;
+p.head{color: #7609dd;
+font-size: 20px;}
+
+input[type="checkbox"],
+input[type="radio"] {
+    margin-right: 5px;
+    vertical-align: middle; 
 }
 
 h1 {
-    color: #570e9b; /* Text color for the heading */
+    color: #570e9b; 
     margin-top: 5%;
     text-align: center;
 }
 
-select{
-    margin-top: 20px;
-}
-
-
-input{
+input {
     font-size: 20px;
     border-radius: 20px;
-    margin: 50px;
-    animation: blink 3s infinite; 
-    background: linear-gradient(to right, violet, darkblue, red);
+    animation: blink 3s infinite;
+    background: linear-gradient(to right, violet, darkblue);
 }
-

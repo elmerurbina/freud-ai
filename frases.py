@@ -1,10 +1,11 @@
 import random
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, flash
 from plyer import notification
 import pyttsx3
 from apscheduler.schedulers.background import BackgroundScheduler
 
 app = Flask(__name__)
+app.secret_key = 'your_secret_key'  # Set your secret key for flashing messages
 
 # Mock data for categories and phrases
 categories = [
@@ -12,7 +13,6 @@ categories = [
     'celebres', 'depresion', 'alimentacion', 'dormir', 'adicciones',
     'suicidio', 'humor', 'procrastinacion'
 ]
-
 
 def random_phrase(category):
     with open('frases.txt', 'r', encoding='utf-8') as file:
@@ -28,7 +28,6 @@ def random_phrase(category):
             categories_and_phrases[cat_name] = cat_phrases
 
     return random.choice(categories_and_phrases.get(category, ['No se encontraron frases en esta categoria.']))
-
 
 def show_notification(title, message):
     notification.notify(
@@ -50,24 +49,20 @@ def send_notification(category):
 scheduler = BackgroundScheduler()
 scheduler.start()
 
-@app.route('/notificaciones')
+@app.route('/notificaciones', methods=['GET', 'POST'])
 def notificaciones():
+    if request.method == 'POST':
+        selected_categories = request.form.getlist('category')  # Get selected categories as a list
+        time_interval = int(request.form.get('time', 8))  # Get selected time interval from radio button
+
+        for category in selected_categories:
+            job_id = f'{category}_job_{time_interval}h'
+            scheduler.add_job(send_notification, 'interval', hours=time_interval, args=[category], id=job_id)
+
+        flash('Notificaciones configuradas exitosamente', 'success')  # Flash success message
+        return jsonify({'status': 'Configuracion exitosa!', 'categories': selected_categories, 'time_interval': time_interval})
+
     return render_template('notificaciones.html', categories=categories)
 
-@app.route('/send_notification', methods=['POST'])
-def send_notification_route():
-    category = request.form.get('category', 'general')
-    time_interval = int(request.form.get('time', 8))  # Default to 8 hours if not specified
-
-    job_id = f'{category}_job_{time_interval}h'
-    scheduler.add_job(send_notification, 'interval', hours=time_interval, args=[category], id=job_id)
-
-    return jsonify({'status': 'Configuracion exitosa!', 'category': category, 'time_interval': time_interval, 'job_id': job_id})
-
-
 if __name__ == '__main__':
-    scheduler.add_job(send_notification, 'interval', hours=8, args=['general'], id='general_job')
-    scheduler.add_job(send_notification, 'interval', hours=12, args=['general'], id='general_job_12h')
-    scheduler.add_job(send_notification, 'interval', hours=24, args=['general'], id='general_job_24h')
-
     app.run(debug=True)
