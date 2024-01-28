@@ -199,3 +199,19 @@ input:valid {
 }
 
 
+.floating-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    pointer-events: none;
+    transition: top 0.3s ease-out, font-size 0.3s ease-out;
+}
+
+/* Adjust these styles based on your design preferences */
+input:focus + .floating-label,
+input:not(:placeholder-shown) + .floating-label {
+    top: -10px;
+    font-size: 12px;
+}
+
+
