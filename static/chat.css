@@ -85,7 +85,7 @@ body.dark {
 
 .sidebar .text,
 .sidebar .icon {
-  color: black; /* Change text color to black */
+  color: black; 
   transition: var(--tran-03);
 }
 
@@ -109,13 +109,38 @@ body.dark {
   flex-direction: column;
 }
 
+/* Add this CSS to style Font Awesome icon within active nav-link */
+.nav-link.active a i.fa-regular {
+  font-size: 18px; /* Adjust the size to match Boxicons */
+  color: #333333; /* Adjust the color to match Boxicons */
+  margin-right: 20px; 
+  margin-left: 20px;/* Add some margin to match Boxicons spacing */
+}
+
+.nav-link.active a:hover i.fa-regular {
+  color: var(--sidebar-color); /* Adjust hover color to match Boxicons hover color */
+}
+
+/* Add this CSS to style Font Awesome icon within the logout button */
+#logoutButton a i.fa-solid.fa-chevron-right {
+  font-size: 20px; /* Adjust the size to match Boxicons */
+  color: #333333; /* Adjust the color to match Boxicons */
+  margin-right: 10px; /* Add some margin to match Boxicons spacing */
+}
+
+#logoutButton a:hover i.fa-solid.fa-chevron-right {
+  color: var(--sidebar-color); /* Adjust hover color to match Boxicons hover color */
+}
+
+
+
 .name {
   margin-top: 2px;
   font-size: 18px;
   font-weight: 600;
 }
 
-.profe {
+.welcome {
   font-size: 16px;
   margin-top: -2px;
   display: block;
@@ -316,7 +341,6 @@ body.dark .home .text {
   color: var(--text-color);
 }
 
-/*Chat */
 
 .chat-01 {
   border: 1px #2747b0;
@@ -343,8 +367,8 @@ main {
   border: 1px solid #ccc;
   margin-right: 10px;
   margin-left: 25%;
-  box-sizing: border-box; /* Include padding and border in total width and height */
-  height: auto; /* Remove fixed height */
+  box-sizing: border-box; 
+  height: auto; 
 }
 
 
@@ -367,6 +391,6 @@ main {
   margin-top: 10%;
   text-align: center;
   font-weight: bold;
-  color: #333333; /* Text color */
+  color: #333333; 
 }
 

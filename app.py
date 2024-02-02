@@ -94,7 +94,7 @@ def  profesionales():
 
 @app.route('/chat')
 def chat():
-    return render_template('ChatBot.html')
+    return render_template('chat.html')
 
 
 if __name__ == '__main__':
