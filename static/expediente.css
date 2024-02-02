@@ -1,13 +1,22 @@
 /* styles.css */
 
 body {
-   background: linear-gradient(45deg, #34495e, #2c3e50);
    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    margin: 0;
    padding: 0;
    background-size: cover;
    background-repeat: no-repeat;
    background-attachment: fixed;
+}
+
+section {
+   background: linear-gradient(to right, rgb(166, 19, 235), rgb(248, 39, 144));
+   width: 50%;
+   font-size: 16px;
+   margin-bottom: 25%px;
+   align-items: center;
+   margin-left: 30px;
+  
 }
 
 .logo {
@@ -17,27 +26,9 @@ body {
    margin-left: -80%;
 }
 
-a.credentials {
-   color: #50aaad;
-   margin-top: 2%;
-   margin-left: 35%;
-   margin-right: 40%;
-   text-decoration: none; /* Removes the default underline */
+a {
+   color: #c43aa8;
 }
-
-a.credentials:visited {
-   color: #58cdeb;
-}
-
-a.credentials:hover {
-   color: #3498db;
-}
-
-a.credentials:active {
-   color: #2980b9;
-}
-
-a {color: #c43aa8;}
 
 span {
    color: #EE13C4;
@@ -49,23 +40,8 @@ h1 {
    color: #fff;
 }
 
-p.principal {
-   text-align: center;
-   color: white;
-   font-size: 20px;
-   margin-bottom: 5%;
-   margin-top: 5%;
-}
-
-p.segundo {
-   text-align: center;
-   color: whitesmoke;
-   margin-top: 0%;
-   margin-left: 20%;
-   margin-right: 20%;
+h2 {
    font-size: 16px;
-   display: inline-block;
-   line-height: 1.5;
 }
 
 label {
@@ -74,12 +50,12 @@ label {
 }
 
 input {
-   padding: 5px;
-   border-radius: 20px;
+   padding: 3px;
+   border-radius: none;
 }
 
 .contacto {
-   margin-top: -8%;
+   margin-top: 8%;
    color: #fff;
    padding: 20px;
    margin-left: 35%;
@@ -97,32 +73,12 @@ footer {
    margin-top: 10px;
 }
 
-.solicitarAcceso {
-   display: flex;
-   align-items: center;
-   height: 100vh;
-   margin-top: -10%;
-   margin-right: 35%;
-   margin-left: 35%;
+button {
+   background: linear-gradient(to right, rgb(31, 138, 4), blue);
+   margin-top: 20px;
+   padding: 5px;
 }
 
-p{color:aliceblue}
-
-a.solicitar {
-   background-color: #2774a7;
-   border: none;
-   border-radius: 20px;
-   padding: 6px 12px;
-   color: white;
-   font-size: 18px;
-   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-   text-align: center;
-   cursor: pointer;
-   margin-top: 0;
-   margin-left: 10px;
-   text-decoration: none;
-}
-
-a.solicitar:hover {
-   background-color: #2980b9;
+p {
+   color: aliceblue;
 }
