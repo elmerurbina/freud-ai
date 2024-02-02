@@ -80,7 +80,7 @@ margin-bottom: 15px;}
 
 label {
     display: block; 
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     font-size: 16px;
     text-align: center;
    color: white;
@@ -135,6 +135,25 @@ padding-top: 100px;}
 
 
 a:hover{color: rgb(238, 178, 178);}
+
+i.fa-solid.fa-user {
+    font-size: 14px;
+}
+
+
+i.fa-solid.fa-envelope {
+    font-size: 14px;
+}
+
+
+i.fa-solid.fa-lock {
+    font-size: 14px;
+}
+
+
+i.fa-solid.fa-calendar-days {
+    font-size: 14px;
+}
 
 
 p.privacy{color:rgb(230, 221, 224);

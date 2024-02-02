@@ -19,8 +19,6 @@
 
         <form method="POST" action="{{ url_for('register_user') }}" id="register">
             
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
-
 
 
             <div class="fields"></div>
@@ -29,7 +27,7 @@
                 <div class="field">
                 
                     <label for="name">nombre completo <i class="fa-solid fa-user"></i></label>
-                    <input type="text" id="name" name="name" placeholder="Nombre" required>
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
                     <span class="error message"></span>
                     
                     
@@ -80,7 +78,7 @@
         </form>
         
     </div>
-        <script type="text/javascript" src="{{ url_for('static', filename='validation_register.js') }}"></script>
+        
 
 
     <div class="contacto " id="ayuda">

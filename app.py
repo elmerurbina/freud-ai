@@ -1,14 +1,16 @@
 from flask import Flask, render_template, request
 import os
-from flask_wtf import CSRFProtect
+from register_user import register_user_app
 from db import get_db
 
 
 
-app = Flask(__name__)
-app.config.from_pyfile('config.py')  # Load configurations from config.py
 
-csrf = CSRFProtect(app)
+app = Flask(__name__)
+
+app.config.from_pyfile('config.py')  # Load configurations from config.py
+app.register_blueprint(register_user_app, url_prefix='/register')
+
 
 @app.route('/freud')
 def home():
