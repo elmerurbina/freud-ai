@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='chat.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+    <!--Menu-->
+<body class="">
+    
+    <nav class="sidebar close" >
+
+        <header>
+            <div class="text logo" >
+                <span class="name">Freud AI</span>
+                <span class="welcome">Te da la vienvenida</span>
+            </div>
+            <i class="bx bx-menu toggle"></i>
+        </header>
+
+        <div class="menu-bar">
+
+            <div class="menu">
+
+                <li class="search-box">
+                    <i class="bx bx-search icon"></i>
+                    <input type="text" placeholder="buscar....">
+                </li>
+
+                <ul class="menu-links">
+
+                    <li class="nav-link active">
+                        <a href="#">
+                            <i class="fa-regular fa-comment"></i>
+                          <span class="text nav-text">Calificanos</span>
+                        </a>
+                      </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            
+                            <i class="bx bx-file-find icon"></i>
+                            <span class="text nav-text">Ver Expediente</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href=" ">
+                            <i class="bx bx-bell icon"></i>
+                            <span class="text nav-text">Notificaciones</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class="bx bx-user icon"></i>
+                            <span class="text nav-text">Profesionales</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class="bx bx-conversation icon"></i>
+                            <span class="text nav-text">Ver Historial</span>
+                        </a>
+                    </li>
+
+                    <li class=" ">
+                        <a href="#" id="logoutButton">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <span class="text nav-text">Salir</span>
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="bottom-content">
+                <ul>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <section class="home">
+        <div class="text">
+            <i class="fa-solid fa-brain"></i> Bienvenido a Freud AI
+
+            <!-- Add these div elements inside your main container, adjust styles if needed -->
+<div class="chat-message" id="message1"><i class="fa-brands fa-fly"></i>¡Estoy aquí para ayudarte siempre!</div>
+<div class="chat-message" id="message2"><i class="fa-solid fa-handshake-angle"></i>¿Dime cómo puedo hacerlo hoy?</div>
+
+        </div>
+
+
+        <div class="message-input">
+            <input type="text" id="messageInput" placeholder="Escribe tu mensaje...">
+            <button onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+        </div>
+
+       
+        <div class="message-container" id="messageContainer">
+           
+        </div>
+    </section>
+
+
+    <script type="text/javascript" src="{{ url_for('static', filename='menu.js') }}"></script>
+    <script src="{{ url_for('static', filename='input.js') }}"></script>
+    <script src="{{ url_for('static', filename='logout.js') }}"></script>
+    
+    </section>
+   
+
+</body>
+
+</html>
