@@ -22,20 +22,50 @@ span {
     color: #EE13C4;
 }
 
+h1{font-size: 20px;
+margin-bottom: 15px;}
+
+.fields {
+   
+    overflow: hidden;
+}
+
+.field input {
+    width: 100%;
+    padding: 4px;
+    margin-bottom: 10px;
+    border: none; 
+    border-bottom: 1px solid #2c3e50; 
+    font-size: 14px;
+    box-sizing: border-box; 
+    background-color: transparent; /* Set background to transparent */
+    outline: none; /* Remove the default input focus outline */
+}
+
+
+.field input:focus {
+    border-bottom: 1px solid #3498db; 
+}
+
+.field input::placeholder {
+    color: lightpink; 
+}
+
 .container {
     max-width: 500px;
     margin: 0 auto;
     padding: 30px;
     border-radius: 5px;
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    
 }
 
 .container {
     text-align: center;  
     color: white;
-    padding: 30px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
+    background: linear-gradient(45deg, #ef07f7, #f82828);
    
 }
 
@@ -43,42 +73,29 @@ span {
     display: flex;
     flex-direction: row;
     justify-content: space-between; 
-width: 100%;
-margin-top: 10%;
+    width: 100%;
+    margin-top: 10%;
 }
 
-
-.form-group {
-    margin-bottom: 15px; 
-    width: 100%; }
-
-.form-group-left,
-.form-group-right {
-    flex: 1; 
-    width: 48%;
-}
-
-.form-group-right {margin-left: 18%;
-    padding: 5px;
-    width: 40%;
-}
 
 label {
     display: block; 
-    margin-bottom: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    text-align: center;
+   color: white;
 }
 
 input {
-    width: 100%; 
-    padding: 5px;
+    width: 50%; 
+    padding: 3px;
     margin-bottom: 10px;
-    border-radius: 20px;
+    border-radius: none;
+    font-size: 14px;
+    align-items: center;
+    color: lightgrey;
 }
 
-select {
-    border-radius: 20px;
-    padding: 5px;
-}
 
 button.register {
     margin-top: 5%;
@@ -93,7 +110,7 @@ button.register {
 
 button.register:hover {background-color: red;}
 
-a{color: rgb(231, 181, 87);
+a{color: rgb(29, 24, 29);
     font-size: 18px;
 }
 
@@ -113,28 +130,11 @@ padding-top: 100px;}
         margin-bottom: 20px;
         }
 
-        span.warning{color: rgb(231, 181, 87);}
+        span.warning{color: rgb(87, 173, 231);}
         span.anotar{color: rgb(231, 181, 87);}
 
 
-        p.uno{margin-left: 18%;
-        margin-right: 10%;
-    margin-top: 1%;
-font-size: 18px;
-color: rgba(224, 255, 255, 0.884);}
-
-p.dos{margin-left: 18%;
-    margin-right: 10%;
-font-size: 18px;
-color: rgba(224, 255, 255, 0.884);}
-
-p.tres{margin-left: 18%;
-    margin-right: 10%;
-font-size: 18px;
-color: rgba(224, 255, 255, 0.884);
-margin-bottom: 10%;}
-
-a:hover{color: rgb(247, 10, 10);}
+a:hover{color: rgb(238, 178, 178);}
 
 
 p.privacy{color:rgb(230, 221, 224);
@@ -213,5 +213,4 @@ input:not(:placeholder-shown) + .floating-label {
     top: -10px;
     font-size: 12px;
 }
-
 

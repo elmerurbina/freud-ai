@@ -14,164 +14,74 @@
     <h1  class="logo">Freud&nbsp;<span>IA</span></h1>
     
 
-    <p class="uno">Por razones de seguridad le invitamos a suscribirse a la plataforma, solo usted tiene acceso a sus datos personales
-    </p>
-
-    <p class="dos"> <span class="warning">Nota: </span> el Nombre y contraseña le recomendamos <span class="anotar">anotarlos,</span> ya que seran los datos con los cual podra acceder 
-        a la plataforma, a traves del inicio de sesion.
-    </p>
-
-    <p class="tres">El objetivo principal de este sistema es garantizar su privacidad y la de sus datos.</p>
-
-
-
     <div class="container">
-        <h1>Registrarse</h1>
+        <h1>Registrarse en la plataforma</h1>
 
-
-       
-      
         <form method="POST" action="{{ url_for('register_user') }}" id="register">
             
             <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
 
 
 
-            <div class="registration-form">
+            <div class="fields"></div>
                 
 
-                <div class="form-group form-group-left">
-                    <label for="name">Nombre</label>
+                <div class="field">
+                
+                    <label for="name">nombre completo <i class="fa-solid fa-user"></i></label>
                     <input type="text" id="name" name="name" placeholder="Nombre" required>
                     <span class="error message"></span>
-
-                    <label for="email">Email</label>
+                    
+                    
+                    <label for="name">usuario  <i class="fa-solid fa-user"></i></label>
+                    <input type="text" id="user" name="name" placeholder="Ej: frued24" required>
+                    <span class="error message"></span>
+                    
+           
+                    <label for="email">Email  <i class="fa-solid fa-envelope"></i></label>
                     <input type="email" id="email" name="email" placeholder="correo" required>
                     <span class="error message"></span>
-
-                    <label for="password">contraseña</label>
+                   
+                
+        
+              
+                    <label for="password">contraseña <i class="fa-solid fa-lock"></i></label>
                     <input type="password" id="password" name="password" placeholder="contraseña" required>
                     <span class="error message"></span>
-
-                    <label for="repeat_password">confirmar contraseña</label>
+                    
+              
+                    <label for="repeat_password">confirmar contraseña <i class="fa-solid fa-lock"></i></label>
                     <input type="password" id="repeat_password" name="repeat_password" placeholder="Confirmar contraseña" required>
+                    <span class="error message"></span>
+                    
+                    
+                    
+                    <label for="repeat_password">fecha de nacimiento <i class="fa-solid fa-calendar-days"></i></label>
+                    <input type="date" id="date" name="date" required>
                     <span class="error message"></span>
 
                 </div>
 
            
-            <div class="form-group form-group-right">
-               
-               
-                <label for="affiliation">Afiliacion</label> 
-                <select id="affilliation" name="affiliation">
-                    <option value="individuo">Individuo</option>
-                    <option value="clinica">Clinica privada</option>
-                    <option value="hospital">Hospital</option>
-                    <option value="medico">Medico privado</option>
-                    <option value="centro">Centro de atencion a pacientes</option>
-                    <option value="evaluaciones">Centro de evaluaciones</option>
-                </select>
-                <br>
-                 <br>
-                <label for="role">Con cual rol te identificas?</label>
-                <select id="role" name="role">
-                    <option value="individuo">Individuo</option>
-                    <option value="administrador">Gerente / director</option>
-                    <option value="medico">Medico</option>
-                    <option value="otro">Medico privado</option>
-                    <option value="otro">Enfermer@</option>
-                </select>
-                <br>
-                <br>
-                <label for="pais">pais</label> 
-                <select id="pais" name="pais">
-                    <option value="nicaragua">Nicaragua</option>
-                    <option value="otro">Otro</option>
-                </select>
-                <br>
-                 <br>
+       
 
-                <label for="departamento">Departamento: </label>
-                <select id="departamento" name="departamento">
-                    <option value="managua">Managua</option>
-                    <option value="masaya">Masaya</option>
-                    <option value="matagalpa">Matagalpa</option>
-                    <option value="madriz">Madriz</option>
-                    <option value="chontales">Chontales</option>
-                    <option value="boaco">Boaco</option>
-                    <option value="granada">Granada</option>
-                    <option value="leon">Leon</option>
-                    <option value="chinandega">Chinandega</option>
-                    <option value="rivas">Rivas</option>
-                    <option value="nuevaSegovia">Nueva Segovia</option>
-                    <option value="esteli">Esteli</option>
-                    <option value="rioSanJuan">Rio San Juan</option>
-                    <option value="carazo">Carazo</option>
-                    <option value="jinotega">Jinotega</option>
-                    <option value="atlanticoNorte">Atlantico Norte</option>
-                    <option value="atlanticoSur">Atlantico Sur</option>
-                    <option value="otro">Otro</option>
-                </select>
-                <br>
-                <br>
-                <label for="municipio">Municipio: </label>
-                <input type="text" id="municipio" name="municipio" placeholder="Municipio donde habita...">
-                <br>
-                 <br>
-            </div>
-           
-        </div>
+        <p class="privacy">
+            Al registrarse en Freud.AI usted acepta nuestros <a href="http://127.0.0.1:5000/freud#privacyModal">términos de privacidad</a>. <br>
+        </p>
 
-        <p class="privacy">Al registrarse en Freud.AI usted acepta nuestros terminos de privacidad. <br>
-       </p>
-
-       <p class="cerrar"> Para cerrar los terminos de privacidad haga click en la X</p>
-
-        <div id="privacyModal" class="modal">
-            <div class="modal-content">
-                <span class="close" onclick="closePrivacyModal()">&times;</span>
-                <h2>Términos de Privacidad</h2>
-               
-                <p class="privacidad"><b>Confidencialidad de la Información: </b> Garantizamos la confidencialidad de toda la información proporcionada en Freud.AI. 
-                    Los datos del usuario, las interacciones y la información del expediente están protegidos con medidas de seguridad avanzadas.</p>
-                    <p class="privacidad"> <b>Uso de la Información: </b> La información recopilada se utiliza exclusivamente con el propósito de proporcionar servicios psicológicos personalizados. 
-                        No compartiremos ni venderemos datos a terceros sin el consentimiento explícito del usuario.
-                        </p>
+        <button name="Register" class="register" type="submit">Registrarse</button>
         
-                        <p class="privacidad"><b>Seguridad de Datos: </b>Implementamos medidas de seguridad tecnológicas y organizativas para proteger la integridad y confidencialidad de los datos. 
-                            Nuestra plataforma cumple con los estándares de seguridad de la industria.</p>
-        
-                            <p class="privacidad"><b>Acceso Limitado: </b>El acceso a la información del expediente está estrictamente limitado a los profesionales autorizados. 
-                                Se utiliza un sistema de autenticación seguro para garantizar que solo los usuarios autorizados puedan acceder a la información confidencial.</p>
-        
-                                <p class="privacidad"><b>Consentimiento Informado: </b> Antes de utilizar nuestros servicios, solicitamos el consentimiento informado del usuario.
-                                     Esto incluye la comprensión de cómo se utilizará la información y el compromiso de seguir las políticas de privacidad establecidas.</p>
-        
-                                     <p class="privacidad"><b>Registro y Autenticación: </b> El proceso de registro e inicio de sesión está diseñado 
-                                        con altos estándares de seguridad para proteger la identidad del usuario.
-                                         Se recomienda mantener la información de inicio de sesión de manera segura y confidencial.</p>
-        
-                                         <p class="privacidad"><b>Retención de Datos: </b> Mantenemos los datos del usuario durante 
-                                            el tiempo necesario para cumplir con los objetivos establecidos.
-                                             Se brinda la opción de eliminar la cuenta y los datos personales en cualquier momento.</p>
-        
-                                             <p class="privacidad"><b>Actualizaciones de Privacidad: </b>Nos comprometemos a informar a los usuarios sobre cualquier
-                                                 cambio en nuestras políticas de privacidad.
-                                                 Las actualizaciones se comunicarán de manera clara y transparente.</p>
-
-
-            </div>
-        </div>
-            
-            <button name="Register" class="register" type="submit">Registrarse</button>
-        </form>
-        
-
-        <script type="text/javascript" src="{{ url_for('static', filename='validation_register.js') }}"></script>
-
         <p>¿Ya tienes cuenta? <a href="{{ url_for('login_account') }} ">Iniciar Sesion</a></p>
     </div>
+       
+        </div>
+            
+           
+        </form>
+        
+    </div>
+        <script type="text/javascript" src="{{ url_for('static', filename='validation_register.js') }}"></script>
+
 
     <div class="contacto " id="ayuda">
         <h3 >Contactenos</h3>
@@ -195,7 +105,7 @@
     
 
     <footer>
-        <p>&copy; 2023 Freud.AI.  Todos los derechos reservados</p>
+        <p>&copy; Freud.AI.  Todos los derechos reservados</p>
     </footer>
 
     Creditos imagen de fondo:  <a href="https://www.freepik.com/free-vector/dark-blue-security-background_1140343.htm#query=logout%20background&position=18&from_view=search&track=ais&uuid=b0e26011-e11e-4e90-8600-74e39007f3ed">Freepik</a>
