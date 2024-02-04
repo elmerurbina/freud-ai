@@ -381,3 +381,24 @@ main {
   color: #333333; 
 }
 
+/* chat.css */
+
+.user-message {
+  background-color: #5cb85c; /* Green for user messages */
+  color: #fff;
+  float: left;
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.chatbot-message {
+  background-color: #337ab7; /* Blue for bot messages */
+  color: #fff;
+  float: right;
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+
