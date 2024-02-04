@@ -32,9 +32,23 @@ def get_chatbot_response(user_input):
     if any(word in user_input.lower() for word in ['hola', 'saludos', 'buenos días', 'buenas tardes', 'buenas noches']):
         return '¡Hola! ¿Cómo te encuentras?'
 
+    if any(word in user_input.lower() for word in ['bien', 'bien gracias a Dios', 'bien gracias a dios']):
+        return 'Me alegro que estes bien, ¿como puedo ayudarte hoy?'
+
+
     # Expressing emotions
     elif any(word in user_input.lower() for word in ['estoy ansioso', 'me siento ansioso']):
         return 'Entiendo. La ansiedad es una experiencia común. ¿Te gustaría hablar sobre lo que la está desencadenando?'
+
+    if 'si' in user_input.lower():
+        return 'Sí, la ansiedad puede tener diversas causas. Algunas de las causas comunes incluyen el estrés, cambios en la vida, problemas de salud, entre otros. ¿Cual crees que sea la causa que te esta afectando?'
+
+    if 'estres' in user_input.lower():
+        return 'Algunas causas del estres son fracaso, universidad, mucho trabajo. ¿En los ultimos dias has tenido alguno de estos problemas?'
+
+
+    elif any(word in user_input.lower() for word in ['me siento solo', 'no tengo a nadie a mi lado']):
+        return 'La soledad no siempre es mala, muchas veces nos ayuda a reflexionar y a encontrarnos a nosotros mismos. ¿Dime de que tema deseas hablar?'
 
     elif any(word in user_input.lower() for word in ['me siento triste', 'estoy deprimido']):
         return 'Lamento escuchar que te sientes así. ¿Puedes compartir más sobre lo que ha estado sucediendo?'
