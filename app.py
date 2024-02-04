@@ -1,8 +1,8 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template
 import os
 from register_user import register_user_app
 from db import get_db
-
+from flask import request, jsonify
 
 
 
@@ -97,6 +97,29 @@ def  profesionales():
 @app.route('/chat')
 def chat():
     return render_template('chat.html')
+
+
+
+@app.route('/process_message', methods=['POST'])
+def process_message():
+    user_message = request.json.get('message', '')
+
+    # Process user input and generate response
+    response = get_chatbot_response(user_message)
+
+    return jsonify({'response': response})
+
+def get_chatbot_response(user_input):
+    # Add your logic here to analyze user input and generate a relevant response
+    if 'hola' in user_input.lower():
+        return '¡Hola! ¿En qué puedo ayudarte hoy?'
+    elif 'estoy ansioso' in user_input.lower():
+        return 'Entiendo. ¿Puedes contarme más sobre lo que te preocupa?'
+    else:
+        return 'Lo siento, no entiendo. ¿Puedes reformular tu pregunta?'
+
+# ... (remaining Flask code)
+
 
 
 if __name__ == '__main__':
