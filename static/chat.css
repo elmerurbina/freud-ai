@@ -339,12 +339,17 @@ body.dark .home .text {
 main {
   min-height: 100vh;
 }
-
 .message-input {
+  position: fixed;
+  bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 150px; 
+  width: 100%;
+  padding: 10px;
+  background-color: #f2f2f2;
+  border-top: 1px solid #ccc;
+
 }
 
 .message-input input {
@@ -352,12 +357,10 @@ main {
   border-radius: 20px;
   flex: 1;
   border: 1px solid #ccc;
-  margin-right: 10px;
-  margin-left: 25%;
-  box-sizing: border-box; 
-  height: auto; 
+  box-sizing: border-box;
+  height: auto;
+  margin-left: 20%;
 }
-
 
 .message-input button {
   font-size: 30px;
@@ -395,13 +398,20 @@ main {
 }
 
 .chatbot-message {
-  background-color: #337ab7; /* Blue for bot messages */
+  background-color: #337ab7; 
+  font-size: 16px;
   color: #fff;
   float: right;
-  margin-bottom: 10px;
+  margin-bottom: 100px;
   padding: 8px;
   border-radius: 8px;
   margin-left: 40%;
+  margin-right: 10%;
+}
+
+.message-container {
+  flex: 1;
+  overflow-y: auto; 
 }
 
 
