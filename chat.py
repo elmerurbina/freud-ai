@@ -1,5 +1,6 @@
-from flask import Flask, render_template
-from flask import request, jsonify
+# app.py
+
+from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__, static_url_path='/static')
 app.secret_key = 'your_secret_key'  # Set a secret key for session security
@@ -15,10 +16,6 @@ def chat():
     return render_template('chat.html')
 
 
-    # Pass user data to the template
-
-
-
 @app.route('/process_message', methods=['POST'])
 def process_message():
     user_message = request.json.get('message', '')
@@ -27,6 +24,7 @@ def process_message():
     response = get_chatbot_response(user_message)
 
     return jsonify({'response': response})
+
 
 def get_chatbot_response(user_input):
     # Add your logic here to analyze user input and generate a relevant response

@@ -23,7 +23,7 @@ function sendMessage() {
         // Display chatbot response
         const chatbotMessage = document.createElement('div');
         chatbotMessage.className = 'chatbot-message';
-        chatbotMessage.innerHTML = `<i class="fa-brands fa-fly"></i> ${data.response}`;
+        chatbotMessage.innerHTML = `<i class="fa-solid fa-brain"></i> ${data.response}`;
         messageContainer.appendChild(chatbotMessage);
 
         // Clear input field
