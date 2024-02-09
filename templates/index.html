@@ -14,14 +14,10 @@
 </head>
 <body>
     <header>
-
         <div class="container">
             <div class="menu">
-                <h1  class="logo">Freud&nbsp;<span>IA</span></h1>
-                <input type="Checkbox" id="menu" />
-                <label for="menu">
-                    <img src="{{ url_for('static', filename='imagenes/menu.png') }}" class="menu-icono" alt="">
-                </label>
+                <h1 class="logo">Freud&nbsp;<span>IA</span></h1>
+               
                 <nav class="navbar">
                     <ul>
                         <li><a href="{{ url_for('profesionales') }}">Profesionales</a></li>
@@ -30,11 +26,14 @@
                         <li><a href="{{ url_for('notificaciones') }}">Notificaciones</a></li>
                         <li><a href="#nosotros">Nosotros</a></li>
                         <li><a class="menu" href="#privacidad" id="privacyLink">Privacidad</a></li>
-                        <li><a href=" ">Soporte </a></li>
+                        <li><a href="#" id="support-link">Soporte</a></li>
+
                         
                     </ul>
                 </nav>
-            </div>
+        </div>
+            <script src="{{ url_for('static', filename='soporte.js') }}"></script>
+            <script src="{{ url_for('static', filename='menu_index.js') }}"></script>
 
             <div class="header-content">
                 <div class="header-txt">
@@ -124,23 +123,6 @@
                 </div>
 
 
-
-
-
-
-                <div class="box">
-                    <h2>Siguenos</h2>
-                    <div class="red-social">
-                        <a href="#" class="fa fa-facebook"></a>
-                        <a href="#" class="fa fa-instagram"></a>
-                        <a href="#" class="fa fa-twitter"></a>
-                        <a href="#" class="fa fa-youtube"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="grupo-2">
-                <small>&copy; <b>Freud AI</b> - Todos los Derechos Reservados.</small>
-            </div>
         </footer>
 
     </header>
