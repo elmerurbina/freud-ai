@@ -1,43 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Freud AI</title>
+    <title>Panel del Psicólogo</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='expediente.css') }}">
-
 </head>
 <body>
-    <h1 class="logo">Freud <span>IA</span></h1>
-    
-    <section>
-    <div class="solicitarAcceso">
-        
-        <h2>Ver y/o solicitar acceso al expediente de su paciente</h2>
-    
-        <form>
-            <label for="nombre">Nombre del paciente:</label>
-            <input type="text" name="nombre" id="nombre" placeholder="ej. Freud AI" required><br><br>
-            <button>Solicitar acceso</button><br><br>
-            <a class="credentials" href="{{ url_for('login_account') }}">[ Acceder con credenciales (email y contraseña) ]</a>
-        </form>
-    </div>
 
-    <div class="contacto" id="ayuda">
-        <h3>Para cualquier duda o información, contáctenos!</h3>
-        <i class="fa-solid fa-envelope"></i>
-        <a class="gmail" href="mailto:freud.ai@gmail.com">Gmail</a>
-        <i class="fa-brands fa-whatsapp"></i>
-        <a class="whatsapp" href="https://wa.me/50577966272">WhatsApp</a>
-        <i class="fa-brands fa-facebook"></i>
-        <a class="facebook" href="freud.ai">Facebook</a>
-        <i class="fa-brands fa-instagram"></i>
-        <a class="instagram" href="freud.ai">Instagram</a>
-    </div>
-</section>
-    <footer>
-        <p>&copy; Freud.AI. Todos los derechos reservados</p>
-       
-    </footer>
+<header>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('freud') }}">Inicio</a></li>
+            <li><a href="#">Mis Reglas</a></li>
+            <li><a href="#">Términos de Acceso</a></li>
+            <li><a href="#">Ver mi Perfil</a></li>
+            <li><a href="#">Soporte</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <section id="user-records">
+        <h2>Acceder al expediente de su paciente</h2>
+        <form action="#" method="post">
+            <label for="username">Nombre de Usuario:</label>
+            <input type="text" id="username" name="username" placeholder="ingrese el nombre de usuario sin @"required>
+            <input type="submit" value="Acceder">
+        </form>
+        <p><a href="#">Acceder con credenciales (email y contraseña)</a></p>
+    </section>
+</main>
+
 </body>
 </html>
