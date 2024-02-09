@@ -35,7 +35,7 @@ def get_chatbot_response(user_input):
         return '¡Hola! ¿Cómo te encuentras?'
 
     if any(word in user_input.lower() for word in ['bien', 'bien gracias a Dios', 'bien gracias a dios']):
-        return 'Me alegro que estes bien, ¿como puedo ayudarte hoy?'
+        return 'Me alegro que estes bien, ¿De que tema te gustaria hablar hoy?'
 
 
     # Expressing emotions
