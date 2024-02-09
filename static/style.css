@@ -50,20 +50,25 @@ img {
 span {
     color: #EE13C4;
 }
-
 .navbar ul {
     display: flex;
     align-items: center;
+    justify-content: flex-start; /* Align items to the left */
+    margin-left: 0; /* Remove default margin */
+    padding-left: 0; /* Remove default padding */
 }
 
 .navbar ul li {
     padding: 0 20px;
     font-size: 20px;
+    white-space: nowrap; /* Prevent line breaks */
 }
 
 .navbar ul li a {
     color: #FFFFFF;
+    display: inline-block; /* Ensure the link text is displayed inline */
 }
+
 
 .navbar ul li a:hover {
     color: #EE13C4;
@@ -94,14 +99,14 @@ span {
 
 .header-txt h1 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 100px;
+    font-size: 70px;
     line-height: 1;
     color: #FFFFFF;
     margin-bottom: 15px;
 }
 
 .header-txt p {
-    font-size: 20px;
+    font-size: 18px;
     color: #C1C1C1;
     margin-bottom: 50px;
 }
@@ -121,7 +126,7 @@ span {
 }
 
 .header-img {
-    flex-basis: 100%;
+    flex-basis: 70%;
 }
 
 @media (max-width: 991px) {
@@ -180,84 +185,46 @@ span {
 }
 
 
-
-.pie-pagina{
+.pie-pagina {
     width: 100%;
-    background-color: #0a141d;
+    background-color: none;
+    color: white;
 }
 
-.pie-pagina .grupo-1{
+.pie-pagina .grupo-1 {
     width: 100%;
     max-width: 1500px;
     margin: auto;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 80px;
-    padding: 45px 0px;
+    padding: 45px 20px; /* Reducir el margen derecho */
 }
 
-.pie-pagina .grupo-1 .box figure{
-    width: 100%;
-    height: 100%;
+.pie-pagina .grupo-1 .box figure {
+    width: 80%;
+    height: 80%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    
 }
 
-.pie-pagina .grupo-1 .box figure img{
-    width: 350px;
-}
-
-.pie-pagina .grupo-1 .box h2{
-    color: white;
-    margin-bottom: 25px;
-    font-size: 25px;
+.pie-pagina .grupo-1 .box figure img {
+    width: 300px;
 }
 
 
-.pie-pagina .grupo-1 .red-social a {
-    display: inline-block;
-    text-decoration: none;
-    width: auto; /* Adjusted width to fit the content */
-    height: auto; /* Adjusted height to fit the content */
-    line-height: normal; /* Removed line-height */
-    color: #efefef;
-    margin-right: 10px;
-    background-color: none;
-    text-align: left; /* Adjusted text alignment */
-    transition: all 300ms ease;
-    font-size: 10px;
-}
-.pie-pagina .grupo-1 .red-social a:hover{
-    color:aquamarine;
+.box h2 {
+    color: #f0c6c6; /* Color del título */
+    font-size: 24px; /* Tamaño del título */
+    margin-bottom: 15px; /* Espacio inferior del título */
 }
 
-.contact-information {
-    display: none; 
+.box p {
+    color: #d4bbbb; /* Color del texto */
+    font-size: 16px; /* Tamaño del texto */
+    line-height: 1.6; /* Altura de línea */
+    margin-right: -250px;
 }
-
-.pie-pagina .grupo-2{
-    background-color: #0a1a2a;
-    padding: 15px 10px;
-    text-align: center;
-    color: white;
-}
-
-.pie-pagina .grupo-2 small{
-    font-size: 14px;
-}
-
-@media screen and (max-width: 800px){
-
-    .pie-pagina .grupo-1{
-        width: 90%;
-        grid-template-columns: repeat(1, lfr);
-        grid-gap: 30px;
-        padding: 35px 0px;
-    }
-      
-}
-
 
 
 
@@ -283,7 +250,7 @@ span {
 .close-btn {
     position: absolute;
     top: 10px;
-    right: 15px;
+    right: 30px;
     font-size: 20px;
     color: #333;
     cursor: pointer;
@@ -295,7 +262,7 @@ span {
 .close-btn {
 position: absolute;
 top: 10px;
-right: 15px;
+right: 30px;
 font-size: 40px; 
 color: #333;
 cursor: pointer;
@@ -304,7 +271,7 @@ cursor: pointer;
 .close-btn:hover{color: red;}
 
 .privacidad {
-    margin-top: 2%;
+    margin-top: 0%;
     line-height: 1.8;
     margin-left: 10%;
     margin-right: 10%;
@@ -342,7 +309,7 @@ b {
 .privacy-content {
     background: #fff; /* White background for the content */
     max-width: 800px; /* Set a maximum width for better readability */
-    margin: 20px auto; /* Center the content */
+    margin: 80px auto 20; /* Center the content */
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Add a subtle box shadow for depth */
@@ -350,10 +317,10 @@ b {
 .close-btn {
     position: absolute;
     top: 8px;
-    right: 200px;
+    right: 220px;
     font-size: 40px;
     cursor: pointer;
-    color: #fff; 
+    color: #7da5f0; 
     z-index: 2; 
 }
 
@@ -365,11 +332,11 @@ b {
 .close-btn::before {
     content: 'Cerrar';
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 30%;
+    left: 20%;
     transform: translate(-50%, -50%);
     font-size: 16px;
-    color: #fff;
+    color: #da399c;
     opacity: 0; 
     transition: opacity 0.3s ease;
 }
@@ -379,8 +346,36 @@ b {
 }
 
 .privacy-content p {
-    margin-bottom: 15px; /* Add space between paragraphs */
+    margin-bottom: 25px; /* Add space between paragraphs */
 }
 
+.more-options-menu {
+    display: none;
+    position: absolute;
+    top: 0; /* Position at the top */
+    left: 0; /* Position at the left */
+    z-index: 1000;
+    background-color: #7305ce; /* Dark background color */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
 
+.more-options-menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
 
+.more-options-menu li {
+    margin-bottom: 10px;
+}
+
+.more-options-menu a {
+    color: #fff; /* White text color */
+    text-decoration: none;
+}
+
+.more-options-menu.active {
+    display: block;
+}

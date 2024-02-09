@@ -23,21 +23,28 @@
                         <li><a href="{{ url_for('profesionales') }}">Profesionales</a></li>
                         <li><a href="{{ url_for('login_account') }}">Ir al Chat</a></li>
                         <li><a href="{{ url_for('verExpediente') }}">Panel del Psicólogo</a></li>
-                        <li><a href="{{ url_for('notificaciones') }}">Notificaciones</a></li>
-                        <li><a href="#nosotros">Nosotros</a></li>
-                        <li><a class="menu" href="#privacidad" id="privacyLink">Privacidad</a></li>
-                        <li><a href="#" id="support-link">Soporte</a></li>
-
-                        
+                        <li class="more-options">
+                            <a href="#" class="more-options-toggle">Mas Opciones</a>
+                            <div class="more-options-menu">
+                                <ul>
+                                    <li><a href="{{ url_for('notificaciones') }}">Notificaciones</a></li>
+                                    <li><a href="#nosotros">Nosotros</a></li>
+                                    <li><a class="menu" href="#privacidad" id="privacyLink">Privacidad</a></li>
+                                    <li><a href="#" id="support-link">Soporte</a></li>
+                                </ul>
+                            </div>
+                        </li>
                     </ul>
                 </nav>
+                <script src="{{ url_for('static', filename='menu_index.js') }}"></script>
+                
         </div>
             <script src="{{ url_for('static', filename='soporte.js') }}"></script>
-            <script src="{{ url_for('static', filename='menu_index.js') }}"></script>
+           
 
             <div class="header-content">
                 <div class="header-txt">
-                    <h1>TU AYUDANTE  <br>PERSONAL </h1>
+                    <h1>TU <br> AYUDANTE  <br>PERSONAL </h1>
                     <p>
                         La piscologia, a diferecia de la quimica, algebra o literatura, es un manual para tu propia mente. Es una guia para tu vida.
                     </p>
@@ -107,20 +114,13 @@
             
 
                 <div id="nosotros" class="box">
-                    <h2>SOBRE NOSOTROS</h2>
-    
-                    <P>Freud IA es un ChatBot que utiliza el modelo de Terapia cognitivo conductual igual que un psicólogo humano, el Bot puede realizar 
-                        evaluaciones psicológicas precisas, ayudar pacientes con 
-                        diferentes patologías psicológicas como estrés, depresión, ansiedad, trastornos alimenticios o del sueño, addicciones a drogras, alcohol o tabaco, 
-                        manías específicas, trastorno bipolar, 
-                        estrés postramáutico, y muchos otros problemas.
-                    </P>
-    
-                    <P>A través de un proceso estructurado e integral con atención las 24/7, el Bot puede guiar a los pacientes 
-                        en su proceso de recuperación, manejo y control de sus problemas.
-                    </P>
-    
+                    <h2>¿Quiénes somos?</h2>
+                
+                    <p>Somos una plataforma dedicada a proporcionar apoyo psicológico en línea. Nuestro equipo está compuesto por psicólogos certificados y autorizados, cada uno con sus respectivas licencias profesionales. Ofrecemos una amplia gama de servicios, incluido un chatbot interactivo con el que los usuarios pueden interactuar. Este chatbot está diseñado para brindar atención similar a la humana, y también ofrecemos apoyo especializado para personas en riesgo de suicidio.</p>
+                <br>
+                    <p>En nuestra plataforma, atendemos cualquier tipo de problema psicológico, desde el estrés y la ansiedad hasta trastornos más complejos. Nuestro objetivo es proporcionar un entorno seguro y confidencial donde las personas puedan obtener el apoyo que necesitan para mejorar su bienestar emocional y mental.</p>
                 </div>
+                
 
 
         </footer>
