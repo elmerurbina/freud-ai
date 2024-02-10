@@ -1,33 +1,40 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var privacyLink = document.getElementById('privacy-link');
+    var accessTermsLink = document.getElementById('norms-terms');
 
-    privacyLink.addEventListener('click', function(event) {
+    accessTermsLink.addEventListener('click', function(event) {
         event.preventDefault(); // Prevent the default action of the link
 
         // Define styles for the popup window
         var popupStyles = 'width=600,height=600,top=100,left=100,scrollbars=yes';
 
-        // Create a new window for the privacy terms
-        var privacyWindow = window.open('', '_blank', popupStyles);
+        // Create a new window for the access terms
+        var accessTermsWindow = window.open('', '_blank', popupStyles);
 
-        // Write privacy terms content to the new window
-        privacyWindow.document.write('<html><head><title>Términos de Privacidad</title>');
-        privacyWindow.document.write('<style>');
-        privacyWindow.document.write('body { font-family: Arial, sans-serif; padding: 20px; }');
-        privacyWindow.document.write('h3 { margin-bottom: 15px; }');
-        privacyWindow.document.write('p { margin-bottom: 10px; }');
-        privacyWindow.document.write('b { font-weight: bold; }');
-        privacyWindow.document.write('</style>');
-        privacyWindow.document.write('</head><body>');
-        privacyWindow.document.write('<h3>Términos de Privacidad</h3>');
-        privacyWindow.document.write('<p><b>Confidencialidad de la Información:</b> Garantizamos la confidencialidad de toda la información proporcionada en Freud.AI. Los datos del usuario, las interacciones y la información del expediente están protegidos con medidas de seguridad avanzadas.</p>');
-        privacyWindow.document.write('<p><b>Uso de la Información:</b> La información recopilada se utiliza exclusivamente con el propósito de proporcionar servicios psicológicos personalizados. No compartiremos ni venderemos datos a terceros sin el consentimiento explícito del usuario.</p>');
-        privacyWindow.document.write('<p><b>Seguridad de Datos:</b> Implementamos medidas de seguridad tecnológicas y organizativas para proteger la integridad y confidencialidad de los datos. Nuestra plataforma cumple con los estándares de seguridad de la industria.</p>');
-        privacyWindow.document.write('<p><b>Acceso Limitado:</b> El acceso a la información del expediente está estrictamente limitado a los profesionales autorizados. Se utiliza un sistema de autenticación seguro para garantizar que solo los usuarios autorizados puedan acceder a la información confidencial.</p>');
-        privacyWindow.document.write('<p><b>Consentimiento Informado:</b> Antes de utilizar nuestros servicios, solicitamos el consentimiento informado del usuario. Esto incluye la comprensión de cómo se utilizará la información y el compromiso de seguir las políticas de privacidad establecidas.</p>');
-        privacyWindow.document.write('<p><b>Registro y Autenticación:</b> El proceso de registro e inicio de sesión está diseñado con altos estándares de seguridad para proteger la identidad del usuario. Se recomienda mantener la información de inicio de sesión de manera segura y confidencial.</p>');
-        privacyWindow.document.write('<p><b>Retención de Datos:</b> Mantenemos los datos del usuario durante el tiempo necesario para cumplir con los objetivos establecidos. Se brinda la opción de eliminar la cuenta y los datos personales en cualquier momento.</p>');
-        privacyWindow.document.write('<p><b>Actualizaciones de Privacidad:</b> Nos comprometemos a informar a los usuarios sobre cualquier cambio en nuestras políticas de privacidad. Las actualizaciones se comunicarán de manera clara y transparente.</p>');
-        privacyWindow.document.write('</body></html>');
+        // Write access terms content to the new window
+        accessTermsWindow.document.write('<html><head><title>Términos de Acceso</title>');
+        accessTermsWindow.document.write('<style>');
+        accessTermsWindow.document.write('body { font-family: Arial, sans-serif; padding: 20px; }');
+        accessTermsWindow.document.write('h2, h3 { margin-bottom: 15px; }');
+        accessTermsWindow.document.write('p, ul { margin-bottom: 10px; }');
+        accessTermsWindow.document.write('b { font-weight: bold; }');
+        accessTermsWindow.document.write('</style>');
+        accessTermsWindow.document.write('</head><body>');
+        accessTermsWindow.document.write('<h2>Normativa para Psicólogos Certificados</h2>');
+        accessTermsWindow.document.write('<p>1. Confidencialidad y Privacidad: Como psicólogo certificado, estás obligado a mantener la confidencialidad de toda la información de los usuarios a los que accedas a través de la plataforma. No debes compartir ni divulgar ningún dato confidencial sin el consentimiento expreso del usuario, a menos que exista una obligación legal que lo requiera.</p>');
+        accessTermsWindow.document.write('<p>2. Uso Responsable de la Información: La información de los usuarios solo debe utilizarse con fines terapéuticos y para brindarles el apoyo adecuado. No debes utilizar la información con ningún otro propósito, como fines comerciales o de investigación, sin el consentimiento previo del usuario.</p>');
+        accessTermsWindow.document.write('<p>3. Respeto y Empatía: Debes tratar a todos los usuarios con respeto, empatía y comprensión. No debes discriminar ni juzgar a los usuarios por su condición o situación, y debes proporcionarles un ambiente seguro y acogedor para expresarse libremente.</p>');
+        accessTermsWindow.document.write('<p>4. Integridad Profesional: Debes ejercer tu práctica profesional de acuerdo con los más altos estándares éticos y profesionales. No debes participar en ninguna actividad que pueda comprometer tu integridad o la confianza de los usuarios en tu capacidad para ayudarles.</p>');
+        accessTermsWindow.document.write('<p>5. Notificación de Riesgos: Si identificas algún riesgo de suicidio u otra situación de crisis durante una sesión de terapia, debes tomar medidas inmediatas para garantizar la seguridad del usuario. Esto puede incluir la notificación de emergencia a las autoridades pertinentes o la derivación a servicios de atención médica adecuados.</p>');
+        accessTermsWindow.document.write('<p>6. Cumplimiento de la Legislación: Debes cumplir con todas las leyes y regulaciones aplicables relacionadas con la práctica de la psicología y la protección de datos personales. Esto incluye, entre otras cosas, el cumplimiento de la normativa de privacidad y la protección de datos vigente en tu jurisdicción.</p>');
+        accessTermsWindow.document.write('<h3>7. Sanciones por Incumplimiento</h3>');
+        accessTermsWindow.document.write('<p>8. El incumplimiento de estas normas éticas y profesionales puede resultar en sanciones disciplinarias, que pueden incluir la suspensión o revocación de tu licencia para ejercer la psicología en la plataforma. Se tomarán medidas adicionales si se considera que el incumplimiento ha causado daño o perjuicio a los usuarios.</p>');
+        accessTermsWindow.document.write('<h2>9. Otras Reglas</h2>');
+        accessTermsWindow.document.write('<ul>');
+        accessTermsWindow.document.write('<li>Respetar la confidencialidad de los datos de los usuarios en todo momento.</li>');
+        accessTermsWindow.document.write('<li>Brindar atención profesional y ética a todos los usuarios.</li>');
+        accessTermsWindow.document.write('<li>Reportar cualquier situación de riesgo para la salud mental de los usuarios de manera inmediata.</li>');
+        accessTermsWindow.document.write('<li>No divulgar información personal o confidencial de los usuarios sin su consentimiento explícito.</li>');
+        accessTermsWindow.document.write('</ul>');
+        accessTermsWindow.document.write('</body></html>');
     });
 });
