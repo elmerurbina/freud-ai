@@ -60,8 +60,7 @@
 
                 </div>
 
-        <p class="privacy">
-            Al registrarse en Freud.AI usted acepta nuestros <a href="http://127.0.0.1:5000/freud#privacyModal">términos de privacidad</a>. <br>
+        <p class="privacy">Al registrarse en Freud.AI usted acepta nuestros <a href="#" id="privacyLink">términos de privacidad</a>. <br>
         </p>
 
         <button name="Register" class="register" type="submit">Registrarse</button>
@@ -75,7 +74,7 @@
         </form>
         
     </div>
-     
+    <script src="{{ url_for('static', filename='js/privacidad.js') }}"></script>
 
     <footer>
         <p>&copy; Freud.AI.  Todos los derechos reservados</p>
