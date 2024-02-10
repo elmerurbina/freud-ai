@@ -103,3 +103,9 @@ main {
 #user-records p a:hover {
    text-decoration: underline;
 }
+
+.copyright{
+   margin-top: 150px;
+   text-align: center;
+   color: white;
+}
