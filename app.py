@@ -23,6 +23,9 @@ def edit_profile():
     return render_template('perfil_profesional.html')
 
 
+@app.route('/perfil')
+def view_profile():
+    return render_template('perfil.html')
 
 @app.route('/notificaciones')
 def  notificaciones():

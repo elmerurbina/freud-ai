@@ -1,30 +1,27 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
-# Store user data in memory (replace with a database in a real-world application)
-users = {}
+# Sample profile data (replace this with actual data retrieval logic)
+profile_data = {
+    'file_path': r'C:\Users\elmer\PycharmProjects\Freud_AI\static\imagenes\perfil.jpg',
+    'nombre': 'John Doe',
+    'ubicacion': 'City, Country',
+    'contacto': 'johndoe@example.com',
+    'licencia': '123456',
+    'estudios_academicos': 'Bachelor of Science in Computer Science',
+    'keywords': 'Python, Flask, Web Development',
+    'descripcion': 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus lobortis mi nec tristique suscipit.'
+}
 
-@app.route('/')
-def index():
-    return render_template('index.html')
+# Define a context processor to make profile_data available to all templates
+@app.context_processor
+def inject_profile_data():
+    return dict(profile_data=profile_data)
 
-@app.route('/register', methods=['POST'])
-def register():
-    username = request.form['username']
-    name = request.form['name']
-    # Add more fields as needed
-
-    # Handle image upload
-    if 'profile_image' in request.files:
-        profile_image = request.files['profile_image']
-        # Handle image storage, e.g., save to a folder or a cloud storage service
-
-    # Save user data (replace with database logic)
-    users[username] = {'name': name, 'profile_image_url': 'path_to_image'}
-
-    return redirect(url_for('index'))
+@app.route('/perfil')
+def view_profile():
+    return render_template('perfil.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
-

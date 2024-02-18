@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+</head>
+<body>
+    <div class="profile">
+        <img src="{{ profile_data.file_path }}" alt="Profile Picture" width="150"><br><br>
+
+        <label><i class="fa-solid fa-user"></i>Nombre Completo:</label>
+        
+        <label><i class="fa-solid fa-location-dot"></i>Ubicación:</label>
+       
+        <label><i class="fa-solid fa-phone"></i>Contacto:</label>
+       
+
+        <label><i class="fa-solid fa-id-card"></i>Licencia:</label>
+        
+        <label><i class="fa-solid fa-graduation-cap"></i>Estudios Académicos:</label><br>
+        
+        <label>Keywords:</label>
+      
+
+        <label>Descripción:</label><br>
+        
+        <a href="{{ url_for('edit_profile') }}">Editar Perfil</a>
+    </div>
+</body>
+</html>
