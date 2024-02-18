@@ -1,29 +1,48 @@
-<!-- In your profile.html file -->
+<!-- edit_profile.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Editar mi perfil</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/perfil_profesional.css') }}">
 </head>
 <body>
-    <h1>Bienvenido a Freud AI, {{ username }}, es un placer tenerte por aca!</h1>
+
+    <h1 class="logo">Freud&nbsp;<span>IA</span></h1>
+   
+    <div class="container">
+        <h1>Editar mi perfil</h1>
+
+    <form action="/edit_profile" method="post" enctype="multipart/form-data">
+        <label for="foto"> <i class="fa-solid fa-image"></i>Foto de perfil:</label>
+        <input type="file" id="foto" name="foto"><br><br>
+
+        <label for="nombre"> <i class="fa-solid fa-user"></i>Nombre Completo:</label>
+        <input type="text" id="nombre" name="nombre"><br><br>
+
+        <label for="ubicacion"><i class="fa-solid fa-location-dot"></i>Ubicación:</label>
+        <input type="text" id="ubicacion" name="ubicacion"><br><br>
+
+        <label for="contacto"><i class="fa-solid fa-phone"></i>Contacto:</label>
+        <input type="number" id="contacto" name="contacto"><br><br>
+
+        <label for="licencia"><i class="fa-solid fa-id-card"></i>Licencia:</label>
+        <input type="text" id="licencia" name="licencia"><br><br>
 
 
-    <form action="/update_profile" method="post" enctype="multipart/form-data">
-        <label for="name">Nombre:</label>
-        <input type="text" id="name" name="name" required>
+        <label for="estudios_academicos"><i class="fa-solid fa-graduation-cap"></i>Estudios Académicos:</label><br>
+        <textarea id="estudios_academicos" name="estudios_academicos"></textarea><br><br>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+        <label for="keywords">Keywords (separados por comas):</label>
+        <input type="text" id="keywords" name="keywords"><br><br>
 
-        <label for="profile_picture">Foto:</label>
-        <input type="file" id="profile_picture" name="profile_picture" accept="image/*">
+        <label for="descripcion">Descripción:</label><br>
+        <textarea id="descripcion" name="descripcion"></textarea><br><br>
 
-        <input type="submit" value="Guardar cambios">
+        
+        <input type="submit" value="Guardar">
     </form>
-
-
+</div>
 </body>
 </html>

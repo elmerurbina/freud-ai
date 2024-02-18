@@ -18,6 +18,12 @@ def home():
 
 
 
+@app.route('/perfil_profesional')
+def edit_profile():
+    return render_template('perfil_profesional.html')
+
+
+
 @app.route('/notificaciones')
 def  notificaciones():
     return render_template('notificaciones.html')
