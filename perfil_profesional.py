@@ -11,7 +11,7 @@ mydb = mysql.connector.connect(
   database="profesionales"
 )
 
-@app.route('/edit_profile', methods=['GET', 'POST'])
+@app.route('/perfil_profesional', methods=['GET', 'POST'])
 def edit_profile():
     if request.method == 'POST':
         # Get form data
