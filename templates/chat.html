@@ -13,6 +13,9 @@
     <!--Conexion con el archivo JS que cumple la funcion de procesar los chats-->
     <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
 </head>
+<!--Foto de perfil del usuario-->
+<img src="{{ url_for('static', filename='imagenes/usuario.png') }}" alt="Mi perfil" class="profile-photo">
+
     <!--Menu-->
 <body class="">
     
@@ -136,9 +139,8 @@
     <script src="{{ url_for('static', filename='js/input.js') }}"></script> <!--Funcion del input-->
     <script src="{{ url_for('static', filename='js/logout.js') }}"></script> <!--Funcion para cerrar sesion-->
     <script src="{{ url_for('static', filename='js/chat.js') }}"></script> <!--Funcion para recibir y enviar mensajes-->
-    <script src="{{ url_for('static', filename='js/feedback.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/feedback.js') }}"></script> <!--Funcion para escribir comentario-->
 
-    </section>
 
 </body>
 
