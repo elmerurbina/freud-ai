@@ -1,22 +1,22 @@
 document.getElementById('privacyLink').addEventListener('click', function (event) {
-    event.preventDefault(); // Prevent the default action of the link
+    event.preventDefault(); // prevenir la accion por default
 
-    // Define styles for the popup window
+    // Definir estilos para la ventana emergente
     var popupStyles = 'width=600,height=600,top=100,left=100,scrollbars=yes';
 
-    // Create a new window for the privacy terms
+    // Crear la nueva ventana
     var privacyWindow = window.open('', '_blank', popupStyles);
 
-    // Write privacy terms content to the new window
+    // Escribir los terminos de privacidad
     privacyWindow.document.write('<html><head><title>Términos de Privacidad</title>');
-    privacyWindow.document.write('<style>');
+    privacyWindow.document.write('<style>');// Agregar estilos CSS
     privacyWindow.document.write('body { font-family: Arial, sans-serif; padding: 20px; background-color: #f0f0f0;}');
     privacyWindow.document.write('h3 { margin-bottom: 15px; }');
     privacyWindow.document.write('p { margin-bottom: 10px; }');
     privacyWindow.document.write('b { font-weight: bold; }');
-    privacyWindow.document.write('</style>');
+    privacyWindow.document.write('</style>'); // Cierre de los estilos CSS
     privacyWindow.document.write('</head><body>');
-    privacyWindow.document.write('<div class="privacy-content">');
+    privacyWindow.document.write('<div class="privacy-content">'); // Obtener el documento por el nombre de clase
     privacyWindow.document.write('<h3>Términos de Privacidad</h3>');
     privacyWindow.document.write('<p><b>Confidencialidad de la Información:</b> Garantizamos la confidencialidad de toda la información proporcionada en Freud.AI. Los datos del usuario, las interacciones y la información del expediente están protegidos con medidas de seguridad avanzadas.</p>');
     privacyWindow.document.write('<p><b>Uso de la Información:</b> La información recopilada se utiliza exclusivamente con el propósito de proporcionar servicios psicológicos personalizados. No compartiremos ni venderemos datos a terceros sin el consentimiento explícito del usuario.</p>');
@@ -29,7 +29,7 @@ document.getElementById('privacyLink').addEventListener('click', function (event
     privacyWindow.document.write('</div>');
     privacyWindow.document.write('</body></html>');
 
-    // Close the privacy window when the main window is closed
+    // Cerrar la ventana de privacidad
     window.addEventListener('beforeunload', function () {
         privacyWindow.close();
     });

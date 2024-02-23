@@ -1,6 +1,6 @@
 
 body {
-    background-image: url("/static/imagenes/registro.jpg");
+    background-image: url("/static/imagenes/registro.jpg"); /* Imagen de fondo */
     font-family: Arial, Helvetica, sans-serif;
     color: #fff;
     margin: 0;
@@ -10,7 +10,7 @@ body {
    background-attachment: fixed;
 }
 
-
+/* Logo */
 .logo {
     color: #ffffff;
     text-transform: uppercase;
@@ -22,6 +22,7 @@ span {
     color: #EE13C4;
 }
 
+/* Encabezado */
 h1{font-size: 20px;
 margin-bottom: 15px;}
 
@@ -29,7 +30,7 @@ margin-bottom: 15px;}
    
     overflow: hidden;
 }
-
+/* Estilos de los inputs */
 .field input {
     width: 100%;
     padding: 4px;
@@ -38,8 +39,8 @@ margin-bottom: 15px;}
     border-bottom: 1px solid #2c3e50; 
     font-size: 14px;
     box-sizing: border-box; 
-    background-color: transparent; /* Set background to transparent */
-    outline: none; /* Remove the default input focus outline */
+    background-color: transparent; 
+    outline: none; 
 }
 
 
@@ -58,7 +59,7 @@ margin-bottom: 15px;}
     border-radius: 5px;
     
 }
-
+/* El container es la clase que contiene la forma y los inputs */
 .container {
     text-align: center;  
     color: white;
@@ -96,7 +97,7 @@ input {
     color: lightgrey;
 }
 
-
+/* Boton para registrar */
 button.register {
     margin-top: 5%;
     margin-bottom: 5%;
@@ -130,12 +131,13 @@ padding-top: 100px;}
         margin-bottom: 20px;
         }
 
+        /* Validaciones de campos con JS */
         span.warning{color: rgb(87, 173, 231);}
         span.anotar{color: rgb(231, 181, 87);}
 
 
 a:hover{color: rgb(238, 178, 178);}
-
+/* Controlar el tamaño de los iconos */
 i.fa-solid.fa-user {
     font-size: 14px;
 }
@@ -155,63 +157,6 @@ i.fa-solid.fa-calendar-days {
     font-size: 14px;
 }
 
-
-p.privacy{color:rgb(230, 221, 224);
-font-size: 18px;
-text-align: center;
-font-family:Arial, Helvetica, sans-serif;
-margin-top: 3%;}
-
-p.privacidad{color: white;
-font-size: 14px;
-margin-top: 10%;
-line-height: 1.5;}
-
-b{color:rgb(231, 181, 87)}
-
-h3{font-size: 25px;
-margin-right: 40%;
-margin-bottom: 10%;}
-
-.contacto{margin-top: 100px;
-    color: white;
-    padding: 20px;
-    margin-left: 35%;
-    }
-    
-    a.gmail{color: white;
-    margin-right: 50px;}
-    a.whatsapp{color: white;
-    margin-right: 50px;}
-    a.facebook{color: white;
-    margin-right: 50px;}
-    a.instagram{color: white;
-        margin-right: 50px;}
-    a.whatsapp:hover{color: red;}
-    a.gmail:hover{color: red;}
-    a.facebook:hover{color: red;}
-    a.instagram:hover{color: red;}
-
-    .close{font-size: 50px;}
-
-    .close:hover{color: red;}
-
-    p.cerrar{font-size: 14px;
-    margin-top: 3%;
-text-align: center;}
-
-
-
-input:invalid + span::before {
-    content: attr(data-custom-error);
-    color: red;
-    display: block;
-    margin-top: 5px;
-}
-
-input:valid {
-    border: 1px solid green;
-}
 
 .error-message {
     display: none;
