@@ -115,17 +115,20 @@ a{color: rgb(29, 24, 29);
     font-size: 18px;
 }
 
-footer{font-size: 20px;
+footer{
+    font-size: 20px;
     color: lightgray;
     text-align: center;
-padding-top: 100px;}
+    padding-top: 100px;}
 
-    figcaption{margin-left: 70px;
-        margin-top: -50px;
+    figcaption{
+    margin-left: 70px;
+    margin-top: -50px;
      color: white;
      font-size: 20px;}
 
-     .logo{width: 80px;
+     .logo{
+        width: 80px;
         height: auto;
         border-radius: 50%;
         margin-bottom: 20px;
@@ -137,6 +140,7 @@ padding-top: 100px;}
 
 
 a:hover{color: rgb(238, 178, 178);}
+
 /* Controlar el tamaño de los iconos */
 i.fa-solid.fa-user {
     font-size: 14px;
@@ -157,12 +161,12 @@ i.fa-solid.fa-calendar-days {
     font-size: 14px;
 }
 
-
+/* No mostrar el mensaje de error inicialmente, para la validacion de los campos */
 .error-message {
     display: none;
 }
 
-
+/* Usar lines para los inputs, en lugar del input por default */
 .floating-label {
     position: absolute;
     top: 10px;
@@ -171,7 +175,6 @@ i.fa-solid.fa-calendar-days {
     transition: top 0.3s ease-out, font-size 0.3s ease-out;
 }
 
-/* Adjust these styles based on your design preferences */
 input:focus + .floating-label,
 input:not(:placeholder-shown) + .floating-label {
     top: -10px;
