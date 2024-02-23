@@ -1,14 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Open+Sans:wght@400;700&display=swap');
 
-/*font-family: 'Bebas Neue', sans-serif;*/
-
 * {
     margin: 0;
     padding: 0;
     text-decoration: none;
     list-style: none;
 }
-
+/* Color de fondo y tipo de letra */
 body {
     background: linear-gradient(
         150deg,
@@ -53,20 +51,20 @@ span {
 .navbar ul {
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Align items to the left */
-    margin-left: 0; /* Remove default margin */
-    padding-left: 0; /* Remove default padding */
+    justify-content: flex-start; 
+    margin-left: 0; 
+    padding-left: 0; 
 }
 
 .navbar ul li {
     padding: 0 20px;
     font-size: 20px;
-    white-space: nowrap; /* Prevent line breaks */
+    white-space: nowrap; 
 }
 
 .navbar ul li a {
     color: #FFFFFF;
-    display: inline-block; /* Ensure the link text is displayed inline */
+    display: inline-block; 
 }
 
 
@@ -198,31 +196,31 @@ span {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 80px;
-    padding: 45px 20px; /* Reducir el margen derecho */
+    padding: 45px 20px; 
 }
 
-.pie-pagina .grupo-1 .box figure {
+.pie-pagina .grupo-1 .nosotrosSeccion figure {
     width: 80%;
     height: 80%;
     display: flex;
     
 }
 
-.pie-pagina .grupo-1 .box figure img {
+.pie-pagina .grupo-1 .nosotrosSeccion figure img {
     width: 300px;
 }
 
 
-.box h2 {
-    color: #f0c6c6; /* Color del título */
-    font-size: 24px; /* Tamaño del título */
-    margin-bottom: 15px; /* Espacio inferior del título */
+.nosotrosSeccion h2 {
+    color: #f0c6c6; 
+    font-size: 24px;
+    margin-bottom: 15px; 
 }
 
-.box p {
-    color: #d4bbbb; /* Color del texto */
-    font-size: 16px; /* Tamaño del texto */
-    line-height: 1.6; /* Altura de línea */
+.nosotrosSeccion p {
+    color: #d4bbbb; 
+    font-size: 16px; 
+    line-height: 1.6; 
     margin-right: -250px;
 }
 
@@ -230,10 +228,10 @@ span {
 .more-options-menu {
     display: none;
     position: absolute;
-    top: 0; /* Position at the top */
-    left: 0; /* Position at the left */
+    top: 0; 
+    left: 0; 
     z-index: 1000;
-    background-color: #7305ce; /* Dark background color */
+    background-color: #7305ce; 
     border-radius: 5px;
     border: 1px solid #ccc;
     padding: 10px;
@@ -250,7 +248,7 @@ span {
 }
 
 .more-options-menu a {
-    color: #fff; /* White text color */
+    color: #fff;
     text-decoration: none;
 }
 
