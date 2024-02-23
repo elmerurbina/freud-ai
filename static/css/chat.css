@@ -405,4 +405,32 @@ main {
   overflow-y: auto; 
 }
 
+/* Estilos para la forma del feedback*/
+#feedback-form {
+  margin-top: 20px;
+}
+
+/* Estilos del texarea donde el usuario escribira su comentario */
+#feedback-form textarea {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+/* Estilo del boton para enviar el comentario */
+#feedback-form button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Efecto hover del boton */
+#feedback-form button:hover {
+  background-color: #0056b3;
+}
+
+
 

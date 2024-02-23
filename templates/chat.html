@@ -39,12 +39,24 @@
 
                 <ul class="menu-links">
                <!--Opcion para recibir feedback de los usuarios-->
-                    <li class="nav-link active">
+                    <li class="nav-link active" id="feedback-link">
                         <a href="#">
                             <i class="fa-regular fa-comment"></i>
                           <span class="text nav-text">Calificanos</span>
                         </a>
                       </li>
+
+      <!--Funcion que le permite al usuario escribir un comentario-->                               
+<div id="feedback-form" style="display: none;"> <!--Inicialmente se oculta el area del texto-->
+    <form id="user-feedback-form">
+        <textarea id="feedback-comment" placeholder="Escribe tu comentario..."></textarea>
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+
+<!--Estilos para mostrar un mensaje cuando el usuario envie su comentario-->
+<div id="success-message" style="display: none; color: rgb(22, 252, 22);"></div>
+
 
                       <!--Permite a los usuarios ver a su expediente-->
                     <li class="nav-link">
@@ -124,7 +136,8 @@
     <script src="{{ url_for('static', filename='js/input.js') }}"></script> <!--Funcion del input-->
     <script src="{{ url_for('static', filename='js/logout.js') }}"></script> <!--Funcion para cerrar sesion-->
     <script src="{{ url_for('static', filename='js/chat.js') }}"></script> <!--Funcion para recibir y enviar mensajes-->
-    
+    <script src="{{ url_for('static', filename='js/feedback.js') }}"></script>
+
     </section>
 
 </body>
