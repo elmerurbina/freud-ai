@@ -1,18 +1,17 @@
-
 function sendMessage() {
     const userInput = document.getElementById('messageInput').value;
     const messageContainer = document.getElementById('messageContainer');
 
-    // Display user message
+    // Mostrar el mensaje
     const userMessage = document.createElement('div');
     userMessage.className = 'user-message';
     userMessage.innerHTML = `<i class="fa-solid fa-user"></i> ${userInput}`;
     messageContainer.appendChild(userMessage);
 
-    // Scroll to the bottom of the message container
+    // Desplazarse a la parte inferior despues de enviar el mensaje
     messageContainer.scrollTop = messageContainer.scrollHeight;
 
-    // Send user message to the server for processing
+    // Enviar el mensaje al servidor para que este lo procese
     fetch('/process_message', {
         method: 'POST',
         headers: {
@@ -22,55 +21,17 @@ function sendMessage() {
     })
     .then(response => response.json())
     .then(data => {
-        // Display chatbot response
+        // Mostrar el mensaje del chatbot
         const chatbotMessage = document.createElement('div');
         chatbotMessage.className = 'chatbot-message';
         chatbotMessage.innerHTML = `<i class="fa-brands fa-fly"></i> ${data.response}`;
         messageContainer.appendChild(chatbotMessage);
 
-        // Scroll to the bottom of the message container
+        // Mover a la parte inferior de la pagina despues de mostrar el mensaje
         messageContainer.scrollTop = messageContainer.scrollHeight;
 
-        // Clear input field
+        // Limpiar el input de los mensajes
         document.getElementById('messageInput').value = '';
     })
     .catch(error => console.error('Error:', error));
 }
-
-
-
-
-
-/*
-function sendMessage() {
-    const userInput = document.getElementById('messageInput').value;
-    const messageContainer = document.getElementById('messageContainer');
-
-    // Display user message
-    const userMessage = document.createElement('div');
-    userMessage.className = 'user-message';
-    userMessage.innerHTML = `<i class="fa-solid fa-user"></i> ${userInput}`;
-    messageContainer.appendChild(userMessage);
-
-    // Send user message to the server for processing
-    fetch('/process_message', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ message: userInput }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Display chatbot response
-        const chatbotMessage = document.createElement('div');
-        chatbotMessage.className = 'chatbot-message';
-        chatbotMessage.innerHTML = `<i class="fa-solid fa-brain"></i> ${data.response}`;
-        messageContainer.appendChild(chatbotMessage);
-
-        // Clear input field
-        document.getElementById('messageInput').value = '';
-    })
-    .catch(error => console.error('Error:', error));
-}
-*/

@@ -301,6 +301,7 @@ body.dark {
   color: var(--text-color);
   padding: 12px 60px;
 }
+
 /* Estilos para cerrar el menu */
 .sidebar.close ~ .home {
   left: 78px;
@@ -436,6 +437,8 @@ main {
 .profile-photo {
   width: 50px; 
   height: 50px; 
+  margin-left: 5px;
   border-radius: 50%; 
-  position: relative;
+  position: fixed;
+  z-index: 1000;
 }
