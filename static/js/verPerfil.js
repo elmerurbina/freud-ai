@@ -1,6 +1,4 @@
-// script.js
-
-// Sample profile data with relative path for photo
+// Informacion del perfil
 const profile = {
   
     license: '12F345',
@@ -12,7 +10,7 @@ const profile = {
     estudios_academicos: 'Licenciado en psicologia, UNAN-Leon'
 };
 
-// Function to display profile data
+// Funcion para mostrar los datos
 function displayProfile() {
     
     document.getElementById('license').textContent = profile.license;
@@ -24,5 +22,5 @@ function displayProfile() {
     document.getElementById('estudios').textContent = profile.estudios_academicos;
 }
 
-// Call displayProfile function when the page loads
+// Llamar la funcion para mostrar los datos una vez cargue la pagina 
 window.onload = displayProfile;
