@@ -37,7 +37,7 @@ def edit_profile():
 
         return 'Profile updated successfully!'
     else:
-        return render_template('perfil_profesional.html')
+        return render_template('editarPerfilProfesional.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
