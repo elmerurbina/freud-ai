@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, rgb(243, 242, 242), rgb(224, 234, 248)); /* Linear background */
+    background: linear-gradient(to bottom, rgb(243, 242, 242), rgb(224, 234, 248)); 
     margin: 0;
     padding: 0;
     display: flex;
@@ -11,7 +11,7 @@ body {
 
 
 .logo {
-    color: #ffffff;
+    color: #0f0f0f;
     text-transform: uppercase;
     font-size: 30px;
     margin-left: 3%;
@@ -22,15 +22,14 @@ span {
 }
 
 .container {
-    background-color: #fff;
-    border-radius: 8px;
-    padding: 100px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    align-items: center;
-    margin-left: 25%;
-    margin-right: 35%;
-    margin-top: 100px;
+    max-width: 12000px;
+    margin: 0 auto; 
+    padding: 20px; 
+    background-color: #fff; 
+    border-radius: 8px; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); 
 }
+
 
 h1 {
     
@@ -40,9 +39,8 @@ h1 {
 }
 
 form {
-    display: flex;
-    flex-direction: column;
- 
+    flex: 1; 
+    margin-right: 20px; 
 }
 
 label {
@@ -52,17 +50,27 @@ label {
 
 input[type="text"],
 textarea {
-    padding: 2px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 12px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    font-size: 14px;
     width: 100%;
+    box-sizing: border-box; 
+    transition: border-bottom-color 0.3s;
 }
 
-input[type="file"] {
-    margin-bottom: 10px;
+input[type="text"]:focus,
+textarea:focus {
+    border-bottom-color: #007bff; 
+    outline: none;
 }
+
+
+input[type="file"] {
+    margin-bottom: 20px;
+}
+
 
 input[type="submit"] {
     background-color: #007bff;
@@ -72,7 +80,7 @@ input[type="submit"] {
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    margin-bottom: 100px;
+    transition: background-color 0.3s; 
 }
 
 input[type="submit"]:hover {
