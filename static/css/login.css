@@ -1,7 +1,6 @@
 
-
 body {
-    background-image: url("/static/imagenes/registro.jpg");
+    background-image: url("/static/imagenes/registro.jpg"); /* Imagen de fondo */
     font-family: Arial, sans-serif;
     color: #fff;
     margin: 0;
@@ -15,7 +14,7 @@ input{
     border-radius: 20px;
 }
 
-
+/* Logo */
 .logo {
     color: #ffffff;
     text-transform: uppercase;
@@ -29,8 +28,8 @@ span {
 .line {
     width: 100%;
     height: 1px;
-    background-color: #ccc; /* Set your desired color */
-    margin: 10px 0; /* Adjust margin as needed */
+    background-color: #ccc; 
+    margin: 10px 0; 
 }
 
 
@@ -94,26 +93,6 @@ footer{font-size: 20px;
     text-align: center;
 padding-top: 100px;}
 
-
-.contacto{margin-top: 100px;
-    color: white;
-    padding: 20px;
-    margin-left: 35%;
-    }
-
-a.gmail{color: white;
-    margin-right: 50px;}
-    a.whatsapp{color: white;
-    margin-right: 50px;}
-    a.facebook{color: white;
-    margin-right: 50px;}
-    a.instagram{color: white;
-        margin-right: 50px;}
-    a.whatsapp:hover{color: red;}
-    a.gmail:hover{color: red;}
-    a.facebook:hover{color: red;}
-    a.instagram:hover{color: red;}
-
     h3{font-size: 18px;
     margin-left: -10%;
     margin-top: -1%;
@@ -123,7 +102,7 @@ a.gmail{color: white;
     margin-bottom: 10%;}
 
     a.creditos{margin-bottom: 5%;
-    margin-top: 5%;
-text-align: center;}
+    margin-top: 5%; 
+    text-align: center;}
 
 
