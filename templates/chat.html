@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>chat</title>
+    <!--Conexion con el archivo CSS-->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/chat.css') }}">
+    <!--Conexion con fontawesome para cargar los iconos-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!--Conexion con boxicons sitio del cual se consiguio una parte de los iconos-->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!--Conexion con el archivo JS que cumple la funcion de procesar los chats-->
     <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
 </head>
     <!--Menu-->
@@ -15,9 +19,11 @@
     <nav class="sidebar close" >
 
         <header>
+            <!--Logo-->
             <div class="text logo" >
                 <span class="name">Freud AI</span>
-                <span class="welcome">Te da la vienvenida</span>
+                <!--Texto de bienvenida-->
+                <span class="welcome">Te da la bienvenida</span>
             </div>
             <i class="bx bx-menu toggle"></i>
         </header>
@@ -25,14 +31,14 @@
         <div class="menu-bar">
 
             <div class="menu">
-
+               <!--Barra de busqueda-->
                 <li class="search-box">
                     <i class="bx bx-search icon"></i>
                     <input type="text" placeholder="buscar....">
                 </li>
 
                 <ul class="menu-links">
-
+               <!--Opcion para recibir feedback de los usuarios-->
                     <li class="nav-link active">
                         <a href="#">
                             <i class="fa-regular fa-comment"></i>
@@ -40,6 +46,7 @@
                         </a>
                       </li>
 
+                      <!--Permite a los usuarios ver a su expediente-->
                     <li class="nav-link">
                         <a href="#">
                             
@@ -48,6 +55,7 @@
                         </a>
                     </li>
 
+                    <!--Link para acceder a la configuracion de notificaciones-->
                     <li class="nav-link">
                         <a href=" ">
                             <i class="bx bx-bell icon"></i>
@@ -55,6 +63,7 @@
                         </a>
                     </li>
 
+                    <!--Lleva a los usuarios a seccion de psicologos-->
                     <li class="nav-link">
                         <a href="#">
                             <i class="bx bx-user icon"></i>
@@ -62,6 +71,7 @@
                         </a>
                     </li>
 
+                    <!--Accede al historial de mensajes-->
                     <li class="nav-link">
                         <a href="#">
                             <i class="bx bx-conversation icon"></i>
@@ -69,6 +79,7 @@
                         </a>
                     </li>
 
+                    <!--Salir del chatbot/cerrar sesion-->
                     <li class=" ">
                         <a href="#" id="logoutButton">
                             <i class="fa-solid fa-right-from-bracket"></i>
@@ -80,49 +91,41 @@
 
             </div>
 
-            <div class="bottom-content">
-                <ul>
-                    
-                </ul>
-            </div>
         </div>
     </nav>
 
 
     <section class="home">
+        <!--Mensaje de bienvenida en la parte central de la pagina-->
         <div class="text">
             <i class="fa-solid fa-brain"></i> Bienvenido a Freud AI
 
-             
+<!--Mensajes en el centro de la pagina para guiar al usuario-->             
 <div class="chat-message" id="message1"><i class="fa-brands fa-fly"></i>¡Estoy aquí para ayudarte siempre!</div>
 <div class="chat-message" id="message2"><i class="fa-solid fa-handshake-angle"></i>¿Dime cómo puedo hacerlo hoy?</div>
 
         </div>
 
-        <div class="message-container">
-
-            
+        <div class="message-container"> 
         </div>
 
+        <!--Input para escribir mensajes-->
         <div class="message-input">
             <input type="text" id="messageInput" placeholder="Escribe tu mensaje...">
             <button onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
         </div>
-
-       
         <div class="message-container" id="messageContainer">
            
         </div>
     </section>
 
-
-    <script type="text/javascript" src="{{ url_for('static', filename='js/menu.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/input.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/logout.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+     <!--Conexiones con JavaScript-->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/menu.js') }}"></script> <!--Funcion del menu-->
+    <script src="{{ url_for('static', filename='js/input.js') }}"></script> <!--Funcion del input-->
+    <script src="{{ url_for('static', filename='js/logout.js') }}"></script> <!--Funcion para cerrar sesion-->
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script> <!--Funcion para recibir y enviar mensajes-->
     
     </section>
-   
 
 </body>
 
