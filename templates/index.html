@@ -16,10 +16,12 @@
     <header>
         <div class="container">
             <div class="menu">
+                <!--Logo-->
                 <h1 class="logo">Freud&nbsp;<span>IA</span></h1>
                
                 <nav class="navbar">
                     <ul>
+                        <!--Menu principal-->
                         <li><a href="{{ url_for('profesionales') }}">Profesionales</a></li>
                         <li><a href="{{ url_for('login_account') }}">Ir al Chat</a></li>
                         <li><a href="{{ url_for('verExpediente') }}">Panel del Psicólogo</a></li>
@@ -27,6 +29,7 @@
                             <a href="#" class="more-options-toggle">Mas Opciones</a>
                             <div class="more-options-menu">
                                 <ul>
+                                    <!--Mas opciones del menu-->
                                     <li><a href="{{ url_for('notificaciones') }}">Notificaciones</a></li> <br>
                                     <li><a href="#nosotros">Nosotros</a></li>
                                     <li><a class="menu" href="#" id="privacyLink">Privacidad</a></li>
@@ -36,9 +39,11 @@
                         </li>
                     </ul>
                 </nav>
+                <!--JS para la funcion del menu-->
                 <script src="{{ url_for('static', filename='js/menu_index.js') }}"></script>
                 
         </div>
+        <!--JS para la funcion del soporte-->
             <script src="{{ url_for('static', filename='js/soporte.js') }}"></script>
            
 
@@ -51,29 +56,30 @@
                     <a href="#" class="btn">Leer mas</a>
                 </div>
 
+                <!--Imagen de la derecha-->
                 <div class="header-img">
                     <img src="{{ url_for('static', filename='imagenes/right.svg') }} " alt="No esta">
                 </div>
 
             </div>
         </div>
+    </header>
 
         <footer class="pie-pagina">
             <div class="grupo-1">
                 <div class="box">
                     <figure>
-                        <a href="#">
+              <!--Imagen del pie de pagina, ubicado a la izquierda del parrafo "Acerca de nosotros"-->
+
                            <img src="{{ url_for('static', filename='imagenes/01.jpg') }}" alt="Logo Freud AI"> 
-                        </a>
+                        
                     </figure>
                 </div>
 
-
+                   <!--JS para mostrar los terminos de privacidad-->
                 <script src="{{ url_for('static', filename='js/privacidad.js') }}"></script>
             
-            
-            
-
+                 <!--Parrafo sobre nosotros/quienes somos-->
                 <div id="nosotros" class="box">
                     <h2>¿Quiénes somos?</h2>
                 
@@ -82,10 +88,8 @@
                     <p>En nuestra plataforma, atendemos cualquier tipo de problema psicológico, desde el estrés y la ansiedad hasta trastornos más complejos. Nuestro objetivo es proporcionar un entorno seguro y confidencial donde las personas puedan obtener el apoyo que necesitan para mejorar su bienestar emocional y mental.</p>
                 </div>
                 
-
-
         </footer>
 
-    </header>
+    
 </body>
 </html>
