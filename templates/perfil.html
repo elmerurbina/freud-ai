@@ -3,29 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Profile</title>
+    <title>Mi Perfil</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/miPerfil.css') }}">
 </head>
 <body>
-    <div class="profile">
-        <img src="{{ profile_data.file_path }}" alt="Profile Picture" width="150"><br><br>
-
-        <label><i class="fa-solid fa-user"></i>Nombre Completo:</label>
-        
-        <label><i class="fa-solid fa-location-dot"></i>Ubicación:</label>
-       
-        <label><i class="fa-solid fa-phone"></i>Contacto:</label>
-       
-
-        <label><i class="fa-solid fa-id-card"></i>Licencia:</label>
-        
-        <label><i class="fa-solid fa-graduation-cap"></i>Estudios Académicos:</label><br>
-        
-        <label>Keywords:</label>
-      
-
-        <label>Descripción:</label><br>
-        
-        <a href="{{ url_for('edit_profile') }}">Editar Perfil</a>
+    <h1>Mi Perfil</h1>
+    <div id="profile-info">
+        <!--Opcion para editar perfil-->
+        <a href="{{ url_for('edit_profile') }}"><i class="fa-solid fa-pencil"></i></a>
+        <!--Imagen de perfil-->
+        <p><strong></strong> <img id="photo" src="{{ url_for('static', filename='imagenes/perfil.jpg') }}" alt="Foto de perfil"></p>
+        <p><strong>Licencia:</strong> <span id="license"></span></p>
+        <p><strong>Nombre:</strong> <span id="nombre"></span></p>
+        <p><strong>Direccion:</strong> <span id="direccion"></span></p>
+        <p><strong>Descripcion:</strong> <span id="descripcion"></span></p>
+        <p><strong>Keywords:</strong> <span id="keywords"></span></p>
+        <p><strong>Contacto:</strong> <span id="contacto"></span></p>
+        <p><strong>Estudios Academicos:</strong> <span id="estudios"></span></p>
     </div>
+
+    <script src="{{ url_for('static', filename='js/verPerfil.js') }}"></script>
 </body>
 </html>

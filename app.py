@@ -24,7 +24,7 @@ def edit_profile():
 
 
 @app.route('/perfil')
-def view_profile():
+def mi_perfil():
     return render_template('perfil.html')
 
 @app.route('/notificaciones')
