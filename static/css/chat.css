@@ -3,26 +3,25 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif;  /* Tipo de letra */
 }
 
 :root {
-  --body-color:  linear-gradient(to right, #3498db, #9B27B00D, #4991fc); 
-  --sidebar-color: #87CEEB; /* Sky blue color for sidebar */
-  --primary-color: #cc3fc0; /* Blue primary color */
+  --sidebar-color: #87CEEB; /* Color de fondo del menu */
+  --primary-color: #cc3fc0; 
   --primary-color-light: #9B27B00D;
   --toggle-color: #0f0f0f;
-  --text-color: #080808; /* Dark text color */
+  --text-color: #080808; /* Color del texto */
   --transition-duration: 0.3s;
 }
 
 body {
-  background: linear-gradient(to right, #3498db, #9B27B00D); /* Linear gradient background */
+  background: linear-gradient(to right, #3498db, #9B27B00D); /* Color de fondo principal */
   min-height: 80vh;
-  background-color: var(--body-color);
+ /* background-color: var(--body-color);*/
   color: var(--text-color);
   transition: background-color var(--transition-duration);
-  margin: 0; /* Remove default body margin */
+  margin: 0; 
 }
 
 ::selection {
@@ -31,11 +30,11 @@ body {
 }
 
 body.dark {
-  --body-color: #2c3e50; /* Dark background color */
-  --sidebar-color: #34495e; /* Dark sidebar color */
+  --body-color: #2c3e50; 
+  --sidebar-color: #34495e; 
   --primary-color-light: #050505;
   --toggle-color: black;
-  --text-color: #5e6466; /* Light text color */
+  --text-color: #5e6466; 
 }
 
 .sidebar {
@@ -52,7 +51,7 @@ body.dark {
 }
 
 .sidebar:hover {
-  width: 300px; /* Adjust the width on hover as needed */
+  width: 300px; 
 }
 
 .sidebar.close {
@@ -164,6 +163,8 @@ body.dark {
   color: var(--text-color);
 }
 
+/* Iniciar estilos para la barra del menu que se muestra a la izquierda */
+
 .sidebar.close .toggle {
   width: 100%;
   top: 20%;
@@ -172,27 +173,27 @@ body.dark {
 .sidebar .menu {
   margin-top: 40px;
 }
-
+/* Estilos del icono y la barra de busqueda */
 .sidebar li.search-box {
   border-radius: 6px;
   background-color: var(--prymary-color-dark);
   cursor: pointer;
   transition: var(--tran-05);
 }
-
+/* Estilos del input de la barra de busqueda */
 .sidebar li.search-box input {
   height: 100%;
   width: 100%;
   outline: none;
   border: none;
   background-color: var(--prymary-color-ligth);
-  color: black; /* Set text color for search-box input */
+  color: black; /* Color del texto que se escribe en la barra de busqueda */
   border-radius: 6px;
   font-size: 17px;
   font-weight: 500;
   transition: var(--tran-05);
 }
-
+/* Estilos de la lista de opciones del menu */
 .sidebar li a {
   list-style: none;
   height: 100%;
@@ -203,15 +204,16 @@ body.dark {
   width: 100%;
   border-radius: 6px;
   text-decoration: none;
-  color: black; /* Set text color for links in the sidebar */
+  color: black; /* Color del texto del menu */
   transition: var(--tran-03);
 }
 
+/* Efecto hover del la lista de opciones del menu */ 
 .sidebar li a:hover {
   background-color: var(--prymary-color);
 }
 
-.sidebar li a:hover .icon,
+.sidebar li a:hover .icon, /* Agregar efecto hover al texto y al icono */
 .sidebar li a:hover .text {
   color: var(--sidebar-color);
 }
@@ -220,16 +222,16 @@ body.dark {
 .body.dark .sidebar li a:hover .text {
   color: var(--text-color);
 }
-
+/* Estilos de las tres barritas del menu */
 .sidebar .menu-bar {
   height: calc(100% - 55px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow-y: scroll;
-  margin-top: 5px; /* Adjusted margin from the top */
+  margin-top: 5px; 
 }
-
+/* Ocultar las opciones del menu inicialmente */ 
 .menu-bar::-webkit-scrollbar {
   display: none;
 }
@@ -241,27 +243,7 @@ body.dark {
   transition: var(--tran-05);
 }
 
-.menu-bar .mode .sun-moon {
-  height: 50px;
-  width: 60px;
-}
-
-.mode .sun-moon i {
-  position: absolute;
-}
-
-.mode .sun-moon i.sun {
-  opacity: 0;
-}
-
-body.dark .mode .sun-moon i.sun {
-  opacity: 1;
-}
-
-body.dark .mode .sun-moon i.moon {
-  opacity: 0;
-}
-
+/* Estilos del menu cuando se cliquean las tres barritas */
 .menu-bar .bottom-content .toggle-switch {
   position: absolute;
   right: 0;
@@ -299,7 +281,9 @@ body.dark .mode .sun-moon i.moon {
 .body.dark .switch::before {
   left: 20px;
 }
+/* Terminar estilos para el menu de la izquierda */
 
+/* Estilo para la parte principal (centro) de la pagina */
 .home {
   position: absolute;
   top: 0;
@@ -310,13 +294,14 @@ body.dark .mode .sun-moon i.moon {
   transition: var(--tran-05);
 }
 
+/* Estilos para el texto del centro de la pagina */
 .home .text {
   font-size: 30px;
   font-weight: 500;
   color: var(--text-color);
   padding: 12px 60px;
 }
-
+/* Estilos para cerrar el menu */
 .sidebar.close ~ .home {
   left: 78px;
   height: 100vh;
@@ -325,7 +310,7 @@ body.dark .mode .sun-moon i.moon {
 
 
 body.dark .home .text {
-  color: var(--text-color);
+  color: var(--text-color); /* Color del texto del centro */
 }
 
 
@@ -339,6 +324,8 @@ body.dark .home .text {
 main {
   min-height: 100vh;
 }
+
+/* IniciarE estilos del input para escribir los mensajes */
 .message-input {
   position: fixed;
   bottom: 0;
@@ -352,6 +339,7 @@ main {
 
 }
 
+/* Estilo de la linea del input */
 .message-input input {
   padding: 10px;
   border-radius: 20px;
@@ -362,6 +350,7 @@ main {
   margin-left: 20%;
 }
 
+/* Estilos del boton/icono */
 .message-input button {
   font-size: 30px;
   background: none;
@@ -370,8 +359,9 @@ main {
   cursor: pointer;
   margin-left: 10px;
   margin-right: 30%;
-}
+}   /* Final de estilos del input de mensajes */
 
+/* Estilo de los mensajes del centro de la pagina*/
 .chat-message {
   background-color: none;
   padding: 10px;
@@ -384,10 +374,9 @@ main {
   color: #333333; 
 }
 
-/* chat.css */
-
+/* Estilos para el mensaje del usuario */
 .user-message {
-  background-color: #5cb85c; /* Green for user messages */
+  background-color: #5cb85c; 
   color: #fff;
   float: left;
   margin-bottom: 10px;
@@ -397,6 +386,7 @@ main {
   margin-right: 50%;
 }
 
+/* Estilos para el mensaje del chatbot */
 .chatbot-message {
   background-color: #337ab7; 
   font-size: 16px;
@@ -409,6 +399,7 @@ main {
   margin-right: 10%;
 }
 
+/* Estilos para la parte donde aparecen los mensajes enviados y reibidos */
 .message-container {
   flex: 1;
   overflow-y: auto; 
