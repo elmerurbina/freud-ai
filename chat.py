@@ -4,9 +4,9 @@ from flask import Flask, render_template, request, jsonify
 app = Flask(__name__, static_url_path='/static')
 
 
-app.secret_key = 'your_secret_key'  # Set a secret key for session security
+app.secret_key = 'your_secret_key'
 
-# Sample user data
+
 users = {
     'example_user': {'name': 'John Doe', 'profile_image_url': '/static/default_profile.png'}
 }
@@ -21,16 +21,15 @@ def chat():
 def process_message():
     user_message = request.json.get('message', '')
 
-    # Process user input and generate response
+    # Procesar el mensaje del usuario y generar un mensaje
     response = get_chatbot_response(user_message)
 
     return jsonify({'response': response})
 
-
+# Clase para definir la logica de las respuestas a generar
 def get_chatbot_response(user_input):
-    # Add your logic here to analyze user input and generate a relevant response
 
-    # Common greetings
+    # Saludos comunes
     if any(word in user_input.lower() for word in ['hola', 'saludos', 'buenos días', 'buenas tardes', 'buenas noches']):
         return '¡Hola! ¿Cómo te encuentras?'
 
@@ -38,7 +37,7 @@ def get_chatbot_response(user_input):
         return 'Me alegro que estes bien, ¿De que tema te gustaria hablar hoy?'
 
 
-    # Expressing emotions
+    # Expresar emociones
     elif any(word in user_input.lower() for word in ['estoy ansioso', 'me siento ansioso']):
         return 'Entiendo. La ansiedad es una experiencia común. ¿Te gustaría hablar sobre lo que la está desencadenando?'
 
@@ -55,27 +54,27 @@ def get_chatbot_response(user_input):
     elif any(word in user_input.lower() for word in ['me siento triste', 'estoy deprimido']):
         return 'Lamento escuchar que te sientes así. ¿Puedes compartir más sobre lo que ha estado sucediendo?'
 
-    # Stress management
+    # Manejo del estres
     elif any(word in user_input.lower() for word in ['cómo manejar el estrés', 'consejos para reducir el estrés']):
         return 'El manejo del estrés es importante. Algunas estrategias incluyen la práctica de la respiración profunda y el autocuidado. ¿Te gustaría más información?'
 
-    # Suicide prevention
+    # Prevenir el suicidio
     elif any(word in user_input.lower() for word in ['pensamientos suicidas', 'necesito ayuda urgente']):
         return 'Lo siento mucho que estés pasando por esto. Es crucial buscar ayuda de emergencia. Por favor, comunícate con una línea de prevención de suicidios o busca ayuda profesional de inmediato.'
 
-    # Coping mechanisms
+    # Tecnicas para lidiar con el estres
     elif any(word in user_input.lower() for word in ['cómo lidiar con el estrés', 'técnicas de afrontamiento']):
         return 'Hay diversas técnicas de afrontamiento, como la meditación, el ejercicio y la búsqueda de apoyo social. ¿Te gustaría más sugerencias personalizadas?'
 
-    # Exploring emotions
+    # Explorar emociones
     elif any(word in user_input.lower() for word in ['explorar emociones', 'autoconocimiento']):
         return 'Explorar tus emociones puede ser un viaje enriquecedor. ¿Te gustaría discutir más sobre tus sentimientos y experiencias?'
 
-    # Gratitude and positivity
+    # Gratitud y positivismo
     elif any(word in user_input.lower() for word in ['agradecimiento', 'cómo encontrar la positividad']):
         return 'Practicar la gratitud puede tener un impacto positivo. ¿Hay algo específico por lo que te sientas agradecido hoy?'
 
-    # Responding to generic queries
+    # Respondiendo preguntas frecuentes
     elif any(word in user_input.lower() for word in ['cómo', 'qué', 'cuándo', 'dónde']):
         return 'Esa es una pregunta interesante. ¿Puedes proporcionar más detalles?'
 
