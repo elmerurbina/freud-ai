@@ -1,14 +1,12 @@
 from flask import Flask, render_template
-import os
 from register_user import register_user_app
-from db import get_db
 from flask import request, jsonify
 
 
 
 app = Flask(__name__)
 
-app.config.from_pyfile('config.py')  # Load configurations from config.py
+app.config.from_pyfile('config.py')  # Cargar las configuraciones del archivo config.py
 app.register_blueprint(register_user_app, url_prefix='/register')
 
 # Ruta del index
@@ -17,10 +15,14 @@ def home():
     return render_template('index.html')
 
 
+
+
 # Editar perfil del profesional
 @app.route('/perfil_profesional')
 def edit_profile():
     return render_template('editarPerfilProfesional.html')
+
+
 
 
 # Mostrar el perfil del profesional
@@ -28,10 +30,16 @@ def edit_profile():
 def mi_perfil():
     return render_template('perfil.html')
 
+
+
+
 # Funcion para configurar las notificaciones
 @app.route('/notificaciones')
 def  notificaciones():
     return render_template('notificaciones.html')
+
+
+
 
 # Ruta que permite el acceso al panel del psicologo y por ende a la interfaz de estos
 @app.route('/verExpediente')  # Corrected the route path
@@ -39,44 +47,15 @@ def verExpediente():
     return render_template('verExpediente.html')
 
 
-@app.route('/profile/<username>', methods=['GET', 'POST'])
-def profile(username):
-    # Fetch user details from the database based on the username
-    db = get_db()
-    cursor = db.cursor()
-    cursor.execute("SELECT nombre, correo FROM usuarios WHERE correo = %s", (username,))
-    user_data = cursor.fetchone()
 
-    # Check if the user exists
-    if user_data:
-        if request.method == 'POST':
-            # Handle profile update
-            new_email = request.form.get('email')
-            cursor.execute("UPDATE usuarios SET correo = %s WHERE nombre = %s", (new_email, user_data['nombre']))
-            db.commit()
-
-            # Handle profile picture upload
-            if 'profile_picture' in request.files:
-                profile_picture = request.files['profile_picture']
-                if profile_picture.filename != '':
-                    upload_folder = 'static/uploads'
-                    if not os.path.exists(upload_folder):
-                        os.makedirs(upload_folder)
-                    profile_picture.save(os.path.join(upload_folder, profile_picture.filename))
-
-                    # Update the database with the path to the uploaded profile picture
-                    cursor.execute("UPDATE usuarios SET foto_perfil = %s WHERE nombre = %s", (os.path.join(upload_folder, profile_picture.filename), user_data['nombre']))
-                    db.commit()
-
-        return render_template('profile.html', username=user_data['nombre'])
-    else:
-        return render_template('error.html', message='User not found')
 
 
 # Acceso a las funciones de inicio de sesion
 @app.route('/login_account', methods=['GET', 'POST'])
 def login_account():
     return render_template('login.html')
+
+
 
 
 # Acceso al registro del usuario
@@ -89,10 +68,14 @@ def agregar_perfil():
     return render_template('agregar.html')
 
 
+
+
 # Permitir al usuario recuperar y actualizar sus credenciales
 @app.route('/password_recovery')
 def  password_recovery():
     return render_template('recover_account.html')
+
+
 
 
 # Permite el acceso y la funcionalidad a la interfaz para actualizar credenciales
@@ -100,10 +83,14 @@ def  password_recovery():
 def  reset_password():
     return render_template('reset_password.html')
 
+
+
 # Esta es la parte encargada de mostrarle al usuario todos los profesionales registrados en la pataforma
 @app.route('/profesionales')
 def  profesionales():
     return render_template('profesionales.html')
+
+
 
 # Esta es la ruta que maneja la parte del chatbot
 @app.route('/chat')
@@ -130,6 +117,8 @@ def get_chatbot_response(user_input):
         return 'Entiendo. ¿Puedes contarme más sobre lo que te preocupa?'
     else:
         return 'Lo siento, no entiendo. ¿Puedes reformular tu pregunta?'
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
