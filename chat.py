@@ -41,10 +41,8 @@ def get_chatbot_response(user_input):
     elif any(word in user_input.lower() for word in ['estoy ansioso', 'me siento ansioso']):
         return 'Entiendo. La ansiedad es una experiencia común. ¿Te gustaría hablar sobre lo que la está desencadenando?'
 
-    if 'si' in user_input.lower():
-        return 'Sí, la ansiedad puede tener diversas causas. Algunas de las causas comunes incluyen el estrés, cambios en la vida, problemas de salud, entre otros. ¿Cual crees que sea la causa que te esta afectando?'
 
-    if 'estres' in user_input.lower():
+    elif 'estres' in user_input.lower():
         return 'Algunas causas del estres son fracaso, universidad, mucho trabajo. ¿En los ultimos dias has tenido alguno de estos problemas?'
 
 
