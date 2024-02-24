@@ -11,7 +11,7 @@ app = Flask(__name__)
 app.config.from_pyfile('config.py')  # Load configurations from config.py
 app.register_blueprint(register_user_app, url_prefix='/register')
 
-
+# Ruta del index
 @app.route('/freud')
 def home():
     return render_template('index.html')
@@ -20,7 +20,7 @@ def home():
 
 @app.route('/perfil_profesional')
 def edit_profile():
-    return render_template('perfil_profesional.html')
+    return render_template('editarPerfilProfesional.html')
 
 
 @app.route('/perfil')
