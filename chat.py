@@ -1,15 +1,9 @@
-
 from flask import Flask, render_template, request, jsonify
 
 app = Flask(__name__, static_url_path='/static')
 
 
 app.secret_key = 'your_secret_key'
-
-
-users = {
-    'example_user': {'name': 'John Doe', 'profile_image_url': '/static/default_profile.png'}
-}
 
 
 @app.route('/chat')

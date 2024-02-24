@@ -37,6 +37,7 @@ body.dark {
   --text-color: #5e6466; 
 }
 
+/* Iniciar estilos para la barra del menu que se muestra a la izquierda */
 .sidebar {
   position: fixed;
   top: 0;
@@ -163,7 +164,6 @@ body.dark {
   color: var(--text-color);
 }
 
-/* Iniciar estilos para la barra del menu que se muestra a la izquierda */
 
 .sidebar.close .toggle {
   width: 100%;
