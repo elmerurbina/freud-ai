@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, jsonify
+from db import connect_to_database, save_chat_message, close_connection
+import datetime
 
 app = Flask(__name__, static_url_path='/static')
 
@@ -27,12 +29,12 @@ def get_chatbot_response(user_input):
     if any(word in user_input.lower() for word in ['hola', 'saludos', 'buenos días', 'buenas tardes', 'buenas noches']):
         return '¡Hola! ¿Cómo te encuentras?'
 
-    if any(word in user_input.lower() for word in ['bien', 'bien gracias a Dios', 'bien gracias a dios']):
+    elif any(word in user_input.lower() for word in ['bien', 'bien gracias a Dios', 'bien gracias a dios']):
         return 'Me alegro que estes bien, ¿De que tema te gustaria hablar hoy?'
 
 
     # Expresar emociones
-    elif any(word in user_input.lower() for word in ['estoy ansioso', 'me siento ansioso']):
+    elif any(word in user_input.lower() for word in ['estoy ansioso', 'ansioso', 'me siento ansioso']):
         return 'Entiendo. La ansiedad es una experiencia común. ¿Te gustaría hablar sobre lo que la está desencadenando?'
 
 
@@ -73,6 +75,17 @@ def get_chatbot_response(user_input):
     else:
         return 'Lo siento, no entiendo completamente. ¿Puedes proporcionar más información o formular tu pregunta de otra manera?'
 
+def save_chat_to_database(user_message, response):
+    try:
+        connection = connect_to_database(database='usuarios')
+        if connection:
+            now = datetime.datetime.now()
+            save_chat_message(connection, now, user_message, response)
+            close_connection(connection)
+    except Exception as e:
+        print("Error saving chat message:", e)
+
+# Rest of your code...
 
 if __name__ == '__main__':
     app.run(debug=True)

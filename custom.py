@@ -100,6 +100,48 @@ def bulimia(Bulimia):
         response = fetch_data_from_information_table(connection)
         return response
 
+def get_chatbot_response(user_input):
+    # Call the appropriate function based on user input
+
+    if 'narcolepsia' in user_input.lower():
+        response = narcolepsy(user_input)
+
+    elif 'fobias' in user_input.lower():
+        response = fobias(user_input)
+
+    elif 'bulimia' in user_input.lower():
+        response = bulimia(user_input)
+
+    elif 'insomnia' in user_input.lower():
+        response = insomnia(user_input)
+
+    elif 'stress' in user_input.lower():
+        response = stress(user_input)
+
+    elif 'ansiedad' in user_input.lower():
+        response = anxiety(user_input)
+
+    elif 'estado_ansiedad' in user_input.lower():
+        response = anxiety_state(user_input)
+
+    elif 'estres_traumatico' in user_input.lower():
+        response = trauma(user_input)
+
+    elif 'feliz' in user_input.lower():
+        response = happy(user_input)
+
+    elif 'triste' in user_input.lower():
+        response = sad(user_input)
+
+    elif 'adiccion' in user_input.lower():
+        response = addiction(user_input)
+
+    elif 'depresion' in user_input.lower():
+        response = depression(user_input)
+
+    else:
+        response = "I'm sorry, I couldn't understand that."
+    return response
 
 def handle_user_message(user_id, message):
     # Process the user message and get the appropriate response
