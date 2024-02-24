@@ -1,14 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, request
-import mysql.connector
-register_user_app = Blueprint('register_user_app', __name__)
+from db import connect_to_database, close_connection
 
-# Your database connection details
-db_config = {
-    "host": "localhost",
-    "user": "root",
-    "password": "7>>HhNN6/fZ",
-    "database": "registro",
-}
+register_user_app = Blueprint('register_user_app', __name__)
 
 @register_user_app.route('/register', methods=['POST'])
 def register_user():
@@ -20,23 +13,24 @@ def register_user():
     password = request.form.get('password')
 
     try:
-        # Connect to the database
-        connection = mysql.connector.connect(**db_config)
-        cursor = connection.cursor()
+        # Connect to the usuarios database
+        connection = connect_to_database()
 
-        # Insert user data into the 'users' table
-        insert_query = "INSERT INTO users (full_name, username, email, birthdate, password_hash) VALUES (%s, %s, %s, %s, %s)"
-        cursor.execute(insert_query, (full_name, username, email, birthdate, password))
-        connection.commit()
+        # Insert user data into the 'sistema_registro' table
+        if connection:
+            cursor = connection.cursor()
+            insert_query = "INSERT INTO sistema_registro (full_name, username, email, birthdate, password_hash) VALUES (%s, %s, %s, %s, %s)"
+            cursor.execute(insert_query, (full_name, username, email, birthdate, password))
+            connection.commit()
+            cursor.close()
+            close_connection(connection)
 
-        # Close the database connection
-        cursor.close()
-        connection.close()
-
-        # Redirect to the chat route upon successful registration
-        return redirect(url_for('chat'))
+            # Redirect to the chat route upon successful registration
+            return redirect(url_for('chat'))
+        else:
+            return render_template('registration_failed.html')
 
     except Exception as e:
-        # Handle registration failure (e.g., duplicate username or email)
+        # Handle registration failure
         print(e)
         return render_template('registration_failed.html')
