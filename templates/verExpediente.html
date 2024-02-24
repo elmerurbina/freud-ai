@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panel del Psicólogo</title>
+    <!--Link de fontawesome.com para los iconos-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <!--Conexion con el archivo CSS-->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/expediente.css') }}">
 </head>
 <body>
@@ -12,16 +15,25 @@
     <nav>
         <ul>
             <!--Menu superior-->
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#" id="norms-terms">Normativa</a></li>
-            <li><a href="#" id="access-terms">Términos de Acceso</a></li>
-            <li><a href="{{ url_for('mi_perfil') }}">Ver mi Perfil</a></li>
-            <li><a href="#" id="support-link">Soporte</a></li>
+            <li><a href="{{ url_for('home') }}">Inicio</a></li> <!--Regresar al index-->
+            <li><a href="#" id="norms-terms">Normativa</a></li> <!--Ver las normas a las que estan sujetos-->
+            <li><a href="#" id="access-terms">Términos de Acceso</a></li> <!--Ver los terminos para acceder al expediente-->
+            <li><a href="#" id="profile-link">Ver mi Perfil</a></li> <!--Permite ver y editar el perfil-->
+            <li><a href="#" id="support-link">Soporte</a></li> <!--Mostrar informacion de contacto-->
         </ul>
-        <!--Conecciones con JavaScript-->
-        <script src="{{ url_for('static', filename='js/soporte.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/acceso.js') }}"></script>
-        <script src="{{ url_for('static', filename='js/normas.js') }}"></script>
+
+        <!--Formas para darle acceso a su perfil a traves de su numero de Licencia-->
+        <div id="license-input-container" style="display: none;"> <!--Inicialmente no mostrar la forma-->
+            <label for="license-input">Digite su licencia:</label>
+            <input type="text" id="license-input" name="license-input">
+            <a href="{{ url_for('mi_perfil') }} "> <i class="fa-solid fa-magnifying-glass"></i> </a>
+        </div>
+
+        <!--Conexiones con JavaScript-->
+        <script src="{{ url_for('static', filename='js/soporte.js') }}"></script> <!--Informacion de contacto-->
+        <script src="{{ url_for('static', filename='js/acceso.js') }}"></script> <!--Mostrar los terminos de acceso-->
+        <script src="{{ url_for('static', filename='js/normas.js') }}"></script> <!--Mostrar la normativa-->
+        <script src="{{ url_for('static', filename='js/digitarLicencia.js') }}"></script> <!--Permirtir digitalizar su licencia-->
     </nav>
 </header>
 
@@ -36,7 +48,7 @@
             <input type="submit" value="Acceder">
         </form>
         <!--Link para acceder con las credenciales del usuario-->
-        <p><a href="#">Acceder con credenciales (email y contraseña)</a></p>
+        <p><a href="{{ url_for('login_account') }}">Acceder con credenciales (email y contraseña)</a></p>
     </section>
 </main>
 
