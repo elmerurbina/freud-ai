@@ -21,24 +21,14 @@
                
                 <nav class="navbar">
                     <ul>
-                        <!--Menu principal-->
                         <li><a href="{{ url_for('profesionales') }}">Profesionales</a></li>
+                        <li><a href="{{ url_for('notificaciones') }}">Red de Apoyo</a></li>
                         <li><a href="{{ url_for('login_account') }}">Ir al Chat</a></li>
                         <li><a href="{{ url_for('verExpediente') }}">Panel del Psicólogo</a></li>
-                        <li class="more-options">
-                            <a href="#" class="more-options-toggle">Mas Opciones</a>
-                            <div class="more-options-menu">
-                                <ul>
-                                    <!--Mas opciones del menu-->
-                                    <li><a href="{{ url_for('notificaciones') }}">Notificaciones</a></li> <br>
-                                    <li><a href="#nosotros">Nosotros</a></li>
-                                    <li><a class="menu" href="#" id="privacyLink">Privacidad</a></li>
-                                    <li><a href="#" id="support-link">Soporte</a></li>
-                                </ul>
-                            </div>
-                        </li>
+                        
                     </ul>
                 </nav>
+                
                 <!--JS para la funcion del menu-->
                 <script src="{{ url_for('static', filename='js/menu_index.js') }}"></script>
                 
@@ -67,25 +57,27 @@
 
         <footer class="pie-pagina">
             <div class="grupo-1">
-                <div class="nosotrosSeccion">
-                    <figure>
-              <!--Imagen del pie de pagina, ubicado a la izquierda del parrafo "Acerca de nosotros"-->
-
-                           <img src="{{ url_for('static', filename='imagenes/01.jpg') }}" alt="Logo Freud AI"> 
-                        
-                    </figure>
-                </div>
+               
 
                    <!--JS para mostrar los terminos de privacidad-->
                 <script src="{{ url_for('static', filename='js/privacidad.js') }}"></script>
+
+                <div class="contact-info">
+                    <a href="#" style="color: rgb(17, 17, 187);"><i class="fab fa-facebook"></i></a> <br>
+        <a href="https://www.youtube.com/@freud-ia" style="color: red;"><i class="fab fa-youtube"></i></a> <br>
+        <a href="#"  style="color: rgb(0, 136, 204) ;"><i class="fab fa-telegram"></i></a> <br>
+        <a href="mailto:freudiaweb@gmail.com" style="color: #ee3a3a;"><i class="far fa-envelope"></i></a> <br>
+        <a href="#"><i class="fab fa-instagram" style="color: #833AB4;"></i></a> <br>
+                </div>
             
                  <!--Parrafo sobre nosotros/quienes somos-->
                 <div id="nosotros" class="nosotrosSeccion">
+                    
                     <h2>¿Quiénes somos?</h2>
                 
                     <p>Somos una plataforma dedicada a proporcionar apoyo psicológico en línea. Nuestro equipo está compuesto por psicólogos certificados y autorizados, cada uno con sus respectivas licencias profesionales. Ofrecemos una amplia gama de servicios, incluido un chatbot interactivo con el que los usuarios pueden interactuar. Este chatbot está diseñado para brindar atención similar a la humana, y también ofrecemos apoyo especializado para personas en riesgo de suicidio.</p>
                 <br>
-                    <p>En nuestra plataforma, atendemos cualquier tipo de problema psicológico, desde el estrés y la ansiedad hasta trastornos más complejos. Nuestro objetivo es proporcionar un entorno seguro y confidencial donde las personas puedan obtener el apoyo que necesitan para mejorar su bienestar emocional y mental.</p>
+                    
                 </div>
                 
         </footer>

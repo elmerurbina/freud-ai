@@ -199,16 +199,6 @@ span {
     padding: 45px 20px; 
 }
 
-.pie-pagina .grupo-1 .nosotrosSeccion figure {
-    width: 80%;
-    height: 80%;
-    display: flex;
-    
-}
-
-.pie-pagina .grupo-1 .nosotrosSeccion figure img {
-    width: 300px;
-}
 
 
 .nosotrosSeccion h2 {
@@ -225,33 +215,24 @@ span {
 }
 
 
-.more-options-menu {
-    display: none;
-    position: absolute;
-    top: 0; 
-    left: 0; 
-    z-index: 1000;
-    background-color: #7305ce; 
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    padding: 10px;
+.nosotrosSeccion {
+    margin-left: -100px; 
 }
 
-.more-options-menu ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
+.contact-info {
+    background-color: #f0f0f0;
+    padding: 20px;
+    width: 60px;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    margin-left: 8%;
+    font-size: 25px;
 }
 
-.more-options-menu li {
-    margin-bottom: 10px;
+@media screen and (max-width: 768px) {
+    .nosotrosSeccion {
+        margin-left: 0; /* Reset margin for smaller screens */
+    }
 }
 
-.more-options-menu a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.more-options-menu.active {
-    display: block;
-}
