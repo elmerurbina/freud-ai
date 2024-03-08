@@ -15,6 +15,10 @@ def home():
     return render_template('index.html')
 
 
+@app.route('/support')
+def redApoyo():
+    return render_template('redApoyo.html')
+
 
 
 # Editar perfil del profesional
