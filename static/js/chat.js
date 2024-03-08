@@ -24,7 +24,14 @@ function sendMessage() {
         // Mostrar el mensaje del chatbot
         const chatbotMessage = document.createElement('div');
         chatbotMessage.className = 'chatbot-message';
-        chatbotMessage.innerHTML = `<i class="fa-brands fa-fly"></i> ${data.response}`;
+        chatbotMessage.innerHTML = `
+        <div class="logo-image">
+        <img src="static/imagenes/logo.jpg" alt="Logo Image">
+        </div>
+        <div class="message-text">
+            ${data.response}
+        </div>
+    `;
         messageContainer.appendChild(chatbotMessage);
 
         // Mover a la parte inferior de la pagina despues de mostrar el mensaje

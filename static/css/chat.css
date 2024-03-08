@@ -442,24 +442,3 @@ main {
   z-index: 1000;
 }
 
-span.logo-icon {
-  width: 80px;
-  height: 80px;
-  margin-right: 5px;
-  margin-left: 90%;
-  border-radius: 50px;
-  position: fixed;
-  z-index: 1000;
-  font-size: 18px;
-  transform: rotate(-90deg); 
-}
-
-span.logo-icon:before {
-  content: "Your Text Here"; /* Replace with your text */
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform-origin: 0 0;
-  transform: translate(-50%, -50%) rotate(90deg); /* Rotate the text back to its original position */
-}
