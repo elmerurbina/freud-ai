@@ -34,13 +34,34 @@
         <div class="menu-bar">
 
             <div class="menu">
-               <!--Barra de busqueda-->
+
+                <!--Barra de busqueda-->
                 <li class="search-box">
                     <i class="bx bx-search icon"></i>
                     <input type="text" placeholder="buscar....">
                 </li>
-
+               
                 <ul class="menu-links">
+
+
+                    <li class="nav-link">
+                        <a href=" ">
+                            <i class="fa-solid fa-handshake-angle"></i>
+                            <span class="text nav-text">Red de Apoyo</span>
+                        </a>
+                    </li>
+
+
+                    
+                    <!--Accede al historial de mensajes-->
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class="bx bx-conversation icon"></i>
+                            <span class="text nav-text">Ver Historial</span>
+                        </a>
+                    </li>
+
+
                <!--Opcion para recibir feedback de los usuarios-->
                     <li class="nav-link active" id="feedback-link">
                         <a href="#">
@@ -48,6 +69,15 @@
                           <span class="text nav-text">Calificanos</span>
                         </a>
                       </li>
+
+                      
+                    <!--Lleva a los usuarios a seccion de psicologos-->
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class="bx bx-user icon"></i>
+                            <span class="text nav-text">Profesionales</span>
+                        </a>
+                    </li>
 
       <!--Funcion que le permite al usuario escribir un comentario-->                               
 <div id="feedback-form" style="display: none;"> <!--Inicialmente se oculta el area del texto-->
@@ -57,18 +87,12 @@
     </form>
 </div>
 
+
 <!--Estilos para mostrar un mensaje cuando el usuario envie su comentario-->
 <div id="success-message" style="display: none; color: rgb(22, 252, 22);"></div>
 
 
-                      <!--Permite a los usuarios ver a su expediente-->
-                    <li class="nav-link">
-                        <a href="#">
-                            
-                            <i class="bx bx-file-find icon"></i>
-                            <span class="text nav-text">Ver Expediente</span>
-                        </a>
-                    </li>
+                 
 
                     <!--Link para acceder a la configuracion de notificaciones-->
                     <li class="nav-link">
@@ -78,21 +102,7 @@
                         </a>
                     </li>
 
-                    <!--Lleva a los usuarios a seccion de psicologos-->
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class="bx bx-user icon"></i>
-                            <span class="text nav-text">Profesionales</span>
-                        </a>
-                    </li>
 
-                    <!--Accede al historial de mensajes-->
-                    <li class="nav-link">
-                        <a href="#">
-                            <i class="bx bx-conversation icon"></i>
-                            <span class="text nav-text">Ver Historial</span>
-                        </a>
-                    </li>
 
                     <!--Salir del chatbot/cerrar sesion-->
                     <li class=" ">

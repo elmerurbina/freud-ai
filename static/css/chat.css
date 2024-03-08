@@ -117,6 +117,11 @@ body.dark {
   margin-left: 20px;
 }
 
+.fa-handshake-angle {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
 .nav-link.active a:hover i.fa-regular {
   color: var(--sidebar-color);
 }
