@@ -9,6 +9,8 @@
     <!--Vinculacion con el sitio fontawesome.com para los iconos-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
 
 </head>
 <body>
@@ -34,10 +36,23 @@
             <!--Boton para iniciar sesion-->
             <button name="Register" type="submit">Iniciar sesion</button>
         </form>
+
+       <a class="google" href="{{url_for('chat')}}">
+        <div class="custom-google-button" onclick="onCustomGoogleSignIn()">
+            <img src="{{ url_for('static', filename='imagenes/google-logo.png') }}" alt="Google Logo" width="20" height="20"> Sign in with Google
+
+        </a>
+        </div>
+       
+
+        
+
         <!--Link para ir a la pagina de registro, para usuarios que aun no tienen cuenta-->
         <p>¿No tienes cuenta? <a href="{{ url_for('register_user') }}">Registrar</a></p>
         <!--Link para recuperar credenciales-->
         <p>¿Olvido la contraseña? <a href=" {{ url_for('password_recovery') }}">Recuperar Cuenta</a></p>
+
+        <script src="{{ url_for('static', filename='js/GoogleSignIn.js') }}"></script>
     </section>
     </div>
     

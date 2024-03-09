@@ -106,3 +106,30 @@ padding-top: 100px;}
     text-align: center;}
 
 
+    .custom-google-button {
+        background-color: #ffffff; /* Background color */
+        border: 1px solid #dcdcdc; /* Border color */
+        color: #757575; /* Text color */
+        padding: 10px 20px; /* Padding */
+        font-size: 16px; /* Font size */
+        border-radius: 5px; /* Border radius */
+        cursor: pointer; /* Cursor style */
+        display: inline-block; /* Display as inline block */
+        transition: all 0.3s ease-in-out; /* Transition effect */
+    }
+
+    .custom-google-button img {
+        vertical-align: middle; /* Align the image vertically */
+        margin-right: 10px; /* Add margin to the right of the image */
+    }
+
+    .custom-google-button:hover {
+        background-color: #f8f8f8; /* Change background color on hover */
+    }
+
+    a.google:hover {
+        border-style: none;
+        outline: none;
+    }
+
+
