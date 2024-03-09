@@ -127,9 +127,6 @@ padding-top: 100px;}
         background-color: #f8f8f8; /* Change background color on hover */
     }
 
-    a.google:hover {
-        border-style: none;
-        outline: none;
-    }
+   
 
 

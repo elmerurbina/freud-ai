@@ -37,16 +37,13 @@
             <button name="Register" type="submit">Iniciar sesion</button>
         </form>
 
-       <a class="google" href="{{url_for('chat')}}">
+       <a href="{{url_for('chat')}}">
         <div class="custom-google-button" onclick="onCustomGoogleSignIn()">
             <img src="{{ url_for('static', filename='imagenes/google-logo.png') }}" alt="Google Logo" width="20" height="20"> Sign in with Google
 
         </a>
         </div>
        
-
-        
-
         <!--Link para ir a la pagina de registro, para usuarios que aun no tienen cuenta-->
         <p>¿No tienes cuenta? <a href="{{ url_for('register_user') }}">Registrar</a></p>
         <!--Link para recuperar credenciales-->
