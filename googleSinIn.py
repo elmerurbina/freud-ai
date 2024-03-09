@@ -2,7 +2,7 @@ from flask import Flask, redirect, url_for, jsonify, request
 from flask_dance.contrib.google import make_google_blueprint, google
 
 app = Flask(__name__)
-app.secret_key = "supersecretkey"
+
 
 # Google OAuth blueprint
 google_bp = make_google_blueprint(
