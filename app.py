@@ -13,8 +13,7 @@ app.register_blueprint(register_user_app, url_prefix='/register')
 
 # Google OAuth blueprint
 google_bp = make_google_blueprint(
-    client_id="http://512814388268-1db0c3s4gj5pjdljv9qa5h3ohrikb42n.apps.googleusercontent.com",
-    client_secret="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",
+
     redirect_to="login_callback"
 )
 app.register_blueprint(google_bp, url_prefix="/login")
