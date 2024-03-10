@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Expediente</title>
-    <style>
-        /* Add your CSS styles here */
-    </style>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/expedientePaciente.css') }}">
 </head>
 <body>
 
@@ -15,47 +13,85 @@
     <!-- Patient Information Section -->
     <section id="patientInformation">
         <h2>Información del Paciente</h2>
-        <!-- Placeholder for patient information -->
-        <div id="patientInfo">
-            <!-- Patient information will be dynamically populated here -->
-        </div>
+        <table>
+            <tr>
+                <th>Nombre</th>
+                <td id="patientName">John Doe</td>
+            </tr>
+            <tr>
+                <th>Edad</th>
+                <td id="patientAge">35 años</td>
+            </tr>
+            <!-- Add more patient information here -->
+        </table>
     </section>
 
     <!-- Medical History Section -->
     <section id="medicalHistory">
         <h2>Historial Médico</h2>
-        <!-- Placeholder for medical history -->
-        <div id="medicalHistoryContent">
-            <!-- Medical history content will be dynamically populated here -->
-        </div>
+        <table>
+            <tr>
+                <th>Fecha</th>
+                <th>Descripción</th>
+                <!-- Add more columns if needed -->
+            </tr>
+            <tr>
+                <td>2022-03-01</td>
+                <td>Ansiedad</td>
+                <!-- Add more medical history entries here -->
+            </tr>
+        </table>
     </section>
 
     <!-- Prescriptions Section -->
     <section id="prescriptions">
         <h2>Recetas</h2>
-        <!-- Placeholder for prescriptions -->
-        <div id="prescriptionsList">
-            <!-- Prescriptions will be dynamically populated here -->
-        </div>
+        <table>
+            <tr>
+                <th>Fecha</th>
+                <th>Medicamento</th>
+                <!-- Add more columns if needed -->
+            </tr>
+            <tr>
+                <td>2022-03-05</td>
+                <td>Meditacion</td>
+                <!-- Add more prescriptions here -->
+            </tr>
+        </table>
     </section>
 
     <!-- Diagnostic Tests Section -->
     <section id="diagnosticTests">
         <h2>Pruebas Diagnósticas</h2>
-        <!-- Placeholder for diagnostic tests -->
-        <div id="diagnosticTestsList">
-            <!-- Diagnostic tests will be dynamically populated here -->
-        </div>
+        <table>
+            <tr>
+                <th>Fecha</th>
+                <th>Prueba</th>
+                <th>Resultado</th>
+                <!-- Add more columns if needed -->
+            </tr>
+            <tr>
+                <td>2022-03-10</td>
+                <td>Terapia</td>
+                <td>Normal</td>
+                <!-- Add more diagnostic test entries here -->
+            </tr>
+        </table>
     </section>
 
-    <!-- Other Sections as needed -->
 
-    <!-- Add your JavaScript code here -->
-    <script>
-        // You can add JavaScript functionality here
-        // For example, fetching patient information and updating the DOM dynamically
-        // Or handling interactions with the page
-    </script>
+    <section id="frequentMessages">
+        <h2>Mensajes Frecuentes</h2>
+        <div class="message">
+            <p>Aqui van los mensajes que el paciente escribe constantemente en el chat.</p>
+        </div>
+        <div class="message">
+         
+        </div>
+        <!-- Add more frequent messages here -->
+    </section>
+
+
 
 </body>
 </html>

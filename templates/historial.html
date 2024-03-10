@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Historial</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/historial.css') }}">
 </head>
 <body>
+
+      <!-- Link to "Ver Mi Expediente" -->
+      <a href="{{ url_for('expediente') }}">Ver Mi Expediente</a>
+
 
     <h1>Historial</h1>
 
     <p>
-        Aquí puedes ver tu historial de actividades.
+        Aquí aparecera tu historial de mensajes.
     </p>
 
-    <!-- Link to "Ver Mi Expediente" -->
-    <a href="{{ url_for('expediente') }}">Ver Mi Expediente</a>
-
+  
 </body>
 </html>
