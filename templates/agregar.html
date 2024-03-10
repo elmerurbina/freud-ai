@@ -2,40 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Nuevo Perfil</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/agregar.css') }}">
-    <title>Agregar nuevo perfil</title>
 </head>
 <body>
-    <section>
-        <h1>Agregar nuevo perfil</h1>
-        {% if message %}
-            <p style="color: {% if 'correctamente' in message %}green{% else %}red{% endif %}">{{ message }}</p>
-        {% endif %}
-        <form action="/agregar" method="post" enctype="multipart/form-data">
-            {{ form.hidden_tag() }}
+    <div class="container">
+        <h1>Agregar Nuevo Perfil</h1>
+        <form action="{{ url_for('agregar_perfil') }}" method="POST">
 
-            <label for="profile_picture">Subir imagen de perfil:</label>
-            {{ form.profile_picture.label }} {{ form.profile_picture }}
+            <label for="licencia" class="required">Licencia:</label>
+            <input type="text" id="licencia" name="licencia" required>
 
-            <label for="nombre">Nombre:</label>
-            {{ form.nombre.label }} {{ form.nombre }}
 
-            <label for="licencia">No. De Licencia:</label>
-            {{ form.licencia.label }} {{ form.licencia }}
+            <label for="nombre" class="required">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
 
-            <label for="ubicacion">Ubicacion:</label>
-            {{ form.ubicacion.label }} {{ form.ubicacion }}
 
-            <label for="contacto">Informacion de contacto:</label>
-            {{ form.contacto.label }} {{ form.contacto }}
+            <label for="direccion" class="optional">Dirección:</label>
+            <input type="text" id="direccion" name="direccion">
 
-            <label for="descripcion">Descripcion:</label>
-            {{ form.descripcion.label }} {{ form.descripcion }}
+            <label for="descripcion" class="optional">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" rows="4" ></textarea>
 
-            <button type="submit">Agregar</button>
+            <label for="keywords" class="required">Keywords:</label>
+            <input type="text" id="keywords" name="keywords">
+
+            <label for="contacto" class="required">Contacto:</label>
+            <input type="text" id="contacto" name="contacto">
+
+           
+
+            <input type="submit" value="Guardar Perfil">
         </form>
-    </section>
+    </div>
 </body>
 </html>
