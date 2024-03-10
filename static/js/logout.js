@@ -5,7 +5,7 @@ document.getElementById('logoutButton').addEventListener('click', function() {
 
     // If the user clicks "OK" (true), redirect to index.html
     if (confirmation) {
-        window.location.href = '/';
+        window.location.href = "{{ url_for('home') }}";
     }
     // If the user clicks "Cancel" (false), do nothing
 });

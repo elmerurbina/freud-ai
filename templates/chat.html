@@ -45,7 +45,7 @@
 
 
                     <li class="nav-link">
-                        <a href=" ">
+                        <a href="{{ url_for('redApoyo') }}">
                             <i class="fa-solid fa-handshake-angle"></i>
                             <span class="text nav-text">Red de Apoyo</span>
                         </a>
@@ -55,7 +55,7 @@
                     
                     <!--Accede al historial de mensajes-->
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="{{ url_for ('historial')}}">
                             <i class="bx bx-conversation icon"></i>
                             <span class="text nav-text">Ver Historial</span>
                         </a>
@@ -73,7 +73,7 @@
                       
                     <!--Lleva a los usuarios a seccion de psicologos-->
                     <li class="nav-link">
-                        <a href="#">
+                        <a href="{{ url_for('profesionales') }}">
                             <i class="bx bx-user icon"></i>
                             <span class="text nav-text">Profesionales</span>
                         </a>
@@ -96,7 +96,7 @@
 
                     <!--Link para acceder a la configuracion de notificaciones-->
                     <li class="nav-link">
-                        <a href=" ">
+                        <a href="{{ url_for('notificaciones') }}">
                             <i class="bx bx-bell icon"></i>
                             <span class="text nav-text">Notificaciones</span>
                         </a>
@@ -105,8 +105,8 @@
 
 
                     <!--Salir del chatbot/cerrar sesion-->
-                    <li class=" ">
-                        <a href="#" id="logoutButton">
+                    <li class="">
+                        <a href="{{ url_for('home')}}" id="logoutButton">
                             <i class="fa-solid fa-right-from-bracket"></i>
                             <span class="text nav-text">Salir</span>
                         </a>

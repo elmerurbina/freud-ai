@@ -29,6 +29,10 @@ def home():
 def redApoyo():
     return render_template('redApoyo.html')
 
+@app.route('/historial')
+def historial():
+    return render_template('historial.html')
+
 
 
 # Editar perfil del profesional
@@ -47,6 +51,7 @@ def mi_perfil():
 
 
 
+
 # Funcion para configurar las notificaciones
 @app.route('/notificaciones')
 def  notificaciones():
@@ -61,7 +66,9 @@ def verExpediente():
     return render_template('verExpediente.html')
 
 
-
+@app.route('/expediente')
+def expediente():
+    return render_template('expediente.html')
 
 
 # Acceso a las funciones de inicio de sesion
