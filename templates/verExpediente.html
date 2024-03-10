@@ -16,11 +16,20 @@
         <ul>
             <!--Menu superior-->
             <li><a href="{{ url_for('home') }}">Inicio</a></li> <!--Regresar al index-->
+            <li><a href="#" id="access-code">Nuevo perfil</a></li>
             <li><a href="#" id="norms-terms">Normativa</a></li> <!--Ver las normas a las que estan sujetos-->
             <li><a href="#" id="access-terms">Términos de Acceso</a></li> <!--Ver los terminos para acceder al expediente-->
             <li><a href="#" id="profile-link">Ver mi Perfil</a></li> <!--Permite ver y editar el perfil-->
             <li><a href="#" id="support-link">Soporte</a></li> <!--Mostrar informacion de contacto-->
         </ul>
+
+
+        <div id="access-code-input-container" style="display: none;">
+            <label for="access-code-input">Ingrese su codigo de acceso: :</label>
+            <input type="text" id="access-code-input" placeholder="Código de acceso">
+            <a href="{{url_for('agregar_perfil')}}"><i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    
 
         <!--Formas para darle acceso a su perfil a traves de su numero de Licencia-->
         <div id="license-input-container" style="display: none;"> <!--Inicialmente no mostrar la forma-->
@@ -34,6 +43,7 @@
         <script src="{{ url_for('static', filename='js/acceso.js') }}"></script> <!--Mostrar los terminos de acceso-->
         <script src="{{ url_for('static', filename='js/normas.js') }}"></script> <!--Mostrar la normativa-->
         <script src="{{ url_for('static', filename='js/digitarLicencia.js') }}"></script> <!--Permirtir digitalizar su licencia-->
+        <script src="{{ url_for('static', filename='js/codigoAcceso.js') }}"></script>
     </nav>
 </header>
 

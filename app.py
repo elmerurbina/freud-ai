@@ -170,6 +170,9 @@ def get_chatbot_response(user_input):
     elif any(word in user_input.lower() for word in ['bien', 'bien gracias a Dios', 'bien gracias a dios']):
         return 'Me alegro que estes bien, ¿De que tema te gustaria hablar hoy?'
 
+    elif any(word in user_input.lower() for word in ['mal', 'horrible', 'decepcionado']):
+        return 'Comprendo que te sientas mal, estoy aqui para escucharte y ayudarte, cuentame ¿por que te sientes mal?'
+
 
     # Expresar emociones
     elif any(word in user_input.lower() for word in ['estoy ansioso', 'ansioso', 'me siento ansioso']):
