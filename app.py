@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect, url_for
 from register_user import register_user_app
 from flask_dance.contrib.google import make_google_blueprint, google
 from flask import request, jsonify
+from db import insert_contact
 
 
 
@@ -24,10 +25,29 @@ app.register_blueprint(google_bp, url_prefix="/login")
 def home():
     return render_template('index.html')
 
-
-@app.route('/support')
+@app.route("/support", methods=["GET", "POST"])
 def redApoyo():
-    return render_template('redApoyo.html')
+    if request.method == "POST":
+        # Get form data
+        contact_one = request.form.get("contact-one")
+        contact_two = request.form.get("contact-two")
+        psychologist_email = request.form.get("psychologist-email")
+
+        # Check if country code is included
+        if '+' not in contact_one or '+' not in contact_two:
+            error_message = "Por favor, asegúrese de incluir el código de país en los números de contacto."
+            return render_template("redApoyo.html", error=error_message)
+
+        # Insert data into database
+        insert_contact(contact_one, contact_two, psychologist_email)
+
+        # Return success response
+        success_message = "Información guardada con éxito."
+        return render_template("redApoyo.html", success=success_message)
+
+    # Render the redApoyo.html template for GET requests
+    return render_template("redApoyo.html")
+
 
 @app.route('/historial')
 def historial():

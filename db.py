@@ -71,7 +71,7 @@ def get_chat_messages_by_user_id(connection, user_id):
 db_dataset = {
     "host": "localhost",
     "user": "root",
-    "password": "your_password",
+    "password": "7>>HhNN6/fZ",
     "database": "dataset",
 }
 
@@ -108,3 +108,24 @@ def get_db():
 
 def close_db(conn):
     conn.close()
+
+
+
+
+
+# Connect to MySQL database
+db = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="7>>HhNN6/fZ",
+    database="usuarios"
+)
+
+def insert_contact(contact_one, contact_two, psychologist_email):
+    cursor = db.cursor()
+    sql = "INSERT INTO redApoyo (contact_one, contact_two, psychologist_email) VALUES (%s, %s, %s)"
+    val = (contact_one, contact_two, psychologist_email)
+    cursor.execute(sql, val)
+    db.commit()
+    cursor.close()
+

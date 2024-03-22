@@ -20,6 +20,14 @@ input[type="email"] {
    
 }
 
+.error {
+    color: red;
+}
+
+#message.succes {
+    color: green !important;
+}
+
 button {
     background-color: #007bff;
     color: #fff;

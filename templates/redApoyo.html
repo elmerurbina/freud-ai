@@ -9,8 +9,15 @@
 </head>
 <body>
 
+    {% if error %}
+    <div>{{ error }}</div>
+    {% endif %}
+    {% if success %}
+    <div>{{ success }}</div>
+    {% endif %}
+
 <form id="support-form">
-    <div>
+    <div class="message">
 
         <label for="contact-one">Contacto1: <i class="fa-solid fa-handshake-angle"></i></label>
         <input type="text" id="contact-one" name="contact-one" required placeholder="Agrega un numero de telefono (Incluye codigo de pais)">
@@ -25,11 +32,12 @@
         <br>
     <button type="submit">Guardar</button>
      <a href="{{ url_for('profesionales')}}" ><button type="button" id="search-psychologist">Buscar un psicologo</button></a> 
-    <button type="button" id="add-contact">Agregar mas contactos</button>
+    <button type="button" id="see-contact">Ver mi red de apoyo</button>
     <a href="{{url_for('notificaciones')}}" ><button type="button" id="add-contact">Configurar notificaciones</button> </a>
 </form>
 <div id="message"></div>
 
 <script src="{{ url_for('static', filename='js/redApoyo.js') }}"></script>
+<script src="{{ url_for('static', filename='js/validation.js') }}"></script>
 </body>
 </html>
