@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Write access terms content to the new window
         accessTermsWindow.document.write('<html><head><title>Términos de Acceso</title>');
         accessTermsWindow.document.write('<style>');
-        accessTermsWindow.document.write('body { font-family: Arial, sans-serif; padding: 20px; }');
+        accessTermsWindow.document.write('body { font-family: Arial, sans-serif; padding: 20px; background: rgba(173, 216, 230, 0.2);}');
         accessTermsWindow.document.write('h2, h3 { margin-bottom: 15px; }');
         accessTermsWindow.document.write('p, ul { margin-bottom: 10px; }');
         accessTermsWindow.document.write('b { font-weight: bold; }');

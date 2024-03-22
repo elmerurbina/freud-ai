@@ -1,5 +1,16 @@
 import mysql.connector
 
+
+
+def get_connection():
+    return mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="7>>HhNN6/fZ",
+        database="usuarios"
+    )
+
+
 # Base de datos de los usuarios, incluye sistema de autenticacion, perfiles y historial de mensajes
 db_usuarios = {
     "host": "localhost",
@@ -7,6 +18,8 @@ db_usuarios = {
     "password": "7>>HhNN6/fZ",
     "database": "usuarios",
 }
+
+
 
 
 

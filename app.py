@@ -3,6 +3,7 @@ from register_user import register_user_app
 from flask_dance.contrib.google import make_google_blueprint, google
 from flask import request, jsonify
 from db import insert_contact
+from profileUser import get_user_data
 
 
 
@@ -24,6 +25,19 @@ app.register_blueprint(google_bp, url_prefix="/login")
 @app.route('/freud')
 def home():
     return render_template('index.html')
+
+
+
+@app.route("/profile")
+def profile():
+    # Fetch user data
+    user_data = get_user_data()
+    if user_data:
+        return render_template("profile.html", user_data=user_data)
+    else:
+        return "Lo lamentamos, no pudimos encontrar su usario. Por favor intentalo mas tarde!"
+
+
 
 @app.route("/support", methods=["GET", "POST"])
 def redApoyo():

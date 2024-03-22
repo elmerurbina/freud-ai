@@ -23,9 +23,9 @@ document.addEventListener('DOMContentLoaded', function() {
         contactWindow.document.write('<title>Soporte</title>'); // Add title
         contactWindow.document.write('<h2>Contáctanos</h2>');
         contactWindow.document.write('<div class="red-social">');
-        contactWindow.document.write('<a href="mailto:your.email@example.com" class="fa fa-envelope">  frued@ai.com</a>');
+        contactWindow.document.write('<a href="mailto:freudiaweb@gmail.com" class="fa fa-envelope">  freudiaweb@gmail.com</a>');
         contactWindow.document.write('<a href="tel:+1234567890" class="fa fa-phone">  +505 5555-0000</a>');
-        contactWindow.document.write('<a href="https://wa.me/1234567890" class="fab fa-whatsapp">  +505 8888-9999</a>');
+        contactWindow.document.write('<a href="https://t.me/freud_ia" class="fab fa-telegram">  Ir al canal de Telegram</a>');
         contactWindow.document.write('</div>');
     });
 });

@@ -1,8 +1,8 @@
 body {
+   background-image: url('/static/imagenes/psicologoFondo.avif');
    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    margin: 0;
    padding: 0;
-   background: linear-gradient(135deg, #4E79A7, #8CD19D);
    background-size: cover;
    background-repeat: no-repeat;
    background-attachment: fixed;
@@ -39,17 +39,17 @@ nav ul li a:hover {
 
 main {
    padding: 20px;
-   text-align: center; /* Center align main contents */
+   text-align: center; 
 }
 
 #user-records {
-   background-color: #FFFFFF;
+   background-color: #e0f1e4;
    padding: 20px;
    border-radius: 8px;
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-   text-align: center; /* Center align section contents */
-   width: 50%; /* Adjust the width as needed */
-   margin: 0 auto; /* Center the section horizontally */
+   text-align: center; 
+   width: 50%;
+   margin: 0 auto; 
 }
 
 #user-records h2 {
@@ -107,5 +107,5 @@ main {
 .copyright{
    margin-top: 150px;
    text-align: center;
-   color: white;
+   color: rgb(236, 232, 232);
 }
