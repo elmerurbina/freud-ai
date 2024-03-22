@@ -2,7 +2,7 @@ from flask import Flask, render_template, redirect, url_for
 from register_user import register_user_app
 from flask_dance.contrib.google import make_google_blueprint, google
 from flask import request, jsonify
-from db import insert_contact
+from db import insert_contact, db_connection
 from profileUser import get_user_data
 
 
@@ -25,6 +25,23 @@ app.register_blueprint(google_bp, url_prefix="/login")
 @app.route('/freud')
 def home():
     return render_template('index.html')
+
+
+def check_access_code(access_code):
+    connection = db_connection()
+    cursor = connection.cursor()
+    query = "SELECT COUNT(*) FROM ejecutivos WHERE codigo = %s"
+    cursor.execute(query, (access_code,))
+    count = cursor.fetchone()[0]
+    cursor.close()
+    connection.close()
+    return count > 0
+
+@app.route('/check-access-code/<access_code>')
+def check_access_code_route(access_code):
+    exists = check_access_code(access_code)
+    return jsonify({'exists': exists})
+
 
 
 

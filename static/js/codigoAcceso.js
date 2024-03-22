@@ -7,14 +7,39 @@ document.addEventListener('DOMContentLoaded', function() {
         accessCodeInputContainer.style.display = 'block';
     });
 
-    const submitAccessCodeButton = document.getElementById('submit-access-code');
-    submitAccessCodeButton.addEventListener('click', function() {
-        const accessCode = document.getElementById('access-code-input').value;
-        if (accessCode.trim() === '') {
-            alert('Error: Debe ingresar un código de acceso.');
-        } else {
-            // Proceed with your logic, e.g., redirect the user to the desired route
-            console.log('Access Code:', accessCode);
+    // Select the icon element by class name or any other appropriate selector
+    const submitAccessCodeButton = document.querySelector('.fa-arrow-right'); 
+    submitAccessCodeButton.addEventListener('click', submitAccessCode);
+
+    const accessCodeInput = document.getElementById('access-code-input');
+    accessCodeInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            submitAccessCode();
         }
     });
+
+    async function submitAccessCode() {
+        const accessCode = accessCodeInput.value;
+        if (accessCode.trim() === '') {
+            alert('Error: Debe ingresar un código de acceso.');
+            return;
+        }
+        
+        try {
+            // Send an asynchronous request to check if the access code exists
+            const response = await fetch(`/check-access-code/${accessCode}`);
+            const data = await response.json();
+            
+            if (data.exists) {
+                // Access code exists, redirect the user to the agregar_perfil route
+                window.location.href = '/agregar_perfil';
+            } else {
+                // Access code not found, display error message
+                alert('Código no encontrado.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Ha ocurrido un error al verificar el código de acceso.');
+        }
+    }
 });

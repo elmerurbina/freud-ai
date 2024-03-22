@@ -13,7 +13,7 @@
 
     <p>Selecciona las categorias segun tu interes</p>
     <form action="{{ url_for('notificaciones') }}" method="post" onsubmit="displayConfirmationMessage(event)">
-        <p class="head">Categorías:</p> <br>
+        <p class="head">De las opciones siguientes sobre cuales desea recibir mensajes:</p> <br>
         <label>
             <input type="checkbox" name="category" value="general"> General
         </label> <br>
@@ -56,7 +56,7 @@
 
         <br>
 
-        <p class="head">Intervalo de tiempo:</p>
+        <p class="head">Cada cuanto tiempo desea recibir los mensajes:</p>
         <br>
 
         <label>
@@ -79,7 +79,9 @@
 
         <br>
 
-        <input type="submit" value="Aceptar">
+        <input type="submit" value="Aceptar"> <br>
+
+        Photo by <a href="https://unsplash.com/@ispywithmylittleeye?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Zeynep Sümer</a> on <a href="https://unsplash.com/photos/a-table-with-a-plant-and-a-window-with-mountains-in-the-background-kpxFYkb3Cfo?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
     </form>
 
     <div id="notificationModal" class="modal">

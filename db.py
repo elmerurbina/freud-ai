@@ -11,6 +11,16 @@ def get_connection():
     )
 
 
+
+def db_connection():
+    return mysql.connector.connect(
+        host="localhost",
+        user="root",
+        password="7>>HhNN6/fZ",
+        database="profesionales"
+    )
+
+
 # Base de datos de los usuarios, incluye sistema de autenticacion, perfiles y historial de mensajes
 db_usuarios = {
     "host": "localhost",

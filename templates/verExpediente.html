@@ -27,7 +27,7 @@
         <div id="access-code-input-container" style="display: none;">
             <label for="access-code-input">Ingrese su código de acceso: :</label>
             <input type="text" id="access-code-input" placeholder="Código de acceso">
-            <a href="{{url_for('agregar_perfil')}}"><i class="fa-solid fa-arrow-right"></i></a>
+          <i class="fa-solid fa-arrow-right"></i>
         </div>
     
 
@@ -59,8 +59,12 @@
         </form>
         <!--Link para acceder con las credenciales del usuario-->
         <p><a href="{{ url_for('login_account') }}">Acceder con credenciales (email y contraseña)</a></p>
+
     </section>
+
 </main>
+
+  
 
 <footer>
     <div class="copyright">
