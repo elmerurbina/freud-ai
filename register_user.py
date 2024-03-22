@@ -1,9 +1,10 @@
-from flask import Blueprint, render_template, redirect, url_for, request
+from flask import render_template, redirect, url_for, request, Flask
 from db import connect_to_database, close_connection
 
-register_user_app = Blueprint('register_user_app', __name__)
 
-@register_user_app.route('/register', methods=['POST'])
+app = Flask(__name__)
+
+@app.route('/register_user', methods=['POST'])
 def register_user():
     # Extract user data from the form
     full_name = request.form.get('full_name')

@@ -1,17 +1,16 @@
 from flask import Flask, render_template, redirect, url_for
-from register_user import register_user_app
+#from register_user import register_user
 from flask_dance.contrib.google import make_google_blueprint, google
 from flask import request, jsonify
 from db import insert_contact, db_connection
 from profileUser import get_user_data
+from agregar import agregar_perfil, profesionales
 
 
 
 app = Flask(__name__)
 
 app.config.from_pyfile('config.py')  # Cargar las configuraciones del archivo config.py
-app.register_blueprint(register_user_app, url_prefix='/register')
-
 
 # Google OAuth blueprint
 google_bp = make_google_blueprint(
@@ -21,10 +20,23 @@ google_bp = make_google_blueprint(
 app.register_blueprint(google_bp, url_prefix="/login")
 
 
+#app.add_url_rule('/register_user', 'register_user', register_user, methods=['POST'])
+
+
+app.add_url_rule('/agregar_perfil', 'agregar_perfil', agregar_perfil, methods=['GET', 'POST'])
+app.add_url_rule('/profesionales', 'profesionales', profesionales)
+
+
+
 # Ruta del index
 @app.route('/freud')
 def home():
     return render_template('index.html')
+
+
+@app.route('/register')
+def register_user():
+    return render_template('register.html')
 
 
 def check_access_code(access_code):
@@ -161,18 +173,6 @@ def google_login():
 
 
 
-# Acceso al registro del usuario
-@app.route('/register_user', methods=['GET', 'POST'])
-def register_user():
-    return render_template('register.html')
-
-@app.route('/agregar_perfil')
-def agregar_perfil():
-    return render_template('agregar.html')
-
-
-
-
 # Permitir al usuario recuperar y actualizar sus credenciales
 @app.route('/password_recovery')
 def  password_recovery():
@@ -185,13 +185,6 @@ def  password_recovery():
 @app.route('/reset_password')
 def  reset_password():
     return render_template('reset_password.html')
-
-
-
-# Esta es la parte encargada de mostrarle al usuario todos los profesionales registrados en la pataforma
-@app.route('/profesionales')
-def  profesionales():
-    return render_template('profesionales.html')
 
 
 

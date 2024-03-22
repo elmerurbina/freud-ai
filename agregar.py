@@ -5,6 +5,7 @@ from wtforms.validators import DataRequired
 import mysql.connector
 from mysql.connector import Error
 
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'  # Replace with a secure key
 
@@ -34,6 +35,7 @@ class ProfessionalForm(FlaskForm):
     nombre = StringField('Nombre:', validators=[DataRequired()])
     licencia = StringField('No. De Licencia:', validators=[DataRequired()])
     ubicacion = StringField('Ubicacion:', validators=[DataRequired()])
+    keywords = StringField('keywords:', validators=[DataRequired()])
     contacto = StringField('Informacion de contacto:')
     descripcion = TextAreaField('Descripcion:')
     submit = SubmitField('Agregar')
@@ -41,14 +43,14 @@ class ProfessionalForm(FlaskForm):
 def get_profesionales_data():
     connection = create_connection()
     cursor = connection.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM registro")
+    cursor.execute("SELECT * FROM perfil")
     professionals = cursor.fetchall()
     cursor.close()
     close_connection(connection)
     return professionals
 
-@app.route('/agregar', methods=['GET', 'POST'])
-def agregar_profesional():
+@app.route('/agregar_perfil', methods=['GET', 'POST'])
+def agregar_perfil():
     form = ProfessionalForm()
     connection = None
     message = None
@@ -66,7 +68,7 @@ def agregar_profesional():
             # Create a new Professional record
             cursor = connection.cursor()
             cursor.execute("""
-                INSERT INTO registro (nombre, licencia, ubicacion, contacto, descripcion, file_path)
+                INSERT INTO registro (nombre, licencia, ubicacion, contacto, keywords, descripcion, file_path)
                 VALUES (%s, %s, %s, %s, %s, %s)
             """, (form.nombre.data, form.licencia.data, form.ubicacion.data, form.contacto.data, form.descripcion.data, file_path))
             connection.commit()
@@ -83,10 +85,12 @@ def agregar_profesional():
 
     return render_template('agregar.html', form=form, message=message)
 
+
 @app.route('/profesionales')
 def profesionales():
     professionals = get_profesionales_data()
     return render_template('profesionales.html', professionals=professionals)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

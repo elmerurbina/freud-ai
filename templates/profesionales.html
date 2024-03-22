@@ -9,19 +9,25 @@
 </head>
 <body>
     <section>
-        <h1>Profesionales</h1>
-        <div>
+        <h1>Contacta con nuestros profesionales disponibles.</h1>
+        <section class="social-profiles">
             {% for professional in professionals %}
-                <div>
-                    <img src="{{ url_for('static', filename='uploads/' + professional['file_path']) }}" alt="Profile Picture" style="max-width: 100px; max-height: 100px;">
-                    <p>Nombre: {{ professional['nombre'] }}</p>
-                    <p>Licencia: {{ professional['licencia'] }}</p>
-                    <p>Ubicacion: {{ professional['ubicacion'] }}</p>
-                    <p>Contacto: {{ professional['contacto'] }}</p>
-                    <p>Descripción: {{ professional['descripcion'] }}</p>
+            <div class="profile-section">
+                <div class="profile">
+                    <img src="{{ url_for('static', filename='uploads/' + professional['file_path']) }}" alt="Profile Picture">
+                    <div class="profile-info">
+                        <h3>{{ professional['nombre'] }}</h3>
+                        <p>Licencia: {{ professional['licencia'] }}</p>
+                        <p>Ubicacion: {{ professional['ubicacion'] }}</p>
+                        <p>Contacto: {{ professional['contacto'] }}</p>
+                        <p>Descripción: {{ professional['descripcion'] }}</p>
+                    </div>
                 </div>
+            </div>
             {% endfor %}
-        </div>
-    </section>
+        </section>
+        Photo by <a href="https://unsplash.com/@baileyal3xander?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Bailey Alexander</a> on <a href="https://unsplash.com/photos/a-view-of-a-city-from-a-high-building-C8j4UKvYJrk?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+        Photo by <a href="https://unsplash.com/@freestockpro?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Alexandr Podvalny</a> on <a href="https://unsplash.com/photos/a-woman-in-a-white-shirt-holding-a-stethoscope-tE7_jvK-_YU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+  
 </body>
 </html>
