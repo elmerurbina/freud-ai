@@ -1,25 +1,29 @@
 
 body {
-   background: linear-gradient(to right, #21c758, #1d6fc0);
+   background-image: url('/static/imagenes/notificacionesFondo.avif');
+   background-size: contain;
+  
     font-family: 'Helvetica Neue', sans-serif; 
     margin: 0;
    padding: 0;
-   background-size: cover; 
+  
    background-repeat: no-repeat;
    background-attachment: fixed;
 }
 p{margin-top: 10px;
 text-align: center;
+color: #000;
 font-size: 16px;}
 
 form {
-    background: #cfe0f2;  /*#fff8dc;*/
+    background: #eff0f1;  /*#fff8dc;*/
     padding: 20px;
     height: auto;
     align-items: center;
     margin-left: 35%;
+    margin-right: 35%;
     margin-bottom: 20px;
-    width: 400px;
+    width: 500px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
     text-align: center;
@@ -32,6 +36,7 @@ form {
     position: fixed;
     top: 50%;
     left: 50%;
+    right: 30%;
     transform: translate(-50%, -50%);
     padding: 20px;
     background: #4CAF50; /* Green background color */
@@ -64,7 +69,7 @@ label {
    
 }
 
-p.head{color: #7609dd;
+p.head{color: #000000;
 font-size: 20px;}
 
 input[type="checkbox"],
@@ -74,7 +79,7 @@ input[type="radio"] {
 }
 
 h1 {
-    color: #570e9b; 
+    color: #050505; 
     margin-top: 5%;
     text-align: center;
 }
