@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Error</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/error.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="error-container">
+            <h1>¡Oops! Algo salió mal.</h1>
+            <p>Nos disculpamos por las molestias. Parece que hubo un error al procesar su solicitud.</p>
+            <p>Por favor, inténtelo de nuevo más tarde o póngase en contacto con soporte para obtener ayuda.</p>
+            <a href="{{ url_for('inicio') }}" class="btn">Volver a la página de inicio</a>
+        </div>
+    </div>
+</body>
+</html>

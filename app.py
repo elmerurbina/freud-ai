@@ -12,6 +12,15 @@ app = Flask(__name__)
 
 app.config.from_pyfile('config.py')  # Cargar las configuraciones del archivo config.py
 
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('error.html', error_code=404), 404
+
+# Manejo de errores 500 (Error interno del servidor)
+@app.errorhandler(500)
+def internal_server_error(error):
+    return render_template('error.html', error_code=500), 500
+
 # Google OAuth blueprint
 google_bp = make_google_blueprint(
 
