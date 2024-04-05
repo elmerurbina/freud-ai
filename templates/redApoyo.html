@@ -6,6 +6,7 @@
     <title>Red de apoyo</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/redApoyo.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css">
 </head>
 <body>
 
@@ -18,26 +19,31 @@
 
 <form id="support-form">
     <div class="message">
-
-        <label for="contact-one">Contacto1: <i class="fa-solid fa-handshake-angle"></i></label>
-        <input type="text" id="contact-one" name="contact-one" required placeholder="Agrega un numero de telefono (Incluye codigo de pais)">
+        <label for="contact-one">Contacto 1: <i class="fa-solid fa-handshake-angle"></i></label>
+        <input type="tel" id="contact-one" name="contact-one" required placeholder="Agrega un numero de telefono">
     </div>
     <div>
-        <label for="contact-two">Contacto2: <i class="fa-solid fa-handshake-angle"></i></label>
-        <input type="text" id="contact-two" name="contact-two" required placeholder="Agrega un numero de telefono (Incluye el codigo de pais)" >
+        <label for="contact-two">Contacto 2: <i class="fa-solid fa-handshake-angle"></i></label>
+        <input type="tel" id="contact-two" name="contact-two" required placeholder="Agrega un numero de telefono">
     </div>
     <div>
         <label for="psychologist-email">Correo del psicologo: <i class="fa-solid fa-user-doctor"></i></label>
-        <input type="email" id="psychologist-email" name="psychologist-email" placeholder="Ingresa el correo electronico de tu psicologo" >
-        <br>
+        <input type="email" id="psychologist-email" name="psychologist-email" placeholder="Ingresa el correo de tu psicologo">
+    </div>
     <button type="submit">Guardar</button>
-     <a href="{{ url_for('profesionales')}}" ><button type="button" id="search-psychologist">Buscar un psicologo</button></a> 
+    <a href="{{ url_for('profesionales')}}" ><button type="button" id="search-psychologist">Buscar un psicologo</button></a> 
     <button type="button" id="see-contact">Ver mi red de apoyo</button>
     <a href="{{url_for('notificaciones')}}" ><button type="button" id="add-contact">Configurar notificaciones</button> </a>
 </form>
 <div id="message"></div>
 
+<!-- Include intl-tel-input JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 <script src="{{ url_for('static', filename='js/redApoyo.js') }}"></script>
 <script src="{{ url_for('static', filename='js/validation.js') }}"></script>
+
+<!-- Initialize intl-tel-input -->
+<script src="{{ url_for('static', filename='js/phoneInput.js') }}"></script>
+
 </body>
 </html>
