@@ -46,6 +46,7 @@ app.add_url_rule('/login', view_func=login, methods=['GET', 'POST'])
 # Add routes for Google sign-in
 app.add_url_rule('/google-signin', view_func=google_auth)
 app.add_url_rule('/google-auth-callback', view_func=google_auth_callback)
+app.add_url_rule('/login/callback', view_func=login_callback)
 
 
 # Ruta del index

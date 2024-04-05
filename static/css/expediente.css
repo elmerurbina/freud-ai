@@ -1,5 +1,5 @@
 body {
-   background-image: url('/static/imagenes/psicologoFondo.avif');
+   background-image: url('/static/imagenes/psicologoFondo.jpg');
    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
    margin: 0;
    padding: 0;
@@ -9,7 +9,7 @@ body {
 }
 
 header {
-   background-color: #FFFFFF;
+   background-color: #3519d3;
    padding: 20px;
    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
    text-align: center; /* Center align header contents */
@@ -28,7 +28,7 @@ nav ul li {
 
 nav ul li a {
    text-decoration: none;
-   color: #333333;
+   color: #fdfbfb;
    font-weight: bold;
    transition: color 0.3s ease;
 }
@@ -104,8 +104,7 @@ main {
    text-decoration: underline;
 }
 
-.copyright{
-   margin-top: 150px;
-   text-align: center;
-   color: rgb(236, 232, 232);
+a {
+ 
+   margin-top: 200px;
 }

@@ -83,6 +83,17 @@ body.dark {
   font-size: 20px;
 }
 
+.fa-solid.fa-cart-shopping {
+ font-size: 20px;
+ align-items: center;
+ margin-right: 20px;
+ margin-left: 20px;
+}
+
+.nav-link.active a:hover i.fa-solid.fa-cart-shopping {
+  color: var(--sidebar-color);
+}
+
 .sidebar .text,
 .sidebar .icon {
   color: black; 
@@ -179,25 +190,14 @@ body.dark {
   margin-top: 40px;
 }
 /* Estilos del icono y la barra de busqueda */
-.sidebar li.search-box {
+.sidebar li.plans {
   border-radius: 6px;
   background-color: var(--prymary-color-dark);
   cursor: pointer;
   transition: var(--tran-05);
 }
-/* Estilos del input de la barra de busqueda */
-.sidebar li.search-box input {
-  height: 100%;
-  width: 100%;
-  outline: none;
-  border: none;
-  background-color: var(--prymary-color-ligth);
-  color: black; /* Color del texto que se escribe en la barra de busqueda */
-  border-radius: 6px;
-  font-size: 17px;
-  font-weight: 500;
-  transition: var(--tran-05);
-}
+
+
 /* Estilos de la lista de opciones del menu */
 .sidebar li a {
   list-style: none;
@@ -241,12 +241,6 @@ body.dark {
   display: none;
 }
 
-.sidebar .menu-bar .mode {
-  border-radius: 6px;
-  background-color: var(--prymary-color-ligth);
-  position: relative;
-  transition: var(--tran-05);
-}
 
 /* Estilos del menu cuando se cliquean las tres barritas */
 .menu-bar .bottom-content .toggle-switch {
