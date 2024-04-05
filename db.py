@@ -21,7 +21,8 @@ def db_connection():
     )
 
 
-# Base de datos de los usuarios, incluye sistema de autenticacion, perfiles y historial de mensajes
+
+# Database configuration
 db_usuarios = {
     "host": "localhost",
     "user": "root",
@@ -29,28 +30,26 @@ db_usuarios = {
     "database": "usuarios",
 }
 
-
-
-
-
+# Function to connect to the database
 def connect_to_database(database='usuarios'):
     try:
         connection = mysql.connector.connect(
             host=db_usuarios["host"],
             user=db_usuarios["user"],
             password=db_usuarios["password"],
-            database=db_usuarios["database"]
+            database=database
         )
         return connection
     except mysql.connector.Error as err:
         print("Error connecting to MySQL:", err)
         return None
 
-
+# Function to close the database connection
 def close_connection(connection):
     if connection:
         connection.close()
 
+# Function to save a chat message into the historial_chat table
 def save_chat_message(connection, user_id, message, response):
     try:
         cursor = connection.cursor()
@@ -64,6 +63,7 @@ def save_chat_message(connection, user_id, message, response):
         print("Error saving chat message:", err)
         return False
 
+# Function to retrieve all chat messages from the historial_chat table
 def get_all_chat_messages(connection):
     try:
         cursor = connection.cursor(dictionary=True)
@@ -76,6 +76,7 @@ def get_all_chat_messages(connection):
         print("Error retrieving chat messages:", err)
         return []
 
+# Function to retrieve chat messages by user ID from the historial_chat table
 def get_chat_messages_by_user_id(connection, user_id):
     try:
         cursor = connection.cursor(dictionary=True)

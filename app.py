@@ -5,6 +5,7 @@ from flask import request, jsonify
 from db import insert_contact, db_connection
 from profileUser import get_user_data
 from agregar import agregar_perfil, profesionales
+from chat import get_chatbot_response, save_chat_to_database, chat
 
 
 
@@ -43,11 +44,24 @@ def home():
     return render_template('index.html')
 
 
+
+def process_message():
+    user_message = request.json.get('message', '')
+    response = get_chatbot_response(user_message)
+    save_chat_to_database(user_message, response)
+    return jsonify({'response': response})
+
+# Add URL rules for each function in chat.py
+app.add_url_rule('/chat', 'chat', chat)
+app.add_url_rule('/process_message', 'process_message', process_message, methods=['POST'])
+
+
+
 @app.route('/register')
 def register_user():
     return render_template('register.html')
 
-
+# Funcion para conprobar si existe el codigo del ejecutivo en la base de datos
 def check_access_code(access_code):
     connection = db_connection()
     cursor = connection.cursor()
@@ -57,7 +71,7 @@ def check_access_code(access_code):
     cursor.close()
     connection.close()
     return count > 0
-
+# Si el codigo ingresado esta en la base de datos, se le da el acceso para agregar un nuevo perfil
 @app.route('/check-access-code/<access_code>')
 def check_access_code_route(access_code):
     exists = check_access_code(access_code)
@@ -194,84 +208,6 @@ def  password_recovery():
 @app.route('/reset_password')
 def  reset_password():
     return render_template('reset_password.html')
-
-
-
-# Esta es la ruta que maneja la parte del chatbot
-@app.route('/chat')
-def chat():
-    return render_template('chat.html')
-
-
-# Procesa los mensajes del usuario
-@app.route('/process_message', methods=['POST'])
-def process_message():
-    user_message = request.json.get('message', '')
-
-    # Procesa los mensajes del usuario y genera una respuesta
-    response = get_chatbot_response(user_message)
-
-    return jsonify({'response': response})
-
-# Muestra las respuestas del chatbot
-def get_chatbot_response(user_input):
-    # Estas son algunas respuestas pre-programadas a los saludos mas comunes
-    # Saludos comunes
-    if any(word in user_input.lower() for word in ['hola', 'saludos', 'buenos días', 'buenas tardes', 'buenas noches']):
-        return '¡Hola! ¿Cómo te encuentras?'
-
-    elif any(word in user_input.lower() for word in ['bien', 'bien gracias a Dios', 'bien gracias a dios']):
-        return 'Me alegro que estes bien, ¿De que tema te gustaria hablar hoy?'
-
-    elif any(word in user_input.lower() for word in ['mal', 'horrible', 'decepcionado']):
-        return 'Comprendo que te sientas mal, estoy aqui para escucharte y ayudarte, cuentame ¿por que te sientes mal?'
-
-
-    # Expresar emociones
-    elif any(word in user_input.lower() for word in ['estoy ansioso', 'ansioso', 'me siento ansioso']):
-        return 'Entiendo. La ansiedad es una experiencia común. ¿Te gustaría hablar sobre lo que la está desencadenando?'
-
-
-    elif 'estres' in user_input.lower():
-        return 'Algunas causas del estres son fracaso, universidad, mucho trabajo. ¿En los ultimos dias has tenido alguno de estos problemas?'
-
-
-    elif any(word in user_input.lower() for word in ['me siento solo', 'no tengo a nadie a mi lado']):
-        return 'La soledad no siempre es mala, muchas veces nos ayuda a reflexionar y a encontrarnos a nosotros mismos. ¿Dime de que tema deseas hablar?'
-
-    elif any(word in user_input.lower() for word in ['me siento triste', 'estoy deprimido']):
-        return 'Lamento escuchar que te sientes así. ¿Puedes compartir más sobre lo que ha estado sucediendo?'
-
-    # Manejo del estres
-    elif any(word in user_input.lower() for word in ['cómo manejar el estrés', 'consejos para reducir el estrés']):
-        return 'El manejo del estrés es importante. Algunas estrategias incluyen la práctica de la respiración profunda y el autocuidado. ¿Te gustaría más información?'
-
-    # Prevenir el suicidio
-    elif any(word in user_input.lower() for word in ['pensamientos suicidas', 'necesito ayuda urgente']):
-        return 'Lo siento mucho que estés pasando por esto. Es crucial buscar ayuda de emergencia. Por favor, comunícate con una línea de prevención de suicidios o busca ayuda profesional de inmediato.'
-
-    elif any(word in user_input.lower() for word in ['me quiero suicidar', 'mi vida es una mierda', 'me quiero morir']):
-        return 'La vida es algo muy valioso, entiendo que te sientas mal pero yo estoy aqui para ayudarte. cuentame mas sobre lo que estas pasando y te brindare todo mi apoyo'
-
-
-    # Tecnicas para lidiar con el estres
-    elif any(word in user_input.lower() for word in ['cómo lidiar con el estrés', 'técnicas de afrontamiento']):
-        return 'Hay diversas técnicas de afrontamiento, como la meditación, el ejercicio y la búsqueda de apoyo social. ¿Te gustaría más sugerencias personalizadas?'
-
-    # Explorar emociones
-    elif any(word in user_input.lower() for word in ['explorar emociones', 'autoconocimiento']):
-        return 'Explorar tus emociones puede ser un viaje enriquecedor. ¿Te gustaría discutir más sobre tus sentimientos y experiencias?'
-
-    # Gratitud y positivismo
-    elif any(word in user_input.lower() for word in ['agradecimiento', 'cómo encontrar la positividad']):
-        return 'Practicar la gratitud puede tener un impacto positivo. ¿Hay algo específico por lo que te sientas agradecido hoy?'
-
-    # Respondiendo preguntas frecuentes
-    elif any(word in user_input.lower() for word in ['cómo', 'qué', 'cuándo', 'dónde']):
-        return 'Esa es una pregunta interesante. ¿Puedes proporcionar más detalles?'
-
-    else:
-        return 'Lo siento, no entiendo completamente. ¿Puedes proporcionar más información o formular tu pregunta de otra manera?'
 
 
 if __name__ == '__main__':
