@@ -17,7 +17,7 @@
     <div>{{ success }}</div>
     {% endif %}
 
-<form id="support-form">
+    <form id="support-form" method="POST" action="{{ url_for('guardar_red') }}">
     <div class="message">
         <label for="contact-one">Contacto 1: <i class="fa-solid fa-handshake-angle"></i></label>
         <input type="tel" id="contact-one" name="contact-one" required placeholder="Agrega un numero de telefono">
@@ -29,18 +29,20 @@
     <div>
         <label for="psychologist-email">Correo del psicologo: <i class="fa-solid fa-user-doctor"></i></label>
         <input type="email" id="psychologist-email" name="psychologist-email" placeholder="Ingresa el correo de tu psicologo">
+       
+        <input type="hidden" id="country-code" name="country-code">
+    
     </div>
     <button type="submit">Guardar</button>
     <a href="{{ url_for('profesionales')}}" ><button type="button" id="search-psychologist">Buscar un psicologo</button></a> 
-    <button type="button" id="see-contact">Ver mi red de apoyo</button>
+    <a href="{{ url_for('red_de_apoyo') }}"><button type="button" id="see-contact">Ver mi red de apoyo</button></a>
     <a href="{{url_for('notificaciones')}}" ><button type="button" id="add-contact">Configurar notificaciones</button> </a>
 </form>
 <div id="message"></div>
 
 <!-- Include intl-tel-input JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
-<script src="{{ url_for('static', filename='js/redApoyo.js') }}"></script>
-<script src="{{ url_for('static', filename='js/validation.js') }}"></script>
+
 
 <!-- Initialize intl-tel-input -->
 <script src="{{ url_for('static', filename='js/phoneInput.js') }}"></script>

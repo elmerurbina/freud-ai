@@ -1,0 +1,38 @@
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3e5f5; /* Light purple background color */
+    color: #333; /* Text color */
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.contact-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.contact-item {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-label {
+    font-weight: bold;
+}
+
+.contact-details {
+    margin-top: 10px;
+}

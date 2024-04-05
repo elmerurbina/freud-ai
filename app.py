@@ -7,6 +7,7 @@ from agregar import agregar_perfil, profesionales
 from chat import get_chatbot_response, save_chat_to_database, chat
 from login import *
 from googleSinIn import *
+from redApoyo import *
 
 
 
@@ -48,6 +49,12 @@ app.add_url_rule('/google-signin', view_func=google_auth)
 app.add_url_rule('/google-auth-callback', view_func=google_auth_callback)
 app.add_url_rule('/login/callback', view_func=login_callback)
 
+# Funciones del archivo redApoyo.py
+app.add_url_rule('/redApoyo', 'redApoyo', redApoyo)
+app.add_url_rule('/guardar_red', 'guardar_red', guardar_red, methods=['POST'])
+app.add_url_rule('/success', 'success', success)
+app.add_url_rule('/red_de_apoyo', 'red_de_apoyo', red_de_apoyo)
+
 
 # Ruta del index
 @app.route('/freud')
@@ -55,14 +62,14 @@ def home():
     return render_template('index.html')
 
 
-
+# Clase para procesar los mensajes
 def process_message():
     user_message = request.json.get('message', '')
     response = get_chatbot_response(user_message)
     save_chat_to_database(user_message, response)
     return jsonify({'response': response})
 
-# Add URL rules for each function in chat.py
+# Rutas de las funciones del chatbot
 app.add_url_rule('/chat', 'chat', chat)
 app.add_url_rule('/process_message', 'process_message', process_message, methods=['POST'])
 
@@ -89,29 +96,6 @@ def check_access_code_route(access_code):
 
 
 
-
-@app.route("/support", methods=["GET", "POST"])
-def redApoyo():
-    if request.method == "POST":
-        # Get form data
-        contact_one = request.form.get("contact-one")
-        contact_two = request.form.get("contact-two")
-        psychologist_email = request.form.get("psychologist-email")
-
-        # Check if country code is included
-        if '+' not in contact_one or '+' not in contact_two:
-            error_message = "Por favor, asegúrese de incluir el código de país en los números de contacto."
-            return render_template("redApoyo.html", error=error_message)
-
-        # Insert data into database
-        insert_contact(contact_one, contact_two, psychologist_email)
-
-        # Return success response
-        success_message = "Información guardada con éxito."
-        return render_template("redApoyo.html", success=success_message)
-
-    # Render the redApoyo.html template for GET requests
-    return render_template("redApoyo.html")
 
 
 @app.route('/historial')
