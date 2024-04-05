@@ -136,7 +136,7 @@ def save_profesional(connection, form, file_path):
 def get_profesionales_data(connection):
     try:
         cursor = connection.cursor(dictionary=True)
-        cursor.execute("SELECT * FROM registro")
+        cursor.execute("SELECT * FROM perfil")
         professionals = cursor.fetchall()
         cursor.close()
         return professionals

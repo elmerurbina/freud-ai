@@ -1,200 +1,48 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-size: contain; 
+    background-image: url('/static/imagenes/profesionalesFondo.avif');
+    background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    /* Set the primary background image aligned to the left */
-    background-image: url('/static/imagenes/profesionalesFondo.avif'),
-                      url('/static/imagenes/womenBack.avif'); /* Add the URL of your second image */
-    /* Align the first image to the left and the second image to the right */
-    background-position: left top, right top; /* Adjust as needed */
 }
-
-
-header {
-    background-color: #0077b5;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-}
-
-
-section {
+.container {
     max-width: 800px;
-    margin: 20px auto;
-    background-color: #fff;
+    margin: 0 auto;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-    color: #0077b5;
-}
-
-p {
-    color: #555;
-}
-
-img {
-    width: 80px;
-    height: auto;
-    border-radius: 50%;
-    margin-bottom: 20px;
-}
-
-input[type="file"] {
-    display: none;
-}
-
-label {
-    display: block;
-    margin-bottom: 8px;
-    cursor: pointer;
-    color: #0077b5;
-}
-
-label:hover {
-    text-decoration: underline;
-}
-
-button {
-    color: #fff;
-    padding: 6px 12px;
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #005783;
-}
-
-form {
-    margin-top: 20px;
-}
-
-textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 12px;
-    box-sizing: border-box;
-}
-
-.profile {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 20px;
+.profile-list {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
-.profile img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin-right: 20px;
+.profile-card {
+    width: 300px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.profile-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
 }
 
 .profile-info {
-    flex-grow: 1;
-}
-
-h1 {
-    text-align: center;
-    color: blue;
-}
-
-.mensaje {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.mensaje p {
-    margin: 8px 0;
-}
-
-.mensaje button {
-    background-color: none;
-    margin: 8px;
-}
-
-.mensaje button img {
-    width: 30px;
-    height: 30px;
-}
-
-.nuevo {
-    display: flex;
-    margin-left: 70%;
-}
-
-.nuevo i {
-    color: lightgray;
-    font-size: 2.1em;
-}
-
-p.nuevo {
-    margin-top: 9%;
-    margin-left: -15%;
-    color: white;
-}
-
-.nuevo i:hover {
-    color: blue;
-}
-
-section.iconos {
-    max-width: 16%;
-    background-color: rgba(226, 224, 224, 0.9);
-}
-
-.social-profiles {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.social-profiles .profile {
-    width: calc(50% - 20px);
-    margin-bottom: 40px;
-}
-
-.social-profiles {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.profile-section {
-    width: calc(50% - 20px);
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    margin-bottom: 20px;
 }
 
-.profile {
-    display: flex;
-    align-items: center;
-}
-
-.profile img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin-right: 20px;
-}
-
-.profile-info h3 {
+.profile-info h2 {
     margin-top: 0;
     margin-bottom: 10px;
+    font-size: 1.5rem;
 }
 
 .profile-info p {
-    margin: 5px 0;
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    color: #555;
 }

@@ -2,32 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Psicologos Profesionales en linea</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/profesionales.css') }}">
-    <title>Profesionales</title>
 </head>
 <body>
-    <section>
-        <h1>Contacta con nuestros profesionales disponibles.</h1>
-        <section class="social-profiles">
+    <div class="container">
+        <div class="profile-list">
             {% for professional in professionals %}
-            <div class="profile-section">
-                <div class="profile">
-                    <img src="{{ url_for('static', filename='uploads/' + professional['file_path']) }}" alt="Profile Picture">
-                    <div class="profile-info">
-                        <h3>{{ professional['nombre'] }}</h3>
-                        <p>Licencia: {{ professional['licencia'] }}</p>
-                        <p>Ubicacion: {{ professional['ubicacion'] }}</p>
-                        <p>Contacto: {{ professional['contacto'] }}</p>
-                        <p>Descripción: {{ professional['descripcion'] }}</p>
-                    </div>
+            <div class="profile-card">
+                <img src="{{ professional.profile_picture }}" alt="Profile Picture">
+                <div class="profile-info">
+                    <h2>{{ professional.nombre }}</h2>
+                    <p>{{ professional.licencia }}</p>
+                    <p>{{ professional.direccion }}</p>
+                    <p>{{ professional.keywords }}</p>
+                    <p>{{ professional.contacto }}</p>
+                    <p>{{ professional.descripcion }}</p>
                 </div>
             </div>
             {% endfor %}
-        </section>
-        Photo by <a href="https://unsplash.com/@baileyal3xander?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Bailey Alexander</a> on <a href="https://unsplash.com/photos/a-view-of-a-city-from-a-high-building-C8j4UKvYJrk?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-        Photo by <a href="https://unsplash.com/@freestockpro?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Alexandr Podvalny</a> on <a href="https://unsplash.com/photos/a-woman-in-a-white-shirt-holding-a-stethoscope-tE7_jvK-_YU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-  
+        </div>
+    </div>
 </body>
 </html>
