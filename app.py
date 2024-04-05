@@ -2,8 +2,7 @@ from flask import Flask, render_template, redirect, url_for
 from register_user import register
 from flask_dance.contrib.google import make_google_blueprint, google
 from flask import request, jsonify
-from db import insert_contact, db_connection
-from profileUser import get_user_data
+from db import *
 from agregar import agregar_perfil, profesionales
 from chat import get_chatbot_response, save_chat_to_database, chat
 from login import *
@@ -16,6 +15,7 @@ app = Flask(__name__)
 
 app.config.from_pyfile('config.py')  # Cargar las configuraciones del archivo config.py
 
+# Manejo del error 404
 @app.errorhandler(404)
 def page_not_found(error):
     return render_template('error.html', error_code=404), 404
@@ -32,18 +32,18 @@ google_bp = make_google_blueprint(
 )
 app.register_blueprint(google_bp, url_prefix="/login")
 
-
+# Agrego la logica del modulo y las funciones del archivo register_user
 app.add_url_rule('/register', 'register', register, methods=['GET', 'POST'])
 app.add_url_rule('/chat', 'chat', chat)
 
-
+# Se agregan las funciones del archivo agregar.py
 app.add_url_rule('/agregar_perfil', 'agregar_perfil', agregar_perfil, methods=['GET', 'POST'])
 app.add_url_rule('/profesionales', 'profesionales', profesionales)
 
-
+# Se agregan las funciones del archivo login.py
 app.add_url_rule('/login', view_func=login, methods=['GET', 'POST'])
 
-# Add routes for Google sign-in
+# Funciones y rutas del archivo googleSingIn.py
 app.add_url_rule('/google-signin', view_func=google_auth)
 app.add_url_rule('/google-auth-callback', view_func=google_auth_callback)
 app.add_url_rule('/login/callback', view_func=login_callback)
@@ -70,7 +70,7 @@ app.add_url_rule('/process_message', 'process_message', process_message, methods
 
 # Funcion para conprobar si existe el codigo del ejecutivo en la base de datos
 def check_access_code(access_code):
-    connection = db_connection()
+    connection = connect_to_profesionales_database()
     cursor = connection.cursor()
     query = "SELECT COUNT(*) FROM ejecutivos WHERE codigo = %s"
     cursor.execute(query, (access_code,))
@@ -87,14 +87,6 @@ def check_access_code_route(access_code):
 
 
 
-@app.route("/profile")
-def profile():
-    # Fetch user data
-    user_data = get_user_data()
-    if user_data:
-        return render_template("profile.html", user_data=user_data)
-    else:
-        return "Lo lamentamos, no pudimos encontrar su usario. Por favor intentalo mas tarde!"
 
 
 

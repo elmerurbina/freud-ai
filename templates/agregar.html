@@ -7,40 +7,67 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/agregar.css') }}">
 </head>
 <body>
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+
     <div class="container">
         <h1>Agregar Nuevo Perfil</h1>
         <form action="{{ url_for('agregar_perfil') }}" method="POST" enctype="multipart/form-data">
 
+            <!-- CSRF Token -->
+            {{ form.csrf_token }}
 
+            <!-- Error Message -->
+            {% if form.errors %}
+            <p class="error">Ocurrió un error! No se pudo agregar el nuevo perfil.</p>
+            {% endif %}
+
+            <!-- Licencia -->
             <label for="licencia" class="required">Licencia:</label>
             <input type="text" id="licencia" name="licencia" required>
+            {% for error in form.licencia.errors %}
+            <p class="error">{{ error }}</p>
+            {% endfor %}
 
-
+            <!-- Nombre -->
             <label for="nombre" class="required">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required>
+            {% for error in form.nombre.errors %}
+            <p class="error">{{ error }}</p>
+            {% endfor %}
 
-
+            <!-- Dirección -->
             <label for="direccion" class="optional">Dirección:</label>
             <input type="text" id="direccion" name="direccion">
+            {% for error in form.direccion.errors %}
+            <p class="error">{{ error }}</p>
+            {% endfor %}
 
+            <!-- Descripción -->
             <label for="descripcion" class="optional">Descripción:</label>
-            <textarea id="descripcion" name="descripcion" rows="4" ></textarea>
+            <textarea id="descripcion" name="descripcion" rows="4"></textarea>
+            {% for error in form.descripcion.errors %}
+            <p class="error">{{ error }}</p>
+            {% endfor %}
 
+            <!-- Keywords -->
             <label for="keywords" class="required">Keywords:</label>
-            <input type="text" id="keywords" name="keywords">
+            <input type="text" id="keywords" name="keywords" required>
+            {% for error in form.keywords.errors %}
+            <p class="error">{{ error }}</p>
+            {% endfor %}
 
+            <!-- Contacto -->
             <label for="contacto" class="required">Contacto:</label>
-            <input type="text" id="contacto" name="contacto">
+            <input type="text" id="contacto" name="contacto" required>
+            {% for error in form.contacto.errors %}
+            <p class="error">{{ error }}</p>
+            {% endfor %}
 
-           
-
+            <!-- Submit Button -->
             <input type="submit" value="Guardar Perfil">
         </form>
-        Photo by <a href="https://unsplash.com/@badashproducts?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Ash Edmonds</a> on <a href="https://unsplash.com/photos/macbook-pro-showing-pink-and-green-wallpaper-Koxa-GX_5zs?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-  
-       
     </div>
-
-   
 </body>
 </html>

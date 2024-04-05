@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from db import get_connection
+from db import connect_to_database
 
 app = Flask(__name__)
 @app.route('/login', methods=['GET', 'POST'])
@@ -9,7 +9,7 @@ def login():
         password = request.form['password']
 
         # Connect to the database
-        connection = get_connection()
+        connection = connect_to_database()
         cursor = connection.cursor()
 
         # Check if the email and password match the records in the database

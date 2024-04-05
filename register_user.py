@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
-from db import get_connection
+from db import connect_to_database
 import os
 
 app = Flask(__name__)
@@ -19,7 +19,7 @@ def register():
             return render_template('register.html', error_message='All fields are required.')
 
         # Connect to the database
-        connection = get_connection()
+        connection = connect_to_database()
         cursor = connection.cursor()
 
         # Insert user data into the database

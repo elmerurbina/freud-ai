@@ -1,94 +1,63 @@
 from flask import Flask, render_template, request, redirect, url_for
-from flask_wtf import FlaskForm
+from db import *
 from wtforms import StringField, TextAreaField, FileField, SubmitField
 from wtforms.validators import DataRequired
-import mysql.connector
-from mysql.connector import Error
-
+from flask_wtf import FlaskForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'  # Replace with a secure key
 
-def create_connection():
-    connection = None
-    try:
-        connection = mysql.connector.connect(
-            host='localhost',
-            database='profesionales',
-            user='root',
-            password='7>>HhNN6/fZ'
-        )
-        if connection.is_connected():
-            print(f"Connected to MySQL Server version {connection.get_server_info()}")
-            return connection
-    except Error as e:
-        print(f"Error: {e}")
-        return None
-
-def close_connection(connection):
-    if connection.is_connected():
-        connection.close()
-        print("MySQL connection closed")
 
 class ProfessionalForm(FlaskForm):
-    profile_picture = FileField('Subir imagen de perfil:', validators=[DataRequired()])
+    profile_picture = FileField('Subir imagen de perfil:')
     nombre = StringField('Nombre:', validators=[DataRequired()])
     licencia = StringField('No. De Licencia:', validators=[DataRequired()])
-    ubicacion = StringField('Ubicacion:', validators=[DataRequired()])
+    direccion = StringField('Direccion:')
     keywords = StringField('keywords:', validators=[DataRequired()])
-    contacto = StringField('Informacion de contacto:')
+    contacto = StringField('Informacion de contacto:', validators=[DataRequired()])
     descripcion = TextAreaField('Descripcion:')
     submit = SubmitField('Agregar')
 
-def get_profesionales_data():
-    connection = create_connection()
-    cursor = connection.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM perfil")
-    professionals = cursor.fetchall()
-    cursor.close()
-    close_connection(connection)
-    return professionals
 
 @app.route('/agregar_perfil', methods=['GET', 'POST'])
 def agregar_perfil():
     form = ProfessionalForm()
-    connection = None
     message = None
 
     if form.validate_on_submit():
         try:
             # Connect to MySQL database
-            connection = create_connection()
+            connection = connect_to_profesionales_database()
 
             # Save the uploaded file
-            profile_picture = request.files['profile_picture']
-            file_path = f"uploads/{profile_picture.filename}"
-            profile_picture.save(file_path)
+            if 'profile_picture' in request.files:
+                profile_picture = request.files.get('profile_picture')
+                file_path = f"uploads/{profile_picture.filename}"
+                profile_picture.save(file_path)
+            else:
+                photo = None
 
-            # Create a new Professional record
-            cursor = connection.cursor()
-            cursor.execute("""
-                INSERT INTO registro (nombre, licencia, ubicacion, contacto, keywords, descripcion, file_path)
-                VALUES (%s, %s, %s, %s, %s, %s)
-            """, (form.nombre.data, form.licencia.data, form.ubicacion.data, form.contacto.data, form.descripcion.data, file_path))
-            connection.commit()
-            cursor.close()
-
-            message = "Perfil agregado correctamente"
-            return redirect(url_for('profesionales'))
+                # Create a new Professional record
+            if save_profesional(connection, form, file_path):
+                message = "Perfil agregado correctamente"
+                return redirect(url_for('profesionales'))
+            else:
+                message = "Ocurrió un error! No se pudo agregar el nuevo perfil."
         except Error as e:
             print(f"Error: {e}")
-            message = "Error al agregar el perfil"
+            message = "Ocurrió un error! No se pudo agregar el nuevo perfil."
         finally:
             if connection is not None:
-                close_connection(connection)
+                close_profesionales_connection(connection)
 
     return render_template('agregar.html', form=form, message=message)
 
 
 @app.route('/profesionales')
 def profesionales():
-    professionals = get_profesionales_data()
+    connection = connect_to_profesionales_database()
+    professionals = get_profesionales_data(connection)
+    close_profesionales_connection(connection)
     return render_template('profesionales.html', professionals=professionals)
 
 

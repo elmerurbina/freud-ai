@@ -1,28 +1,8 @@
 import mysql.connector
+from mysql.connector import Error
 
 
-
-def get_connection():
-    return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="7>>HhNN6/fZ",
-        database="usuarios"
-    )
-
-
-
-def db_connection():
-    return mysql.connector.connect(
-        host="localhost",
-        user="root",
-        password="7>>HhNN6/fZ",
-        database="profesionales"
-    )
-
-
-
-# Database configuration
+# Database configurations
 db_usuarios = {
     "host": "localhost",
     "user": "root",
@@ -30,7 +10,7 @@ db_usuarios = {
     "database": "usuarios",
 }
 
-# Funcion para conectar a la base de datos
+# Function to connect to the database
 def connect_to_database(database='usuarios'):
     try:
         connection = mysql.connector.connect(
@@ -44,12 +24,12 @@ def connect_to_database(database='usuarios'):
         print("Error connecting to MySQL:", err)
         return None
 
-# Funcion para cerrar conexion con la base de datos
+# Function to close connection with the database
 def close_connection(connection):
     if connection:
         connection.close()
 
-# Funcion para guardar los mensajes en la base de datos
+# Function to save chat messages in the database
 def save_chat_message(connection, user_id, message, response):
     try:
         cursor = connection.cursor()
@@ -63,7 +43,7 @@ def save_chat_message(connection, user_id, message, response):
         print("Error saving chat message:", err)
         return False
 
-# Funcion para mostrar los mensajes guardados en la base de datos
+# Function to retrieve all chat messages from the database
 def get_all_chat_messages(connection):
     try:
         cursor = connection.cursor(dictionary=True)
@@ -76,7 +56,7 @@ def get_all_chat_messages(connection):
         print("Error retrieving chat messages:", err)
         return []
 
-# Funcion para mostrar los mensajes segun el ID de usuario
+# Function to retrieve chat messages by user ID from the database
 def get_chat_messages_by_user_id(connection, user_id):
     try:
         cursor = connection.cursor(dictionary=True)
@@ -90,53 +70,6 @@ def get_chat_messages_by_user_id(connection, user_id):
         print("Error retrieving chat messages by user ID:", err)
         return []
 
-
-    # Base de datos del dataset
-db_dataset = {
-    "host": "localhost",
-    "user": "root",
-    "password": "7>>HhNN6/fZ",
-    "database": "dataset",
-}
-
-def connect_database():
-    try:
-        connection = mysql.connector.connect(
-            host=db_dataset["host"],
-            user=db_dataset["user"],
-            password=db_dataset["password"],
-            database=db_dataset["database"]
-        )
-        return connection
-    except mysql.connector.Error as err:
-        print("Error connecting to MySQL:", err)
-        return None
-
-def fetch_data_from_information_table(connection):
-    try:
-        cursor = connection.cursor(dictionary=True)
-        query = "SELECT * FROM information"
-        cursor.execute(query)
-        data = cursor.fetchall()
-        cursor.close()
-        return data
-    except mysql.connector.Error as err:
-        print("Error fetching data from information table:", err)
-        return []
-
-
-
-
-def get_db():
-    return mysql.connector.connect(**db_usuarios)
-
-def close_db(conn):
-    conn.close()
-
-
-
-
-
 # Connect to MySQL database
 db = mysql.connector.connect(
     host="localhost",
@@ -145,6 +78,7 @@ db = mysql.connector.connect(
     database="usuarios"
 )
 
+# Function to insert contact into redApoyo table
 def insert_contact(contact_one, contact_two, psychologist_email):
     cursor = db.cursor()
     sql = "INSERT INTO redApoyo (contact_one, contact_two, psychologist_email) VALUES (%s, %s, %s)"
@@ -153,3 +87,59 @@ def insert_contact(contact_one, contact_two, psychologist_email):
     db.commit()
     cursor.close()
 
+# Close MySQL database connection
+def close_db_connection():
+    db.close()
+
+# Database configurations for profesionales database
+db_profesionales = {
+    "host": "localhost",
+    "user": "root",
+    "password": "7>>HhNN6/fZ",
+    "database": "profesionales",
+}
+
+# Function to connect to the profesionales database
+def connect_to_profesionales_database():
+    try:
+        connection = mysql.connector.connect(
+            host=db_profesionales["host"],
+            user=db_profesionales["user"],
+            password=db_profesionales["password"],
+            database=db_profesionales["database"]
+        )
+        return connection
+    except mysql.connector.Error as err:
+        print("Error connecting to MySQL:", err)
+        return None
+
+# Function to close connection with the profesionales database
+def close_profesionales_connection(connection):
+    if connection:
+        connection.close()
+
+def save_profesional(connection, form, file_path):
+    try:
+        cursor = connection.cursor()
+        cursor.execute("""
+            INSERT INTO perfil (nombre, licencia, ubicacion, contacto, keywords, descripcion, photo)
+            VALUES (%s, %s, %s, %s, %s, %s, %s)
+        """, (form.nombre.data, form.licencia.data, form.direccion.data, form.contacto.data, form.keywords.data, form.descripcion.data, file_path))
+        connection.commit()
+        cursor.close()
+        return True
+    except Error as e:
+        print(f"Error saving professional: {e}")
+        return False
+
+# Function to fetch all professional data from the database
+def get_profesionales_data(connection):
+    try:
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM registro")
+        professionals = cursor.fetchall()
+        cursor.close()
+        return professionals
+    except Error as e:
+        print(f"Error fetching professionals data: {e}")
+        return []
