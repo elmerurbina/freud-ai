@@ -1,9 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for
 from db import get_connection
 import os
+from encrypt import encrypt
 
 app = Flask(__name__)
-
 
 # Function to handle user registration
 @app.route('/register', methods=['GET', 'POST'])
@@ -14,6 +14,9 @@ def register():
         email = request.form['email']
         password = request.form['password']
         date_of_birth = request.form['date']
+
+        # Encrypt the password before storing it
+        encrypted_password = encrypt(password, password)  # Using the password as the encryption key for simplicity
 
         # Check if a file is uploaded
         if 'foto' in request.files:
@@ -31,7 +34,7 @@ def register():
 
         # Insert user data into the database
         query = "INSERT INTO sistema_registro (full_name, username, email, password, date_of_birth, photo) VALUES (%s, %s, %s, %s, %s, %s)"
-        values = (full_name, username, email, password, date_of_birth, photo_path)
+        values = (full_name, username, email, encrypted_password, date_of_birth, photo_path)
         cursor.execute(query, values)
         connection.commit()
 
