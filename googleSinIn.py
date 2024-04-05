@@ -1,43 +1,34 @@
-from flask import Flask, redirect, url_for, jsonify, request
-from flask_dance.contrib.google import make_google_blueprint, google
+from flask import redirect, Flask, url_for, session, request
+from oauthlib.oauth2 import WebApplicationClient
+import requests
 
 app = Flask(__name__)
 
+# Initialize the client ID and other credentials
+GOOGLE_CLIENT_ID = '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'
+client = WebApplicationClient(GOOGLE_CLIENT_ID)
 
-# Google OAuth blueprint
-google_bp = make_google_blueprint(
+# Callback URL for Google OAuth
+GOOGLE_REDIRECT_URI = 'http://127.0.0.1:5000/login/callback'
 
-    redirect_to="login_callback"
-)
-app.register_blueprint(google_bp, url_prefix="/login")
+@app.route('/google-auth')
+def google_auth():
+    # Redirect to Google OAuth consent screen
+    authorization_endpoint = 'https://accounts.google.com/o/oauth2/auth'
+    url = client.prepare_request_uri(authorization_endpoint, redirect_uri=GOOGLE_REDIRECT_URI)
+    return redirect(url)
 
-
-
-@app.route("/login/callback")
-def login_callback():
-    if not google.authorized:
-        return redirect(url_for("google.login"))
-
-    resp = google.get("/oauth2/v1/userinfo")
-    assert resp.ok, resp.text
-
-    # Use resp.json() to get user information
-    # Implement your logic to handle user login or registration here
-
-    return redirect(url_for("chat"))  # Redirect to chat interface after successful login
-
-
-@app.route("/google_login", methods=['POST'])
-def google_login():
-    id_token = request.form['id_token']
-
-    # Verify the ID token with Google
-    # You can use libraries like google-auth or pyjwt to verify the token
-    # Example verification logic should be added here
-
-    # If the token is valid, proceed with the login process
-    # You can get user information from the ID token
-    # For example, idinfo['email'], idinfo['name'], etc.
-    # Implement your logic to handle the user login or registration here
-
-    return jsonify({'status': 'success'})
+@app.route('/google-auth-callback')
+def google_auth_callback():
+    # Handle Google OAuth callback
+    code = request.args.get('code')
+    token_endpoint = 'https://oauth2.googleapis.com/token'
+    token_url, headers, body = client.prepare_token_request(token_endpoint, authorization_response=request.url, redirect_url=GOOGLE_REDIRECT_URI)
+    token_response = requests.post(token_url, headers=headers, data=body, auth=('your-client-id', 'your-client-secret'))
+    client.parse_request_body_response(token_response.json())
+    userinfo_endpoint = 'https://openidconnect.googleapis.com/v1/userinfo'
+    uri, headers, body = client.add_token(userinfo_endpoint)
+    userinfo_response = requests.get(uri, headers=headers, data=body)
+    userinfo = userinfo_response.json()
+    session['user'] = userinfo  # Save user info in session
+    return redirect(url_for('chat'))

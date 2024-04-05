@@ -18,40 +18,28 @@
     <h1  class="logo">Freud&nbsp;<span>IA</span></h1>
 
     <div class="container">
-        <!--Encabezado-->
         <h1>Iniciar sesión</h1>
-
-        <!--url_for para conectar con el backend de Python-->
-        <form method="POST" action="{{ url_for('login_account') }}">
-            <!--grupo de formas que contiene los inputs-->
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        <form method="POST" action="{{ url_for('login') }}">
             <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="email" required>
             </div>
-        
             <div class="form-group">
                 <label for="password">Contraseña</label>
                 <input type="password" id="password" name="password" placeholder="contraseña" required>
             </div>
-            <!--Boton para iniciar sesion-->
-            <button name="Register" type="submit">Iniciar sesion</button>
+            <button name="Register" type="submit">Iniciar sesión</button>
         </form>
-
-       <a href="{{url_for('chat')}}">
         <div class="custom-google-button" onclick="onCustomGoogleSignIn()">
             <img src="{{ url_for('static', filename='imagenes/google-logo.png') }}" alt="Google Logo" width="20" height="20"> Sign in with Google
-
-        </a>
         </div>
-       
-        <!--Link para ir a la pagina de registro, para usuarios que aun no tienen cuenta-->
-        <p>¿No tienes cuenta? <a href="{{ url_for('register_user') }}">Registrar</a></p>
-        <!--Link para recuperar credenciales-->
-        <p>¿Olvido la contraseña? <a href=" {{ url_for('password_recovery') }}">Recuperar Cuenta</a></p>
-
-        <script src="{{ url_for('static', filename='js/GoogleSignIn.js') }}"></script>
-    </section>
+        <p>¿No tienes cuenta? <a href="{{ url_for('register') }}">Registrar</a></p>
+        <p>¿Olvidó la contraseña? <a href=" {{ url_for('password_recovery') }}">Recuperar Cuenta</a></p>
     </div>
+    
     
     <footer>
         <p>&copy; 2023 Freud.AI.  Todos los derechos reservados</p>

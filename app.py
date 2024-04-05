@@ -6,6 +6,9 @@ from db import insert_contact, db_connection
 from profileUser import get_user_data
 from agregar import agregar_perfil, profesionales
 from chat import get_chatbot_response, save_chat_to_database, chat
+from login import *
+from googleSinIn import *
+
 
 
 
@@ -38,6 +41,12 @@ app.add_url_rule('/agregar_perfil', 'agregar_perfil', agregar_perfil, methods=['
 app.add_url_rule('/profesionales', 'profesionales', profesionales)
 
 
+app.add_url_rule('/login', view_func=login, methods=['GET', 'POST'])
+
+# Add routes for Google sign-in
+app.add_url_rule('/google-signin', view_func=google_auth)
+app.add_url_rule('/google-auth-callback', view_func=google_auth_callback)
+
 
 # Ruta del index
 @app.route('/freud')
@@ -57,10 +66,6 @@ app.add_url_rule('/chat', 'chat', chat)
 app.add_url_rule('/process_message', 'process_message', process_message, methods=['POST'])
 
 
-
-@app.route('/register')
-def register_user():
-    return render_template('register.html')
 
 # Funcion para conprobar si existe el codigo del ejecutivo en la base de datos
 def check_access_code(access_code):
@@ -156,44 +161,6 @@ def verExpediente():
 @app.route('/expediente')
 def expediente():
     return render_template('expediente.html')
-
-
-# Acceso a las funciones de inicio de sesion
-@app.route('/login_account', methods=['GET', 'POST'])
-def login_account():
-    return render_template('login.html')
-
-# Route for handling Google Sign-In callback
-@app.route("/google_login_callback")
-def login_callback():
-    if not google.authorized:
-        return redirect(url_for("google.login"))
-
-    resp = google.get("/oauth2/v1/userinfo")
-    assert resp.ok, resp.text
-
-    # Use resp.json() to get user information
-    # Implement your logic to handle user login or registration here
-
-    return redirect(url_for("chat"))  # Redirect to chat interface after successful login
-
-# Route for handling Google login
-@app.route("/google_login", methods=['POST'])
-def google_login():
-    id_token = request.form['id_token']
-
-    # Verify the ID token with Google
-    # You can use libraries like google-auth or pyjwt to verify the token
-    # Example verification logic should be added here
-
-    # If the token is valid, proceed with the login process
-    # You can get user information from the ID token
-    # For example, idinfo['email'], idinfo['name'], etc.
-    # Implement your logic to handle the user login or registration here
-
-    return jsonify({'status': 'success'})
-
-
 
 
 
