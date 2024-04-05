@@ -1,7 +1,7 @@
 document.querySelector('button[name="Register"]').addEventListener('click', function (event) {
     event.preventDefault(); // Prevent default form submission behavior
     
-    const form = document.querySelector('.field'); // Adjust the selector for the form
+    const form = document.getElementById('register'); // Adjust the selector for the form
     const fields = form.querySelectorAll('.field'); // Select all fields within the form
 
     fields.forEach(field => {
@@ -38,13 +38,14 @@ document.querySelector('button[name="Register"]').addEventListener('click', func
         showError(repeatPasswordInput, 'Las contraseñas no coinciden');
     }
 
-    const usernameInput = form.querySelector('input[name="name"]'); // Update the selector
+    const usernameInput = form.querySelector('input[name="user"]'); // Update the selector for username
     if (!isValidUsername(usernameInput.value)) {
         showError(usernameInput, 'Usuario debe contener solo minúsculas');
     }
 
     const dobInput = form.querySelector('input[name="date"]');
-    if (!isValidDateOfBirth(dobInput.value)) {
+    const dobValue = dobInput.value.split('-').reverse().join('-'); // Adjust date format
+    if (!isValidDateOfBirth(dobValue)) {
         showError(dobInput, 'Debes tener al menos 10 años de edad');
     }
 
@@ -74,7 +75,7 @@ function isValidPassword(password) {
 }
 
 function isValidUsername(username) {
-    const usernameRegex = /^[a-z0-9]+$/;
+    const usernameRegex = /^[a-z]+$/; // Only lowercase letters allowed
     return usernameRegex.test(username);
 }
 

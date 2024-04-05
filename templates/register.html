@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Crear nueva cuenta</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
     <!--vinculacion con el sitio fontawesom.com para acceder a los iconos-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!--Link con el archivo CSS-->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/register.css') }}">
+
+    
+
 </head>
 <body>
 <!--Logo-->
@@ -19,21 +22,25 @@
         <!--Encabezado-->
         <h1>Registrarse en la plataforma</h1>
          <!--url_for es la conexion con la ruta del codigo backend de Python-->
-        <form method="POST" action="{{ url_for('register_user') }}" id="register">
+         <form method="POST" action="{{ url_for('register') }}" id="register">
            
             <!--Las clases field y fields corresponden a los campos-->
             <div class="fields"></div>
         
                 <div class="field">
                 
-                    <label for="name">nombre completo <i class="fa-solid fa-user"></i></label>
+                    <label for="nombre">nombre completo <i class="fa-solid fa-user"></i></label>
                     <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
                     <span class="error message"></span> <!--Funcion JS para validar los campos-->
+
+                    <label for="foto">Foto (opcional)</label>
+                    <input type="file" id="foto" name="foto" accept="image/*">
                     
                     
-                    <label for="name">usuario  <i class="fa-solid fa-user"></i></label>
-                    <input type="text" id="user" name="name" placeholder="Ej: frued24" required>
+                    <label for="user">usuario  <i class="fa-solid fa-user"></i></label>
+                    <input type="text" id="user" name="user" placeholder="Ej: frued24" required>
                     <span class="error message"></span> <!--Funcion JS para validar los campos-->
+
                     
            
                     <label for="email">Email  <i class="fa-solid fa-envelope"></i></label>
@@ -51,7 +58,7 @@
                     <span class="error message"></span> <!--Funcion JS para validar los campos-->
                     
                     
-                    <label for="repeat_password">fecha de nacimiento <i class="fa-solid fa-calendar-days"></i></label>
+                    <label for="date">fecha de nacimiento <i class="fa-solid fa-calendar-days"></i></label>
                     <input type="date" id="date" name="date" required>
                     <span class="error message"></span> <!--Funcion JS para validar su edad-->
 

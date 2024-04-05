@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect, url_for
-#from register_user import register_user
+from register_user import register
 from flask_dance.contrib.google import make_google_blueprint, google
 from flask import request, jsonify
 from db import insert_contact, db_connection
@@ -30,7 +30,8 @@ google_bp = make_google_blueprint(
 app.register_blueprint(google_bp, url_prefix="/login")
 
 
-#app.add_url_rule('/register_user', 'register_user', register_user, methods=['POST'])
+app.add_url_rule('/register', 'register', register, methods=['GET', 'POST'])
+app.add_url_rule('/chat', 'chat', chat)
 
 
 app.add_url_rule('/agregar_perfil', 'agregar_perfil', agregar_perfil, methods=['GET', 'POST'])
