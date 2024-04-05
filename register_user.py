@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from db import get_connection
 import os
-from encrypt import encrypt
 
 app = Flask(__name__)
 
@@ -15,26 +14,17 @@ def register():
         password = request.form['password']
         date_of_birth = request.form['date']
 
-        # Encrypt the password before storing it
-        encrypted_password = encrypt(password, password)  # Using the password as the encryption key for simplicity
-
-        # Check if a file is uploaded
-        if 'foto' in request.files:
-            photo = request.files['foto']
-            if photo.filename != '':
-                # Save the photo to a temporary location
-                photo_path = os.path.join(app.config['UPLOAD_FOLDER'], photo.filename)
-                photo.save(photo_path)
-        else:
-            photo_path = None
+        # Server-side validation to ensure all fields are filled
+        if not all([full_name, username, email, password, date_of_birth]):
+            return render_template('register.html', error_message='All fields are required.')
 
         # Connect to the database
         connection = get_connection()
         cursor = connection.cursor()
 
         # Insert user data into the database
-        query = "INSERT INTO sistema_registro (full_name, username, email, password, date_of_birth, photo) VALUES (%s, %s, %s, %s, %s, %s)"
-        values = (full_name, username, email, encrypted_password, date_of_birth, photo_path)
+        query = "INSERT INTO sistema_registro (full_name, username, email, password, date_of_birth) VALUES (%s, %s, %s, %s, %s)"
+        values = (full_name, username, email, password, date_of_birth)
         cursor.execute(query, values)
         connection.commit()
 
@@ -47,13 +37,10 @@ def register():
 
     return render_template('register.html')
 
-
 # Function to render chat.html
 @app.route('/chat')
 def chat():
     return render_template('chat.html')
 
-
 if __name__ == '__main__':
-    app.config['UPLOAD_FOLDER'] = 'uploads'  # Define the folder where uploaded files will be saved
     app.run(debug=True)
