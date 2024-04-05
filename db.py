@@ -2,7 +2,7 @@ import mysql.connector
 from mysql.connector import Error
 
 
-# Database configurations
+# Configuraciones de las base de datos
 db_usuarios = {
     "host": "localhost",
     "user": "root",
@@ -10,7 +10,7 @@ db_usuarios = {
     "database": "usuarios",
 }
 
-# Function to connect to the database
+# Funcion para conectar a la base de datos de los usuarios
 def connect_to_database(database='usuarios'):
     try:
         connection = mysql.connector.connect(
@@ -24,12 +24,12 @@ def connect_to_database(database='usuarios'):
         print("Error connecting to MySQL:", err)
         return None
 
-# Function to close connection with the database
+# Funcion para cerrar la conexion con la bae de datos de los usuarios
 def close_connection(connection):
     if connection:
         connection.close()
 
-# Function to save chat messages in the database
+# Funcion para guardar los mensajes del chatbot en la base de datos
 def save_chat_message(connection, user_id, message, response):
     try:
         cursor = connection.cursor()
@@ -43,7 +43,7 @@ def save_chat_message(connection, user_id, message, response):
         print("Error saving chat message:", err)
         return False
 
-# Function to retrieve all chat messages from the database
+# Funcion para mostrar los mensajes de la base de datos
 def get_all_chat_messages(connection):
     try:
         cursor = connection.cursor(dictionary=True)
@@ -56,7 +56,7 @@ def get_all_chat_messages(connection):
         print("Error retrieving chat messages:", err)
         return []
 
-# Function to retrieve chat messages by user ID from the database
+# Funcion para extraer los mensajes de la base de datos haciendo uso del ID del usuario
 def get_chat_messages_by_user_id(connection, user_id):
     try:
         cursor = connection.cursor(dictionary=True)
@@ -70,7 +70,7 @@ def get_chat_messages_by_user_id(connection, user_id):
         print("Error retrieving chat messages by user ID:", err)
         return []
 
-# Connect to MySQL database
+# Establecer la conexion a la base de datos
 db = mysql.connector.connect(
     host="localhost",
     user="root",
@@ -78,7 +78,7 @@ db = mysql.connector.connect(
     database="usuarios"
 )
 
-# Function to insert contact into redApoyo table
+# Funcion para guardar los contactos de la red de apoyo en la base de datos
 def insert_contact(contact_one, contact_two, psychologist_email):
     cursor = db.cursor()
     sql = "INSERT INTO redApoyo (contact_one, contact_two, psychologist_email) VALUES (%s, %s, %s)"
@@ -87,11 +87,11 @@ def insert_contact(contact_one, contact_two, psychologist_email):
     db.commit()
     cursor.close()
 
-# Close MySQL database connection
+# Se cierra la conexion con la base de datos
 def close_db_connection():
     db.close()
 
-# Database configurations for profesionales database
+# Configuraciones para la base de datos de los profesionales
 db_profesionales = {
     "host": "localhost",
     "user": "root",
@@ -99,7 +99,7 @@ db_profesionales = {
     "database": "profesionales",
 }
 
-# Function to connect to the profesionales database
+# Funcion para conectarse con la base de datos de los profesionales
 def connect_to_profesionales_database():
     try:
         connection = mysql.connector.connect(
@@ -113,11 +113,12 @@ def connect_to_profesionales_database():
         print("Error connecting to MySQL:", err)
         return None
 
-# Function to close connection with the profesionales database
+# Funcion para cerrar la conexion con la base de datos
 def close_profesionales_connection(connection):
     if connection:
         connection.close()
 
+# Funcion para guardar el perfil de los profesionales en la base de datos
 def save_profesional(connection, form, file_path):
     try:
         cursor = connection.cursor()
@@ -132,7 +133,7 @@ def save_profesional(connection, form, file_path):
         print(f"Error saving professional: {e}")
         return False
 
-# Function to fetch all professional data from the database
+# Funcion para obtener la informacion de la base de datos
 def get_profesionales_data(connection):
     try:
         cursor = connection.cursor(dictionary=True)

@@ -5,9 +5,9 @@ from wtforms.validators import DataRequired
 from flask_wtf import FlaskForm
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'your_secret_key'  # Replace with a secure key
+app.config['SECRET_KEY'] = 'your_secret_key'
 
-
+# Formulario de los campos para agregar un nuevo perfil
 class ProfessionalForm(FlaskForm):
     profile_picture = FileField('Subir imagen de perfil:')
     nombre = StringField('Nombre:', validators=[DataRequired()])
@@ -26,7 +26,7 @@ def agregar_perfil():
 
     if form.validate_on_submit():
         try:
-            # Connect to MySQL database
+            # Conectar a la base de datos
             connection = connect_to_profesionales_database()
 
             # Save the uploaded file
@@ -37,7 +37,7 @@ def agregar_perfil():
             else:
                 photo = None
 
-                # Create a new Professional record
+                # Crear un nuevo perfil
             if save_profesional(connection, form, file_path):
                 message = "Perfil agregado correctamente"
                 return redirect(url_for('profesionales'))
@@ -52,7 +52,7 @@ def agregar_perfil():
 
     return render_template('agregar.html', form=form, message=message)
 
-
+# Ruta para mostrar los perfiles de los profesionales en su respectiva plantilla
 @app.route('/profesionales')
 def profesionales():
     connection = connect_to_profesionales_database()

@@ -1,6 +1,4 @@
-from flask import Flask, render_template, redirect, url_for
 from register_user import register
-from flask_dance.contrib.google import make_google_blueprint, google
 from flask import request, jsonify
 from db import *
 from agregar import agregar_perfil, profesionales
@@ -25,13 +23,6 @@ def page_not_found(error):
 @app.errorhandler(500)
 def internal_server_error(error):
     return render_template('error.html', error_code=500), 500
-
-# Google OAuth blueprint
-google_bp = make_google_blueprint(
-
-    redirect_to="login_callback"
-)
-app.register_blueprint(google_bp, url_prefix="/login")
 
 # Agrego la logica del modulo y las funciones del archivo register_user
 app.add_url_rule('/register', 'register', register, methods=['GET', 'POST'])
@@ -85,17 +76,12 @@ def check_access_code(access_code):
     cursor.close()
     connection.close()
     return count > 0
+
 # Si el codigo ingresado esta en la base de datos, se le da el acceso para agregar un nuevo perfil
 @app.route('/check-access-code/<access_code>')
 def check_access_code_route(access_code):
     exists = check_access_code(access_code)
     return jsonify({'exists': exists})
-
-
-
-
-
-
 
 
 @app.route('/historial')

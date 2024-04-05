@@ -6,7 +6,7 @@ import mysql.connector.errors
 
 app = Flask(__name__)
 
-# Route to display the form
+# Ruta para mostrar la plantilla con las formas
 @app.route('/redApoyo')
 def redApoyo():
     return render_template('redApoyo.html')
@@ -20,12 +20,12 @@ def guardar_red():
     contact_two = request.form['contact-two']
     psychologist_email = request.form.get('psychologist-email', None)
 
-    # Connect to the database
+    # Conectarse a la base de datos
     try:
         connection = connect_to_database()
         cursor = connection.cursor()
 
-        # Execute SQL INSERT query to save the data
+        # Ejecutar SQL INSERT query para guardar los datos
         if psychologist_email:
             cursor.execute("""
                     INSERT INTO redapoyo (contact_one, contact_two, psychologist_email)
@@ -37,18 +37,18 @@ def guardar_red():
                     VALUES (%s, %s)
                 """, (contact_one, contact_two))
 
-        # Commit the transaction
+
         connection.commit()
 
-        # Close cursor and connection
+        # Cerrar cursor y la conexion
         cursor.close()
         connection.close()
 
-        # Redirect to a success page or return a success message
+        # Redirigir a la pagina de exito
         return redirect(url_for('success'))
 
     except mysql.connector.Error as e:
-        # Handle database errors
+        # Manejo de errores con la base de datos
         error_message = "Error saving data to the database: {}".format(e)
         return render_template('error.html', error=error_message)
 
@@ -64,18 +64,18 @@ def red_de_apoyo():
         connection = connect_to_database()
         cursor = connection.cursor()
 
-        # Execute SQL SELECT query to retrieve saved contacts
+        # Ejecutar SQL SELECT query para mostrar los contactos guardados
         cursor.execute("SELECT * FROM redapoyo")
         contacts = cursor.fetchall()
 
-        # Close cursor and connection
+        # Cerrar cursor y la conexion
         cursor.close()
         connection.close()
 
         return render_template('red_de_apoyo.html', contacts=contacts)
 
     except mysql.connector.Error as e:
-        # Handle database errors
+        # Manejo de errores con la base de datos
         error_message = "Error retrieving data from the database: {}".format(e)
         return render_template('error.html', error=error_message)
 
