@@ -1,4 +1,4 @@
-from register_user import register
+from register_user import register, userProfile
 from flask import request, jsonify
 from db import *
 from agregar import agregar_perfil, profesionales
@@ -29,6 +29,7 @@ def internal_server_error(error):
 
 # Agrego la logica del modulo y las funciones del archivo register_user
 app.add_url_rule('/register', 'register', register, methods=['GET', 'POST'])
+app.add_url_rule('/userProfile', 'userProfile', userProfile)
 
 app.add_url_rule('/chat', 'chat', chat)
 
@@ -167,20 +168,6 @@ def verExpediente():
 def expediente():
     return render_template('expediente.html')
 
-
-
-# Permitir al usuario recuperar y actualizar sus credenciales
-@app.route('/password_recovery')
-def  password_recovery():
-    return render_template('recover_account.html')
-
-
-
-
-# Permite el acceso y la funcionalidad a la interfaz para actualizar credenciales
-@app.route('/reset_password')
-def  reset_password():
-    return render_template('reset_password.html')
 
 
 if __name__ == '__main__':
