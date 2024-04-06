@@ -77,6 +77,10 @@ app.add_url_rule('/send_notification', 'send_notification', send_notification)
 def home():
     return render_template('index.html')
 
+@app.route('/subscripcionesUsuario')
+def subscripcionesUsuario():
+    return render_template('suscripcionesUsuario.html')
+
 
 # Clase para procesar los mensajes
 def process_message():
