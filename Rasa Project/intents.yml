@@ -94,15 +94,13 @@ nlu:
   - intent: Fobias
     examples: |
       - Tengo fobia [animal/persona/objeto]
-     - Estoy lidiando con mis fobias
-     - Tengo miedo excesivo
-     - Me dan miedo las culebras
-     - No me gusta la noche, siento miedo
+      - Estoy lidiando con mis fobias
+      - Tengo miedo excesivo
+      - Me dan miedo las culebras
+      - No me gusta la noche, siento miedo
 
   - intent: Bulimia
     examples: |
-     - Estoy padeciendo de bulimia
-     - Estoy comiendo mucho
-     - Vomito despues de comer
-
-  
+      - Estoy padeciendo de bulimia
+      - Estoy comiendo mucho
+      - Vomito despues de comer

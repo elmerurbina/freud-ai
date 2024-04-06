@@ -82,8 +82,8 @@ def get_chatbot_response(user_input):
     elif any(word in user_input.lower() for word in ['cómo', 'qué', 'cuándo', 'dónde']):
         return 'Esa es una pregunta interesante. ¿Puedes proporcionar más detalles?'
 
-    else:
-        return 'Lo siento, no entiendo completamente. ¿Puedes proporcionar más información o formular tu pregunta de otra manera?'
+    #else:
+       # return 'Lo siento, no entiendo completamente. ¿Puedes proporcionar más información o formular tu pregunta de otra manera?'
 
 # Funcion para guardar los mensajes del usuario
 def save_chat_to_database(user_message, response):

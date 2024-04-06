@@ -144,3 +144,38 @@ def get_profesionales_data(connection):
     except Error as e:
         print(f"Error fetching professionals data: {e}")
         return []
+
+
+# Base de datos del dataset
+def fetch_data_from_information_table():
+    try:
+        # Establish a connection to the MySQL database
+        connection = mysql.connector.connect(
+            host='localhost',
+            user='root',
+            password='7>>HhNN6/fZ',
+            database='dataset'
+        )
+
+        # Create a cursor object to execute SQL queries
+        cursor = connection.cursor()
+
+        # Define the SQL query to fetch data from the information table
+        query = "SELECT * FROM information"
+
+        # Execute the SQL query
+        cursor.execute(query)
+
+        # Fetch all the rows from the result set
+        rows = cursor.fetchall()
+
+        # Close the cursor and connection
+        cursor.close()
+        connection.close()
+
+        # Return the fetched data
+        return rows
+
+    except mysql.connector.Error as error:
+        print("Error fetching data from information table:", error)
+        return None

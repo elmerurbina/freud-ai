@@ -6,6 +6,7 @@ from chat import get_chatbot_response, save_chat_to_database, chat
 from login import *
 from googleSinIn import *
 from redApoyo import *
+from custom import *
 
 
 
@@ -26,6 +27,7 @@ def internal_server_error(error):
 
 # Agrego la logica del modulo y las funciones del archivo register_user
 app.add_url_rule('/register', 'register', register, methods=['GET', 'POST'])
+
 app.add_url_rule('/chat', 'chat', chat)
 
 # Se agregan las funciones del archivo agregar.py
@@ -45,6 +47,23 @@ app.add_url_rule('/redApoyo', 'redApoyo', redApoyo)
 app.add_url_rule('/guardar_red', 'guardar_red', guardar_red, methods=['POST'])
 app.add_url_rule('/success', 'success', success)
 app.add_url_rule('/red_de_apoyo', 'red_de_apoyo', red_de_apoyo)
+
+# URLs del custom file, que contiene la logica del proyecto Rasa
+app.add_url_rule('/greeting', 'greeting', greeting)
+app.add_url_rule('/sad', 'sad', sad)
+app.add_url_rule('/anxiety_state', 'anxiety_state', anxiety_state)
+app.add_url_rule('/happy', 'happy', happy)
+app.add_url_rule('/stress', 'stress', stress)
+app.add_url_rule('/anxiety', 'anxiety', anxiety)
+app.add_url_rule('/depression', 'depression', depression)
+app.add_url_rule('/trauma', 'trauma', trauma)
+app.add_url_rule('/addiction', 'addiction', addiction)
+app.add_url_rule('/insomnia', 'insomnia', insomnia)
+app.add_url_rule('/narcolepsy', 'narcolepsy', narcolepsy)
+app.add_url_rule('/fobias', 'fobias', fobias)
+app.add_url_rule('/bulimia', 'bulimia', bulimia)
+app.add_url_rule('/chatbot_response', 'chatbot_response', chatbot_response, methods=['POST'])
+
 
 
 # Ruta del index
