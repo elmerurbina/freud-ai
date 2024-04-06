@@ -1,73 +1,50 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_mail import Message
-from werkzeug.security import generate_password_hash
-import os
-from datetime import datetime, timedelta
-import sqlite3
+from flask_mail import Mail, Message
+import re
+from db import *
+
+from itsdangerous import URLSafeSerializer
 
 app = Flask(__name__)
 
-# Database configuration
-db_path = os.path.join(os.path.dirname(__file__), 'database.db')
+SECRET_KEY = 'your_secret_key'
+app.config.from_object('config')
 
-def get_db():
-    return sqlite3.connect(db_path)
+mail = Mail(app)
 
-def close_db(conn):
-    conn.close()
-
-# Mockup password reset tokens
-password_reset_tokens = {}
-
-# Function to send password reset email
-def send_password_reset_email(user):
-    token = os.urandom(24).hex()
-    expiration_time = datetime.utcnow() + timedelta(hours=1)
-    password_reset_tokens[user['id']] = {'token': token, 'expiration_time': expiration_time}
-
-    reset_link = url_for('reset_password', token=token, _external=True)
-
-    # Replace the email sending logic with your actual email sending code
-    msg = Message('Password Reset Request', recipients=[user['email']])
-    msg.body = f"Click the following link to reset your password: {reset_link}"
-    # mail.send(msg)
-
-# Reset Password route
-@app.route('/reset_password/<token>', methods=['GET', 'POST'])
+@app.route('/reset_password/<token>')
 def reset_password(token):
-    user_id = None
-    for uid, reset_info in password_reset_tokens.items():
-        if reset_info['token'] == token and datetime.utcnow() < reset_info['expiration_time']:
-            user_id = uid
-            break
+    # Verify the token (assuming token is the same as the email)
+    email = token  # For simplicity, token is the email in this example
+    if not is_valid_email(email):
+        return render_template('invalid_token.html')
 
-    if user_id is None:
-        flash('Invalid or expired token. Please request a new password reset.', 'error')
-        return redirect(url_for('login'))
+    # Check if the user exists in the database
+    query = f"SELECT * FROM sistema_registro WHERE email = '{email}'"
+    result = db.execute(query)
+    user = result.fetchone()
+    if not user:
+        flash('User does not exist', 'error')  # Flash an error message
+        return render_template('error.html') # Redirect to login page or any other page
 
-    # Update user's password in the database
-    db = get_db()
-    cursor = db.cursor()
+    # Render the reset password form if the user exists
+    return render_template('reset_password.html', token=token)
 
-    if request.method == 'POST':
-        new_password = request.form['new_password']
-        confirm_password = request.form['confirm_password']
+def is_valid_email(email):
+    # Regular expression pattern to validate email addresses
+    pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+    return re.match(pattern, email) is not None
 
-        if new_password != confirm_password:
-            flash('Passwords do not match.', 'error')
-        else:
-            hashed_password = generate_password_hash(new_password)
-            cursor.execute("UPDATE usuarios SET contrasena = ? WHERE id = ?", (hashed_password, user_id))
-            db.commit()
-            flash('Password reset successful! You can now log in with your new password.', 'success')
-            del password_reset_tokens[user_id]  # Remove token after successful reset
-            close_db(db)
-            return redirect(url_for('login'))
+def generate_unique_token(email):
+    # Create a URLSafeSerializer instance with the secret key
+    serializer = URLSafeSerializer(SECRET_KEY)
+    # Generate a unique token based on the email
+    return serializer.dumps(email)
 
-    close_db(db)
-    return render_template('reset_password.html')
-
-# Your other routes and code...
+def send_password_reset_email(email, reset_link):
+    msg = Message('Password Reset', recipients=[email])
+    msg.body = f"Ir al siguiente link para recuperar sus credenciales: {reset_link}"
+    mail.send(msg)
 
 if __name__ == '__main__':
     app.run(debug=True)

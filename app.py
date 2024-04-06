@@ -8,6 +8,7 @@ from googleSinIn import *
 from redApoyo import *
 from custom import *
 from frases import show_notification, send_notification, random_phrase
+from recovering import *
 
 
 
@@ -69,6 +70,18 @@ app.add_url_rule('/chatbot_response', 'chatbot_response', chatbot_response, meth
 app.add_url_rule('/random_phrase', 'random_phrase', random_phrase)
 app.add_url_rule('/show_notification', 'show_notification', show_notification)
 app.add_url_rule('/send_notification', 'send_notification', send_notification)
+
+
+# Funciones para manejar la recuperacion de cuenta
+app.config.from_object('config')
+
+mail = Mail(app)
+
+app.add_url_rule('/reset_password/<token>', 'reset_password', reset_password)
+app.add_url_rule('/is_valid_email', 'is_valid_email', is_valid_email)
+app.add_url_rule('/generate_unique_token', 'generate_unique_token', generate_unique_token)
+app.add_url_rule('/send_password_reset_email', 'send_password_reset_email', send_password_reset_email)
+
 
 
 
