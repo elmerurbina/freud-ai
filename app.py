@@ -7,6 +7,7 @@ from login import *
 from googleSinIn import *
 from redApoyo import *
 from custom import *
+from frases import show_notification, send_notification, random_phrase
 
 
 
@@ -63,6 +64,11 @@ app.add_url_rule('/narcolepsy', 'narcolepsy', narcolepsy)
 app.add_url_rule('/fobias', 'fobias', fobias)
 app.add_url_rule('/bulimia', 'bulimia', bulimia)
 app.add_url_rule('/chatbot_response', 'chatbot_response', chatbot_response, methods=['POST'])
+
+# Funciones del para el envio de notificaciones con frases de motivacion
+app.add_url_rule('/random_phrase', 'random_phrase', random_phrase)
+app.add_url_rule('/show_notification', 'show_notification', show_notification)
+app.add_url_rule('/send_notification', 'send_notification', send_notification)
 
 
 

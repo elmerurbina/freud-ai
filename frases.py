@@ -64,5 +64,6 @@ def notificaciones():
 
     return render_template('notificaciones.html', categories=categories)
 
+
 if __name__ == '__main__':
     app.run(debug=True)
