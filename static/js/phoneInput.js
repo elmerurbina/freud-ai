@@ -19,22 +19,4 @@ var iti2 = window.intlTelInput(input2, {
     },
 });
 
-document.getElementById("support-form").addEventListener("submit", function(event) {
-    event.preventDefault(); // Prevent the form from submitting immediately
 
-    // Ensure iti1 is initialized and get selected country data
-    var countryCode = null;
-    if (iti1 && typeof iti1.getSelectedCountryData === 'function') {
-        countryCode = iti1.getSelectedCountryData().dialCode;
-    }
-
-    // Set the country code value to the hidden input field
-    if (countryCode !== null) {
-        document.getElementById("country-code").value = countryCode;
-    } else {
-        console.error("Failed to get country code.");
-    }
-
-    // Proceed with form submission
-    this.submit();
-});
