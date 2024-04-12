@@ -15,7 +15,7 @@
         <p>Informacion de contacto: {{ profesional.contacto }}</p>
         <p>Descripcion: {{ profesional.descripcion }}</p>
 
-        <button id="edit-profile">Editar Perfil</button>
+      <a href="{{ url_for ('editar_perfil')}}" > <button id="edit-profile">Editar Perfil</button> </a>
         <button id="delete-profile" data-profile-id="{{ profesional.id }}">Eliminar Perfil</button>
 
        

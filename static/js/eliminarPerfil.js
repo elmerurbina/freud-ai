@@ -1,14 +1,18 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     const deleteProfileButton = document.getElementById('delete-profile');
-    const profileId = deleteProfileButton.dataset.profileId;
 
     // Event listener for clicking on the delete profile button
     deleteProfileButton.addEventListener('click', function(event) {
         event.preventDefault(); // Prevent the default form submission behavior
 
+        const profileId = deleteProfileButton.dataset.profileId;
+
         const confirmDelete = confirm('¿Estás seguro de que deseas eliminar este perfil?');
-        if (confirmDelete) {
+        if (confirmDelete && profileId) {
             deleteProfile(profileId);
+        } else {
+            console.log('Delete operation canceled or profile ID not found.');
         }
     });
 
@@ -26,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
         xhr.onerror = function() {
-            console.error('Error:', xhr.statusText);
+            console.error('Network Error:', xhr.statusText);
         };
         xhr.send();
     }

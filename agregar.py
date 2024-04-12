@@ -87,5 +87,25 @@ def delete_profile(profile_id):
         print(f"Error deleting profile: {e}")
         return jsonify({'error': 'Error deleting profile'})
 
+# Funcion para editar  perfil
+@app.route('/editar_perfil', methods=['GET'])
+def editar_perfil():
+    # Render the edit profile template
+    return render_template('editarPerfilProfesional.html')
+
+# Route to handle the form submission and update the profile
+@app.route('/edit_profile', methods=['POST'])
+def edit_profile():
+    # Retrieve form data from the request
+    foto = request.files['foto']
+    nombre = request.form['nombre']
+    ubicacion = request.form['ubicacion']
+    contacto = request.form['contacto']
+    licencia = request.form['licencia']
+    estudios_academicos = request.form['estudios_academicos']
+    keywords = request.form['keywords']
+    descripcion = request.form['descripcion']
+
+
 if __name__ == '__main__':
     app.run(debug=True)

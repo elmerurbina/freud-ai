@@ -1,7 +1,7 @@
 from register_user import register, userProfile
 from flask import request, jsonify
 from db import *
-from agregar import agregar_perfil, profesionales, check_profile, delete_profile
+from agregar import *
 from chat import get_chatbot_response, save_chat_to_database, chat
 from login import *
 from googleSinIn import *
@@ -38,6 +38,8 @@ app.add_url_rule('/agregar_perfil', 'agregar_perfil', agregar_perfil, methods=['
 app.add_url_rule('/profesionales', 'profesionales', profesionales)
 app.add_url_rule('/check_profile', 'check_profile', check_profile, methods=['POST'])
 app.add_url_rule('/delete_profile/<int:profile_id>', 'delete_profile', delete_profile, methods=['POST'])
+app.add_url_rule('/eidtar_perfil', 'editar_perfil', editar_perfil)
+app.add_url_rule('/edit_profile', 'edit_profile', edit_profile)
 
 
 # Se agregan las funciones del archivo login.py
@@ -133,24 +135,6 @@ def check_access_code_route(access_code):
 @app.route('/historial')
 def historial():
     return render_template('historial.html')
-
-
-
-# Editar perfil del profesional
-@app.route('/perfil_profesional')
-def edit_profile():
-    return render_template('editarPerfilProfesional.html')
-
-
-
-
-# Mostrar el perfil del profesional
-@app.route('/perfil')
-def mi_perfil():
-    return render_template('perfil.html')
-
-
-
 
 
 # Funcion para configurar las notificaciones
