@@ -25,5 +25,11 @@
             {% endfor %}
         </div>
     </div>
+    {% if message %}
+    <div class="message-container">
+        <p>{{ message }}</p>
+    </div>
+    {% endif %}
+
 </body>
 </html>
