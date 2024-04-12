@@ -119,13 +119,20 @@ def close_profesionales_connection(connection):
         connection.close()
 
 # Funcion para guardar el perfil de los profesionales en la base de datos
+# Funcion para guardar el perfil de los profesionales en la base de datos
 def save_profesional(connection, form, file_path):
     try:
         cursor = connection.cursor()
-        cursor.execute("""
-            INSERT INTO perfil (nombre, licencia, ubicacion, contacto, keywords, descripcion, photo)
-            VALUES (%s, %s, %s, %s, %s, %s, %s)
-        """, (form.nombre.data, form.licencia.data, form.direccion.data, form.contacto.data, form.keywords.data, form.descripcion.data, file_path))
+        if file_path:
+            cursor.execute("""
+                INSERT INTO perfil (nombre, licencia, ubicacion, contacto, keywords, descripcion, photo)
+                VALUES (%s, %s, %s, %s, %s, %s, %s)
+            """, (form.nombre.data, form.licencia.data, form.direccion.data, form.contacto.data, form.keywords.data, form.descripcion.data, file_path))
+        else:
+            cursor.execute("""
+                INSERT INTO perfil (nombre, licencia, ubicacion, contacto, keywords, descripcion)
+                VALUES (%s, %s, %s, %s, %s, %s)
+            """, (form.nombre.data, form.licencia.data, form.direccion.data, form.contacto.data, form.keywords.data, form.descripcion.data))
         connection.commit()
         cursor.close()
         return True

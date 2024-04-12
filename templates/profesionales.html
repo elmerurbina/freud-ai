@@ -12,14 +12,14 @@
         <div class="profile-list">
             {% for professional in professionals %}
             <div class="profile-card">
-                <img src="{{ professional.profile_picture }}" alt="Profile Picture">
+                <img src="{{ url_for('static', filename=professional.profile_picture) }}" alt="Profile Picture">
                 <div class="profile-info">
                     <h2>{{ professional.nombre }}</h2>
-                    <p>{{ professional.licencia }}</p>
-                    <p>{{ professional.direccion }}</p>
-                    <p>{{ professional.keywords }}</p>
-                    <p>{{ professional.contacto }}</p>
-                    <p>{{ professional.descripcion }}</p>
+                    <p>No. De Licencia: {{ professional.licencia }}</p>
+                    <p>Direccion: {{ professional.direccion }}</p>
+                    <p>Keywords: {{ professional.keywords }}</p>
+                    <p>Informacion de contacto: {{ professional.contacto }}</p>
+                    <p>Descripcion: {{ professional.descripcion }}</p>
                 </div>
             </div>
             {% endfor %}

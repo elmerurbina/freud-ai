@@ -18,7 +18,7 @@ class ProfessionalForm(FlaskForm):
     descripcion = TextAreaField('Descripcion:')
     submit = SubmitField('Agregar')
 
-
+# Ruta para agregar un perfil
 @app.route('/agregar_perfil', methods=['GET', 'POST'])
 def agregar_perfil():
     form = ProfessionalForm()
@@ -29,15 +29,15 @@ def agregar_perfil():
             # Conectar a la base de datos
             connection = connect_to_profesionales_database()
 
+            file_path = None  # Define file_path variable here
+
             # Save the uploaded file
             if 'profile_picture' in request.files:
                 profile_picture = request.files.get('profile_picture')
                 file_path = f"uploads/{profile_picture.filename}"
                 profile_picture.save(file_path)
-            else:
-                photo = None
 
-                # Crear un nuevo perfil
+            # Crear un nuevo perfil
             if save_profesional(connection, form, file_path):
                 message = "Perfil agregado correctamente"
                 return redirect(url_for('profesionales'))
