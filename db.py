@@ -140,6 +140,17 @@ def save_profesional(connection, form, file_path):
         print(f"Error saving professional: {e}")
         return False
 
+def get_profesional_by_licencia(connection, licencia):
+    try:
+        cursor = connection.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM perfil WHERE licencia = %s", (licencia,))
+        profesional = cursor.fetchone()
+        cursor.close()
+        return profesional
+    except Error as e:
+        print(f"Error fetching professional by licencia: {e}")
+        return None
+
 # Funcion para obtener la informacion de la base de datos
 def get_profesionales_data(connection):
     try:

@@ -33,11 +33,13 @@
     
 
         <!--Formas para darle acceso a su perfil a traves de su numero de Licencia-->
-        <div id="license-input-container" style="display: none;"> <!--Inicialmente no mostrar la forma-->
+        <div id="license-input-container"> <!-- Initially hidden -->
             <label for="license-input">Digite su licencia:</label>
             <input type="text" id="license-input" name="license-input">
-            <a href="{{ url_for('mi_perfil') }} "> <i class="fa-solid fa-magnifying-glass"></i> </a>
+            <!-- Replace the link with an icon for submission -->
+            <i id="submit-license" class="fa-solid fa-magnifying-glass"></i>
         </div>
+        
 
         <!--Conexiones con JavaScript-->
         <script src="{{ url_for('static', filename='js/soporte.js') }}"></script> <!--Informacion de contacto-->

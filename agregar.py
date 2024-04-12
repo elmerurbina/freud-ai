@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import *
 from db import *
 from wtforms import StringField, TextAreaField, FileField, SubmitField
 from wtforms.validators import DataRequired
@@ -59,6 +59,20 @@ def profesionales():
     professionals = get_profesionales_data(connection)
     close_profesionales_connection(connection)
     return render_template('profesionales.html', professionals=professionals)
+
+
+@app.route('/check_profile', methods=['POST'])
+def check_profile():
+    licencia = request.form.get('licencia')
+    connection = connect_to_profesionales_database()
+    profesional = get_profesional_by_licencia(connection, licencia)
+    if profesional:
+        # If profile exists, return profile HTML
+        return render_template('perfil.html', profesional=profesional)
+    else:
+        # If profile doesn't exist, return error message
+        return jsonify({'error': 'Profile not found for the given licencia'})
+
 
 
 if __name__ == '__main__':

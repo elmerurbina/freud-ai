@@ -4,27 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Perfil</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/miPerfil.css') }}">
-    <link rel="icon" href="/static/imagenes/logo.jpg" type="image/jpg">
 </head>
 <body>
-    <h1>Mi Perfil</h1>
-    <div id="profile-info">
-        <!--Opcion para editar perfil-->
-        <a href="{{ url_for('edit_profile') }}"><i class="fa-solid fa-pencil"></i></a>
-        <!--Imagen de perfil-->
-        <p><strong></strong> <img id="photo" src="{{ url_for('static', filename='imagenes/perfil.jpg') }}" alt="Foto de perfil"></p>
-        <p><strong>Licencia:</strong> <span id="license"></span></p>
-        <p><strong>Nombre:</strong> <span id="nombre"></span></p>
-        <p><strong>Direccion:</strong> <span id="direccion"></span></p>
-        <p><strong>Descripcion:</strong> <span id="descripcion"></span></p>
-        <p><strong>Keywords:</strong> <span id="keywords"></span></p>
-        <p><strong>Contacto:</strong> <span id="contacto"></span></p>
-        <p><strong>Estudios Academicos:</strong> <span id="estudios"></span></p>
+ 
+    <div id="profile-details">
+        <p>Nombre: {{ profesional.nombre }}</p>
+        <p>Licencia: {{ profesional.licencia }}</p>
+        <p>Direccion: {{ profesional.direccion }}</p>
+        <p>Keywords: {{ profesional.keywords }}</p>
+        <p>Informacion de contacto: {{ profesional.contacto }}</p>
+        <p>Descripcion: {{ profesional.descripcion }}</p>
+       
     </div>
-
-    <!--Archivo JS que contiene los datos del perfil -->
-    <script src="{{ url_for('static', filename='js/verPerfil.js') }}"></script>
 </body>
 </html>
