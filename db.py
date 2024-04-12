@@ -176,6 +176,23 @@ def get_profesionales_data(connection):
         print(f"Error fetching professionals data: {e}")
         return []
 
+# Funcion para actualizar perfil
+def update_professional(connection, profile_id, nombre, ubicacion, contacto, licencia, estudios_academicos, keywords, descripcion, foto_data):
+    try:
+        cursor = connection.cursor()
+        cursor.execute("""
+            UPDATE perfil 
+            SET nombre = %s, ubicacion = %s, contacto = %s, licencia = %s, estudios_academicos = %s, keywords = %s, descripcion = %s, photo = %s
+            WHERE id = %s
+        """, (nombre, ubicacion, contacto, licencia, estudios_academicos, keywords, descripcion, foto_data, profile_id))
+        connection.commit()
+        cursor.close()
+        return True
+    except Error as e:
+        print(f"Error updating professional: {e}")
+        return False
+
+
 
 # Base de datos del dataset
 def fetch_data_from_information_table():

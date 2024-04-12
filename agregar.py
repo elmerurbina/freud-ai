@@ -1,4 +1,6 @@
 from flask import *
+from werkzeug.utils import secure_filename
+import os
 from db import *
 from wtforms import StringField, TextAreaField, FileField, SubmitField
 from wtforms.validators import DataRequired
@@ -6,6 +8,11 @@ from flask_wtf import FlaskForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your_secret_key'
+
+UPLOAD_FOLDER = 'static/uploads'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Formulario de los campos para agregar un nuevo perfil
 class ProfessionalForm(FlaskForm):
@@ -97,6 +104,7 @@ def editar_perfil():
 @app.route('/edit_profile', methods=['POST'])
 def edit_profile():
     # Retrieve form data from the request
+    form = ProfessionalForm(request.form)
     foto = request.files['foto']
     nombre = request.form['nombre']
     ubicacion = request.form['ubicacion']
@@ -106,6 +114,34 @@ def edit_profile():
     keywords = request.form['keywords']
     descripcion = request.form['descripcion']
 
+    # Handle file upload
+    if foto.filename != '':
+        filename = secure_filename(foto.filename)
+        foto.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        foto_path = os.path.join('uploads', filename)
+    else:
+        foto_path = None
+
+    # Retrieve the profile ID from the session or form data
+    profile_id = request.form.get('profile_id')  # Adjust this according to your session or form structure
+
+    # Connect to the database
+    connection = connect_to_profesionales_database()
+
+    # Update the professional's information in the database
+    if update_professional(connection, profile_id, nombre, ubicacion, contacto, licencia, estudios_academicos, keywords, descripcion, foto_path):
+        message = "Perfil actualizado exitosamente"
+    else:
+        message = "Ocurrió un error al actualizar el perfil"
+
+    # Get the updated professionals' data from the database
+    professionals = get_profesionales_data(connection)
+
+    # Close the database connection
+    close_profesionales_connection(connection)
+
+    # Render the template with the updated information
+    return render_template('profesionales.html', message=message, professionals=professionals)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -38,8 +38,8 @@ app.add_url_rule('/agregar_perfil', 'agregar_perfil', agregar_perfil, methods=['
 app.add_url_rule('/profesionales', 'profesionales', profesionales)
 app.add_url_rule('/check_profile', 'check_profile', check_profile, methods=['POST'])
 app.add_url_rule('/delete_profile/<int:profile_id>', 'delete_profile', delete_profile, methods=['POST'])
-app.add_url_rule('/eidtar_perfil', 'editar_perfil', editar_perfil)
-app.add_url_rule('/edit_profile', 'edit_profile', edit_profile)
+app.add_url_rule('/eidtar_perfil', 'editar_perfil', editar_perfil, methods=['GET'])
+app.add_url_rule('/edit_profile', 'edit_profile', edit_profile, methods=['POST'])
 
 
 # Se agregan las funciones del archivo login.py
