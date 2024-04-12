@@ -60,7 +60,7 @@ def profesionales():
     close_profesionales_connection(connection)
     return render_template('profesionales.html', professionals=professionals)
 
-
+#Funcion para ver perfil utilizando el numero de Licencia como verificacion
 @app.route('/check_profile', methods=['POST'])
 def check_profile():
     licencia = request.form.get('licencia')
@@ -73,6 +73,19 @@ def check_profile():
 
         return f'Error: No encontramos su perfil, por favor verifique su licencia'
 
+# Funcion para eliminar perfil
+@app.route('/delete_profile/<int:profile_id>', methods=['POST'])
+def delete_profile(profile_id):
+    connection = connect_to_profesionales_database()
+    try:
+        # Perform delete operation based on the profile ID
+        if delete_professional(connection, profile_id):
+            return 'Perfil eliminado correctamente'
+        else:
+            return 'Error: No se pudo eliminar el perfil'
+    except Error as e:
+        print(f"Error deleting profile: {e}")
+        return jsonify({'error': 'Error deleting profile'})
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -151,6 +151,19 @@ def get_profesional_by_licencia(connection, licencia):
         print(f"Error fetching professional by licencia: {e}")
         return None
 
+# Funcion para eliminar perfil
+def delete_professional(connection, profile_id):
+    try:
+        cursor = connection.cursor()
+        cursor.execute("DELETE FROM perfil WHERE id = %s", (profile_id,))
+        connection.commit()
+        cursor.close()
+        return True
+    except Error as e:
+        print(f"Error deleting professional: {e}")
+        return False
+
+
 # Funcion para obtener la informacion de la base de datos
 def get_profesionales_data(connection):
     try:

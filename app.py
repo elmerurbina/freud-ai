@@ -1,7 +1,7 @@
 from register_user import register, userProfile
 from flask import request, jsonify
 from db import *
-from agregar import agregar_perfil, profesionales, check_profile
+from agregar import agregar_perfil, profesionales, check_profile, delete_profile
 from chat import get_chatbot_response, save_chat_to_database, chat
 from login import *
 from googleSinIn import *
@@ -37,6 +37,8 @@ app.add_url_rule('/chat', 'chat', chat)
 app.add_url_rule('/agregar_perfil', 'agregar_perfil', agregar_perfil, methods=['GET', 'POST'])
 app.add_url_rule('/profesionales', 'profesionales', profesionales)
 app.add_url_rule('/check_profile', 'check_profile', check_profile, methods=['POST'])
+app.add_url_rule('/delete_profile/<int:profile_id>', 'delete_profile', delete_profile, methods=['POST'])
+
 
 # Se agregan las funciones del archivo login.py
 app.add_url_rule('/login', view_func=login, methods=['GET', 'POST'])
