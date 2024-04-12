@@ -36,7 +36,7 @@ app.add_url_rule('/chat', 'chat', chat)
 # Se agregan las funciones del archivo agregar.py
 app.add_url_rule('/agregar_perfil', 'agregar_perfil', agregar_perfil, methods=['GET', 'POST'])
 app.add_url_rule('/profesionales', 'profesionales', profesionales)
-app.add_url_rule('/check_profile', 'check_profile', check_profile)
+app.add_url_rule('/check_profile', 'check_profile', check_profile, methods=['POST'])
 
 # Se agregan las funciones del archivo login.py
 app.add_url_rule('/login', view_func=login, methods=['GET', 'POST'])

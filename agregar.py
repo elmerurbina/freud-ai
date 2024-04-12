@@ -67,12 +67,11 @@ def check_profile():
     connection = connect_to_profesionales_database()
     profesional = get_profesional_by_licencia(connection, licencia)
     if profesional:
-        # If profile exists, return profile HTML
+
         return render_template('perfil.html', profesional=profesional)
     else:
-        # If profile doesn't exist, return error message
-        return jsonify({'error': 'Profile not found for the given licencia'})
 
+        return f'Error: No encontramos su perfil, por favor verifique su licencia'
 
 
 if __name__ == '__main__':

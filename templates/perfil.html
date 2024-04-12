@@ -7,7 +7,7 @@
 </head>
 <body>
  
-    <div id="profile-details">
+    <div id="profile-container">
         <p>Nombre: {{ profesional.nombre }}</p>
         <p>Licencia: {{ profesional.licencia }}</p>
         <p>Direccion: {{ profesional.direccion }}</p>
@@ -16,5 +16,8 @@
         <p>Descripcion: {{ profesional.descripcion }}</p>
        
     </div>
+
+    <script src="{{ url_for('static', filename='js/digitarLicencia.js') }}"></script> 
+
 </body>
 </html>
