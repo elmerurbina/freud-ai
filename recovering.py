@@ -12,8 +12,9 @@ app.config.from_object('config')
 
 mail = Mail(app)
 
-@app.route('/reset_password/<token>')
-def reset_password(token):
+@app.route('/reset_password')
+def reset_password():
+    token = generate_unique_token()
     # Verify the token (assuming token is the same as the email)
     email = token  # For simplicity, token is the email in this example
     if not is_valid_email(email):
@@ -28,7 +29,7 @@ def reset_password(token):
         return render_template('error.html') # Redirect to login page or any other page
 
     # Render the reset password form if the user exists
-    return render_template('reset_password.html', token=token)
+    return render_template('reset_password.html')
 
 def is_valid_email(email):
     # Regular expression pattern to validate email addresses

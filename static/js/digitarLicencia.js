@@ -1,6 +1,16 @@
 document.addEventListener('DOMContentLoaded', function() {
     const licenseInputContainer = document.getElementById('license-input-container');
     const submitLicenseIcon = document.getElementById('submit-license');
+    const profileLink = document.getElementById('profile-link');
+
+    // Initially hide the license input container
+    licenseInputContainer.style.display = 'none';
+
+    // Event listener for clicking on the "Ver mi Perfil" link
+    profileLink.addEventListener('click', function() {
+        // Show the license input container
+        licenseInputContainer.style.display = 'block';
+    });
 
     // Event listener for clicking on the submit icon
     submitLicenseIcon.addEventListener('click', function() {

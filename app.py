@@ -83,7 +83,7 @@ app.config.from_object('config')
 
 mail = Mail(app)
 
-app.add_url_rule('/reset_password/<token>', 'reset_password', reset_password)
+app.add_url_rule('/reset_password', 'reset_password', reset_password)
 app.add_url_rule('/is_valid_email', 'is_valid_email', is_valid_email)
 app.add_url_rule('/generate_unique_token', 'generate_unique_token', generate_unique_token)
 app.add_url_rule('/send_password_reset_email', 'send_password_reset_email', send_password_reset_email)
