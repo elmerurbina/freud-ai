@@ -3,22 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Red de Apoyo</title>
+    <title>Mi red de apoyo</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/redDeApoyo.css') }}">
     <link rel="icon" href="/static/imagenes/logo.jpg" type="image/jpg">
+
 </head>
 <body>
-    <h1>Mi Red de Apoyo</h1>
-    <div class="contacts">
-        <!-- Loop through the contacts and display them -->
-        {% for contact in contacts %}
-        <div class="contact">
-            <h2>Contacto {{ loop.index }}</h2>
-            <p>Contacto 1: {{ contact.contact_one }}</p>
-            <p>Contacto 2: {{ contact.contact_two }}</p>
-            <p>Correo del psicologo: {{ contact.psychologist_email }}</p>
-        </div>
-        {% endfor %}
+    <div class="container">
+        <h1>Mi red de apoyo</h1>
+        <ul>
+            {% for contact in contacts %}
+                <li>{{ contact }}</li>
+            {% endfor %}
+        </ul>
     </div>
 </body>
 </html>
