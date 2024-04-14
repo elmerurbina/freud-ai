@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-from db import connect_to_database, save_chat_message, close_connection
+from db import *
 
 
 app = Flask(__name__, static_url_path='/static')
@@ -94,6 +94,29 @@ def save_chat_to_database(user_message, response):
             close_connection(connection)
     except Exception as e:
         print("Error saving chat message:", e)
+
+
+@app.route('/message_history')
+def message_history():
+    try:
+        connection = connect_to_database(database='usuarios')
+        if connection:
+            user_id = request.args.get('user_id')  # Assuming user ID is passed as a query parameter
+            messages = get_chat_messages_by_user_id(connection, user_id)
+            close_connection(connection)
+            return render_template('historial.html', messages=messages)
+    except Exception as e:
+        print("Error retrieving message history:", e)
+        return render_template('error.html', error_message="Error retrieving message history")
+
+def get_message_history(connection):
+    try:
+        # Call the get_all_chat_messages function from db.py to fetch all chat messages
+        messages = get_all_chat_messages(connection)
+        return messages
+    except Exception as e:
+        print("Error retrieving message history:", e)
+        return []
 
 
 

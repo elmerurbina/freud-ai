@@ -2,7 +2,7 @@ from register_user import register, userProfile
 from flask import request, jsonify
 from db import *
 from agregar import *
-from chat import get_chatbot_response, save_chat_to_database, chat
+from chat import *
 from login import *
 from googleSinIn import *
 from redApoyo import *
@@ -32,6 +32,8 @@ app.add_url_rule('/register', 'register', register, methods=['GET', 'POST'])
 app.add_url_rule('/userProfile', 'userProfile', userProfile)
 
 app.add_url_rule('/chat', 'chat', chat)
+app.add_url_rule('/message_history', 'message_history', message_history)
+
 
 # Se agregan las funciones del archivo agregar.py
 app.add_url_rule('/agregar_perfil', 'agregar_perfil', agregar_perfil, methods=['GET', 'POST'])

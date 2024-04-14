@@ -14,11 +14,12 @@
 
 
     <h1>Historial</h1>
-
-    <p>
-        Aquí aparecera tu historial de mensajes.
-    </p>
-
+    <ul>
+        {% for message in messages %}
+            <li>User: {{ message[0] }}</li>
+            <li>Chatbot: {{ message[1] }}</li>
+        {% endfor %}
+    </ul>
   
 </body>
 </html>
