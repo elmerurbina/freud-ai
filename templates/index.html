@@ -37,7 +37,7 @@
         <!--JS para la funcion del soporte-->
             <script src="{{ url_for('static', filename='js/soporte.js') }}"></script>
            
-
+<!--
             <div class="header-content">
                 <div class="header-txt">
                     <h1>TU <br> AYUDANTE  <br>PERSONAL </h1>
@@ -47,15 +47,28 @@
                     <a href="{{url_for('notificaciones')}}" class="btn">Leer mas</a>
                 </div>
 
-                <!--Imagen de la derecha-->
+                Imagen de la derecha
                 <div class="header-img">
                     <img src="{{ url_for('static', filename='imagenes/right.svg') }} " alt="No esta">
                 </div>
 
             </div>
+       -->
+
+<!--Video manual-->
+
+<div class="video-container">
+    <video id="myVideo" autoplay muted controls>
+        <source src="{{ url_for('static', filename='video/index.mp4') }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
         </div>
     </header>
 
+   
+    
         <footer class="pie-pagina">
             <div class="grupo-1">
                
