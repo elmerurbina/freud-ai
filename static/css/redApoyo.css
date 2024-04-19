@@ -1,16 +1,20 @@
 body {
-    background-color: #f3e5f5; /* Light purple background color */
-    background-image: 
-        linear-gradient(45deg, rgba(255, 255, 255, 0.25) 25%, transparent 25%),
-        linear-gradient(-45deg, rgba(255, 255, 255, 0.25) 25%, transparent 25%),
-        linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.25) 75%),
-        linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.25) 75%);
-    background-size: 40px 40px; /* Size of the linen pattern */
-    font-family: Arial, sans-serif; /* Specify a font family */
-    color: #333; /* Text color */
- 
-}
+    margin: 0;
+    padding: 0;
+    overflow: hidden; 
+    color: black; 
 
+#video-background {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+}
+}
 
 
 form {
@@ -25,11 +29,12 @@ label {
     display: block;
     margin-bottom: 10px;
     margin-top: 50px;
+    color: white;
 }
 /* Style the input field */
 input[type="tel"] {
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid #fcf7f7;
     border-radius: 5px;
     font-size: 16px;
     width: 400px;
