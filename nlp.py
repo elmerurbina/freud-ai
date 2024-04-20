@@ -1,92 +1,113 @@
-import nltk
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
+import mysql.connector
+import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
-import tensorflow as tf
-from sklearn.model_selection import train_test_split
-import numpy as np
-from sklearn.preprocessing import LabelEncoder
-from db import connect_to_database, fetch_data_from_information_table
+from sklearn.metrics.pairwise import cosine_similarity
+from chat import get_chatbot_response, save_chat_to_database
 
 
+# Connect to MySQL database
+def connect_to_database():
+    try:
+        conn = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="7>>HhNN6/fZ",
+            database="dataset"
+        )
+        return conn
+    except mysql.connector.Error as err:
+        print("Error:", err)
+        return None
 
-max_feautures = 250
+# Fetch file contents from the database
+def fetch_file_contents(conn):
+    try:
+        cursor = conn.cursor()
+        cursor.execute("SELECT file_content FROM information")
+        file_contents = cursor.fetchall()
+        cursor.close()
+        return file_contents
+    except mysql.connector.Error as err:
+        print("Error:", err)
+        return None
 
 
-nltk.download("punkt")
-nltk.download("stopwords")
-
-#Conexion con la base de datos, que contiene el dataset
-conn = connect_to_database()
-
-if conn is None:
-    exit(1)
-
-#Acceder a la informacion almacenada en la tabla "information" en la base de datos
-
-table_data = fetch_data_from_information_table(conn)
-
-texts = [row[0] for row in table_data]
-labels = [row[0] for row in table_data]
+def load_data_from_files(file_contents):
+    data = []
+    for file_content in file_contents:
+        try:
+            # Extract the text content from the tuple
+            content = file_content[0]  # Assuming the text is in the first element of the tuple
+            data.append({'file_content': content})
+        except FileNotFoundError:
+            print("Error: File not found")
+            continue
+    return pd.DataFrame(data)
 
 
-#Preprocesamiento del texto
 def preprocess_text(text):
-    words = word_tokenize(text)
-
-    words = [word.lower() for word in words if word.isalnum() and word.lower() not in stopwords.words("english")]
-
-    return ' '.join(words)
-
-preprocessed_texts = [preprocess_text(text) for text in texts]
-
-text_array = np.array(preprocessed_texts)
+    # If the input is a tuple, extract the text content
+    if isinstance(text, tuple):
+        text = text[0]  # Assuming the text is in the first element of the tuple
+    # Perform the actual preprocessing
+    # Add your preprocessing logic here
+    return text.lower()  # Example: Convert text to lowercase
 
 
-#Vectorizacion del texto
-tfidf_vectorizer = TfidfVectorizer(max_features=max_feautures)
-X = tfidf_vectorizer.fit_transform(preprocessed_texts)
+# Build and train the model
+def build_model(data):
+    tfidf_vectorizer = TfidfVectorizer()
+    tfidf_matrix = tfidf_vectorizer.fit_transform(data['processed_content'])
 
+    return data, tfidf_vectorizer, tfidf_matrix
 
-#Divide los datos en bloques de train (entrenamiento) y testing (prube)
-X_train, X_test, y_train, y_test = train_test_split(X, labels, test_size=0.2, random_state=42)
+# Generate response
+def generate_response(user_input, data, tfidf_vectorizer, tfidf_matrix):
+    user_input = preprocess_text(user_input)
+    user_input_vector = tfidf_vectorizer.transform([user_input])
 
-#Definicion del modelo con TensorFlow
-model = tf.keras.Sequential([
-    tf.keras.layers.Dense(128, activation='relu', input_shape=(max_feautures,)),
-    tf.keras.layers.Dense(64, activation='relu'),
-    tf.keras.layers.Dense(1, activation='sigmoid')
-])
+    similarities = cosine_similarity(user_input_vector, tfidf_matrix)
+    closest_index = similarities.argmax()
 
-model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+    response = data.iloc[closest_index]['answer']
+    return response
 
-label_encoder = LabelEncoder ()
+# Main function
+def main():
+    # Connect to the database
+    conn = connect_to_database()
+    if conn is None:
+        return
 
-#Encoder utilizado para la transformacion de datos
-y_train_encoded = label_encoder.fit_transform(y_train)
-y_test_encoded = label_encoder.fit_transform(y_test)
+    # Fetch file contents from the database
+    file_contents = fetch_file_contents(conn)
+    if file_contents is None:
+        conn.close()
+        return
 
-#Entrenamiento del modelo
-model.fit(X_train, y_train_encoded, epochs=10, batch_size=32, validation_data=(X_test, y_test_encoded))
+    # Load data from files
+    df = load_data_from_files(file_contents)
 
+    # Preprocess text data
+    df['processed_content'] = df['file_content'].apply(preprocess_text)
 
-#Vamos a probar el modelo
-loss, accuracy =model.evaluate(X_test, y_test)
-print(f"Test Loss: {loss:.4f}, Test Accuracy: {accuracy:.4f}")
+    # Build and train the model
+    df, tfidf_vectorizer, tfidf_matrix = build_model(df)
 
-#El Bot se implementara en dos idiomas -English-Spanish- de momento estamos implementando el Ingles
-#para probar el funcionamiento del modelo y la conexion a la base de datos,
-#debido a que la informacion que contiene el dataset esta Ingles
+    # Interaction loop
+    print("Bot: Hello! How can I help you today?")
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() == 'exit':
+            print("Bot: Goodbye!")
+            break
+        response = generate_response(user_input, df, tfidf_vectorizer, tfidf_matrix)
+        print("Bot:", response)
+        # Save chat to database
+        save_chat_to_database(user_input, response)
 
-new_text = ["I am stressed today"]
-preprocessed_new_text = [preprocess_text(text) for text in new_text]
-tfidf_vectors = tfidf_vectorizer.transform(preprocessed_new_text)
-predictions = model.predict(tfidf_vectors)
+    # Close the database connection
+    conn.close()
 
-#Cierra la conexion a la base de datos
-conn.close()
-
-
-
-
-
+if __name__ == "__main__":
+    main()
