@@ -33,7 +33,7 @@ def close_connection(connection):
 def save_chat_message(connection, user_id, message, response):
     try:
         cursor = connection.cursor()
-        query = "INSERT INTO historial_chat (user_id, message, response) VALUES (%s, %s, %s)"
+        query = "INSERT INTO historial_chat (id, message, response) VALUES (%s, %s, %s)"
         data = (user_id, message, response)
         cursor.execute(query, data)
         connection.commit()
@@ -69,6 +69,20 @@ def get_chat_messages_by_user_id(connection, user_id):
     except mysql.connector.Error as err:
         print("Error retrieving chat messages by user ID:", err)
         return []
+
+
+# Funcion para guardar los mensajes del usuario
+def save_chat_to_database(user_id, user_message, response):
+    try:
+        connection = connect_to_database(database='usuarios')
+        if connection:
+            save_chat_message(connection, user_id=user_id, message=user_message, response=response)
+            close_connection(connection)
+    except Exception as e:
+        print("Error saving chat message:", e)
+
+
+
 
 # Establecer la conexion a la base de datos
 db = mysql.connector.connect(

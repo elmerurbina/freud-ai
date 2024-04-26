@@ -1,4 +1,8 @@
-from flask import Flask, render_template, request, jsonify
+from flask import *
+import torch
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+from flask_login import current_user
 from db import *
 
 
@@ -12,8 +16,6 @@ app.secret_key = 'your_secret_key'
 def chat():
     return render_template('chat.html')
 
-
-# Procesa los mensajes del usuario
 @app.route('/process_message', methods=['POST'])
 def process_message():
     user_message = request.json.get('message', '')
@@ -25,7 +27,8 @@ def process_message():
 
     return jsonify({'response': response})
 
-# Muestra las respuestas del chatbot
+
+
 def get_chatbot_response(user_input):
     # Estas son algunas respuestas pre-programadas a los saludos mas comunes
     # Saludos comunes
@@ -82,43 +85,23 @@ def get_chatbot_response(user_input):
     elif any(word in user_input.lower() for word in ['cómo', 'qué', 'cuándo', 'dónde']):
         return 'Esa es una pregunta interesante. ¿Puedes proporcionar más detalles?'
 
-    #else:
-       # return 'Lo siento, no entiendo completamente. ¿Puedes proporcionar más información o formular tu pregunta de otra manera?'
+    else:
+        return 'Lo siento, no entiendo completamente. ¿Puedes proporcionar más información o formular tu pregunta de otra manera?'
 
-# Funcion para guardar los mensajes del usuario
-def save_chat_to_database(user_message, response):
-    try:
-        connection = connect_to_database(database='usuarios')
-        if connection:
-            save_chat_message(connection, user_id=0, message=user_message, response=response)  # Assuming user_id 0 for chatbot
-            close_connection(connection)
-    except Exception as e:
-        print("Error saving chat message:", e)
-
-
+        pass
 @app.route('/message_history')
 def message_history():
     try:
         connection = connect_to_database(database='usuarios')
         if connection:
-            user_id = request.args.get('user_id')  # Assuming user ID is passed as a query parameter
-            messages = get_chat_messages_by_user_id(connection, user_id)
+            # Assuming user ID is passed as a query parameter
+            user_id = request.args.get('id')
+            messages = get_all_chat_messages(connection)  # Fetch all chat messages
             close_connection(connection)
             return render_template('historial.html', messages=messages)
     except Exception as e:
         print("Error retrieving message history:", e)
         return render_template('error.html', error_message="Error retrieving message history")
-
-def get_message_history(connection):
-    try:
-        # Call the get_all_chat_messages function from db.py to fetch all chat messages
-        messages = get_all_chat_messages(connection)
-        return messages
-    except Exception as e:
-        print("Error retrieving message history:", e)
-        return []
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)

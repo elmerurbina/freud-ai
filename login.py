@@ -1,8 +1,23 @@
 from flask import Flask, render_template, request, redirect, url_for, session
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user
 from db import connect_to_database
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Set a secret key for session management
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+# Define a User class
+class User(UserMixin):
+    pass
+
+@login_manager.user_loader
+def load_user(user_id):
+    # This function is required by Flask-Login. It loads a user given the ID.
+    user = User()
+    user.id = user_id
+    return user
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -24,8 +39,10 @@ def login():
             cursor.fetchall()
 
             if user_id:
-                # Store the user ID in the session
-                session['id'] = user_id[0]
+                # Create a User object and login the user
+                user = User()
+                user.id = user_id[0]
+                login_user(user)
 
                 # Redirect to chat.html upon successful login
                 return redirect(url_for('chat'))
@@ -38,6 +55,11 @@ def login():
             connection.close()
 
     return render_template('login.html')
+
+@app.route('/chat')
+@login_required
+def chat():
+    return render_template('chat.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -58,7 +58,7 @@
                     
                     <!--Accede al historial de mensajes-->
                     <li class="nav-link">
-                        <a href="{{ url_for ('historial')}}">
+                        <a href="{{ url_for ('message_history')}}">
                             <i class="bx bx-conversation icon"></i>
                             <span class="text nav-text">Ver Historial</span>
                         </a>
@@ -134,17 +134,17 @@
 
         </div>
 
-        <div class="message-container"> 
-        </div>
-
-        <!--Input para escribir mensajes-->
         <div class="message-input">
             <input type="text" id="messageInput" placeholder="Escribe tu mensaje...">
             <button onclick="sendMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+
         </div>
+
         <div class="message-container" id="messageContainer">
            
         </div>
+        
+
     </section>
 
      <!--Conexiones con JavaScript-->

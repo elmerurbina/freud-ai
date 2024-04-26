@@ -34,6 +34,7 @@ app.add_url_rule('/userProfile', 'userProfile', userProfile)
 
 app.add_url_rule('/chat', 'chat', chat)
 app.add_url_rule('/message_history', 'message_history', message_history)
+app.add_url_rule('/process_message', 'process_message', process_message, methods=['POST'])
 
 
 # Se agregan las funciones del archivo agregar.py
@@ -47,6 +48,12 @@ app.add_url_rule('/edit_profile', 'edit_profile', edit_profile, methods=['POST']
 
 # Se agregan las funciones del archivo login.py
 app.add_url_rule('/login', view_func=login, methods=['GET', 'POST'])
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+# Register the user loader function
+login_manager.user_loader(load_user)
 
 app.add_url_rule('/logout', 'logout', logout)
 
@@ -106,18 +113,6 @@ def subscripcionesUsuario():
     return render_template('suscripcionesUsuario.html')
 
 
-# Clase para procesar los mensajes
-def process_message():
-    user_message = request.json.get('message', '')
-    response = get_chatbot_response(user_message)
-    save_chat_to_database(user_message, response)
-    return jsonify({'response': response})
-
-# Rutas de las funciones del chatbot
-app.add_url_rule('/chat', 'chat', chat)
-app.add_url_rule('/process_message', 'process_message', process_message, methods=['POST'])
-
-
 
 # Funcion para conprobar si existe el codigo del ejecutivo en la base de datos
 def check_access_code(access_code):
@@ -135,11 +130,6 @@ def check_access_code(access_code):
 def check_access_code_route(access_code):
     exists = check_access_code(access_code)
     return jsonify({'exists': exists})
-
-
-@app.route('/historial')
-def historial():
-    return render_template('historial.html')
 
 
 # Funcion para configurar las notificaciones

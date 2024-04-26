@@ -1,17 +1,19 @@
+// JavaScript code for handling chat functionality
+
 function sendMessage() {
     const userInput = document.getElementById('messageInput').value;
     const messageContainer = document.getElementById('messageContainer');
 
-    // Mostrar el mensaje
+    // Show the user message
     const userMessage = document.createElement('div');
     userMessage.className = 'user-message';
     userMessage.innerHTML = `<i class="fa-solid fa-user"></i> ${userInput}`;
     messageContainer.appendChild(userMessage);
 
-    // Desplazarse a la parte inferior despues de enviar el mensaje
+    // Scroll to the bottom after sending the message
     messageContainer.scrollTop = messageContainer.scrollHeight;
 
-    // Enviar el mensaje al servidor para que este lo procese
+    // Send the message to the server for processing
     fetch('/process_message', {
         method: 'POST',
         headers: {
@@ -21,17 +23,21 @@ function sendMessage() {
     })
     .then(response => response.json())
     .then(data => {
-        // Mostrar el mensaje del chatbot
+        // Show the chatbot message
         const chatbotMessage = document.createElement('div');
         chatbotMessage.className = 'chatbot-message';
         chatbotMessage.innerHTML = `<i class="fa-brands fa-fly"></i> ${data.response}`;
         messageContainer.appendChild(chatbotMessage);
 
-        // Mover a la parte inferior de la pagina despues de mostrar el mensaje
+        // Scroll to the bottom after showing the message
         messageContainer.scrollTop = messageContainer.scrollHeight;
 
-        // Limpiar el input de los mensajes
+        // Clear the input field after sending the message
         document.getElementById('messageInput').value = '';
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => {
+        console.error('Error:', error);
+        // Clear the input field in case of error
+        document.getElementById('messageInput').value = '';
+    });
 }
