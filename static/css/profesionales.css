@@ -46,3 +46,50 @@ body {
     font-size: 1rem;
     color: #555;
 }
+
+
+.search-container {
+    margin-bottom: 20px;
+}
+
+.profile-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.profile-card {
+    width: 30%;
+    margin: 0 15px 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-card img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.search-container {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.search-container input[type="text"] {
+    padding: 10px 35px 10px 10px; /* Added more padding on the right for the icon */
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.search-container i {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #666;
+}
+

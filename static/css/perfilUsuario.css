@@ -24,3 +24,10 @@ a {
     display: block;
     margin-top: 20px;
 }
+button.editar {
+    background-color: blue;
+    font-size: 16px;
+    color: white;
+    align-items: center;
+    padding: 12px;
+}

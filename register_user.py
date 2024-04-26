@@ -1,30 +1,44 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from db import connect_to_database
 import os
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
+
+UPLOAD_FOLDER = 'path_to_upload_folder'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Function to handle user registration
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
+        # Handle form data
         full_name = request.form['nombre']
         username = request.form['user']
         email = request.form['email']
         password = request.form['password']
         date_of_birth = request.form['date']
 
-        # Server-side validation to ensure all fields are filled
-        if not all([full_name, username, email, password, date_of_birth]):
-            return render_template('register.html', error_message='All fields are required.')
+        # Handle file upload
+        if 'photo' in request.files:
+            photo = request.files['photo']
+            if photo.filename != '':
+                filename = secure_filename(photo.filename)
+                photo_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+                photo.save(photo_path)
+            else:
+                photo_path = None
+        else:
+            photo_path = None
 
+        # Save user data to the database, including the photo path
         # Connect to the database
         connection = connect_to_database()
         cursor = connection.cursor()
 
         # Insert user data into the database
-        query = "INSERT INTO sistema_registro (full_name, username, email, password, date_of_birth) VALUES (%s, %s, %s, %s, %s)"
-        values = (full_name, username, email, password, date_of_birth)
+        query = "INSERT INTO sistema_registro (full_name, username, email, password, date_of_birth, photo) VALUES (%s, %s, %s, %s, %s, %s)"
+        values = (full_name, username, email, password, date_of_birth, photo_path)
         cursor.execute(query, values)
         connection.commit()
 
@@ -37,11 +51,13 @@ def register():
 
     return render_template('register.html')
 
+
 # Function to render chat.html
 @app.route('/chat')
 def chat():
     return render_template('chat.html')
 
+# Function to retrieve user data from the database
 def get_user_data(user_id):
     # Connect to the database
     connection = connect_to_database()
@@ -73,13 +89,13 @@ def userProfile():
             full_name = user_data[1]
             photo_path = user_data[2]
 
+            # Set a default value for photo_path if it's None
+            photo_path = photo_path or ''
+
             return render_template('perfilUsuario.html', username=username, full_name=full_name, photo_path=photo_path)
         else:
             return "User not found"
     else:
         return "No se encontro el ID del usuario"
-if __name__ == '__main__':
-    app.run(debug=True)
-
 if __name__ == '__main__':
     app.run(debug=True)

@@ -11,13 +11,14 @@
     <div class="container">
         <h1>Mi perfil</h1>
         <div class="profile">
-            <img src="{{ photo_path }}" alt="Profile Picture">
+            <img src="{{ url_for('static', filename=photo_path) }}" alt="Profile Picture">
             <div class="info">
                 <p><strong>Nombre:</strong> {{ full_name }}</p>
                 <p><strong>Usuario:</strong> {{ username }}</p>
-                <p><strong>Email:</strong> {{ email }}</p>
-                <p><strong>Fecha de Nacimiento:</strong> {{ date }}</p>
             </div>
+            <a href="#">
+                <button class="editar">Editar mi perfil</button>
+            </a>
         </div>
         <a href="{{ url_for('logout') }}">Cerrar Sesión</a>
     </div>
