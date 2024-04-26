@@ -11,12 +11,12 @@
     <div class="container">
         <h1>Mi perfil</h1>
         <div class="profile">
-            <img src="{{ user.foto }}" alt="Profile Picture">
+            <img src="{{ photo_path }}" alt="Profile Picture">
             <div class="info">
-                <p><strong>Nombre:</strong> {{ user.nombre }}</p>
-                <p><strong>Usuario:</strong> {{ user.user }}</p>
-                <p><strong>Email:</strong> {{ user.email }}</p>
-                <p><strong>Fecha de Nacimiento:</strong> {{ user.date }}</p>
+                <p><strong>Nombre:</strong> {{ full_name }}</p>
+                <p><strong>Usuario:</strong> {{ username }}</p>
+                <p><strong>Email:</strong> {{ email }}</p>
+                <p><strong>Fecha de Nacimiento:</strong> {{ date }}</p>
             </div>
         </div>
         <a href="{{ url_for('logout') }}">Cerrar Sesión</a>

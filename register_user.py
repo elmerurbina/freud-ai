@@ -62,7 +62,7 @@ def get_user_data(user_id):
 @app.route('/userProfile')
 def userProfile():
     # Retrieve the user ID from the session
-    user_id = session.get('user_id')
+    user_id = session.get('id')
 
     if user_id:
         # Retrieve user data from the database using the user ID
@@ -71,7 +71,7 @@ def userProfile():
             # Extract user information
             username = user_data[0]
             full_name = user_data[1]
-            photo_path = user_data[2]  # Assuming photo is stored as a file path in the database
+            photo_path = user_data[2]
 
             return render_template('perfilUsuario.html', username=username, full_name=full_name, photo_path=photo_path)
         else:

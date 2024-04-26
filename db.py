@@ -60,7 +60,7 @@ def get_all_chat_messages(connection):
 def get_chat_messages_by_user_id(connection, user_id):
     try:
         cursor = connection.cursor(dictionary=True)
-        query = "SELECT * FROM historial_chat WHERE user_id = %s"
+        query = "SELECT * FROM historial_chat WHERE id = %s"
         data = (user_id,)
         cursor.execute(query, data)
         messages = cursor.fetchall()

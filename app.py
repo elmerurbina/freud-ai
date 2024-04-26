@@ -1,6 +1,7 @@
 from register_user import register, userProfile
 from flask import request, jsonify
 from db import *
+from logout import logout
 from agregar import *
 from chat import *
 from login import *
@@ -46,6 +47,8 @@ app.add_url_rule('/edit_profile', 'edit_profile', edit_profile, methods=['POST']
 
 # Se agregan las funciones del archivo login.py
 app.add_url_rule('/login', view_func=login, methods=['GET', 'POST'])
+
+app.add_url_rule('/logout', 'logout', logout)
 
 # Funciones y rutas del archivo googleSingIn.py
 app.add_url_rule('/google-signin', view_func=google_auth)
@@ -148,7 +151,7 @@ def  notificaciones():
 
 
 # Ruta que permite el acceso al panel del psicologo y por ende a la interfaz de estos
-@app.route('/verExpediente')  # Corrected the route path
+@app.route('/verExpediente')
 def verExpediente():
     return render_template('verExpediente.html')
 
