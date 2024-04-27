@@ -132,7 +132,47 @@ def close_profesionales_connection(connection):
     if connection:
         connection.close()
 
-# Funcion para guardar el perfil de los profesionales en la base de datos
+# Revisar el usuario en la base de datos
+def check_username_exists(username):
+    # Check if the username exists in the database
+    connection = connect_to_database('sistema_registro')
+    if connection:
+        try:
+            cursor = connection.cursor()
+            query = "SELECT COUNT(*) FROM usuarios WHERE username = %s"
+            cursor.execute(query, (username,))
+            count = cursor.fetchone()[0]
+            cursor.close()
+            close_connection(connection)
+            return count > 0
+        except mysql.connector.Error as err:
+            print("Error checking username:", err)
+            close_connection(connection)
+            return False
+    else:
+        return False
+
+def get_patient_info(username):
+    # Fetch patient information based on the username
+    connection = connect_to_database('sistema_registro')
+    if connection:
+        try:
+            cursor = connection.cursor(dictionary=True)
+            query = "SELECT * FROM usuarios WHERE username = %s"
+            cursor.execute(query, (username,))
+            patient_info = cursor.fetchone()
+            cursor.close()
+            close_connection(connection)
+            return patient_info
+        except mysql.connector.Error as err:
+            print("Error fetching patient info:", err)
+            close_connection(connection)
+            return None
+    else:
+        return None
+
+
+
 # Funcion para guardar el perfil de los profesionales en la base de datos
 def save_profesional(connection, form, file_path):
     try:

@@ -1,6 +1,7 @@
 from register_user import register, userProfile
 from flask import request, jsonify
 from db import *
+from expediente import expediente
 from logout import logout
 from agregar import *
 from chat import *
@@ -10,6 +11,7 @@ from redApoyo import *
 from custom import *
 from frases import show_notification, send_notification, random_phrase
 from recovering import *
+from patientRecord import acceder_expediente
 
 
 
@@ -31,6 +33,8 @@ def internal_server_error(error):
 # Agrego la logica del modulo y las funciones del archivo register_user
 app.add_url_rule('/register', 'register', register, methods=['GET', 'POST'])
 app.add_url_rule('/userProfile', 'userProfile', userProfile)
+
+app.add_url_rule('/expediente', 'expediente', expediente)
 
 app.add_url_rule('/chat', 'chat', chat)
 app.add_url_rule('/message_history', 'message_history', message_history)
@@ -82,7 +86,7 @@ app.add_url_rule('/insomnia', 'insomnia', insomnia)
 app.add_url_rule('/narcolepsy', 'narcolepsy', narcolepsy)
 app.add_url_rule('/fobias', 'fobias', fobias)
 app.add_url_rule('/bulimia', 'bulimia', bulimia)
-app.add_url_rule('/chatbot_response', 'chatbot_response', chatbot_response, methods=['POST'])
+app.add_url_rule('/chatbot_response', 'chatbot_response', chatbot_response, methods=[ 'POST'])
 
 # Funciones del para el envio de notificaciones con frases de motivacion
 app.add_url_rule('/random_phrase', 'random_phrase', random_phrase)
@@ -100,6 +104,7 @@ app.add_url_rule('/is_valid_email', 'is_valid_email', is_valid_email)
 app.add_url_rule('/generate_unique_token', 'generate_unique_token', generate_unique_token)
 app.add_url_rule('/send_password_reset_email', 'send_password_reset_email', send_password_reset_email)
 
+app.add_url_rule('/acceder_expediente', 'acceder_expediente', acceder_expediente, methods=['GET', 'POST'])
 
 
 
@@ -144,11 +149,6 @@ def  notificaciones():
 @app.route('/verExpediente')
 def verExpediente():
     return render_template('verExpediente.html')
-
-
-@app.route('/expediente')
-def expediente():
-    return render_template('expediente.html')
 
 
 
