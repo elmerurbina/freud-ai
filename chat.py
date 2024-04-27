@@ -18,9 +18,10 @@ def chat():
 
 @app.route('/process_message', methods=['POST'])
 def process_message():
-    user_message = request.json.get('message', '')
+    request_data = request.get_json()
+    user_message = request_data.get('message', '')
 
-    # Procesa los mensajes del usuario y genera una respuesta
+    # Process user message and generate response
     response = get_chatbot_response(user_message)
 
     save_chat_to_database(user_message, response)
