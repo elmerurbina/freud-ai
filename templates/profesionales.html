@@ -26,10 +26,17 @@
                 </div>
 
                 <p>Informacion de contacto: {{ professional.contacto }}</p>
-                <!-- Add WhatsApp icon with online image and link -->
+                <!-- Contacto via WhatsApp-->
             <div class="whatsapp-contact">
                     <a href="https://api.whatsapp.com/send?phone={{ professional.whatsapp_number }}" target="_blank">
                         <i class="fa-brands fa-whatsapp"></i> Contactar vía WhatsApp
+                    </a>
+                </div>
+
+                <!--Mensajes dentro de la misma plataforma-->
+                <div class="message-contact">
+                    <a class="message" href=" ">
+                        <i class="fa-brands fa-rocketchat"></i> Enviar Mensaje
                     </a>
                 </div>
                 

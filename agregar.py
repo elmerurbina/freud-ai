@@ -87,12 +87,15 @@ def delete_profile(profile_id):
     try:
         # Perform delete operation based on the profile ID
         if delete_professional(connection, profile_id):
-            return 'Perfil eliminado correctamente'
+            return 'Perfil eliminado correctamente', 200
         else:
-            return 'Error: No se pudo eliminar el perfil'
-    except Error as e:
+            return 'Error: No se pudo eliminar el perfil', 500
+    except Exception as e:
         print(f"Error deleting profile: {e}")
-        return jsonify({'error': 'Error deleting profile'})
+        return 'Error: No se pudo eliminar el perfil', 500
+    finally:
+        close_connection(connection)
+
 
 # Funcion para editar  perfil
 @app.route('/editar_perfil', methods=['GET'])

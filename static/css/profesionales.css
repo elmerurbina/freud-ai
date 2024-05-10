@@ -100,3 +100,14 @@ a {
     padding: 3px;
 }
 
+a.message {
+    color: white;
+    background-color: blue;
+    padding: 3px;
+    
+}
+
+.message-contact {
+    margin-top: 20px;
+}
+
