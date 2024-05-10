@@ -30,8 +30,8 @@ def edit_profile():
 
         # Insert data into MySQL database
         mycursor = mydb.cursor()
-        sql = "INSERT INTO perfil (nombre, licencia, ubicacion, contacto, descripcion, file_path) VALUES (%s, %s, %s, %s, %s, %s)"
-        val = (nombre, licencia, ubicacion, contacto, descripcion, photo_path)
+        sql = "INSERT INTO perfil (nombre, licencia, ubicacion, contacto, descripcion, file_path, whatsapp_number) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+        val = (nombre, licencia, ubicacion, contacto, descripcion, photo_path, request.form['whatsapp_number'])
         mycursor.execute(sql, val)
         mydb.commit()
 

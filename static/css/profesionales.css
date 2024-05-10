@@ -93,3 +93,10 @@ body {
     color: #666;
 }
 
+
+a {
+    color: white;
+    background-color: green;
+    padding: 3px;
+}
+
