@@ -8,7 +8,7 @@ from chat import *
 from login import *
 from googleSinIn import *
 from redApoyo import *
-from custom import *
+
 from frases import show_notification, send_notification, random_phrase
 from recovering import *
 from patientRecord import acceder_expediente
@@ -37,8 +37,26 @@ app.add_url_rule('/userProfile', 'userProfile', userProfile)
 app.add_url_rule('/expediente', 'expediente', expediente)
 
 app.add_url_rule('/chat', 'chat', chat)
-app.add_url_rule('/message_history', 'message_history', message_history)
+#app.add_url_rule('/message_history', 'message_history', message_history)
 app.add_url_rule('/process_message', 'process_message', process_message, methods=['POST'])
+
+
+
+# URLs del custom file, que contiene la logica del proyecto Rasa
+app.add_url_rule('/greeting', 'greeting', greeting)
+app.add_url_rule('/sad', 'sad', sad)
+app.add_url_rule('/anxiety_state', 'anxiety_state', anxiety_state)
+app.add_url_rule('/happy', 'happy', happy)
+app.add_url_rule('/stress', 'stress', stress)
+app.add_url_rule('/anxiety', 'anxiety', anxiety)
+app.add_url_rule('/depression', 'depression', depression)
+app.add_url_rule('/trauma', 'trauma', trauma)
+app.add_url_rule('/addiction', 'addiction', addiction)
+app.add_url_rule('/insomnia', 'insomnia', insomnia)
+app.add_url_rule('/narcolepsy', 'narcolepsy', narcolepsy)
+app.add_url_rule('/fobias', 'fobias', fobias)
+app.add_url_rule('/bulimia', 'bulimia', bulimia)
+app.add_url_rule('/get_chatbot_response', 'get_chatbot_response', get_chatbot_response, methods=[ 'POST'])
 
 
 # Se agregan las funciones del archivo agregar.py
@@ -71,22 +89,6 @@ app.add_url_rule('/redApoyo', 'redApoyo', redApoyo)
 app.add_url_rule('/guardar_red', 'guardar_red', guardar_red, methods=['POST'])
 app.add_url_rule('/success', 'success', success)
 app.add_url_rule('/red_de_apoyo', 'red_de_apoyo', red_de_apoyo)
-
-# URLs del custom file, que contiene la logica del proyecto Rasa
-app.add_url_rule('/greeting', 'greeting', greeting)
-app.add_url_rule('/sad', 'sad', sad)
-app.add_url_rule('/anxiety_state', 'anxiety_state', anxiety_state)
-app.add_url_rule('/happy', 'happy', happy)
-app.add_url_rule('/stress', 'stress', stress)
-app.add_url_rule('/anxiety', 'anxiety', anxiety)
-app.add_url_rule('/depression', 'depression', depression)
-app.add_url_rule('/trauma', 'trauma', trauma)
-app.add_url_rule('/addiction', 'addiction', addiction)
-app.add_url_rule('/insomnia', 'insomnia', insomnia)
-app.add_url_rule('/narcolepsy', 'narcolepsy', narcolepsy)
-app.add_url_rule('/fobias', 'fobias', fobias)
-app.add_url_rule('/bulimia', 'bulimia', bulimia)
-app.add_url_rule('/chatbot_response', 'chatbot_response', chatbot_response, methods=[ 'POST'])
 
 # Funciones del para el envio de notificaciones con frases de motivacion
 app.add_url_rule('/random_phrase', 'random_phrase', random_phrase)
