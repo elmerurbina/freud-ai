@@ -105,7 +105,7 @@ def bulimia(Bulimia):
 
 def get_chatbot_response(user_input):
     # Expresiones predefinidas
-    if any(word in user_input.lower() for word in ['hola', 'saludos', 'buenos días', 'buenas tardes', 'buenas noches']):
+    if any(word in user_input.lower() for word in ['hola', 'saludos', 'buenos días', 'buenos dias', 'buenas tardes', 'buenas noches']):
         return '¡Hola! ¿Cómo te encuentras?'
 
     elif any(word in user_input.lower() for word in ['bien', 'bien gracias a Dios', 'bien gracias a dios']):
@@ -114,7 +114,7 @@ def get_chatbot_response(user_input):
     elif any(word in user_input.lower() for word in ['mal', 'horrible', 'decepcionado']):
         return 'Comprendo que te sientas mal, estoy aquí para escucharte y ayudarte, cuéntame ¿por qué te sientes mal?'
 
-    elif any(word in user_input.lower() for word in ['estoy ansioso', 'ansioso', 'me siento ansioso']):
+    elif any(word in user_input.lower() for word in ['estoy ansioso', 'ansioso', 'me siento ansioso', 'tengo ansiedad']):
         return 'Entiendo. La ansiedad es una experiencia común. ¿Te gustaría hablar sobre lo que la está desencadenando?'
 
     elif 'estres' in user_input.lower():
