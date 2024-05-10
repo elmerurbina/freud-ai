@@ -44,6 +44,9 @@ def login():
                 user.id = user_id[0]
                 login_user(user)
 
+                # Save user ID in session
+                session['user_id'] = user_id[0]
+
                 # Redirect to chat.html upon successful login
                 return redirect(url_for('chat'))
             else:
@@ -55,6 +58,13 @@ def login():
             connection.close()
 
     return render_template('login.html')
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    session.pop('user_id', None)  # Remove user ID from session
+    return redirect(url_for('login'))
 
 @app.route('/chat')
 @login_required

@@ -1,7 +1,7 @@
 import random
 from db import save_chat_message, close_connection, connect_to_database, fetch_data_from_information_table
 from Join_Rasa_Python import get_combined_data
-from flask import jsonify, request, Flask
+from flask import jsonify, request, Flask, session
 
 app = Flask(__name__)
 
@@ -164,13 +164,18 @@ def handle_user_message(user_id, message):
 
 @app.route('/process_message', methods=['POST'])
 def process_message():
+    if 'user_id' not in session:
+        return jsonify({'response': 'Su sesion a expirado. Por favor inicie sesion nuevamente!'})
+
     request_data = request.get_json()
     user_message = request_data.get('message', '')
 
-    # Pass the user message to the chat logic
-    response = handle_user_message(user_id="dummy_id", message=user_message)
+    # Retrieve user ID from session
+    user_id = session['user_id']
+
+    # Pass user ID and message to chat handling function
+    response = handle_user_message(user_id=user_id, message=user_message)
 
     return jsonify({'response': response})
-
 if __name__ == '__main__':
     app.run(debug=True)
