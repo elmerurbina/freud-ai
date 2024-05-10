@@ -162,6 +162,8 @@ def handle_user_message(user_id, message):
 
     return response
 
+
+
 @app.route('/process_message', methods=['POST'])
 def process_message():
     if 'user_id' not in session:
