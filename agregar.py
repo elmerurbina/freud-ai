@@ -108,14 +108,15 @@ def editar_perfil():
 def edit_profile():
     # Retrieve form data from the request
     form = ProfessionalForm(request.form)
-    foto = request.files['foto']
+    foto = request.files['profile_picture']
     nombre = request.form['nombre']
-    ubicacion = request.form['ubicacion']
     contacto = request.form['contacto']
     licencia = request.form['licencia']
-    estudios_academicos = request.form['estudios_academicos']
     keywords = request.form['keywords']
     descripcion = request.form['descripcion']
+    ubicacion = request.form.get('ubicacion', None)
+    estudios_academicos = request.form.get('estudios_academicos', None)
+    whatsapp = request.form.get('whatsapp', None)
 
     # Handle file upload
     if foto.filename != '':
