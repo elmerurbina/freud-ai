@@ -1,15 +1,22 @@
+# Contiene la logica del chatbot
+
 import random
 from db import save_chat_message, close_connection, connect_to_database, fetch_data_from_information_table
 from Join_Rasa_Python import get_combined_data
 from flask import jsonify, request, Flask, session
 
+
+# Inicializacion de la app
 app = Flask(__name__)
+
 
 # Acceder a los datos del Rasa Project
 combined_data = get_combined_data()
 
+
 # Establece la conexión con la base de datos
 connection = connect_to_database()
+
 
 # Métodos para cada intención
 def greeting(saludar):
@@ -103,56 +110,80 @@ def bulimia(Bulimia):
         response = fetch_data_from_information_table()
     return response
 
+
+# El chatbot reconocera ciertas palabras posibles en los mensajes del usuario y le dara una respuesta predeterminada
 def get_chatbot_response(user_input):
-    # Expresiones predefinidas
+
+
+    # Expresiones predefinidas de saludo
     if any(word in user_input.lower() for word in ['hola', 'saludos', 'buenos días', 'buenos dias', 'buenas tardes', 'buenas noches']):
         return '¡Hola! ¿Cómo te encuentras?'
 
+
+      # Posibles respuestas al saludo
     elif any(word in user_input.lower() for word in ['bien', 'bien gracias a Dios', 'bien gracias a dios']):
         return 'Me alegro que estés bien, ¿De qué tema te gustaría hablar hoy?'
 
+
+      # Para respuestas negativas
     elif any(word in user_input.lower() for word in ['mal', 'horrible', 'decepcionado']):
         return 'Comprendo que te sientas mal, estoy aquí para escucharte y ayudarte, cuéntame ¿por qué te sientes mal?'
+
 
     elif any(word in user_input.lower() for word in ['estoy ansioso', 'ansioso', 'me siento ansioso', 'tengo ansiedad']):
         return 'Entiendo. La ansiedad es una experiencia común. ¿Te gustaría hablar sobre lo que la está desencadenando?'
 
+
     elif 'estres' in user_input.lower():
         return 'Algunas causas del estrés son fracaso, universidad, mucho trabajo. ¿En los últimos días has tenido alguno de estos problemas?'
+
 
     elif any(word in user_input.lower() for word in ['me siento solo', 'no tengo a nadie a mi lado']):
         return 'La soledad no siempre es mala, muchas veces nos ayuda a reflexionar y a encontrarnos a nosotros mismos. ¿Dime de qué tema deseas hablar?'
 
+
     elif any(word in user_input.lower() for word in ['me siento triste', 'estoy deprimido']):
         return 'Lamento escuchar que te sientes así. ¿Puedes compartir más sobre lo que ha estado sucediendo?'
+
 
     elif any(word in user_input.lower() for word in ['cómo manejar el estrés', 'consejos para reducir el estrés']):
         return 'El manejo del estrés es importante. Algunas estrategias incluyen la práctica de la respiración profunda y el autocuidado. ¿Te gustaría más información?'
 
+
     elif any(word in user_input.lower() for word in ['pensamientos suicidas', 'necesito ayuda urgente']):
         return 'Lo siento mucho que estés pasando por esto. Es crucial buscar ayuda de emergencia. Por favor, comunícate con una línea de prevención de suicidios o busca ayuda profesional de inmediato.'
+
 
     elif any(word in user_input.lower() for word in ['me quiero suicidar', 'mi vida es una mierda', 'me quiero morir']):
         return 'La vida es algo muy valioso, entiendo que te sientas mal pero yo estoy aquí para ayudarte. Cuéntame más sobre lo que estás pasando y te brindaré todo mi apoyo'
 
+
     elif any(word in user_input.lower() for word in ['cómo lidiar con el estrés', 'técnicas de afrontamiento']):
         return 'Hay diversas técnicas de afrontamiento, como la meditación, el ejercicio y la búsqueda de apoyo social. ¿Te gustaría más sugerencias personalizadas?'
+
 
     elif any(word in user_input.lower() for word in ['explorar emociones', 'autoconocimiento']):
         return 'Explorar tus emociones puede ser un viaje enriquecedor. ¿Te gustaría discutir más sobre tus sentimientos y experiencias?'
 
+
     elif any(word in user_input.lower() for word in ['agradecimiento', 'cómo encontrar la positividad']):
         return 'Practicar la gratitud puede tener un impacto positivo. ¿Hay algo específico por lo que te sientas agradecido hoy?'
+
 
     elif any(word in user_input.lower() for word in ['cómo', 'qué', 'cuándo', 'dónde']):
         return 'Esa es una pregunta interesante. ¿Puedes proporcionar más detalles?'
 
+
+# Si el bot no logra identificar los ninguna palabra clave, mostara un mensaje de default
     else:
         return 'Lo siento, no entiendo completamente. ¿Puedes proporcionar más información o formular tu pregunta de otra manera?'
 
+
+# Maneja los mensajes d elos usuarios
 def handle_user_message(user_id, message):
-    # Process the user message and get the appropriate response
+    # Procesa el mensaje y da al usuario la respuesta apropiada
     response = get_chatbot_response(message)
+
 
     # Guardar los mensajes del usuario en la base de datos
     connection = connect_to_database(database='usuarios')  # Conectar a la bd
@@ -163,21 +194,27 @@ def handle_user_message(user_id, message):
     return response
 
 
-
+# Procesa los mensajes
 @app.route('/process_message', methods=['POST'])
-def process_message():
+def process_message(): # Checa si el usuario inicio sesion correctamente
     if 'user_id' not in session:
         return jsonify({'response': 'Su sesion a expirado. Por favor inicie sesion nuevamente!'})
 
+
+# Consigue el mensaje utilizando una solicitud de tipo JSON
     request_data = request.get_json()
     user_message = request_data.get('message', '')
 
-    # Retrieve user ID from session
-    user_id = session['user_id']
 
-    # Pass user ID and message to chat handling function
+    # Cargar el id del usuario
+    user_id = session['id']
+
+    # Pasa dicho id a la funcion de manejo de los mensajes
     response = handle_user_message(user_id=user_id, message=user_message)
 
+
     return jsonify({'response': response})
+
+
 if __name__ == '__main__':
     app.run(debug=True)
