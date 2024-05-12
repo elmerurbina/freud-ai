@@ -207,12 +207,10 @@ def process_message(): # Checa si el usuario inicio sesion correctamente
 
 
     # Cargar el id del usuario
-    user_id = session['id']
+    user_id = session['user_id']
 
     # Pasa dicho id a la funcion de manejo de los mensajes
     response = handle_user_message(user_id=user_id, message=user_message)
-
-
     return jsonify({'response': response})
 
 
