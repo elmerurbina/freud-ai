@@ -2,7 +2,7 @@ import mysql.connector
 from mysql.connector import Error
 
 
-# Configuraciones de las base de datos
+# Configuracion de la base de datos de los usuarios
 db_usuarios = {
     "host": "localhost",
     "user": "root",
@@ -24,10 +24,12 @@ def connect_to_database(database='usuarios'):
         print("Error connecting to MySQL:", err)
         return None
 
+
 # Funcion para cerrar la conexion con la bae de datos de los usuarios
 def close_connection(connection):
     if connection:
         connection.close()
+
 
 # Funcion para guardar los mensajes del chatbot en la base de datos
 def save_chat_message(connection, user_id, message, response):
@@ -43,6 +45,7 @@ def save_chat_message(connection, user_id, message, response):
         print("Error saving chat message:", err)
         return False
 
+
 # Funcion para mostrar los mensajes de la base de datos
 def get_all_chat_messages(connection):
     try:
@@ -55,6 +58,7 @@ def get_all_chat_messages(connection):
     except mysql.connector.Error as err:
         print("Error retrieving chat messages:", err)
         return []
+
 
 # Funcion para extraer los mensajes de la base de datos haciendo uso del ID del usuario
 def get_chat_messages_by_user_id(connection, user_id):
@@ -82,15 +86,14 @@ def save_chat_to_database(user_id, user_message, response):
         print("Error saving chat message:", e)
 
 
-
-
-# Establecer la conexion a la base de datos
+# Establecer una nueva conexion a la base de datos de os usuarios
 db = mysql.connector.connect(
     host="localhost",
     user="root",
     password="7>>HhNN6/fZ",
     database="usuarios"
 )
+
 
 # Funcion para guardar los contactos de la red de apoyo en la base de datos
 def insert_contact(contact_one, contact_two, psychologist_email):
@@ -101,17 +104,20 @@ def insert_contact(contact_one, contact_two, psychologist_email):
     db.commit()
     cursor.close()
 
+
 # Se cierra la conexion con la base de datos
 def close_db_connection():
     db.close()
 
-# Configuraciones para la base de datos de los profesionales
+
+# Configuracion de la base de datos de los profesionales
 db_profesionales = {
     "host": "localhost",
     "user": "root",
     "password": "7>>HhNN6/fZ",
     "database": "profesionales",
 }
+
 
 # Funcion para conectarse con la base de datos de los profesionales
 def connect_to_profesionales_database():
@@ -127,12 +133,14 @@ def connect_to_profesionales_database():
         print("Error connecting to MySQL:", err)
         return None
 
-# Funcion para cerrar la conexion con la base de datos
+
+# Funcion para cerrar la conexion con la base de datos, profesionales
 def close_profesionales_connection(connection):
     if connection:
         connection.close()
 
-# Revisar el usuario en la base de datos
+
+# Revisar si el usuario en la base de datos
 def check_username_exists(username):
     # Check if the username exists in the database
     connection = connect_to_database('sistema_registro')
@@ -152,8 +160,10 @@ def check_username_exists(username):
     else:
         return False
 
+
+# Obtener la informacion del paciente de la base de datos
 def get_patient_info(username):
-    # Fetch patient information based on the username
+
     connection = connect_to_database('sistema_registro')
     if connection:
         try:
@@ -172,17 +182,16 @@ def get_patient_info(username):
         return None
 
 
-
 # Funcion para guardar el perfil de los profesionales en la base de datos
 def save_profesional(connection, form, file_path):
     try:
         cursor = connection.cursor()
-        if file_path:
+        if file_path: # Si existe una foto de perfil
             cursor.execute("""
                 INSERT INTO perfil (nombre, licencia, ubicacion, contacto, keywords, descripcion, photo)
                 VALUES (%s, %s, %s, %s, %s, %s, %s)
             """, (form.nombre.data, form.licencia.data, form.direccion.data, form.contacto.data, form.keywords.data, form.descripcion.data, file_path))
-        else:
+        else: # Si no hay foto de perfil
             cursor.execute("""
                 INSERT INTO perfil (nombre, licencia, ubicacion, contacto, keywords, descripcion)
                 VALUES (%s, %s, %s, %s, %s, %s)
@@ -194,6 +203,8 @@ def save_profesional(connection, form, file_path):
         print(f"Error saving professional: {e}")
         return False
 
+
+# Revisar si la licencia proporcionada existe en la base de datos
 def get_profesional_by_licencia(connection, licencia):
     try:
         cursor = connection.cursor(dictionary=True)
@@ -205,7 +216,8 @@ def get_profesional_by_licencia(connection, licencia):
         print(f"Error fetching professional by licencia: {e}")
         return None
 
-# Funcion para eliminar perfil
+
+# Funcion para eliminar perfil del psicologo
 def delete_professional(connection, profile_id):
     try:
         cursor = connection.cursor()
@@ -218,7 +230,7 @@ def delete_professional(connection, profile_id):
         return False
 
 
-# Funcion para obtener la informacion de la base de datos
+# Funcion para obtener la informacion del perfil del psicologo de la base de datos
 def get_profesionales_data(connection):
     try:
         cursor = connection.cursor(dictionary=True)
@@ -230,7 +242,8 @@ def get_profesionales_data(connection):
         print(f"Error fetching professionals data: {e}")
         return []
 
-# Funcion para actualizar perfil
+
+# Funcion para actualizar perfil del psicologo
 def update_professional(connection, profile_id, nombre, ubicacion, contacto, licencia, estudios_academicos, keywords, descripcion, foto_data):
     try:
         cursor = connection.cursor()
@@ -247,11 +260,10 @@ def update_professional(connection, profile_id, nombre, ubicacion, contacto, lic
         return False
 
 
-
 # Base de datos del dataset
 def fetch_data_from_information_table():
     try:
-        # Establish a connection to the MySQL database
+        # Establecer la coneccion con la base de datos
         connection = mysql.connector.connect(
             host='localhost',
             user='root',
@@ -259,23 +271,25 @@ def fetch_data_from_information_table():
             database='dataset'
         )
 
-        # Create a cursor object to execute SQL queries
+
+
         cursor = connection.cursor()
 
-        # Define the SQL query to fetch data from the information table
+        # Buscar datos en la table informacion
         query = "SELECT * FROM information"
 
-        # Execute the SQL query
+
         cursor.execute(query)
 
-        # Fetch all the rows from the result set
+        # Traer todas las columnas de la tabla informacion
         rows = cursor.fetchall()
 
-        # Close the cursor and connection
+        # Cerrar la conexion
         cursor.close()
         connection.close()
 
-        # Return the fetched data
+
+       # Mostrar la informacion obtenida
         return rows
 
     except mysql.connector.Error as error:
