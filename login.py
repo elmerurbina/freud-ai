@@ -63,7 +63,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    session.pop('user_id', None)  # Remove user ID from session
+    session.pop('user_id', None)  # Elimina el ID de usuario de la sesion
     return redirect(url_for('login'))
 
 @app.route('/chat')

@@ -1,11 +1,14 @@
-import secrets
+# Contiene todas las configuraciones
 
+import secrets
+from flask import app
+
+# Genera una clave secreta
 SECRET_KEY = secrets.token_hex(16)
 WTF_CSRF_SECRET_KEY = secrets.token_hex(16)
 
 
-# config.py
-
+#  Configuraciones del mal server para el envio de correos electronicos
 MAIL_SERVER = 'smtp.example.com'
 MAIL_PORT = 587
 MAIL_USE_TLS = True
