@@ -1,3 +1,5 @@
+# Encriptar las credenciales para guardarlas en la base de datos
+
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import hashes
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
@@ -6,20 +8,20 @@ from base64 import urlsafe_b64encode, urlsafe_b64decode
 import os
 def encrypt(text, password):
     password = password.encode('utf-8')
-    salt = b'salt_123'  # Change this salt to something unique for your application
+    salt = b'salt_123'  # Este salt es momentaneo
 
-    # Derive a key from the password using PBKDF2
+
     kdf = PBKDF2HMAC(
         algorithm=hashes.SHA256(),
-        length=32,  # Use 256-bit key length (32 bytes) for AES encryption
+        length=32,  # AES encryption
         salt=salt,
         iterations=100000,
         backend=default_backend()
     )
-    key = kdf.derive(password)  # No need to encode to base64
+    key = kdf.derive(password)
 
-    # Generate a random IV (Initialization Vector)
-    iv = os.urandom(16)  # IV does not need to be encoded to base64
+
+    iv = os.urandom(16)
 
     # Encrypt the text using AES-GCM
     cipher = Cipher(algorithms.AES(key), modes.GCM(iv), backend=default_backend())
