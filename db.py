@@ -45,6 +45,25 @@ def save_chat_message(connection, user_id, message, response):
         print("Error saving chat message:", err)
         return False
 
+def check_username_exists(username):
+    connection = connect_to_database()
+    if connection:
+        try:
+            cursor = connection.cursor()
+            query = "SELECT id FROM sistema_registro WHERE username = %s"
+            cursor.execute(query, (username,))
+            result = cursor.fetchone()
+            cursor.close()
+            close_connection(connection)
+            return result is not None
+        except mysql.connector.Error as err:
+            print("Error checking username:", err)
+            close_connection(connection)
+            return False
+    else:
+        return False  # Connection to database failed
+
+
 
 # Funcion para mostrar los mensajes de la base de datos
 def get_all_chat_messages(connection):
@@ -140,25 +159,48 @@ def close_profesionales_connection(connection):
         connection.close()
 
 
-# Revisar si el usuario en la base de datos
-def check_username_exists(username):
-    # Check if the username exists in the database
-    connection = connect_to_database('sistema_registro')
+
+import mysql.connector
+
+
+def get_patient_info_by_username(username):
+    connection = connect_to_database()
+    if connection:
+        try:
+            cursor = connection.cursor(dictionary=True)
+            query = "SELECT * FROM sistema_registro WHERE username = %s"
+            cursor.execute(query, (username,))
+            patient_info = cursor.fetchone()
+            cursor.close()
+            close_connection(connection)
+            return patient_info
+        except mysql.connector.Error as err:
+            print("Error fetching patient info:", err)
+            close_connection(connection)
+            return None
+    else:
+        return None
+
+def check_username(username):
+    connection = connect_to_database('usuarios')
     if connection:
         try:
             cursor = connection.cursor()
-            query = "SELECT COUNT(*) FROM usuarios WHERE username = %s"
+            query = "SELECT id FROM sistema_registro WHERE username = %s"
             cursor.execute(query, (username,))
-            count = cursor.fetchone()[0]
+            result = cursor.fetchone()
             cursor.close()
             close_connection(connection)
-            return count > 0
+            if result:
+                return True  # Username exists
+            else:
+                return False  # Username does not exist
         except mysql.connector.Error as err:
             print("Error checking username:", err)
             close_connection(connection)
             return False
     else:
-        return False
+        return False  # Connection to database failed
 
 
 # Obtener la informacion del paciente de la base de datos

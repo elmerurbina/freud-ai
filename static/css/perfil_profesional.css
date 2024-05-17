@@ -110,7 +110,7 @@ input[type="submit"]:hover {
 }
 
 .profile-button {
-    margin-right: 10px; 
+    margin-right: 5px; 
     padding: 8px 16px; 
     background-color: #007bff; 
     color: #fff; 
@@ -138,4 +138,11 @@ input[type="submit"]:hover {
     cursor: pointer;
     /* Add any additional hover styles */
 }
+a.plans {
+    padding: 10px;
+    color: green;
+    background-color: none;
+    font-size: 28px;
+    margin: 0 ;
 
+}
