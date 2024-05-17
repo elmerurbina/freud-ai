@@ -17,11 +17,11 @@
         <table>
             <tr>
                 <th>Nombre</th>
-                <td id="patientName">John Doe</td>
+                <td id="patientName">{{ patient_info['nombre'] }}</td>
             </tr>
             <tr>
                 <th>Edad</th>
-                <td id="patientAge">35 años</td>
+                <td id="patientAge">{{ age }} años</td>
             </tr>
             <!-- Add more patient information here -->
         </table>
@@ -36,12 +36,22 @@
                 <th>Descripción</th>
                 <!-- Add more columns if needed -->
             </tr>
+            {% for history_entry in patient_info['historial_medico'] %}
             <tr>
-                <td>2022-03-01</td>
-                <td>Ansiedad</td>
+                <td>{{ history_entry['fecha'] }}</td>
+                <td>{{ history_entry['descripcion'] }}</td>
                 <!-- Add more medical history entries here -->
             </tr>
+            {% endfor %}
         </table>
+        <!-- Form for adding medical history -->
+        <form action="{{ url_for('add_medical_history') }}" method="post">
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" required></textarea>
+            <button type="submit">Agregar Historial Médico</button>
+        </form>
     </section>
 
     <!-- Prescriptions Section -->
@@ -53,12 +63,22 @@
                 <th>Medicamento</th>
                 <!-- Add more columns if needed -->
             </tr>
+            {% for prescription_entry in patient_info['recetas'] %}
             <tr>
-                <td>2022-03-05</td>
-                <td>Meditacion</td>
+                <td>{{ prescription_entry['fecha'] }}</td>
+                <td>{{ prescription_entry['medicamento'] }}</td>
                 <!-- Add more prescriptions here -->
             </tr>
+            {% endfor %}
         </table>
+        <!-- Form for adding prescription -->
+        <form action="{{ url_for('add_prescription') }}" method="post">
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
+            <label for="medicamento">Medicamento:</label>
+            <input type="text" id="medicamento" name="medicamento" required>
+            <button type="submit">Agregar Receta</button>
+        </form>
     </section>
 
     <!-- Diagnostic Tests Section -->
@@ -71,16 +91,28 @@
                 <th>Resultado</th>
                 <!-- Add more columns if needed -->
             </tr>
+            {% for test_entry in patient_info['pruebas_diagnosticas'] %}
             <tr>
-                <td>2022-03-10</td>
-                <td>Terapia</td>
-                <td>Normal</td>
+                <td>{{ test_entry['fecha'] }}</td>
+                <td>{{ test_entry['prueba'] }}</td>
+                <td>{{ test_entry['resultado'] }}</td>
                 <!-- Add more diagnostic test entries here -->
             </tr>
+            {% endfor %}
         </table>
+        <!-- Form for adding diagnostic test -->
+        <form action="{{ url_for('add_diagnostic_test') }}" method="post">
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
+            <label for="prueba">Prueba:</label>
+            <input type="text" id="prueba" name="prueba" required>
+            <label for="resultado">Resultado:</label>
+            <input type="text" id="resultado" name="resultado" required>
+            <button type="submit">Agregar Prueba Diagnóstica</button>
+        </form>
     </section>
 
-
+    <!-- Frequent Messages Section -->
     <section id="frequentMessages">
         <h2>Mensajes Frecuentes</h2>
         <div class="message">
@@ -91,8 +123,6 @@
         </div>
         <!-- Add more frequent messages here -->
     </section>
-
-
 
 </body>
 </html>

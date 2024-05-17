@@ -162,14 +162,13 @@ def check_username_exists(username):
 
 
 # Obtener la informacion del paciente de la base de datos
-def get_patient_info(username):
-
-    connection = connect_to_database('sistema_registro')
+def get_patient_info_by_user_id(user_id):
+    connection = connect_to_database('usuarios')
     if connection:
         try:
             cursor = connection.cursor(dictionary=True)
-            query = "SELECT * FROM usuarios WHERE username = %s"
-            cursor.execute(query, (username,))
+            query = "SELECT * FROM sistema_registro WHERE id = %s"
+            cursor.execute(query, (user_id,))
             patient_info = cursor.fetchone()
             cursor.close()
             close_connection(connection)
@@ -180,6 +179,65 @@ def get_patient_info(username):
             return None
     else:
         return None
+
+def save_medical_history_entry(user_id, fecha, descripcion):
+    connection = connect_to_database('sistema_registro')
+    if connection:
+        try:
+            cursor = connection.cursor()
+            query = "INSERT INTO expediente (user_id, fecha, descripcion) VALUES (%s, %s, %s)"
+            data = (user_id, fecha, descripcion)
+            cursor.execute(query, data)
+            connection.commit()
+            cursor.close()
+            close_connection(connection)
+            return True
+        except mysql.connector.Error as err:
+            print("Error saving medical history entry:", err)
+            close_connection(connection)
+            return False
+    else:
+        return False
+
+def save_prescription(user_id, fecha, medicamento):
+    connection = connect_to_database('sistema_registro')
+    if connection:
+        try:
+            cursor = connection.cursor()
+            query = "INSERT INTO recetas (user_id, fecha, medicamento) VALUES (%s, %s, %s)"
+            data = (user_id, fecha, medicamento)
+            cursor.execute(query, data)
+            connection.commit()
+            cursor.close()
+            close_connection(connection)
+            return True
+        except mysql.connector.Error as err:
+            print("Error saving prescription entry:", err)
+            close_connection(connection)
+            return False
+    else:
+        return False
+
+def save_diagnostic_test(user_id, fecha, prueba, resultado):
+    connection = connect_to_database('sistema_registro')
+    if connection:
+        try:
+            cursor = connection.cursor()
+            query = "INSERT INTO pruebas_diagnosticas (user_id, fecha, prueba, resultado) VALUES (%s, %s, %s, %s)"
+            data = (user_id, fecha, prueba, resultado)
+            cursor.execute(query, data)
+            connection.commit()
+            cursor.close()
+            close_connection(connection)
+            return True
+        except mysql.connector.Error as err:
+            print("Error saving diagnostic test entry:", err)
+            close_connection(connection)
+            return False
+    else:
+        return False
+
+
 
 
 # Funcion para guardar el perfil de los profesionales en la base de datos

@@ -13,7 +13,7 @@ from googleSinIn import *
 from redApoyo import *
 from frases import show_notification, send_notification, random_phrase
 from recovering import *
-from patientRecord import acceder_expediente
+from patientRecord import expediente, add_prescription, add_diagnostic_test, add_medical_history
 
 
 # Inicializar la applicacion
@@ -46,7 +46,10 @@ app.add_url_rule('/userProfile', 'userProfile', userProfile)  # Maneja el perfil
 
 
 # Ruta del archivo expediente.py el cual maneja el acceso a los expedientes de los pacientes
-app.add_url_rule('/expediente', 'expediente', expediente)
+app.add_url_rule('/expediente', 'expediente', expediente, methods=['GET', 'POST'])
+app.add_url_rule('/add_medical_history', 'add_medical_history', add_medical_history)
+app.add_url_rule('/add_prescription', 'add_prescription', add_prescription)
+app.add_url_rule('/add_diagnostic_test', 'add_diagnostic_test', add_diagnostic_test)
 
 
 # Rutas del archivo chat.py el cual maneja la logica del chatbot
@@ -125,9 +128,6 @@ app.add_url_rule('/is_valid_email', 'is_valid_email', is_valid_email)
 app.add_url_rule('/generate_unique_token', 'generate_unique_token', generate_unique_token)
 app.add_url_rule('/send_password_reset_email', 'send_password_reset_email', send_password_reset_email)
 
-
-# Acceder al expediente de los pacientes, archivo patientRecord.py
-app.add_url_rule('/acceder_expediente', 'acceder_expediente', acceder_expediente, methods=['GET', 'POST'])
 
 
 # Ruta del index
