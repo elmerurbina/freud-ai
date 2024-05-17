@@ -236,6 +236,7 @@ span {
     }
 }
 
+
 /* Style the video container */
 .video-container {
     position: relative;
@@ -270,3 +271,4 @@ video {
 .video-overlay p {
     text-align: center;
 }
+

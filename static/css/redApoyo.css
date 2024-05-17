@@ -29,6 +29,7 @@ label {
     display: block;
     margin-bottom: 10px;
     margin-top: 50px;
+    margin-left: 3px;
     color: white;
 }
 /* Style the input field */
@@ -41,16 +42,8 @@ input[type="tel"] {
     box-sizing: border-box; /* Ensure padding and border are included in width */
 }
 
-
-
-input[type="email"] {
-    width: 40%;
-    padding: 10px;
-    margin-bottom: 30px;
-    border: none;
-    border-bottom: 1px solid #ccc;
-    outline: none;
-   
+.small-input {
+    width: 50px; /* Adjust the width as needed */
 }
 
 .error {
@@ -67,9 +60,42 @@ button {
     padding: 10px 20px;
     border: none;
     cursor: pointer;
+    margin-left: 50px;
 }
 
 #message {
     margin-top: 20px;
     padding: 10px;
+}
+
+
+.form-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.form-column {
+    width: 48%; /* Adjust as needed to fit your design */
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    width: 150px; /* Adjust as needed */
+    margin-right: 10px;
+}
+
+.form-group input {
+    flex: 1;
+    padding: 5px;
+   
+}
+
+.form-group i {
+    margin-left: 5px;
 }

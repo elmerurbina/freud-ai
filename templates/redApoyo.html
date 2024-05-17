@@ -23,25 +23,42 @@
     {% endif %}
 
     <form id="support-form" method="POST" action="{{ url_for('guardar_red') }}">
-    <div class="message">
-        <label for="contact-one">Contacto 1: <i class="fa-solid fa-handshake-angle"></i></label>
-        <input type="tel" id="contact-one" name="contact-one" required placeholder="Agrega un numero de telefono">
-    </div>
-    <div>
-        <label for="contact-two">Contacto 2: <i class="fa-solid fa-handshake-angle"></i></label>
-        <input type="tel" id="contact-two" name="contact-two" required placeholder="Agrega un numero de telefono">
-    </div>
-    <div>
-        <label for="psychologist-email">Correo del psicologo: <i class="fa-solid fa-user-doctor"></i></label>
-        <input type="email" id="psychologist-email" name="psychologist-email" placeholder="Ingresa el correo de tu psicologo">
-    
-    
-    </div>
-    <button type="submit">Guardar</button>
-    <a href="{{ url_for('profesionales')}}" ><button type="button" id="search-psychologist">Buscar un psicologo</button></a> 
-    <a href="{{ url_for('red_de_apoyo') }}"><button type="button" id="see-contact">Ver mi red de apoyo</button></a>
-    <a href="{{url_for('notificaciones')}}" ><button type="button" id="add-contact">Configurar notificaciones</button> </a>
-</form>
+        <div class="form-container">
+            <div class="form-column">
+                <div class="form-group">
+                    <label for="name-one">Nombre Completo:</label>
+                    <input type="text" id="name-one" name="name-one" placeholder="Nombre Completo">
+                </div>
+                <div class="form-group">
+                    <label for="name-two">Nombre Completo:</label>
+                    <input type="text" id="name-two" name="name-two" placeholder="Nombre Completo">
+                </div>
+                <div class="form-group">
+                    <label for="psychologist-name">Nombre del psicólogo:</label>
+                    <input type="text" id="psychologist-name" name="psychologist-name" placeholder="Nombre del psicólogo">
+                </div>
+            </div>
+            <div class="form-column">
+                <div class="form-group">
+                    <label for="contact-one">Contacto 1: <i class="fa-solid fa-handshake-angle"></i></label>
+                    <input type="tel" id="contact-one" name="contact-one" required placeholder="Agrega un número de teléfono">
+                </div>
+                <div class="form-group">
+                    <label for="contact-two">Contacto 2: <i class="fa-solid fa-handshake-angle"></i></label>
+                    <input type="tel" id="contact-two" name="contact-two" required placeholder="Agrega un número de teléfono">
+                </div>
+                <div class="form-group">
+                    <label for="psychologist-email">Correo del psicólogo: <i class="fa-solid fa-user-doctor"></i></label>
+                    <input type="email" id="psychologist-email" class="small-input" name="psychologist-email" placeholder="Ingresa el correo de tu psicólogo">
+                </div>
+            </div>
+        </div>
+
+        <button type="submit">Guardar</button>
+        <a href="{{ url_for('profesionales')}}" ><button type="button" id="search-psychologist">Buscar un psicologo</button></a> 
+        <a href="{{ url_for('red_de_apoyo') }}"><button type="button" id="see-contact">Ver mi red de apoyo</button></a>
+        <a href="{{url_for('notificaciones')}}" ><button type="button" id="add-contact">Configurar notificaciones</button> </a>
+    </form>
 <div id="message"></div>
 
 <!-- Include intl-tel-input JavaScript -->
