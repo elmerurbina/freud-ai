@@ -119,6 +119,10 @@ def get_chatbot_response(user_input):
     if any(word in user_input.lower() for word in ['hola', 'saludos', 'buenos días', 'buenos dias', 'buenas tardes', 'buenas noches']):
         return '¡Hola! ¿Cómo te encuentras?'
 
+    # Saludos Nicas
+    elif any(word in user_input.lower() for word in['que onda', 'Que onda', 'oe', 'q nta', 'entonces', 'oe perro']):
+        return 'Hola! Gusto saludarte'
+
 
       # Posibles respuestas al saludo
     elif any(word in user_input.lower() for word in ['bien', 'bien gracias a Dios', 'bien gracias a dios']):
