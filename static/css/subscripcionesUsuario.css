@@ -50,3 +50,8 @@ a.button {
 .plan button:hover {
     background-color: #0056b3;
 }
+
+.aseguradora {
+    align-items: center;
+   text-align: center;
+}

@@ -16,6 +16,7 @@ from redApoyo import *
 from frases import show_notification, send_notification, random_phrase
 from recovering import *
 from patientRecord import expediente, add_prescription, add_diagnostic_test, add_medical_history
+from aseguradora import aseguradora
 
 
 # Inicializar la applicacion
@@ -60,6 +61,8 @@ app.add_url_rule('/add_medical_history', 'add_medical_history', add_medical_hist
 app.add_url_rule('/add_prescription', 'add_prescription', add_prescription)
 app.add_url_rule('/add_diagnostic_test', 'add_diagnostic_test', add_diagnostic_test)
 
+
+app.add_url_rule('/aseguradora', 'aseguradora', aseguradora, methods=['GET', 'POST'])
 
 app.add_url_rule('/panelPsicologo', 'panelPsicologo', panelPsicologo)
 

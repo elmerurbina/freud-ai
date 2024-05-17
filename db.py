@@ -462,3 +462,52 @@ def fetch_data_from_information_table():
     except mysql.connector.Error as error:
         print("Error fetching data from information table:", error)
         return None
+
+
+
+# Configuracion de la base de datos de la aseguradora
+aseguradora = {
+    "host": "localhost",
+    "user": "root",
+    "password": "7>>HhNN6/fZ",
+    "database": "aseguradora",
+}
+
+# Funcion para conectar a la base de datos de la aseguradora
+def connect(database='aseguradora'):
+    try:
+        connection = mysql.connector.connect(
+            host=aseguradora["host"],
+            user=aseguradora["user"],
+            password=aseguradora["password"],
+            database=database
+        )
+        return connection
+    except mysql.connector.Error as err:
+        print("Error connecting to MySQL:", err)
+        return None
+
+
+# Funcion para cerrar la conexion con la base de datos
+def close(connection):
+    if connection:
+        connection.close()
+
+
+def valid_code(codigo):
+    connection = connect()
+    if connection:
+        try:
+            cursor = connection.cursor()
+            query = "SELECT codigo_ejecutivo FROM codigo_ejecutivo WHERE codigo_ejecutivo = %s"
+            cursor.execute(query, (codigo,))
+            result = cursor.fetchone()
+            cursor.close()
+            close(connection)
+            return result is not None
+        except mysql.connector.Error as err:
+            print("Error checking codigo ejecutivo:", err)
+            close(connection)
+            return False
+    else:
+        return False
