@@ -32,6 +32,24 @@ def close_connection(connection):
         connection.close()
 
 
+def check_email(email):
+    try:
+        connection = connect_to_database()
+        if connection:
+            cursor = connection.cursor(dictionary=True)
+            query = "SELECT * FROM sistema_registro WHERE email = %s"
+            cursor.execute(query, (email,))
+            user = cursor.fetchone()
+            cursor.close()
+            close_connection(connection)
+            return user
+        else:
+            return None
+    except mysql.connector.Error as err:
+        print("Error fetching user by email:", err)
+        return None
+
+
 # Funcion para guardar los mensajes del chatbot en la base de datos
 def save_chat_message(connection, user_id, message, response):
     try:

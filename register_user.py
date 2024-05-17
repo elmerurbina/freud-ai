@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, session
-from db import connect_to_database
+from flask import Flask, render_template, request, redirect, url_for, session, flash
+from db import connect_to_database, check_email
 import os
 from werkzeug.utils import secure_filename
 
@@ -18,6 +18,10 @@ def register():
         email = request.form['email']
         password = request.form['password']
         date_of_birth = request.form['date']
+
+        if check_email(email):
+            flash('Este correo ya existe en la base de datos, por favor inicia sesión', 'error')
+            return redirect(url_for('login'))
 
         # Handle file upload
         if 'photo' in request.files:
