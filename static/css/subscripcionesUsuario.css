@@ -37,7 +37,7 @@ h1 {
     padding: 0;
 }
 
-.plan button {
+a.button {
     background-color: #007bff;
     color: #fff;
     border: none;
