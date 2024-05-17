@@ -4,8 +4,8 @@
 from register_user import register, userProfile
 from flask import request, jsonify
 from db import *
-from expediente import expediente
 from logout import logout
+from expediente import panelPsicologo
 from agregar import *
 from chat import *
 from login import *
@@ -50,6 +50,9 @@ app.add_url_rule('/expediente', 'expediente', expediente, methods=['GET', 'POST'
 app.add_url_rule('/add_medical_history', 'add_medical_history', add_medical_history)
 app.add_url_rule('/add_prescription', 'add_prescription', add_prescription)
 app.add_url_rule('/add_diagnostic_test', 'add_diagnostic_test', add_diagnostic_test)
+
+
+app.add_url_rule('/panelPsicologo', 'panelPsicologo', panelPsicologo)
 
 
 # Rutas del archivo chat.py el cual maneja la logica del chatbot
