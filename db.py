@@ -1,5 +1,6 @@
 import mysql.connector
 from mysql.connector import Error
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 # Configuracion de la base de datos de los usuarios
@@ -280,6 +281,54 @@ def save_diagnostic_test(user_id, fecha, prueba, resultado):
         return False
 
 
+# Function to generate a password hash
+def generate_password(password):
+    return generate_password_hash(password)
+
+# Function to check if a password matches its hash
+def check_password(password, password_hash):
+    return check_password_hash(password_hash, password)
+
+
+def add_user(nombre, email, password):
+    hashed_password = generate_password_hash(password, method='sha256')
+    connection = connect_to_database()
+    if connection:
+        try:
+            cursor = connection.cursor()
+            cursor.execute('INSERT INTO autenticacion (nombre, email, password) VALUES (%s, %s, %s)',
+                           (nombre, email, hashed_password))
+            connection.commit()
+            cursor.close()
+            close_connection(connection)
+            return True
+        except mysql.connector.Error as err:
+            print("Error adding user:", err)
+            close_connection(connection)
+            return False
+
+# Funcion para obtener un usuario por correo electronico
+def get_user_by_email(email):
+    connection = connect_to_database()
+    if connection:
+        try:
+            cursor = connection.cursor(dictionary=True)
+            cursor.execute('SELECT * FROM autenticacion WHERE email = %s', (email,))
+            user = cursor.fetchone()
+            cursor.close()
+            close_connection(connection)
+            return user
+        except mysql.connector.Error as err:
+            print("Error fetching user by email:", err)
+            close_connection(connection)
+            return None
+
+# Funcion para verificar las credenciales del usuario
+def verify_user(email, password):
+    user = get_user_by_email(email)
+    if user and check_password_hash(user['password'], password):
+        return user
+    return None
 
 
 # Funcion para guardar el perfil de los profesionales en la base de datos

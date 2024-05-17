@@ -47,15 +47,10 @@ def register():
         connection.close()
 
         # Redirect to chat.html upon successful registration
-        return redirect(url_for('chat'))
+        return redirect(url_for('login'))
 
     return render_template('register.html')
 
-
-# Function to render chat.html
-@app.route('/chat')
-def chat():
-    return render_template('chat.html')
 
 # Function to retrieve user data from the database
 def get_user_data(user_id):
