@@ -5,7 +5,7 @@ from register_user import register, userProfile
 from flask import request, jsonify
 from db import *
 from logout import logout
-from expediente import panelPsicologo
+from panelPsicologo import panelPsicologo
 from agregar import *
 from chat import *
 from login import *
@@ -168,12 +168,6 @@ def check_access_code_route(access_code):
 def  notificaciones():
     return render_template('notificaciones.html')
 
-
-
-# Ruta que permite el acceso al panel del psicologo y por ende a la interfaz de estos
-@app.route('/verExpediente')
-def verExpediente():
-    return render_template('verExpediente.html')
 
 
 if __name__ == '__main__':

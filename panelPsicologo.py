@@ -7,7 +7,7 @@ app = Flask(__name__, static_url_path='/static')
 
 @app.route('/panelPsicologo')
 def panelPsicologo():
-    return render_template('verExpediente.html')
+    return render_template('panelPsicologo.html')
 
 if __name__ == '__main__':
         app.run(debug=True)
