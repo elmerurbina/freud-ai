@@ -2,8 +2,9 @@
 
 import random
 from db import save_chat_message, close_connection, connect_to_database, fetch_data_from_information_table
+from db import get_chat_messages_by_user_id
 from Join_Rasa_Python import get_combined_data
-from flask import jsonify, request, Flask, session
+from flask import jsonify, request, Flask, session, render_template
 
 
 # Inicializacion de la app
@@ -236,6 +237,26 @@ def get_chatbot_response(user_input):
 # Store conversation history for each user session
 conversation_history = {}
 
+# Define a route to render the historial.html template
+@app.route('/historial')
+def historial():
+    # Check if the user is logged in
+    if 'user_id' not in session:
+        return 'Sesion no activa'
+
+    # Retrieve the user's ID
+    user_id = session['user_id']
+
+    # Fetch the user's messages from the database
+    connection = connect_to_database(database='usuarios')
+    if connection:
+        user_messages = get_chat_messages_by_user_id(connection, user_id)
+        close_connection(connection)
+    else:
+        user_messages = []
+
+    # Render the historial.html template with the user's messages
+    return render_template('historial.html', messages=user_messages)  # Update variable name here
 
 # Define a function to handle user messages and generate responses
 def handle_user_message(user_id, message):

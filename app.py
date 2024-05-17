@@ -70,6 +70,7 @@ app.add_url_rule('/narcolepsy', 'narcolepsy', narcolepsy)
 app.add_url_rule('/fobias', 'fobias', fobias)
 app.add_url_rule('/bulimia', 'bulimia', bulimia)
 app.add_url_rule('/get_chatbot_response', 'get_chatbot_response', get_chatbot_response, methods=[ 'POST'])
+app.add_url_rule('/historial', 'historial', historial)
 
 
 # Se agregan las funciones del archivo agregar.py
