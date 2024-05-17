@@ -231,18 +231,51 @@ def get_chatbot_response(user_input):
     # If no keyword is found, return a default response
     return random.choice(responses['default'])
 # Maneja los mensajes d elos usuarios
+
+
+# Store conversation history for each user session
+conversation_history = {}
+
+
+# Define a function to handle user messages and generate responses
 def handle_user_message(user_id, message):
-    # Procesa el mensaje y da al usuario la respuesta apropiada
-    response = get_chatbot_response(message)
+    # Retrieve conversation history for the user
+    history = conversation_history.get(user_id, [])
 
+    # Add the current message to the conversation history
+    history.append(message)
+    conversation_history[user_id] = history
 
-    # Guardar los mensajes del usuario en la base de datos
-    connection = connect_to_database(database='usuarios')  # Conectar a la bd
+    # Process the conversation context to determine the response
+    response = generate_contextual_response(user_id, history)
+
+    # If a contextual response is not generated, fallback to keyword-based response
+    if response is None:
+        response = get_chatbot_response(message)
+
+    # Save the user message and bot response in the database
+    connection = connect_to_database(database='usuarios')
     if connection:
         save_chat_message(connection, user_id, message, response)
-        close_connection(connection)  # Cierra la conexión
+        close_connection(connection)
 
     return response
+
+
+# Define a function to generate a contextual response based on conversation history
+def generate_contextual_response(user_id, history):
+    # Analyze the conversation history to determine the context
+    # You can use machine learning models or rule-based approaches for context analysis
+
+    # Based on the context, select an appropriate response
+    # You can use conditional logic or a response selection model
+
+    # For example, if the user's last message mentioned anxiety, the bot can respond with an anxiety-related message
+    if 'anxiety' in history[-1].lower():
+        return random.choice(responses['ansiedad'])
+
+    # If no specific context is detected, return None to indicate that no contextual response is generated
+    return None
 
 
 # Procesa los mensajes
