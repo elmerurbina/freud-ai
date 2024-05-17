@@ -1,0 +1,82 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.plans-container {
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.plans-container h1 {
+    margin-bottom: 30px;
+}
+
+.plan {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px;
+    display: inline-block;
+    vertical-align: top;
+    width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.plan-header {
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
+}
+
+.plan-header h2 {
+    margin: 0;
+}
+
+.plan-header p {
+    margin: 10px 0 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.plan ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    text-align: left;
+}
+
+.plan ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.plan ul li:last-child {
+    border-bottom: none;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    color: #fff;
+    background-color: #007bff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}

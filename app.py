@@ -5,6 +5,7 @@ from register_user import register, userProfile
 from flask import request, jsonify
 from db import *
 from logout import logout
+from profesionalPlans import profesionalPlans
 from panelPsicologo import panelPsicologo
 from agregar import *
 from chat import *
@@ -38,6 +39,9 @@ def page_not_found(error):
 @app.errorhandler(500)
 def internal_server_error(error):
     return render_template('error.html', error_code=500), 500
+
+# Planes de los psicologos
+app.add_url_rule('/profesionalPlans', 'profesionalPlans', profesionalPlans)
 
 
 # Agrego la logica del modulo y las funciones del archivo register_user.py
