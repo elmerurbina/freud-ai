@@ -7,14 +7,29 @@ document.addEventListener("DOMContentLoaded", function() {
     codigoForm.addEventListener("submit", function(event) {
         event.preventDefault();
         const codigo = codigoInput.value.trim();
-        // Simulate AJAX request to check if the código ejecutivo exists
-        if (codigo === "codigo_valido") {
-            // Display the credenciales form
-            credencialesForm.style.display = "block";
-            codigoForm.style.display = "none";
-        } else {
-            // Display error message
-            codigoError.textContent = "Código incorrecto, inténtalo de nuevo.";
-        }
+        
+        // Send AJAX request to check código validity
+        fetch("/check_code_validity", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ codigo: codigo }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.valid) {
+                // Display the credenciales form
+                credencialesForm.style.display = "block";
+                codigoForm.style.display = "none";
+                codigoError.textContent = ""; // Clear any previous error message
+            } else {
+                // Display error message
+                codigoError.textContent = "Código incorrecto, inténtalo de nuevo.";
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
     });
 });
