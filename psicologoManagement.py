@@ -96,7 +96,6 @@ def profesionales():
 
 #Funcion para ver perfil utilizando el numero de Licencia como verificacion
 @app.route('/check_profile', methods=['POST'])
-
 def check_profile():
     # Recibe un numero de licencia
     licencia = request.form.get('licencia')

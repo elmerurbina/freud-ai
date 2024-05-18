@@ -8,7 +8,7 @@ from logout import logout
 from psicologoAutenticacion import ingresar, registrar, psicologoAutenticacion
 from profesionalPlans import profesionalPlans
 from panelPsicologo import panelPsicologo
-from agregar import *
+from psicologoManagement import *
 from chat import *
 from login import *
 from googleSinIn import *
