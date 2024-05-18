@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
 <body>
     <div class="container">
         <h1>Registro de Credenciales de usuario</h1>
-        <div id="codigo-form">
+        <div id="codigo-form" style="display: {% if display_credenciales %}none{% else %}block{% endif %};">
             <h2>Ingrese su Código Ejecutivo de acceso</h2>
             <form id="codigo-form" method="POST">
                 <input type="text" id="codigo-input" name="codigo" placeholder="Código Ejecutivo" required>
@@ -17,18 +17,27 @@
                 <p id="codigo-error" class="error"></p>
             </form>
             {% if codigo_error %}
-            <p>{{ codigo_error }}</p>
-        {% endif %}
-
+                <p>{{ codigo_error }}</p>
+            {% endif %}
         </div>
-        <div id="credenciales-form" style="display: none;">
+        <div id="credenciales-form" style="display: {% if display_credenciales %}block{% else %}none{% endif %};">
             <h2>Complete el Formulario</h2>
-            <form id="credenciales-form" method="POST" action="{{ url_for('aseguradora') }}">
+            <form id="credenciales-form" method="POST" action="{{ url_for('codigoRegistro') }}">
                 <input type="text" id="nombre-input" name="nombre" placeholder="Nombre y Apellidos" required>
                 <input type="text" id="codigo-unico-input" name="codigo_unico" placeholder="Código Único de Acceso" required>
                 <button type="submit">Registrar</button>
             </form>
         </div>
+    
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
     </div>
     <script src="{{ url_for('static', filename='js/aseguradora.js') }}"></script>
 </body>

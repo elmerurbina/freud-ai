@@ -16,7 +16,7 @@ from redApoyo import *
 from frases import show_notification, send_notification, random_phrase
 from recovering import *
 from patientRecord import expediente, add_prescription, add_diagnostic_test, add_medical_history
-from aseguradora import aseguradora, check_code_validity
+from aseguradora import aseguradora, check_code_validity, codigoRegistro
 
 
 # Inicializar la applicacion
@@ -64,6 +64,7 @@ app.add_url_rule('/add_diagnostic_test', 'add_diagnostic_test', add_diagnostic_t
 
 app.add_url_rule('/aseguradora', 'aseguradora', aseguradora, methods=['GET', 'POST'])
 app.add_url_rule('/check_code_validity', 'check_code_validity', check_code_validity, methods=['POST'])
+app.add_url_rule('/codigoRegistro', 'codigoRegistro', codigoRegistro, methods=['GET', 'POST'])
 
 
 app.add_url_rule('/panelPsicologo', 'panelPsicologo', panelPsicologo)
