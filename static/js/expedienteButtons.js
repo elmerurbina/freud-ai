@@ -23,9 +23,19 @@ document.addEventListener('DOMContentLoaded', () => {
             method: 'POST',
             body: formData
         })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             if (data.success) {
+                // Hide all forms
+                const forms = document.querySelectorAll('.entry-form');
+                forms.forEach(form => form.style.display = 'none');
+
+                // Show the current form
                 document.getElementById(currentFormType).style.display = 'block';
                 passkeyModal.style.display = 'none';
                 passkeyInput.value = '';
