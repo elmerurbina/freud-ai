@@ -1,6 +1,11 @@
 import mysql.connector
 from mysql.connector import Error
 from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.utils import secure_filename
+import os
+
+
+UPLOAD_FOLDER = os.path.abspath('static/uploads')
 
 
 # Configuracion de la base de datos de los usuarios
@@ -371,19 +376,21 @@ def verify_user(email, password):
 
 
 # Funcion para guardar el perfil de los profesionales en la base de datos
-def save_profesional(connection, form, file_path):
+def save_profesional(connection, form, file):
     try:
         cursor = connection.cursor()
-        if file_path: # Si existe una foto de perfil
-            cursor.execute("""
-                INSERT INTO perfil (nombre, licencia, ubicacion, contacto, keywords, descripcion, photo)
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
-            """, (form.nombre.data, form.licencia.data, form.direccion.data, form.contacto.data, form.keywords.data, form.descripcion.data, file_path))
-        else: # Si no hay foto de perfil
-            cursor.execute("""
-                INSERT INTO perfil (nombre, licencia, ubicacion, contacto, keywords, descripcion)
-                VALUES (%s, %s, %s, %s, %s, %s)
-            """, (form.nombre.data, form.licencia.data, form.direccion.data, form.contacto.data, form.keywords.data, form.descripcion.data))
+        file_path = None
+
+        if file:  # If a file is provided
+            filename = secure_filename(file.filename)
+            file_path = os.path.join(UPLOAD_FOLDER, filename)
+            file.save(file_path)
+
+        cursor.execute("""
+            INSERT INTO perfil (nombre, licencia, ubicacion, contacto, descripcion, keywords, photo, estudios_academicos, whatsapp)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+        """, (form.nombre_completo.data, form.licencia.data, form.ubicacion.data, form.contacto.data, form.descripcion.data, form.keywords.data, file_path, form.estudios_academicos.data, form.whatsapp.data))
+
         connection.commit()
         cursor.close()
         return True

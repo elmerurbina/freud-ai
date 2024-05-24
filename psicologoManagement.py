@@ -8,6 +8,8 @@ from wtforms import StringField, TextAreaField, FileField, SubmitField
 from wtforms.validators import DataRequired
 from flask_wtf import FlaskForm
 from config import SECRET_KEY
+from flask_wtf.file import FileAllowed
+
 
 
 # Instancia de la aplicacion
@@ -32,25 +34,25 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Formulario de los campos para agregar un nuevo perfil
 class ProfessionalForm(FlaskForm):
-    profile_picture = FileField('Subir imagen de perfil:')
-    nombre = StringField('Nombre:', validators=[DataRequired()]) # Valor requerido
+    profile_picture = FileField('Subir imagen de perfil:', validators=[FileAllowed(ALLOWED_EXTENSIONS, 'Solo imágenes permitidas')])
+    nombre_completo = StringField('Nombre Completo:', validators=[DataRequired()]) # Valor requerido
     licencia = StringField('No. De Licencia:', validators=[DataRequired()]) # Valor requerido
-    direccion = StringField('Direccion:')
-    keywords = StringField('keywords:', validators=[DataRequired()]) # Campo requerido
-    contacto = StringField('Informacion de contacto:', validators=[DataRequired()]) # Campo requerido
-    descripcion = TextAreaField('Descripcion:')
+    estudios_academicos = TextAreaField('Estudios Académicos:')
+    contacto = StringField('Información de contacto:', validators=[DataRequired()]) # Campo requerido
+    keywords = StringField('Palabras Clave:', validators=[DataRequired()]) # Campo requerido
+    ubicacion = StringField('Ubicación:')
+    descripcion = TextAreaField('Descripción:')
+    whatsapp = StringField('WhatsApp:')
     submit = SubmitField('Agregar')
-
 
 # Ruta para agregar el nuevo perfil
 @app.route('/agregar_perfil', methods=['GET', 'POST'])
-
 def agregar_perfil():
     form = ProfessionalForm()
     # Inicializacion de la variable message para utilizarse en la plantilla
     message = None
 
-     # Una vez se hace click en el boton "Agregar"
+    # Una vez se hace click en el boton "Agregar"
     if form.validate_on_submit():
         try: # Manejo de excepciones
             # Conectar a la base de datos
@@ -58,12 +60,12 @@ def agregar_perfil():
 
             file_path = None  # Se inicializa la variable de la foto de perfil
 
-            # Save the uploaded file
-            if 'profile_picture' in request.files:
-                profile_picture = request.files.get('profile_picture')
-                file_path = f"uploads/{profile_picture.filename}"
+            # Guardar el archivo subido
+            if form.profile_picture.data:
+                profile_picture = form.profile_picture.data
+                filename = secure_filename(profile_picture.filename)
+                file_path = f"{UPLOAD_FOLDER}/{filename}"
                 profile_picture.save(file_path)
-
 
             # Crear un nuevo perfil
             if save_profesional(connection, form, file_path):
@@ -79,9 +81,8 @@ def agregar_perfil():
             if connection is not None:
                 close_profesionales_connection(connection)
 
-     # Esta es la plantilla desde la cual se llena el formulario
+    # Esta es la plantilla desde la cual se llena el formulario
     return render_template('agregar.html', form=form, message=message)
-
 
 # Ruta para mostrar los perfiles de los profesionales en su respectiva plantilla
 @app.route('/profesionales')

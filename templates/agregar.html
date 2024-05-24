@@ -31,17 +31,38 @@
             <p class="error">{{ error }}</p>
             {% endfor %}
 
-            <!-- Nombre -->
-            <label for="nombre" class="required">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" required>
-            {% for error in form.nombre.errors %}
+            <!-- Nombre Completo -->
+            <label for="nombre_completo" class="required">Nombre Completo:</label>
+            <input type="text" id="nombre_completo" name="nombre_completo" required>
+            {% for error in form.nombre_completo.errors %}
             <p class="error">{{ error }}</p>
             {% endfor %}
 
-            <!-- Dirección -->
-            <label for="direccion" class="optional">Dirección:</label>
-            <input type="text" id="direccion" name="direccion">
-            {% for error in form.direccion.errors %}
+            <!-- Estudios Académicos -->
+            <label for="estudios_academicos" class="optional">Estudios Académicos:</label>
+            <textarea id="estudios_academicos" name="estudios_academicos" rows="4"></textarea>
+            {% for error in form.estudios_academicos.errors %}
+            <p class="error">{{ error }}</p>
+            {% endfor %}
+
+            <!-- Contacto -->
+            <label for="contacto" class="required">Contacto:</label>
+            <input type="text" id="contacto" name="contacto" required>
+            {% for error in form.contacto.errors %}
+            <p class="error">{{ error }}</p>
+            {% endfor %}
+
+            <!-- Palabras Clave -->
+            <label for="keywords" class="required">Palabras Clave:</label>
+            <input type="text" id="keywords" name="keywords" required>
+            {% for error in form.keywords.errors %}
+            <p class="error">{{ error }}</p>
+            {% endfor %}
+
+            <!-- Ubicación -->
+            <label for="ubicacion" class="optional">Ubicación:</label>
+            <input type="text" id="ubicacion" name="ubicacion">
+            {% for error in form.ubicacion.errors %}
             <p class="error">{{ error }}</p>
             {% endfor %}
 
@@ -52,17 +73,17 @@
             <p class="error">{{ error }}</p>
             {% endfor %}
 
-            <!-- Keywords -->
-            <label for="keywords" class="required">Keywords:</label>
-            <input type="text" id="keywords" name="keywords" required>
-            {% for error in form.keywords.errors %}
+            <!-- Profile Picture -->
+            <label for="profile_picture" class="optional">Foto de Perfil:</label>
+            <input type="file" id="profile_picture" name="profile_picture">
+            {% for error in form.profile_picture.errors %}
             <p class="error">{{ error }}</p>
             {% endfor %}
 
-            <!-- Contacto -->
-            <label for="contacto" class="required">Contacto:</label>
-            <input type="text" id="contacto" name="contacto" required>
-            {% for error in form.contacto.errors %}
+            <!-- WhatsApp -->
+            <label for="whatsapp" id="whatsapp" class="optional">WhatsApp:</label>
+            <input type="text" id="whatsapp" name="whatsapp">
+            {% for error in form.whatsapp.errors %}
             <p class="error">{{ error }}</p>
             {% endfor %}
 
