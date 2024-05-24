@@ -1,7 +1,7 @@
-from flask import render_template, redirect, url_for, request, session, Flask
+from flask import render_template, redirect, url_for, request, session, Flask, jsonify
 from db import connect_to_database, close_connection, get_patient_info_by_user_id, get_chat_messages_by_user_id
 from datetime import datetime
-from db import save_prescription, save_diagnostic_test, save_medical_history_entry
+from db import save_prescription, save_diagnostic_test, save_medical_history_entry, check_passkey
 
 app = Flask(__name__)
 
@@ -64,6 +64,17 @@ def calculate_age(birthdate):
     # This could involve parsing the birthdate and subtracting it from the current date
     # For demonstration purposes, let's assume we have a function to calculate age
     return calculate_age_from_birthdate(birthdate)
+
+@app.route('/validate_passkey', methods=['POST'])
+def validate_passkey():
+    passkey = request.form['passkey']
+    form_type = request.form['form_type']
+
+    if check_passkey(passkey):
+        return render_template(f'{form_type}.html')
+    else:
+        return jsonify({'success': False}), 400
+
 
 @app.route('/add_medical_history', methods=['POST'])
 def add_medical_history():

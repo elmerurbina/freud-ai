@@ -15,7 +15,7 @@ from googleSinIn import *
 from redApoyo import *
 from frases import show_notification, send_notification, random_phrase
 from recovering import *
-from patientRecord import expediente, add_prescription, add_diagnostic_test, add_medical_history
+from patientRecord import expediente, add_prescription, add_diagnostic_test, add_medical_history, validate_passkey
 from aseguradora import aseguradora, check_code_validity, codigoRegistro
 
 
@@ -60,6 +60,7 @@ app.add_url_rule('/expediente', 'expediente', expediente, methods=['GET', 'POST'
 app.add_url_rule('/add_medical_history', 'add_medical_history', add_medical_history)
 app.add_url_rule('/add_prescription', 'add_prescription', add_prescription)
 app.add_url_rule('/add_diagnostic_test', 'add_diagnostic_test', add_diagnostic_test)
+app.add_url_rule('/validate_passkey', 'validate_passkey', validate_passkey, methods=['POST'])
 
 
 app.add_url_rule('/aseguradora', 'aseguradora', aseguradora, methods=['GET', 'POST'])

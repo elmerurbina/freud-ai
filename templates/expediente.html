@@ -19,18 +19,19 @@
     </div>
 
     <!-- Passkey Modal -->
-    <div id="passkeyModal" class="modal">
+    <div id="passkeyModal" class="modal" data-form="">
         <div class="modal-content">
             <span class="close-button">&times;</span>
             <p>Introduce la clave de acceso:</p>
             <input type="password" id="passkeyInput" placeholder="Clave de acceso">
             <button id="passkeySubmit">Enviar</button>
+            <div id="error-message" class="error-message"></div>
         </div>
     </div>
 
     <!-- Forms for adding new entries, initially hidden -->
     <div id="formsContainer">
-        <form id="addPrescriptionForm" class="entry-form" action="{{ url_for('add_prescription') }}" method="post">
+        <form id="addPrescriptionForm" class="entry-form" action="{{ url_for('add_prescription') }}" method="post" style="display: none;">
             <h3>Agregar Receta</h3>
             <label for="fecha">Fecha:</label>
             <input type="date" id="fecha" name="fecha" required>
@@ -39,7 +40,7 @@
             <button type="submit">Agregar Receta</button>
         </form>
 
-        <form id="addDiagnosticTestForm" class="entry-form" action="{{ url_for('add_diagnostic_test') }}" method="post">
+        <form id="addDiagnosticTestForm" class="entry-form" action="{{ url_for('add_diagnostic_test') }}" method="post" style="display: none;">
             <h3>Agregar Prueba Diagnóstica</h3>
             <label for="fecha">Fecha:</label>
             <input type="date" id="fecha" name="fecha" required>
@@ -50,7 +51,7 @@
             <button type="submit">Agregar Prueba Diagnóstica</button>
         </form>
 
-        <form id="addMedicalHistoryForm" class="entry-form" action="{{ url_for('add_medical_history') }}" method="post">
+        <form id="addMedicalHistoryForm" class="entry-form" action="{{ url_for('add_medical_history') }}" method="post" style="display: none;">
             <h3>Agregar Historial Médico</h3>
             <label for="fecha">Fecha:</label>
             <input type="date" id="fecha" name="fecha" required>
@@ -144,7 +145,6 @@
         <!-- Add more frequent messages here -->
     </section>
 
-    <script src="{{ url_for('static', filename='js/expedientePaciente.js') }}"></script>
     <script src="{{ url_for('static', filename='js/expedienteButtons.js') }}"></script>
 </body>
 </html>

@@ -148,6 +148,19 @@ def insert_contact(full_name_one, country_code_one, number_one, full_name_two, c
     cursor.close()
 
 
+def check_passkey(passkey):
+    connection = connect_to_database()
+    cursor = connection.cursor(dictionary=True)
+
+    query = "SELECT * FROM passkey WHERE clave = %s"
+    cursor.execute(query, (passkey,))
+    result = cursor.fetchone()
+
+    cursor.close()
+    connection.close()
+
+    return result is not None
+
 # Se cierra la conexion con la base de datos
 def close_db_connection():
     db.close()
