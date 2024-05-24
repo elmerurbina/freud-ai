@@ -11,7 +11,12 @@
 </head>
 <body>
 
-    {% if error %}
+
+    {% if message %}
+<div class="message {% if success %}success{% else %}error{% endif %}">{{ message }}</div>
+{% endif %}
+
+   {% if error %}
     <div>{{ error }}</div>
     {% endif %}
     {% if success %}
@@ -46,7 +51,7 @@
                     </div>
                     <div class="form-group">
                         <label for="psychologist-contact">Contacto del psicólogo: <i class="fa-solid fa-user-doctor"></i></label>
-                        <input type="tel" id="psychologist-contact" class="small-input" name="psychologist-contact" placeholder="Ingresa el telefono de tu psicologo">
+                        <input type="tel" id="psychologist-contact" class="small-input" name="psychologist-contact" placeholder="Agregar contacto">
                     </div>
                 </div>
             </div>

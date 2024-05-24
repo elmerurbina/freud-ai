@@ -2,80 +2,80 @@ from flask import Flask, render_template, request, redirect, url_for
 from db import connect_to_database
 import mysql.connector.errors
 
-
-
 app = Flask(__name__)
 
-# Ruta para mostrar la plantilla con las formas
+# Route to render the template with the forms
 @app.route('/redApoyo')
 def redApoyo():
     return render_template('redApoyo.html')
 
-
-# Funcion para manejar el ingreso de los datos en la base de datos
+# Function to handle saving data into the database
 @app.route('/guardar_red', methods=['POST'])
 def guardar_red():
     # Extract form data
+    name_one = request.form['name-one']
+    name_two = request.form['name-two']
+    psychologist_name = request.form['psychologist-name']
     contact_one = request.form['contact-one']
     contact_two = request.form['contact-two']
-    psychologist_email = request.form.get('psychologist-email', None)
+    psychologist_contact = request.form.get('psychologist-contact', None)
 
-    # Conectarse a la base de datos
+    # Connect to the database
     try:
         connection = connect_to_database()
         cursor = connection.cursor()
 
-        # Ejecutar SQL INSERT query para guardar los datos
-        if psychologist_email:
+        # Execute SQL INSERT query to save the data
+        if psychologist_contact:
             cursor.execute("""
-                    INSERT INTO redapoyo (contact_one, contact_two, psychologist_email)
-                    VALUES (%s, %s, %s)
-                """, (contact_one, contact_two, psychologist_email))
+                        INSERT INTO redapoyo (full_name_one, country_code_one, number_one, full_name_two, country_code_two, number_two, psychologist_name, psychologist_contact)
+                        VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+                    """, (
+            name_one, None, contact_one, name_two, None, contact_two, psychologist_name, psychologist_contact))
         else:
             cursor.execute("""
-                    INSERT INTO redapoyo (contact_one, contact_two)
-                    VALUES (%s, %s)
-                """, (contact_one, contact_two))
-
+                        INSERT INTO redapoyo (full_name_one, country_code_one, number_one, full_name_two, country_code_two, number_two, psychologist_name)
+                        VALUES (%s, %s, %s, %s, %s, %s, %s)
+                    """, (name_one, None, contact_one, name_two, None, contact_two, psychologist_name))
 
         connection.commit()
 
-        # Cerrar cursor y la conexion
+        # Close cursor and connection
         cursor.close()
         connection.close()
 
-        # Redirigir a la pagina de exito
-        return redirect(url_for('success'))
+        # Display success message
+        return "Los datos se guardaron correctamente."
 
     except mysql.connector.Error as e:
-        # Manejo de errores con la base de datos
-        error_message = "Error saving data to the database: {}".format(e)
-        return render_template('error.html', error=error_message)
+        # Handle database errors
+        error_message = "No se pudieron guardar los datos, inténtalo de nuevo."
+        return error_message
 
-# Ruta para la pagina de exito
+# Route for the success page
 @app.route('/success')
 def success():
     return render_template('success.html')
 
-# Funcion para ver la red de apoyo
+# Function to view the support network
 @app.route('/red_de_apoyo')
 def red_de_apoyo():
     try:
         connection = connect_to_database()
         cursor = connection.cursor()
 
-        # Ejecutar SQL SELECT query para mostrar los contactos guardados
+        # Execute SQL SELECT query to retrieve saved contacts
         cursor.execute("SELECT * FROM redapoyo")
         contacts = cursor.fetchall()
 
-        # Cerrar cursor y la conexion
+        # Close cursor and connection
         cursor.close()
         connection.close()
 
         return render_template('red_de_apoyo.html', contacts=contacts)
 
     except mysql.connector.Error as e:
-        # Manejo de errores con la base de datos
+        # Handle database errors
         error_message = "Error retrieving data from the database: {}".format(e)
         return render_template('error.html', error=error_message)
 

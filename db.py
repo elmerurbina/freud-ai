@@ -134,10 +134,15 @@ db = mysql.connector.connect(
 
 
 # Funcion para guardar los contactos de la red de apoyo en la base de datos
-def insert_contact(contact_one, contact_two, psychologist_email):
+# Function to insert contacts of the support network into the database
+def insert_contact(full_name_one, country_code_one, number_one, full_name_two, country_code_two, number_two, psychologist_name, psychologist_contact=None):
     cursor = db.cursor()
-    sql = "INSERT INTO redApoyo (contact_one, contact_two, psychologist_email) VALUES (%s, %s, %s)"
-    val = (contact_one, contact_two, psychologist_email)
+    if psychologist_contact:
+        sql = "INSERT INTO redApoyo (full_name_one, country_code_one, number_one, full_name_two, country_code_two, number_two, psychologist_name, psychologist_contact) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+        val = (full_name_one, country_code_one, number_one, full_name_two, country_code_two, number_two, psychologist_name, psychologist_contact)
+    else:
+        sql = "INSERT INTO redApoyo (full_name_one, country_code_one, number_one, full_name_two, country_code_two, number_two, psychologist_name) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+        val = (full_name_one, country_code_one, number_one, full_name_two, country_code_two, number_two, psychologist_name)
     cursor.execute(sql, val)
     db.commit()
     cursor.close()

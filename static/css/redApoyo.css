@@ -125,6 +125,16 @@ input[type="email"]:focus {
     font-weight: bold;
 }
 
+.error {
+    background-color: #f44336;
+    color: white;
+}
+
+.success {
+    background-color: #4caf50;
+    color: white;
+}
+
 /* Icons */
 .fa-handshake-angle,
 .fa-user-doctor {
