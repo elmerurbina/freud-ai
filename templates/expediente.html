@@ -11,6 +11,55 @@
 
     <h1>Expediente</h1>
 
+    <!-- Buttons for adding new entries -->
+    <div class="button-container">
+        <button class="add-button" data-form="addPrescriptionForm">Agregar Receta</button>
+        <button class="add-button" data-form="addDiagnosticTestForm">Agregar Prueba Diagnóstica</button>
+        <button class="add-button" data-form="addMedicalHistoryForm">Agregar Historial Médico</button>
+    </div>
+
+    <!-- Passkey Modal -->
+    <div id="passkeyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <p>Introduce la clave de acceso:</p>
+            <input type="password" id="passkeyInput" placeholder="Clave de acceso">
+            <button id="passkeySubmit">Enviar</button>
+        </div>
+    </div>
+
+    <!-- Forms for adding new entries, initially hidden -->
+    <div id="formsContainer">
+        <form id="addPrescriptionForm" class="entry-form" action="{{ url_for('add_prescription') }}" method="post">
+            <h3>Agregar Receta</h3>
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
+            <label for="medicamento">Medicamento:</label>
+            <input type="text" id="medicamento" name="medicamento" required>
+            <button type="submit">Agregar Receta</button>
+        </form>
+
+        <form id="addDiagnosticTestForm" class="entry-form" action="{{ url_for('add_diagnostic_test') }}" method="post">
+            <h3>Agregar Prueba Diagnóstica</h3>
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
+            <label for="prueba">Prueba:</label>
+            <input type="text" id="prueba" name="prueba" required>
+            <label for="resultado">Resultado:</label>
+            <input type="text" id="resultado" name="resultado" required>
+            <button type="submit">Agregar Prueba Diagnóstica</button>
+        </form>
+
+        <form id="addMedicalHistoryForm" class="entry-form" action="{{ url_for('add_medical_history') }}" method="post">
+            <h3>Agregar Historial Médico</h3>
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha" required>
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" required></textarea>
+            <button type="submit">Agregar Historial Médico</button>
+        </form>
+    </div>
+
     <!-- Patient Information Section -->
     <section id="patientInformation">
         <h2>Información del Paciente</h2>
@@ -44,14 +93,6 @@
             </tr>
             {% endfor %}
         </table>
-        <!-- Form for adding medical history -->
-        <form action="{{ url_for('add_medical_history') }}" method="post">
-            <label for="fecha">Fecha:</label>
-            <input type="date" id="fecha" name="fecha" required>
-            <label for="descripcion">Descripción:</label>
-            <textarea id="descripcion" name="descripcion" required></textarea>
-            <button type="submit">Agregar Historial Médico</button>
-        </form>
     </section>
 
     <!-- Prescriptions Section -->
@@ -71,14 +112,6 @@
             </tr>
             {% endfor %}
         </table>
-        <!-- Form for adding prescription -->
-        <form action="{{ url_for('add_prescription') }}" method="post">
-            <label for="fecha">Fecha:</label>
-            <input type="date" id="fecha" name="fecha" required>
-            <label for="medicamento">Medicamento:</label>
-            <input type="text" id="medicamento" name="medicamento" required>
-            <button type="submit">Agregar Receta</button>
-        </form>
     </section>
 
     <!-- Diagnostic Tests Section -->
@@ -100,16 +133,6 @@
             </tr>
             {% endfor %}
         </table>
-        <!-- Form for adding diagnostic test -->
-        <form action="{{ url_for('add_diagnostic_test') }}" method="post">
-            <label for="fecha">Fecha:</label>
-            <input type="date" id="fecha" name="fecha" required>
-            <label for="prueba">Prueba:</label>
-            <input type="text" id="prueba" name="prueba" required>
-            <label for="resultado">Resultado:</label>
-            <input type="text" id="resultado" name="resultado" required>
-            <button type="submit">Agregar Prueba Diagnóstica</button>
-        </form>
     </section>
 
     <!-- Frequent Messages Section -->
@@ -118,11 +141,10 @@
         <div class="message">
             <p>Aqui van los mensajes que el paciente escribe constantemente en el chat.</p>
         </div>
-        <div class="message">
-         
-        </div>
         <!-- Add more frequent messages here -->
     </section>
 
+    <script src="{{ url_for('static', filename='js/expedientePaciente.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/expedienteButtons.js') }}"></script>
 </body>
 </html>
