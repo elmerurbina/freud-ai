@@ -64,14 +64,20 @@ def calculate_age(birthdate):
     # This could involve parsing the birthdate and subtracting it from the current date
     # For demonstration purposes, let's assume we have a function to calculate age
     return calculate_age_from_birthdate(birthdate)
-
 @app.route('/validate_passkey', methods=['POST'])
 def validate_passkey():
     passkey = request.form['passkey']
     form_type = request.form['form_type']
 
     if check_passkey(passkey):
-        return render_template(f'{form_type}.html')
+        if form_type == 'addPrescriptionForm':
+            return render_template('expediente.html', form_type='addPrescriptionForm')
+        elif form_type == 'addDiagnosticTestForm':
+            return render_template('expediente.html', form_type='addDiagnosticTestForm')
+        elif form_type == 'addMedicalHistoryForm':
+            return render_template('expediente.html', form_type='addMedicalHistoryForm')
+        else:
+            return jsonify({'success': False}), 400
     else:
         return jsonify({'success': False}), 400
 
