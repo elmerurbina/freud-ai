@@ -11,10 +11,6 @@
 </head>
 <body>
 
-    <video autoplay muted loop id="video-background">
-        <source src="static/video/redApoyo.mp4" type="video/mp4">
-    </video>
-
     {% if error %}
     <div>{{ error }}</div>
     {% endif %}
@@ -24,49 +20,54 @@
 
     <form id="support-form" method="POST" action="{{ url_for('guardar_red') }}">
         <div class="form-container">
-            <div class="form-column">
-                <div class="form-group">
-                    <label for="name-one">Nombre Completo:</label>
-                    <input type="text" id="name-one" name="name-one" placeholder="Nombre Completo">
+            <div class="form-columns">
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="name-one">Nombre Completo:</label>
+                        <input type="text" id="name-one" name="name-one" placeholder="Nombre Completo">
+                    </div>
+                    <div class="form-group">
+                        <label for="name-two">Nombre Completo:</label>
+                        <input type="text" id="name-two" name="name-two" placeholder="Nombre Completo">
+                    </div>
+                    <div class="form-group">
+                        <label for="psychologist-name">Nombre del psicólogo:</label>
+                        <input type="text" id="psychologist-name" name="psychologist-name" placeholder="Nombre del psicólogo">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="name-two">Nombre Completo:</label>
-                    <input type="text" id="name-two" name="name-two" placeholder="Nombre Completo">
-                </div>
-                <div class="form-group">
-                    <label for="psychologist-name">Nombre del psicólogo:</label>
-                    <input type="text" id="psychologist-name" name="psychologist-name" placeholder="Nombre del psicólogo">
+                <div class="form-column">
+                    <div class="form-group">
+                        <label for="contact-one">Contacto 1: <i class="fa-solid fa-handshake-angle"></i></label>
+                        <input type="tel" id="contact-one" name="contact-one" required placeholder="Agregar contacto">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-two">Contacto 2: <i class="fa-solid fa-handshake-angle"></i></label>
+                        <input type="tel" id="contact-two" name="contact-two" required placeholder="Agregar contacto">
+                    </div>
+                    <div class="form-group">
+                        <label for="psychologist-contact">Contacto del psicólogo: <i class="fa-solid fa-user-doctor"></i></label>
+                        <input type="tel" id="psychologist-contact" class="small-input" name="psychologist-contact" placeholder="Ingresa el telefono de tu psicologo">
+                    </div>
                 </div>
             </div>
-            <div class="form-column">
-                <div class="form-group">
-                    <label for="contact-one">Contacto 1: <i class="fa-solid fa-handshake-angle"></i></label>
-                    <input type="tel" id="contact-one" name="contact-one" required placeholder="Agrega un número de teléfono">
-                </div>
-                <div class="form-group">
-                    <label for="contact-two">Contacto 2: <i class="fa-solid fa-handshake-angle"></i></label>
-                    <input type="tel" id="contact-two" name="contact-two" required placeholder="Agrega un número de teléfono">
-                </div>
-                <div class="form-group">
-                    <label for="psychologist-email">Correo del psicólogo: <i class="fa-solid fa-user-doctor"></i></label>
-                    <input type="email" id="psychologist-email" class="small-input" name="psychologist-email" placeholder="Ingresa el correo de tu psicólogo">
-                </div>
+
+            <div class="button">
+                <button type="submit">Guardar</button>
+            </div>
+            <div class="links">
+                <a href="{{ url_for('profesionales')}}" class="btn" id="search-psychologist">Buscar un psicologo</a> 
+                <a href="{{ url_for('red_de_apoyo') }}" class="btn" id="see-contact">Ver mi red de apoyo</a>
+                <a href="{{url_for('notificaciones')}}" class="btn" id="add-contact">Configurar notificaciones</a>
             </div>
         </div>
-
-        <button type="submit">Guardar</button>
-        <a href="{{ url_for('profesionales')}}" ><button type="button" id="search-psychologist">Buscar un psicologo</button></a> 
-        <a href="{{ url_for('red_de_apoyo') }}"><button type="button" id="see-contact">Ver mi red de apoyo</button></a>
-        <a href="{{url_for('notificaciones')}}" ><button type="button" id="add-contact">Configurar notificaciones</button> </a>
     </form>
-<div id="message"></div>
+   
+    <div id="message"></div>
 
-<!-- Include intl-tel-input JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+    <!-- Include intl-tel-input JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
 
-
-<!-- Initialize intl-tel-input -->
-<script src="{{ url_for('static', filename='js/phoneInput.js') }}"></script>
-
+    <!-- Initialize intl-tel-input -->
+    <script src="{{ url_for('static', filename='js/phoneInput.js') }}"></script>
 </body>
 </html>
