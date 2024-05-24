@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Agregar informacion al expediente</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/formsTemplate.css') }}">
+    <link rel="icon" href="/static/imagenes/logo.jpg" type="image/jpg">
+
+</head>
+
+<body>
+
+    {% if form_type == 'addPrescriptionForm' %}
+    <form id="addPrescriptionForm" class="entry-form" action="{{ url_for('add_prescription') }}" method="post" style="display: block;">
+        <h3>Agregar Receta</h3>
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required>
+        <label for="patientName">Nombre del Paciente:</label>
+        <input type="text" id="patientName" name="patientName" required>
+        <label for="medicamento">Medicamento:</label>
+        <input type="text" id="medicamento" name="medicamento" required>
+        <label for="dosage">Dosis:</label>
+        <input type="text" id="dosage" name="dosage" required>
+        <label for="frequency">Frecuencia:</label>
+        <input type="text" id="frequency" name="frequency" required>
+        <label for="duration">Duración:</label>
+        <input type="text" id="duration" name="duration" required>
+        <label for="instructions">Instrucciones:</label>
+        <textarea id="instructions" name="instructions" required></textarea>
+        <button type="submit">Agregar Receta</button>
+    </form>
+    {% elif form_type == 'addDiagnosticTestForm' %}
+    <form id="addDiagnosticTestForm" class="entry-form" action="{{ url_for('add_diagnostic_test') }}" method="post" style="display: block;">
+        <h3>Agregar Prueba Diagnóstica</h3>
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required>
+        <label for="patientName">Nombre del Paciente:</label>
+        <input type="text" id="patientName" name="patientName" required>
+        <label for="prueba">Prueba:</label>
+        <input type="text" id="prueba" name="prueba" required>
+        <label for="resultado">Resultado:</label>
+        <input type="text" id="resultado" name="resultado" required>
+        <label for="comments">Comentarios:</label>
+        <textarea id="comments" name="comments" required></textarea>
+        <button type="submit">Agregar Prueba Diagnóstica</button>
+    </form>
+    {% elif form_type == 'addMedicalHistoryForm' %}
+    <form id="addMedicalHistoryForm" class="entry-form" action="{{ url_for('add_medical_history') }}" method="post" style="display: block;">
+        <h3>Agregar Historial Médico</h3>
+        <label for="fecha">Fecha:</label>
+        <input type="date" id="fecha" name="fecha" required>
+        <label for="patientName">Nombre del Paciente:</label>
+        <input type="text" id="patientName" name="patientName" required>
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" required></textarea>
+        <label for="currentMedications">Medicamentos Actuales:</label>
+        <textarea id="currentMedications" name="currentMedications" required></textarea>
+        <label for="allergies">Alergias:</label>
+        <textarea id="allergies" name="allergies" required></textarea>
+        <label for="pastConditions">Condiciones Médicas Pasadas:</label>
+        <textarea id="pastConditions" name="pastConditions" required></textarea>
+        <button type="submit">Agregar Historial Médico</button>
+    </form>
+    {% endif %}
+    
+
+</body>
+
+</html>

@@ -132,8 +132,23 @@ db = mysql.connector.connect(
     database="usuarios"
 )
 
+def check_passkey(passkey):
+    try:
+        connection = connect_to_database()
+        if connection.is_connected():
+            with connection.cursor(dictionary=True) as cursor:
+                query = "SELECT clave FROM passkey WHERE clave = %s"
+                cursor.execute(query, (passkey,))
+                result = cursor.fetchone()
+                return result is not None
+    except Error as e:
+        print(f"Error while connecting to database: {e}")
+        return False
+    finally:
+        if connection.is_connected():
+            connection.close()
 
-# Funcion para guardar los contactos de la red de apoyo en la base de datos
+
 # Function to insert contacts of the support network into the database
 def insert_contact(full_name_one, country_code_one, number_one, full_name_two, country_code_two, number_two, psychologist_name, psychologist_contact=None):
     cursor = db.cursor()
@@ -148,18 +163,6 @@ def insert_contact(full_name_one, country_code_one, number_one, full_name_two, c
     cursor.close()
 
 
-def check_passkey(passkey):
-    connection = connect_to_database()
-    cursor = connection.cursor(dictionary=True)
-
-    query = "SELECT * FROM passkey WHERE clave = %s"
-    cursor.execute(query, (passkey,))
-    result = cursor.fetchone()
-
-    cursor.close()
-    connection.close()
-
-    return result is not None
 
 # Se cierra la conexion con la base de datos
 def close_db_connection():

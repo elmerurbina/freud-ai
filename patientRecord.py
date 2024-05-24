@@ -66,22 +66,24 @@ def calculate_age(birthdate):
     return calculate_age_from_birthdate(birthdate)
 @app.route('/validate_passkey', methods=['POST'])
 def validate_passkey():
-    passkey = request.form['passkey']
-    form_type = request.form['form_type']
+    passkey = request.form.get('passkey')
+    form_type = request.form.get('form_type')
 
-    if check_passkey(passkey):
-        if form_type == 'addPrescriptionForm':
-            return render_template('expediente.html', form_type='addPrescriptionForm')
-        elif form_type == 'addDiagnosticTestForm':
-            return render_template('expediente.html', form_type='addDiagnosticTestForm')
-        elif form_type == 'addMedicalHistoryForm':
-            return render_template('expediente.html', form_type='addMedicalHistoryForm')
+    if check_passkey(passkey):  # Use the updated check_passkey method
+        if 'user_id' in session:
+            user_id = session['user_id']
+            patient_info = get_patient_info_by_user_id(user_id)
+            if patient_info:
+                common_messages = get_most_common_messages(user_id)
+                age = calculate_age(patient_info['date_of_birth'])
+                rendered_html = render_template('form_template.html', form_type=form_type, patient_info=patient_info, common_messages=common_messages, age=age)
+                return jsonify({'success': True, 'html': rendered_html})
+            else:
+                return jsonify({'success': False, 'message': 'No pudimos encontrar la información del paciente.'})
         else:
-            return jsonify({'success': False}), 400
+            return jsonify({'success': False, 'message': 'Usuario no identificado.'})
     else:
-        return jsonify({'success': False}), 400
-
-
+        return jsonify({'success': False, 'message': 'Clave incorrecta, por favor intentalo nuevamente!'})
 @app.route('/add_medical_history', methods=['POST'])
 def add_medical_history():
     if 'user_id' in session:

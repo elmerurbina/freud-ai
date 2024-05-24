@@ -146,4 +146,8 @@ h2 {
   #passkeySubmit:hover {
     background-color: #45a049; /* Darker Green */
   }
+
+  #passkeyInput {
+    padding: 3px;
+  }
   

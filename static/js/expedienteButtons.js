@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const passkeyInput = document.getElementById('passkeyInput');
     const passkeySubmit = document.getElementById('passkeySubmit');
     const errorMessage = document.getElementById('error-message');
+    const formsContainer = document.getElementById('formsContainer');
     let currentFormType = '';
 
     addButtons.forEach(button => {
@@ -23,32 +24,22 @@ document.addEventListener('DOMContentLoaded', () => {
             method: 'POST',
             body: formData
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
             if (data.success) {
-                // Hide all forms
-                const forms = document.querySelectorAll('.entry-form');
-                forms.forEach(form => form.style.display = 'none');
-
-                // Show the current form
-                document.getElementById(currentFormType).style.display = 'block';
+                formsContainer.innerHTML = data.html; // Update the form container with the new HTML
                 passkeyModal.style.display = 'none';
                 passkeyInput.value = '';
                 errorMessage.textContent = '';
             } else {
-                errorMessage.textContent = 'Clave incorrecta, por favor intentalo nuevamente!';
+                errorMessage.textContent = data.message;
                 errorMessage.style.color = 'red';
                 errorMessage.style.fontWeight = 'bold';
             }
         })
         .catch(error => {
             console.error('Error:', error);
-            errorMessage.textContent = 'Ocurrio un error, por favor intentalo de nuevo!.';
+            errorMessage.textContent = 'Ocurrió un error, por favor inténtalo de nuevo!.';
             errorMessage.style.color = 'red';
             errorMessage.style.fontWeight = 'bold';
         });
