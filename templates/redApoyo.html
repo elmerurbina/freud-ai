@@ -11,17 +11,20 @@
 </head>
 <body>
 
+    {% if error_message %}
+    <div class="message error">{{ error_message }}</div>
+    {% endif %}
+    {% if success_message %}
+    <div class="message success">{{ success_message }}</div>
+    {% endif %}
 
-    {% if message %}
-<div class="message {% if success %}success{% else %}error{% endif %}">{{ message }}</div>
-{% endif %}
-
+    
    {% if error %}
     <div>{{ error }}</div>
     {% endif %}
     {% if success %}
     <div>{{ success }}</div>
-    {% endif %}
+    {% endif %} 
 
     <form id="support-form" method="POST" action="{{ url_for('guardar_red') }}">
         <div class="form-container">
