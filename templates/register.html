@@ -11,54 +11,54 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/register.css') }}">
     <link rel="icon" href="/static/imagenes/logo.jpg" type="image/jpg">
 
-    
+
 
 </head>
 <body>
 <!--Logo-->
     <h1  class="logo">Freud&nbsp;<span>IA</span></h1>
-    
+
 
     <div class="container">
         <!--Encabezado-->
         <h1>Registrarse en la plataforma</h1>
          <!--url_for es la conexion con la ruta del codigo backend de Python-->
          <form method="POST" action="{{ url_for('register') }}" id="register">
-           
+
             <!--Las clases field y fields corresponden a los campos-->
             <div class="fields"></div>
-        
+
                 <div class="field">
-                
+
                     <label for="nombre">nombre completo <i class="fa-solid fa-user"></i></label>
                     <input type="text" id="nombre" name="nombre" placeholder="Nombre" required>
                     <span class="error message"></span> <!--Funcion JS para validar los campos-->
 
                     <label for="foto">Foto (opcional)</label>
                     <input type="file" id="foto" name="foto" accept="image/*">
-                    
-                    
+
+
                     <label for="user">usuario  <i class="fa-solid fa-user"></i></label>
                     <input type="text" id="user" name="user" placeholder="Ej: frued24" required>
                     <span class="error message"></span> <!--Funcion JS para validar los campos-->
 
-                    
-           
+
+
                     <label for="email">Email  <i class="fa-solid fa-envelope"></i></label>
                     <input type="email" id="email" name="email" placeholder="correo" required>
                     <span class="error message"></span> <!--Funcion JS para validar los campos-->
-                   
-                
+
+
                     <label for="password">contraseña <i class="fa-solid fa-lock"></i></label>
                     <input type="password" id="password" name="password" placeholder="contraseña" required>
                     <span class="error message"></span> <!--Funcion JS para validar los campos-->
-                    
-              
+
+
                     <label for="repeat_password">confirmar contraseña <i class="fa-solid fa-lock"></i></label>
                     <input type="password" id="repeat_password" name="repeat_password" placeholder="Confirmar contraseña" required>
                     <span class="error message"></span> <!--Funcion JS para validar los campos-->
-                    
-                    
+
+
                     <label for="date">fecha de nacimiento <i class="fa-solid fa-calendar-days"></i></label>
                     <input type="date" id="date" name="date" required>
                     <span class="error message"></span> <!--Funcion JS para validar su edad-->
@@ -69,15 +69,15 @@
         </p>
          <!--Boton para registrarse-->
         <button name="Register" class="register" type="submit">Registrarse</button>
-        
+
         <!--Link para la pagina de inicio de sesion-->
         <p>¿Ya tienes cuenta? <a href="{{ url_for('login') }} ">Iniciar Sesion</a></p>
     </div>
-       
+
         </div>
 
         </form>
-        
+
     </div>
     <!--JS de los terminos de privacidad-->
     <script src="{{ url_for('static', filename='js/privacidad.js') }}"></script>
@@ -90,6 +90,6 @@
 
     <!--Conexion con JS para la validacion de campos-->
     <script src="{{ url_for('static', filename='js/validation_register.js') }}"></script>
-   
+
 </body>
 </html>

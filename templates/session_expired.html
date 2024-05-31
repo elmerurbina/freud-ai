@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Sesión Expirada</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/session_expired.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Su sesión ha expirado</h1>
+        <p>Por favor, inicie sesión nuevamente.</p>
+        <a href="{{ url_for('login') }}">Iniciar sesión</a>
+    </div>
+</body>
+</html>

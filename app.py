@@ -109,6 +109,10 @@ app.add_url_rule('/login', view_func=login, methods=['GET', 'POST'])
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+@app.errorhandler(401)
+def custom_401(error):
+    return render_template('session_expired.html'), 401
+
 # Registra la funcion de cargar el usuario en la sesion
 login_manager.user_loader(load_user)
 
@@ -119,8 +123,8 @@ app.add_url_rule('/logout', 'logout', logout)
 
 # Funciones y rutas del archivo googleSingIn.py para inicio de sesion con Google
 app.add_url_rule('/google-signin', view_func=google_auth)
-app.add_url_rule('/google-auth-callback', view_func=google_auth_callback)
 app.add_url_rule('/login/callback', view_func=login_callback)
+
 
 
 # Funciones del archivo redApoyo.py, brinda soporte a los pacientes en riesgos de suicidio
@@ -185,6 +189,6 @@ def  notificaciones():
     return render_template('notificaciones.html')
 
 
-
 if __name__ == '__main__':
+
     app.run(debug=True)

@@ -109,7 +109,6 @@ padding-top: 100px;}
     margin-top: 5%; 
     text-align: center;}
 
-
     .custom-google-button {
         background-color: #ffffff; /* Background color */
         border: 1px solid #dcdcdc; /* Border color */
@@ -126,11 +125,10 @@ padding-top: 100px;}
         vertical-align: middle; /* Align the image vertically */
         margin-right: 10px; /* Add margin to the right of the image */
     }
-
+    
     .custom-google-button:hover {
-        background-color: #f8f8f8; /* Change background color on hover */
+        background-color:rgb(250, 237, 184);
     }
-
-   
+    
 
 
