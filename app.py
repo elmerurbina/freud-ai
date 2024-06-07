@@ -10,6 +10,8 @@ from profesionalPlans import profesionalPlans
 from panelPsicologo import panelPsicologo
 from psicologoManagement import *
 from chat import *
+import ssl
+from message import message, send_message
 from login import *
 from googleSinIn import *
 from redApoyo import *
@@ -152,6 +154,9 @@ app.add_url_rule('/generate_unique_token', 'generate_unique_token', generate_uni
 app.add_url_rule('/send_password_reset_email', 'send_password_reset_email', send_password_reset_email)
 
 
+app.add_url_rule('/message', 'message', message)
+app.add_url_rule('/send_message', 'send_message', send_message, methods=['POST'])
+
 
 # Ruta del index
 @app.route('/freud')
@@ -188,7 +193,5 @@ def check_access_code_route(access_code):
 def  notificaciones():
     return render_template('notificaciones.html')
 
-
-if __name__ == '__main__':
-
+if __name__ == "__main__":
     app.run(debug=True)
