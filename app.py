@@ -5,6 +5,7 @@ from register_user import register, userProfile
 from flask import request, jsonify
 from db import *
 from logout import logout
+from clinicas import clinicas
 from psicologoAutenticacion import ingresar, registrar, psicologoAutenticacion
 from profesionalPlans import profesionalPlans
 from panelPsicologo import panelPsicologo
@@ -50,6 +51,9 @@ app.add_url_rule('/profesionalPlans', 'profesionalPlans', profesionalPlans)
 app.add_url_rule('/ingresar', 'ingresar', ingresar, methods=['POST', 'GET'])
 app.add_url_rule('/registrar', 'registrar', registrar, methods=['POST', 'GET'])
 app.add_url_rule('/psicologoAutenticacion', 'psicologoAutenticacion', psicologoAutenticacion)
+
+
+app.add_url_rule('/clinicas', 'clinicas', clinicas)
 
 
 # Agrego la logica del modulo y las funciones del archivo register_user.py
