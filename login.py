@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user
 from db import connect_to_database
+from register_user import get_user_data
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Set a secret key for session management
@@ -70,6 +71,30 @@ def logout():
 @login_required
 def chat():
     return render_template('chat.html')
+
+
+@app.route('/userProfile')
+def userProfile():
+    # Retrieve the user ID from the session
+    user_id = session.get('id')
+
+    if user_id:
+        # Retrieve user data from the database using the user ID
+        user_data = get_user_data(user_id)
+        if user_data:
+            # Extract user information
+            username = user_data[0]
+            full_name = user_data[1]
+            photo_path = user_data[2]
+
+            # Set a default value for photo_path if it's None
+            photo_path = photo_path or ''
+
+            return render_template('perfilUsuario.html', username=username, full_name=full_name, photo_path=photo_path)
+        else:
+            return "User not found"
+    else:
+        return "No se encontro el ID del usuario"
 
 if __name__ == '__main__':
     app.run(debug=True)

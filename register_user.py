@@ -74,27 +74,6 @@ def get_user_data(user_id):
     return user_data
 
 # Route to display user profile
-@app.route('/userProfile')
-def userProfile():
-    # Retrieve the user ID from the session
-    user_id = session.get('id')
 
-    if user_id:
-        # Retrieve user data from the database using the user ID
-        user_data = get_user_data(user_id)
-        if user_data:
-            # Extract user information
-            username = user_data[0]
-            full_name = user_data[1]
-            photo_path = user_data[2]
-
-            # Set a default value for photo_path if it's None
-            photo_path = photo_path or ''
-
-            return render_template('perfilUsuario.html', username=username, full_name=full_name, photo_path=photo_path)
-        else:
-            return "User not found"
-    else:
-        return "No se encontro el ID del usuario"
 if __name__ == '__main__':
     app.run(debug=True)

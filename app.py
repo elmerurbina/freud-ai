@@ -1,7 +1,7 @@
 # Archivo de la aplicacion | Maneja todas las rutas del sistema
 
 # Importacion de las rutas y librerias
-from register_user import register, userProfile
+from register_user import register #userProfile
 from flask import request, jsonify
 from db import *
 from logout import logout
@@ -11,7 +11,6 @@ from profesionalPlans import profesionalPlans
 from panelPsicologo import panelPsicologo
 from psicologoManagement import *
 from chat import *
-import ssl
 from message import message, send_message
 from login import *
 from googleSinIn import *
