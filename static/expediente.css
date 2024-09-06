@@ -1,0 +1,111 @@
+body {
+   background-image: url('/static/imagenes/psicologoFondo.avif');
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   margin: 0;
+   padding: 0;
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+}
+
+header {
+   background-color: #f6f5fc;
+   padding: 20px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   text-align: center; /* Center align header contents */
+}
+
+nav ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+}
+
+nav ul li {
+   display: inline;
+   margin-right: 20px;
+}
+
+nav ul li a {
+   text-decoration: none;
+   color: #0e0d0d;
+   font-weight: bold;
+   transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+   color: #4E79A7;
+}
+
+main {
+   padding: 20px;
+   text-align: center; 
+}
+
+#user-records {
+   background-color: #e0f1e4;
+   padding: 20px;
+   border-radius: 8px;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   text-align: center; 
+   width: 50%;
+   margin: 0 auto; 
+}
+
+#user-records h2 {
+   margin-bottom: 10px;
+}
+
+#user-records form {
+   margin-bottom: 20px;
+}
+
+#user-records label {
+   display: block;
+   margin-bottom: 10px;
+}
+
+#user-records input[type="text"] {
+   width: calc(100% - 22px); /* Adjusted width to accommodate for padding */
+   padding: 10px;
+   margin-bottom: 10px; /* Added margin */
+   border-radius: 4px;
+   border: 1px solid #CCCCCC;
+   box-sizing: border-box;
+}
+
+#user-records input[type="submit"] {
+   width: calc(100% - 22px); /* Adjusted width to accommodate for padding */
+   padding: 10px;
+   margin-bottom: 10px; /* Added margin */
+   background-color: #4E79A7;
+   color: #FFFFFF;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+#user-records input[type="submit"]:hover {
+   background-color: #8CD19D;
+}
+
+#user-records p {
+   margin-top: 10px;
+}
+
+#user-records p a {
+   color: #4E79A7;
+   text-decoration: none;
+   font-weight: bold;
+}
+
+#user-records p a:hover {
+   text-decoration: underline;
+}
+
+a {
+ 
+   margin-top: 200px;
+}
+

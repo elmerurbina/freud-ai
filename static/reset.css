@@ -1,0 +1,114 @@
+body {
+    background-image: url("/static/imagenes/registro.jpg");
+    font-family: Arial, sans-serif;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+}
+
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+container {
+    text-align: center; 
+    color: lightgray;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+button {
+    background-color: blue;
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 16px;
+}
+
+button:hover{background-color: red;}
+
+.form-group {
+    margin-bottom: 10%;
+    font-size: 15px;
+}
+
+label{font-size: 15px;
+margin-top: 5%;
+margin-bottom: 5%;}
+
+h1{font-size: 25px;
+margin-bottom: 5%;}
+
+
+.logo{width: 80px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 20px;}
+
+
+
+.contacto{margin-top: 100px;
+    color: white;
+    padding: 20px;
+    margin-left: 35%;
+    }
+
+a.gmail{color: white;
+    margin-right: 50px;}
+    a.whatsapp{color: white;
+    margin-right: 50px;}
+    a.facebook{color: white;
+    margin-right: 50px;}
+    a.instagram{color: white;
+        margin-right: 50px;}
+    a.whatsapp:hover{color: red;}
+    a.gmail:hover{color: red;}
+    a.facebook:hover{color: red;}
+    a.instagram:hover{color: red;}
+
+
+    .logo {
+        color: #ffffff;
+        text-transform: uppercase;
+        font-size: 30px;
+        margin-left: 5%;
+    }
+    
+    span {
+        color: #EE13C4;
+    }
+
+
+    h3{font-size: 18px;
+    margin-left: -10%;
+    margin-top: 8%;
+    margin-bottom: 8%;}
+
+    footer{font-size: 20px;
+        margin-top: 100px;
+        color: lightgray;
+        text-align: center;}
+
+        #new_password{margin-top: 5%;
+        margin-bottom: 5%;
+    padding: 5px;}
+
+    #confirm{padding: 5px;}
+
+    a{color: rgb(231, 181, 87);}
+    a:hover{color: red;}
+    
+

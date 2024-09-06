@@ -1,0 +1,163 @@
+/* General styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    overflow: hidden;
+    background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradient background */
+}
+
+/* Form container */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.form-columns {
+    display: flex;
+    justify-content: center;
+}
+
+.form-column {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="email"]:focus {
+    outline: none;
+    border-color: #719ECE;
+    box-shadow: 0 0 5px #719ECE;
+}
+
+/* Button styles */
+.button {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Add some space above the button */
+}
+
+.button button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: green; /* Orange color for contrast */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    width: 40%; /* Full width button */
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.button button:hover {
+    background-color: rgb(90, 0, 38) /* Darker orange for hover effect */
+}
+
+/* Link styles */
+.links {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Add some space above the links */
+}
+
+.links a {
+    display: block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #ff9800; /* Amber color for contrast */
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px 0;
+    width: 100%; /* Full width link */
+    text-align: center;
+    text-decoration: none;
+}
+
+.links a:hover {
+    background-color: #fb8c00; /* Darker amber for hover effect */
+}
+
+#message {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.error {
+    background-color: #f44336;
+    color: white;
+}
+
+.success {
+    background-color: #4caf50;
+    color: white;
+}
+
+/* Icons */
+.fa-handshake-angle,
+.fa-user-doctor {
+    margin-left: 5px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .form-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .form-columns {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .form-column {
+        width: 100%;
+    }
+
+    .button, .links {
+        width: 40%;
+    }
+}

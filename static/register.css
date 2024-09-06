@@ -1,0 +1,183 @@
+
+body {
+    background-image: url("/static/imagenes/registro.jpg"); /* Imagen de fondo */
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+}
+
+/* Logo */
+.logo {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 30px;
+    margin-left: 5%;
+}
+
+span {
+    color: #EE13C4;
+}
+
+/* Encabezado */
+h1{font-size: 20px;
+margin-bottom: 15px;}
+
+.fields {
+   
+    overflow: hidden;
+}
+/* Estilos de los inputs */
+.field input {
+    width: 100%;
+    padding: 4px;
+    margin-bottom: 10px;
+    border: none; 
+    border-bottom: 1px solid #2c3e50; 
+    font-size: 14px;
+    box-sizing: border-box; 
+    background-color: transparent; 
+    outline: none; 
+}
+
+
+.field input:focus {
+    border-bottom: 1px solid #3498db; 
+}
+
+.field input::placeholder {
+    color: lightpink; 
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 5px;
+    
+}
+/* El container es la clase que contiene la forma y los inputs */
+.container {
+    text-align: center;  
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(45deg, #ef07f7, #f82828);
+   
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; 
+    width: 100%;
+    margin-top: 10%;
+}
+
+
+label {
+    display: block; 
+    margin-bottom: 20px;
+    font-size: 16px;
+    text-align: center;
+   color: white;
+}
+
+input {
+    width: 50%; 
+    padding: 3px;
+    margin-bottom: 10px;
+    border-radius: none;
+    font-size: 14px;
+    align-items: center;
+    color: lightgrey;
+}
+
+/* Boton para registrar */
+button.register {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button.register:hover {background-color: red;}
+
+a{color: rgb(29, 24, 29);
+    font-size: 18px;
+}
+
+footer{
+    font-size: 20px;
+    color: lightgray;
+    text-align: center;
+    padding-top: 100px;}
+
+    figcaption{
+    margin-left: 70px;
+    margin-top: -50px;
+     color: white;
+     font-size: 20px;}
+
+     .logo{
+        width: 80px;
+        height: auto;
+        border-radius: 50%;
+        margin-bottom: 20px;
+        }
+
+        /* Validaciones de campos con JS */
+        span.warning{color: rgb(87, 173, 231);}
+        span.anotar{color: rgb(231, 181, 87);}
+
+
+a:hover{color: rgb(238, 178, 178);}
+
+/* Controlar el tamaño de los iconos */
+i.fa-solid.fa-user {
+    font-size: 14px;
+}
+
+
+i.fa-solid.fa-envelope {
+    font-size: 14px;
+}
+
+
+i.fa-solid.fa-lock {
+    font-size: 14px;
+}
+
+
+i.fa-solid.fa-calendar-days {
+    font-size: 14px;
+}
+
+/* No mostrar el mensaje de error inicialmente, para la validacion de los campos */
+.error-message {
+    display: none;
+}
+
+/* Usar lines para los inputs, en lugar del input por default */
+.floating-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    pointer-events: none;
+    transition: top 0.3s ease-out, font-size 0.3s ease-out;
+}
+
+input:focus + .floating-label,
+input:not(:placeholder-shown) + .floating-label {
+    top: -10px;
+    font-size: 12px;
+}
+

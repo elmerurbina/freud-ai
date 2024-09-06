@@ -32,6 +32,10 @@ app.config.from_pyfile('config.py')
 # Agregar la clave secreta generada al hazar
 app.config['SECRET_KEY'] = SECRET_KEY
 
+# Ruta del index
+@app.route('/freud')
+def home():
+    return render_template('index.html')
 
 # Manejo del error 404
 @app.errorhandler(404)
@@ -160,11 +164,6 @@ app.add_url_rule('/send_password_reset_email', 'send_password_reset_email', send
 app.add_url_rule('/message', 'message', message)
 app.add_url_rule('/send_message', 'send_message', send_message, methods=['POST'])
 
-
-# Ruta del index
-@app.route('/freud')
-def home():
-    return render_template('index.html')
 
 
 # Momentaneamente muestra una estructura basica de los planes de suscripcion

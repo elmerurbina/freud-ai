@@ -1,0 +1,96 @@
+
+body {
+   background-image: url('/static/imagenes/notificacionesFondo.avif');
+   background-size: contain;
+  
+    font-family: 'Helvetica Neue', sans-serif; 
+    margin: 0;
+   padding: 0;
+  
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+}
+p{margin-top: 10px;
+text-align: center;
+color: #000;
+font-size: 16px;}
+
+form {
+    background: #eff0f1;  /*#fff8dc;*/
+    padding: 20px;
+    height: auto;
+    align-items: center;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-bottom: 25px;
+    width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    text-align: center;
+    margin-top: 6%;
+    flex-direction: column;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    right: 30%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background: #4CAF50; /* Green background color */
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Close button for the modal */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+#errorDiv {
+    display: none;
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+
+label {
+    margin-bottom: 10px; 
+    font-size: 16px;
+    display: flex;
+    align-items: center; 
+   
+}
+
+p.head{color: #000000;
+font-size: 20px;}
+
+input[type="checkbox"],
+input[type="radio"] {
+    margin-right: 5px;
+    vertical-align: middle; 
+}
+
+input[type="submit"]{
+    margin-bottom: 55px;
+}
+
+h1 {
+    color: #050505; 
+    margin-top: 5%;
+    text-align: center;
+}
+
+input {
+    font-size: 20px;
+    border-radius: 20px;
+    animation: blink 3s infinite;
+    background: linear-gradient(to right, violet, darkblue);
+}

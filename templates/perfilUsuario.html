@@ -3,24 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil de usuario</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/perfilUsuario.css') }}">
+    <title>Psicologos Profesionales en línea</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/profesionales.css') }}">
     <link rel="icon" href="/static/imagenes/logo.jpg" type="image/jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Mi perfil</h1>
-        <div class="profile">
-            <img src="{{ url_for('static', filename=photo_path) }}" alt="Profile Picture">
-            <div class="info">
-                <p><strong>Nombre:</strong> {{ full_name }}</p>
-                <p><strong>Usuario:</strong> {{ username }}</p>
+
+        <div class="profile-list">
+            <!-- Sample Profile Data -->
+            <div class="profile-card">
+                <!-- Profile Image -->
+                <img src="{{ url_for('static', filename='imagenes/perfil.jpg') }}" alt="Profile Picture" class="profile-image">
+
+                <!-- Profile Info -->
+                <div class="profile-info">
+                    <h2>Nombre: Juan Perez</h2>
+                    <p>Edad: 35 años</p>
+                    <p>No. De Licencia: 123456</p>
+                    <p>Dirección: Calle Falsa 123, Ciudad de Ejemplo</p>
+                    <p>Keywords: Psicología, Terapia, Bienestar</p>
+                    <p>Descripción: Psicólogo especializado en terapia cognitivo-conductual con más de 10 años de experiencia ayudando a sus pacientes a mejorar su bienestar mental.</p>
+                </div>
+
+                <p>Información de contacto: +505 1234 5678</p>
+
+                <!-- Configuration Icon -->
+                <div class="profile-configuration">
+                    <a href="#" title="Configurar Perfil">
+                        <i class="fas fa-cog"></i> Configuración
+                    </a>
+                </div>
+
+
             </div>
-            <a href="#">
-                <button class="editar">Editar mi perfil</button>
-            </a>
         </div>
-        <a href="{{ url_for('logout') }}">Cerrar Sesión</a>
     </div>
+
+    <script src="{{ url_for('static', filename='js/search.js') }}"></script>
 </body>
 </html>

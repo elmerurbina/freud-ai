@@ -1,0 +1,442 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;  /* Tipo de letra */
+}
+
+:root {
+  --sidebar-color: #87CEEB; /* Color de fondo del menu */
+  --primary-color: #cc3fc0; 
+  --primary-color-light: #9B27B00D;
+  --toggle-color: #0f0f0f;
+  --text-color: #080808; /* Color del texto */
+  --transition-duration: 0.3s;
+}
+
+body {
+  background: linear-gradient(to right, #3498db, #9B27B00D); /* Color de fondo principal */
+  min-height: 80vh;
+ /* background-color: var(--body-color);*/
+  color: var(--text-color);
+  transition: background-color var(--transition-duration);
+  margin: 0; 
+}
+
+::selection {
+  background-color: var(--primary-color);
+  color: #8213960d;
+}
+
+body.dark {
+  --body-color: #2c3e50; 
+  --sidebar-color: #34495e; 
+  --primary-color-light: #050505;
+  --toggle-color: black;
+  --text-color: #5e6466; 
+}
+
+/* Iniciar estilos para la barra del menu que se muestra a la izquierda */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  padding: 10px 14px;
+  background: #d628b9;
+  color: var(--text-color);
+  z-index: 100;
+  margin-top: 56px; 
+}
+
+.sidebar:hover {
+  width: 300px; 
+}
+
+.sidebar.close {
+  width: 90px;
+}
+
+.sidebar li {
+  height: 50px;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.sidebar header .image,
+.sidebar .icon {
+  min-width: 60px;
+  border-radius: 6px;
+}
+
+.sidebar .icon {
+  min-width: 60px;
+  border-radius: 6px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.fa-solid.fa-cart-shopping {
+ font-size: 20px;
+ align-items: center;
+ margin-right: 20px;
+ margin-left: 20px;
+}
+
+.nav-link.active a:hover i.fa-solid.fa-cart-shopping {
+  color: var(--sidebar-color);
+}
+
+.sidebar .text,
+.sidebar .icon {
+  color: black; 
+  transition: var(--tran-03);
+}
+
+.sidebar .text {
+  font-size: 17px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 1;
+}
+
+.sidebar.close .text {
+  opacity: 0;
+}
+
+.sidebar header {
+  position: relative;
+}
+
+.sidebar header .logo {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.nav-link.active a i.fa-regular {
+  font-size: 18px;
+  color: #333333;
+  margin-right: 20px; 
+  margin-left: 20px;
+}
+
+.fa-handshake-angle {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.nav-link.active a:hover i.fa-regular {
+  color: var(--sidebar-color);
+}
+
+.name {
+  margin-top: 2px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.welcome {
+  font-size: 16px;
+  margin-top: -2px;
+  display: block;
+}
+
+.sidebar header .image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar header .image img {
+  width: 40px;
+  border-radius: 6px;
+}
+
+.sidebar header .toggle {
+  position: absolute;
+  top: 20%;
+  right: 0px;
+  height: 35px;
+  width: 35px;
+  background-color: darkmagenta; 
+  color: var(--sidebar-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 35px;
+  cursor: pointer;
+  transition: var(--tran-05);
+}
+
+.body.dark .sidebar header .toggle {
+  color: var(--text-color);
+}
+
+
+.sidebar.close .toggle {
+  width: 100%;
+  top: 20%;
+}
+
+.sidebar .menu {
+  margin-top: 40px;
+}
+/* Estilos del icono y la barra de busqueda */
+.sidebar li.plans {
+  border-radius: 6px;
+  background-color: var(--prymary-color-dark);
+  cursor: pointer;
+  transition: var(--tran-05);
+}
+
+
+/* Estilos de la lista de opciones del menu */
+.sidebar li a {
+  list-style: none;
+  height: 100%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border-radius: 6px;
+  text-decoration: none;
+  color: black; /* Color del texto del menu */
+  transition: var(--tran-03);
+}
+
+/* Efecto hover del la lista de opciones del menu */ 
+.sidebar li a:hover {
+  background-color: var(--prymary-color);
+}
+
+.sidebar li a:hover .icon, /* Agregar efecto hover al texto y al icono */
+.sidebar li a:hover .text {
+  color: var(--sidebar-color);
+}
+
+.body.dark .sidebar li a:hover .icon,
+.body.dark .sidebar li a:hover .text {
+  color: var(--text-color);
+}
+/* Estilos de las tres barritas del menu */
+.sidebar .menu-bar {
+  height: calc(100% - 55px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: scroll;
+  margin-top: 5px; 
+}
+/* Ocultar las opciones del menu inicialmente */ 
+.menu-bar::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* Estilos del menu cuando se cliquean las tres barritas */
+.menu-bar .bottom-content .toggle-switch {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.toggle-switch .switch {
+  position: relative;
+  height: 22px;
+  width: 40px;
+  border-radius: 25px;
+  background-color: var(--toggle-color);
+  transition: var(--tran-05);
+}
+
+.switch::before {
+  content: '';
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  background-color: var(--sidebar-color);
+  transition: var(--tran-04);
+}
+
+.body.dark .switch::before {
+  left: 20px;
+}
+/* Terminar estilos para el menu de la izquierda */
+
+/* Estilo para la parte principal (centro) de la pagina */
+.home {
+  position: absolute;
+  top: 0;
+  left: 250px;
+  height: 100vh;
+  width: calc(100% - 250px);
+  background-color: var(--body-color);
+  transition: var(--tran-05);
+}
+
+/* Estilos para el texto del centro de la pagina */
+.home .text {
+  font-size: 30px;
+  font-weight: 500;
+  color: var(--text-color);
+  padding: 12px 60px;
+}
+
+/* Estilos para cerrar el menu */
+.sidebar.close ~ .home {
+  left: 78px;
+  height: 100vh;
+  width: calc(100% - 78px);
+}
+
+
+body.dark .home .text {
+  color: var(--text-color); /* Color del texto del centro */
+}
+
+.chat-01 {
+  border: 1px #2747b0;
+  width: 150px;
+  height: 150px;
+  padding: 8px;
+}
+
+main {
+  min-height: 100vh;
+}
+
+/* IniciarE estilos del input para escribir los mensajes */
+.message-input {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 10px;
+  background-color: #f2f2f2;
+  border-top: 1px solid #ccc;
+
+}
+
+/* Estilo de la linea del input */
+.message-input input {
+  padding: 10px;
+  border-radius: 20px;
+  flex: 1;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  height: auto;
+  margin-left: 20%;
+}
+
+/* Estilos del boton/icono */
+.message-input button {
+  font-size: 30px;
+  background: none;
+  color: rgb(66, 4, 56);
+  border: none;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 30%;
+}   /* Final de estilos del input de mensajes */
+
+/* Estilo de los mensajes del centro de la pagina*/
+.chat-message {
+  background-color: none;
+  padding: 10px;
+  font-size: 25px;
+  border-radius: 10px;
+  margin: 10px;
+  margin-top: 10%;
+  text-align: center;
+  font-weight: bold;
+  color: #333333; 
+}
+
+/* Estilos para el mensaje del usuario */
+.user-message {
+  background-color: #5cb85c; 
+  color: #fff;
+  float: left;
+  margin-bottom: 10px;
+  padding: 8px;
+  border-radius: 8px;
+  margin-left: 15%;
+  margin-right: 50%;
+}
+
+/* Estilos para el mensaje del chatbot */
+.chatbot-message {
+  background-color: #337ab7; 
+  font-size: 16px;
+  color: #fff;
+  float: right;
+  margin-bottom: 100px;
+  padding: 8px;
+  border-radius: 8px;
+  margin-left: 40%;
+  margin-right: 10%;
+}
+
+/* Estilos para la parte donde aparecen los mensajes enviados y reibidos */
+.message-container {
+  flex: 1;
+  overflow-y: auto; 
+}
+
+/* Estilos para la forma del feedback*/
+#feedback-form {
+  margin-top: 20px;
+}
+
+/* Estilos del texarea donde el usuario escribira su comentario */
+#feedback-form textarea {
+  width: 100%;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+/* Estilo del boton para enviar el comentario */
+#feedback-form button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Efecto hover del boton */
+#feedback-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Estilos de la foto de perfil del usuario */
+.profile-photo {
+  width: 50px; 
+  height: 50px; 
+  margin-left: 5px;
+  border-radius: 50%; 
+  position: fixed;
+  z-index: 1000;
+}

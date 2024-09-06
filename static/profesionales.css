@@ -1,0 +1,113 @@
+body {
+    background-image: url('/static/imagenes/profesionalesFondo.avif');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.profile-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.profile-card {
+    width: 300px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.profile-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+}
+
+.profile-info {
+    padding: 20px;
+}
+
+.profile-info h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.profile-info p {
+    margin: 0;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    color: #555;
+}
+
+
+.search-container {
+    margin-bottom: 20px;
+}
+
+.profile-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.profile-card {
+    width: 30%;
+    margin: 0 15px 30px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-card img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.search-container {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.search-container input[type="text"] {
+    padding: 10px 35px 10px 10px; /* Added more padding on the right for the icon */
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.search-container i {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #666;
+}
+
+
+a {
+    color: white;
+    background-color: green;
+    padding: 3px;
+}
+
+a.message {
+    color: white;
+    background-color: blue;
+    padding: 3px;
+    
+}
+
+.message-contact {
+    margin-top: 20px;
+}
+

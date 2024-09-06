@@ -1,0 +1,90 @@
+body {
+    background-image: url("/static/imagenes/registro.jpg");
+    font-family: Arial, sans-serif;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+   background-repeat: no-repeat;
+   background-attachment: fixed;
+}
+
+
+.logo {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 30px;
+    margin-left: 5%;
+}
+
+span {
+    color: #EE13C4;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+
+.container {
+    text-align: center; 
+    color: rgb(223, 223, 223);
+    font-size: 18px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+button {
+    background-color: rgb(5, 5, 194);
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 20px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+button:hover{background-color: rgb(196, 6, 6);}
+
+.form-group {
+    margin-bottom: 20px;
+    font-size: 18px;
+    
+}
+
+a{color: rgb(231, 181, 87)}
+a:hover{color: red;}
+
+.logo{width: 80px;
+    height: auto;
+    border-radius: 50%;
+    margin-bottom: 20px;}
+
+    p{font-size: 18px;
+    color: rgb(228, 222, 222);
+margin-bottom: 12%;}
+
+    label{font-size: 16px;}
+
+    input{font-size: 15px;
+    height: 90%;
+width: 70%;
+margin-top: 3%;
+padding: 6px;}
+
+footer{font-size: 20px;
+    margin-top: 100px;
+    color: lightgray;
+    text-align: center;}
+
+    h1{font-size: 25px;}
+
+   

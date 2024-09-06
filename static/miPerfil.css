@@ -1,0 +1,62 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, rgb(243, 242, 242), rgb(224, 234, 248));
+}
+
+h1 {
+    text-align: center;
+    font-size: 18px;
+}
+
+a{
+    margin-right: 0%;
+    margin-left: 500px;
+    color: black;
+    text-decoration: none;
+}
+
+
+a:hover::after {
+    content: "Editar";
+    position: relative;
+}
+
+#profile-info {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#profile-info p {
+    margin: 10px 0;
+}
+
+#profile-info strong {
+    font-weight: bold;
+}
+
+#photo {
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+}
+
+#license,
+#nombre,
+#direccion,
+#descripcion,
+#keywords,
+#contacto,
+#estudios {
+    font-size: 16px;
+    color: #333;
+}
